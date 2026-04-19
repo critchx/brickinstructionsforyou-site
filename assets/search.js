@@ -1,1 +1,17 @@
-let searchData=[];const input=document.querySelector('[data-site-search]');const dropdown=document.querySelector('[data-search-dropdown]');let activeIndex=-1;async function loadSearchData(){try{const res=await fetch('/assets/search-index.json');searchData=await res.json()}catch(e){console.error('search index failed',e)}}function renderResults(items){if(!dropdown)return;if(!items.length){dropdown.innerHTML='';dropdown.classList.remove('active');activeIndex=-1;return}dropdown.innerHTML=items.map((item,i)=>`<a class="search-item ${i===activeIndex?'active':''}" href="${item.url}"><div><strong>LEGO ${item.number} ${item.name}</strong><small>${item.theme}${item.subtheme?' · '+item.subtheme:''}</small></div><small>Open</small></a>`).join('');dropdown.classList.add('active')}function searchItems(q){q=q.trim().toLowerCase();if(!q)return[];return searchData.filter(item=>`${item.number} ${item.name} ${item.theme} ${item.subtheme}`.toLowerCase().includes(q)).slice(0,10)}if(input){let currentItems=[];input.addEventListener('input',()=>{activeIndex=-1;currentItems=searchItems(input.value);renderResults(currentItems)});input.addEventListener('keydown',e=>{if(!dropdown||!dropdown.classList.contains('active'))return;if(e.key==='ArrowDown'){e.preventDefault();activeIndex=Math.min(activeIndex+1,currentItems.length-1);renderResults(currentItems)}else if(e.key==='ArrowUp'){e.preventDefault();activeIndex=Math.max(activeIndex-1,0);renderResults(currentItems)}else if(e.key==='Enter'){if(currentItems.length){e.preventDefault();const chosen=currentItems[activeIndex>=0?activeIndex:0];window.location.href=chosen.url}}else if(e.key==='Escape'){dropdown.classList.remove('active')}});document.addEventListener('click',e=>{if(dropdown && !dropdown.contains(e.target) && e.target!==input){dropdown.classList.remove('active')}})}loadSearchData();
+
+let SEARCH_DATA=[];
+fetch('/assets/search-index.json').then(r=>r.json()).then(d=>SEARCH_DATA=d).catch(()=>{});
+const input=document.getElementById('site-search');
+const dd=document.getElementById('search-dropdown');
+function render(q){
+  if(!q){dd.style.display='none';dd.innerHTML='';return;}
+  const term=q.toLowerCase();
+  const results=SEARCH_DATA.filter(x=>x.keywords.toLowerCase().includes(term)).slice(0,12);
+  dd.innerHTML=results.map(r=>`<a class="search-item" href="${r.url}">${r.title}</a>`).join('');
+  dd.style.display=results.length?'block':'none';
+}
+if(input){
+ input.addEventListener('input',e=>render(e.target.value.trim()));
+ input.addEventListener('keydown',e=>{if(e.key==='Enter'){const first=dd.querySelector('.search-item'); if(first){window.location=first.href;}}});
+ document.addEventListener('click',e=>{if(dd && !dd.contains(e.target) && e.target!==input) dd.style.display='none';});
+}
