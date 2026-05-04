@@ -1,15 +1,23 @@
-Brick Instructions For You - Static SEO Website
+BRICK INSTRUCTIONS FOR YOU - UPDATED WEBSITE
 
-Upload this folder to Cloudflare Pages or any static web host.
+Included:
+- Modern SEO homepage
+- /2025/ and /2026/ year pages
+- Theme pages
+- Individual set pages for every row in your CSV files
+- Search page
+- sitemap.xml, robots.txt and llms.txt for AI discovery
+- YouTube playlist export script
 
-Important files:
-- index.html = homepage
-- /2025/ and /2026/ = year pages
-- /themes/ = theme pages
-- /sets/ = individual LEGO set SEO pages
-- /data/sets.json = search data
-- /data/videos.sample.json = example for YouTube all-books/book matching
-- sitemap.xml, robots.txt, llms.txt = SEO and AI discovery files
+Playlists configured:
+2025: https://www.youtube.com/playlist?app=desktop&list=PLQcpf5VzBO0r7AYWpgFpJcBfPDB8rf81V&cbrd=1
+2026: https://www.youtube.com/playlist?list=PLQcpf5VzBO0plGlm2VNlbO53VFPuqbJZv
 
-Next step:
-Connect your YouTube video export/API data and populate set pages with real video links.
+How to connect your YouTube videos:
+1. Open scripts/update_youtube_videos.py
+2. Paste your YouTube API key
+3. Run: python scripts/update_youtube_videos.py
+4. Run: python scripts/build_site.py
+5. Upload the public folder to Cloudflare Pages
+
+Video matching supports All Books and Book 1, Book 2, Book 3, Book 4, Book 5+.

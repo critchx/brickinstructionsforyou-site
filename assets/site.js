@@ -1,5 +1,1 @@
-
-async function loadSets(){const r=await fetch('/data/sets.json');return await r.json();}
-function setCard(s){return `<a class="set-card" href="/sets/${s.slug}/"><div class="thumb"><img loading="lazy" src="${s.image}" alt="LEGO ${s.Number} ${s.SetName} instruction video"></div><div class="set-body"><h3>LEGO ${s.Number} ${s.SetName}</h3><div class="meta"><span class="badge">${s.YearFrom}</span><span class="badge">${s.Theme}</span>${s.Pieces?`<span class="badge">${s.Pieces} pieces</span>`:''}</div><p>Watch LEGO ${s.Number} instructions and find related ${s.Theme} builds.</p></div></a>`}
-async function initSearch(){const el=document.querySelector('[data-search-results]');const inp=document.querySelector('[data-search-input]');if(!el||!inp)return;const sets=await loadSets();function run(){const q=inp.value.toLowerCase().trim();const out=sets.filter(s=>!q||[s.Number,s.SetName,s.Theme,s.Subtheme,s.YearFrom].join(' ').toLowerCase().includes(q)).slice(0,80);el.innerHTML=out.map(setCard).join('')||'<p>No LEGO sets found.</p>'}inp.addEventListener('input',run);run();}
-initSearch();
+const box=document.querySelector('#siteSearch');if(box){box.addEventListener('input',e=>{const q=e.target.value.toLowerCase().trim();document.querySelectorAll('[data-search]').forEach(c=>c.style.display=c.dataset.search.includes(q)?'':'none')})}
