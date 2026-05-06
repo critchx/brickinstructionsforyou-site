@@ -1,1 +1,0 @@
-const box=document.querySelector('#siteSearch');if(box){box.addEventListener('input',e=>{const q=e.target.value.toLowerCase().trim();document.querySelectorAll('[data-search]').forEach(c=>c.style.display=c.dataset.search.includes(q)?'':'none')})}
