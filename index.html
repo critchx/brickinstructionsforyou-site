@@ -134,74 +134,27 @@
     @media(max-width:980px) { .nav-inner { grid-template-columns:1fr; gap:16px; } nav { grid-column:1; justify-content:flex-start; flex-wrap:wrap; } .suggestions { width:100%; } .banner { background:#061327; } .banner::after { display:none; } .banner .container { grid-template-columns:1fr; min-height:auto; padding-top:28px; } .hero-actions,.trust-grid { grid-template-columns:1fr; } }
     @media(max-width:760px) { .hero-search { grid-template-columns:1fr 70px 48px; } .popular-chips { justify-content:flex-start; } .set-main { grid-template-columns:1fr; } .details { grid-template-columns:1fr; } .top-strip .container { flex-direction:column; align-items:flex-start; } .brand-text { font-size:1.25rem; } .suggestions a.suggestion-item { grid-template-columns:70px 1fr; } .suggestions img { width:70px; height:52px; } }
   </style>
-<style>
 
-/* === SEARCH DROPDOWN FIX === */
-.hero-search-wrap,
-.search-wrap,
-.search-bar,
-.search-controls,
-.search-box,
-.hero-search {
-  overflow: visible !important;
-}
+<style id="final-homepage-search-fix">
+/* FINAL HOMEPAGE SEARCH FIX */
+.brand-icon{width:58px;height:58px;display:flex;align-items:center;justify-content:center;border-radius:12px;overflow:hidden;background:transparent!important}
+.brand-lego-brick{width:58px;height:58px;display:block;filter:drop-shadow(0 6px 12px rgba(0,0,0,.25))}
 
-.search-select,
-#searchType,
-#searchFilter,
-select[name="searchType"] {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-  position: relative !important;
-  z-index: 99999 !important;
-  min-width: 92px !important;
-  height: 58px !important;
-  padding: 0 34px 0 18px !important;
-  border: 0 !important;
-  border-left: 1px solid #e5e7eb !important;
-  border-radius: 0 !important;
-  background: #ffffff !important;
-  color: #111827 !important;
-  font-weight: 800 !important;
-  font-size: 15px !important;
-  cursor: pointer !important;
-  appearance: auto !important;
-  -webkit-appearance: menulist !important;
-  -moz-appearance: menulist !important;
-}
+.hero-search-form{width:min(730px,92vw);margin:20px auto 12px;display:grid!important;grid-template-columns:1fr 92px 60px;align-items:stretch;background:#fff;border-radius:12px;overflow:visible!important;border:1px solid rgba(255,255,255,.65);box-shadow:0 12px 35px rgba(0,0,0,.18);position:relative;z-index:50}
+.hero-search-form input{height:58px;border:0!important;padding:0 18px;font-size:16px;background:#fff!important;color:#111!important;outline:none;border-radius:12px 0 0 12px!important;box-shadow:none!important;width:100%}
+.hero-search-form select{height:58px!important;display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;appearance:auto!important;-webkit-appearance:menulist!important;-moz-appearance:auto!important;background:#fff!important;color:#111!important;border:0!important;border-left:1px solid #e5e7eb!important;padding:0 14px!important;font-size:15px!important;font-weight:800!important;position:relative!important;z-index:9999!important;cursor:pointer!important;width:92px!important;min-width:92px!important;max-width:92px!important;border-radius:0!important;box-shadow:none!important}
+.hero-search-form button{height:58px;border:0!important;background:#7b7b7b!important;color:#fff!important;font-size:20px!important;cursor:pointer!important;border-radius:0 12px 12px 0!important;width:60px!important;display:flex!important;align-items:center!important;justify-content:center!important;position:relative!important;z-index:2!important}
+.hero-search-form button:hover{filter:brightness(1.08)}
+.hero-search-form *, .hero, .hero-inner, .hero-content{overflow:visible!important}
 
-.search-button,
-#searchButton,
-button[type="submit"] {
-  z-index: 2 !important;
-  position: relative !important;
-}
+/* Hide duplicate lower search box on the homepage */
+.search-section,.site-search,.lower-search,.homepage-search,#search,#search-section{display:none!important}
+main h2:first-of-type + p + .search-card,
+main h2:first-of-type + .search-card{display:none!important}
 
-/* Prevent fake dropdown arrows or overlays blocking the real select */
-.search-select::before,
-.search-select::after,
-#searchType::before,
-#searchType::after {
-  display: none !important;
-  content: none !important;
-}
-
-@media (max-width: 700px) {
-  .search-select,
-  #searchType,
-  #searchFilter,
-  select[name="searchType"] {
-    min-width: 82px !important;
-    height: 54px !important;
-    padding-left: 12px !important;
-    padding-right: 24px !important;
-    font-size: 14px !important;
-  }
-}
-/* === END SEARCH DROPDOWN FIX === */
+@media (max-width:640px){.hero-search-form{grid-template-columns:1fr 82px 54px}.hero-search-form input{font-size:14px}.hero-search-form select{width:82px!important;min-width:82px!important;max-width:82px!important;font-size:13px!important;padding:0 8px!important}.hero-search-form button{width:54px!important}}
 </style>
+
 </head>
 <body>
   <div class="top-strip"><div class="container">
@@ -209,7 +162,16 @@ button[type="submit"] {
     <span><a href="/latest/">LATEST</a><a href="/themes/">THEMES</a><a href="https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU" target="_blank" rel="noopener">YOUTUBE</a></span>
   </div></div>
   <header><div class="nav-inner">
-    <a class="brand" href="/"><span class="brand-mark">🧱</span><span class="brand-text">Instructions<span>For You</span></span></a>
+    <a class="brand" href="/"><span class="brand-mark"><svg class="brand-lego-brick" viewBox="0 0 96 96" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <rect x="6" y="8" width="84" height="80" rx="12" fill="#e3000b"/>
+  <rect x="12" y="14" width="72" height="68" rx="8" fill="#f23a2e"/>
+  <g fill="#ffcf00" stroke="#ffffff" stroke-opacity=".55" stroke-width="2">
+    <rect x="22" y="26" width="18" height="14" rx="4"/>
+    <rect x="56" y="26" width="18" height="14" rx="4"/>
+    <rect x="22" y="54" width="18" height="14" rx="4"/>
+    <rect x="56" y="54" width="18" height="14" rx="4"/>
+  </g>
+</svg></span><span class="brand-text">Instructions<span>For You</span></span></a>
     <nav><a href="/">🏠<span>Home</span></a><a href="/2025/">▦<span>2025</span></a><a href="/2026/">▦<span>2026</span></a><a href="/themes/">▣<span>Themes</span></a><a href="/latest/">ⓘ<span>Latest</span></a></nav>
   </div></header>
   
@@ -220,11 +182,19 @@ button[type="submit"] {
           <h1>Find <span style="color:#facc15">LEGO®</span> Instructions</h1>
           <p>Search and browse LEGO instruction videos by set number, set name, theme or year.</p>
           <div class="hero-search-wrap">
-            <form class="hero-search" action="/search/" method="get" role="search">
-              <input id="globalSearch" type="search" name="q" placeholder="Search by set number, name or theme..." aria-label="Search LEGO instructions" autocomplete="off">
-              <select id="globalSearchType" name="type" aria-label="Search type"><option value="all">All</option><option value="set">Set</option><option value="theme">Theme</option></select>
-              <button type="submit" aria-label="Search">🔍</button>
-            </form>
+            
+<form id="heroSearchForm" class="hero-search-form" action="/search/" method="get" role="search">
+  <input id="heroSearchInput" name="q" type="search" placeholder="Search by set number, name or theme..." autocomplete="off" />
+  <select id="heroSearchType" name="type" aria-label="Search type">
+    <option value="all">All</option>
+    <option value="set">Set Number</option>
+    <option value="name">Set Name</option>
+    <option value="theme">Theme</option>
+    <option value="year">Year</option>
+  </select>
+  <button type="submit" aria-label="Search">🔍</button>
+</form>
+
             <div id="globalSuggestions" class="suggestions" aria-label="Search suggestions"></div>
             <div class="popular-chips">
               <span>Popular searches:</span>
@@ -239,7 +209,16 @@ button[type="submit"] {
         </div>
         <div class="hero-actions">
           <a class="action-card blue" href="/2026/"><div><h2>📅 Browse by Year</h2><p>View LEGO sets by year of release.</p><span class="btn light">Browse Years</span></div></a>
-          <a class="action-card orange" href="/themes/"><div><h2>🧱 Browse by Theme</h2><p>Explore sets by your favourite LEGO themes.</p><span class="btn light">Browse Themes</span></div></a>
+          <a class="action-card orange" href="/themes/"><div><h2><svg class="brand-lego-brick" viewBox="0 0 96 96" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <rect x="6" y="8" width="84" height="80" rx="12" fill="#e3000b"/>
+  <rect x="12" y="14" width="72" height="68" rx="8" fill="#f23a2e"/>
+  <g fill="#ffcf00" stroke="#ffffff" stroke-opacity=".55" stroke-width="2">
+    <rect x="22" y="26" width="18" height="14" rx="4"/>
+    <rect x="56" y="26" width="18" height="14" rx="4"/>
+    <rect x="22" y="54" width="18" height="14" rx="4"/>
+    <rect x="56" y="54" width="18" height="14" rx="4"/>
+  </g>
+</svg> Browse by Theme</h2><p>Explore sets by your favourite LEGO themes.</p><span class="btn light">Browse Themes</span></div></a>
           <a class="action-card red" href="/latest/"><div><h2>★ Latest Builds</h2><p>See recently added instruction videos.</p><span class="btn light">View Latest</span></div></a>
         </div>
       </div>
@@ -504,46 +483,21 @@ button[type="submit"] {
 })();
 </script>
 
-
-<script>
-(function () {
-  function fixSearchDropdown() {
-    var select = document.querySelector('#searchType, #searchFilter, .search-select, select[name="searchType"]');
-    var input = document.querySelector('#searchInput, .search-input, input[type="search"], input[name="q"]');
-    var form = select ? select.closest('form') : document.querySelector('form');
-
-    if (!select) {
-      var searchBox = document.querySelector('.search-bar, .search-wrap, .hero-search, .search-controls');
-      if (!searchBox) return;
-      select = document.createElement('select');
-      select.id = 'searchType';
-      select.className = 'search-select';
-      select.innerHTML = '<option value="all">All</option><option value="set">Set Number</option><option value="name">Set Name</option><option value="theme">Theme</option><option value="year">Year</option>';
-      var button = searchBox.querySelector('button');
-      if (button) searchBox.insertBefore(select, button);
-      else searchBox.appendChild(select);
-    }
-
-    select.style.display = 'block';
-    select.style.visibility = 'visible';
-    select.style.opacity = '1';
-    select.style.pointerEvents = 'auto';
-    select.style.zIndex = '99999';
-    select.style.position = 'relative';
-
-    // Make sure the selected filter is used by the search if your script supports it.
-    select.addEventListener('change', function () {
-      window.currentSearchType = select.value;
-      if (input) input.dispatchEvent(new Event('input', { bubbles: true }));
+<script id="final-homepage-search-js">
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('heroSearchForm');
+  const input = document.getElementById('heroSearchInput');
+  const type = document.getElementById('heroSearchType');
+  if (form && input) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const q = (input.value || '').trim();
+      const t = type ? type.value : 'all';
+      const url = '/search/?q=' + encodeURIComponent(q) + '&type=' + encodeURIComponent(t);
+      window.location.href = url;
     });
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', fixSearchDropdown);
-  } else {
-    fixSearchDropdown();
-  }
-})();
+});
 </script>
 
 </body>
