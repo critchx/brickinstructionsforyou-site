@@ -134,6 +134,74 @@
     @media(max-width:980px) { .nav-inner { grid-template-columns:1fr; gap:16px; } nav { grid-column:1; justify-content:flex-start; flex-wrap:wrap; } .suggestions { width:100%; } .banner { background:#061327; } .banner::after { display:none; } .banner .container { grid-template-columns:1fr; min-height:auto; padding-top:28px; } .hero-actions,.trust-grid { grid-template-columns:1fr; } }
     @media(max-width:760px) { .hero-search { grid-template-columns:1fr 70px 48px; } .popular-chips { justify-content:flex-start; } .set-main { grid-template-columns:1fr; } .details { grid-template-columns:1fr; } .top-strip .container { flex-direction:column; align-items:flex-start; } .brand-text { font-size:1.25rem; } .suggestions a.suggestion-item { grid-template-columns:70px 1fr; } .suggestions img { width:70px; height:52px; } }
   </style>
+<style>
+
+/* === SEARCH DROPDOWN FIX === */
+.hero-search-wrap,
+.search-wrap,
+.search-bar,
+.search-controls,
+.search-box,
+.hero-search {
+  overflow: visible !important;
+}
+
+.search-select,
+#searchType,
+#searchFilter,
+select[name="searchType"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 99999 !important;
+  min-width: 92px !important;
+  height: 58px !important;
+  padding: 0 34px 0 18px !important;
+  border: 0 !important;
+  border-left: 1px solid #e5e7eb !important;
+  border-radius: 0 !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  cursor: pointer !important;
+  appearance: auto !important;
+  -webkit-appearance: menulist !important;
+  -moz-appearance: menulist !important;
+}
+
+.search-button,
+#searchButton,
+button[type="submit"] {
+  z-index: 2 !important;
+  position: relative !important;
+}
+
+/* Prevent fake dropdown arrows or overlays blocking the real select */
+.search-select::before,
+.search-select::after,
+#searchType::before,
+#searchType::after {
+  display: none !important;
+  content: none !important;
+}
+
+@media (max-width: 700px) {
+  .search-select,
+  #searchType,
+  #searchFilter,
+  select[name="searchType"] {
+    min-width: 82px !important;
+    height: 54px !important;
+    padding-left: 12px !important;
+    padding-right: 24px !important;
+    font-size: 14px !important;
+  }
+}
+/* === END SEARCH DROPDOWN FIX === */
+</style>
 </head>
 <body>
   <div class="top-strip"><div class="container">
@@ -435,5 +503,48 @@
   });
 })();
 </script>
+
+
+<script>
+(function () {
+  function fixSearchDropdown() {
+    var select = document.querySelector('#searchType, #searchFilter, .search-select, select[name="searchType"]');
+    var input = document.querySelector('#searchInput, .search-input, input[type="search"], input[name="q"]');
+    var form = select ? select.closest('form') : document.querySelector('form');
+
+    if (!select) {
+      var searchBox = document.querySelector('.search-bar, .search-wrap, .hero-search, .search-controls');
+      if (!searchBox) return;
+      select = document.createElement('select');
+      select.id = 'searchType';
+      select.className = 'search-select';
+      select.innerHTML = '<option value="all">All</option><option value="set">Set Number</option><option value="name">Set Name</option><option value="theme">Theme</option><option value="year">Year</option>';
+      var button = searchBox.querySelector('button');
+      if (button) searchBox.insertBefore(select, button);
+      else searchBox.appendChild(select);
+    }
+
+    select.style.display = 'block';
+    select.style.visibility = 'visible';
+    select.style.opacity = '1';
+    select.style.pointerEvents = 'auto';
+    select.style.zIndex = '99999';
+    select.style.position = 'relative';
+
+    // Make sure the selected filter is used by the search if your script supports it.
+    select.addEventListener('change', function () {
+      window.currentSearchType = select.value;
+      if (input) input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fixSearchDropdown);
+  } else {
+    fixSearchDropdown();
+  }
+})();
+</script>
+
 </body>
 </html>
