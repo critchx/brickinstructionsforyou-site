@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en-GB">
-<!-- v29 fixed single hero search: working suggestions dropdown, one search box, LEGO brick logo -->
+<!-- v30 fixed search UX: hides homepage promo cards while typing, working suggestions dropdown, one search box, LEGO brick logo -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,6 +86,12 @@
     .hero-stat span { font-size:1.7rem; }
     .banner-badge { display:none; }
     .hero-actions { grid-column:1 / -1; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:6px 0 6px; }
+
+    body.search-active .hero-actions,
+    body.search-active .popular-chips { display:none !important; }
+    body.search-active .banner .container { min-height:auto; padding:24px 0 18px; }
+    body.search-active .hero-search-wrap { margin-bottom:0; }
+    body.search-active .suggestions { display:block; }
     .action-card { min-height:120px; color:#fff; border-radius:18px; display:grid; place-items:center; text-align:center; padding:22px; box-shadow:0 15px 34px rgba(0,0,0,.10); overflow:hidden; position:relative; }
     .action-card::after { content:""; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.20),transparent); pointer-events:none; }
     .action-card h2 { margin:0 0 8px; font-size:1.35rem; color:#fff; text-transform:uppercase; }
@@ -338,8 +344,13 @@
   function setActive(items) {
     items.forEach((el, i) => el.classList.toggle('active', i === activeIndex));
   }
+  function updateSearchMode(qRaw) {
+    const isSearching = clean(qRaw || input.value).length > 0;
+    document.body.classList.toggle('search-active', isSearching);
+  }
   function renderSuggestions() {
     const qRaw = clean(input.value);
+    updateSearchMode(qRaw);
     const q = qRaw.toLowerCase();
     activeIndex = -1;
     if (q.length < 2) {
@@ -369,6 +380,7 @@
   }
 
   input.addEventListener('input', renderSuggestions);
+  input.addEventListener('search', renderSuggestions);
   if (type) type.addEventListener('change', renderSuggestions);
   input.addEventListener('focus', renderSuggestions);
   input.addEventListener('keydown', e => {
@@ -385,6 +397,7 @@
     e.preventDefault();
     window.location.href = searchUrl(q);
   });
+  updateSearchMode(input.value);
   document.addEventListener('click', e => {
     if (!box.contains(e.target) && e.target !== input && (!type || e.target !== type)) box.style.display = 'none';
   });
