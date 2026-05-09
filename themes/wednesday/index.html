@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en-GB">
-<!-- v26 modern compact homepage: centered hero search, latest-first layout, compact cards -->
+<!-- v29 fixed single hero search: working suggestions dropdown, one search box, LEGO brick logo -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +33,9 @@
     header { background:#071428; color:#fff; position:sticky; top:0; z-index:20; border-bottom:3px solid #facc15; box-shadow:0 8px 24px rgba(0,0,0,.22); }
     .nav-inner { width:min(1360px, calc(100% - 40px)); margin:0 auto; display:grid; grid-template-columns:300px 1fr; gap:28px; align-items:center; padding:13px 0; }
     .brand { display:flex; align-items:center; gap:12px; color:#fff; font-weight:1000; letter-spacing:-.7px; text-transform:uppercase; line-height:1; }
-    .brand-mark { width:58px; height:58px; border-radius:6px; display:grid; place-items:center; background:linear-gradient(135deg,var(--red),#ff3b42); color:#fff; font-size:1.9rem; box-shadow:0 8px 18px rgba(237,28,36,.25); border:2px solid rgba(255,255,255,.2); }
+    .brand-mark { width:58px; height:58px; border-radius:9px; position:relative; display:grid; grid-template-columns:repeat(2,1fr); gap:6px; padding:10px; background:linear-gradient(135deg,#e3000b,#ff343d); box-shadow:0 8px 18px rgba(237,28,36,.28), inset 0 -4px 0 rgba(0,0,0,.16); border:2px solid rgba(255,255,255,.24); overflow:hidden; }
+    .brand-mark::before,.brand-mark::after,.brand-mark i::before,.brand-mark i::after { content:""; width:13px; height:13px; border-radius:50%; background:linear-gradient(135deg,#ff7a7f,#c9000a); box-shadow:inset 0 2px 2px rgba(255,255,255,.38), inset 0 -2px 2px rgba(0,0,0,.20); display:block; }
+    .brand-mark i { display:contents; }
     .brand-text { font-size:1.5rem; color:#fff; } .brand-text span { display:block; color:#facc15; text-shadow:1px 1px 0 #000; }
     nav { grid-column:2; display:flex; gap:14px; flex-wrap:nowrap; align-items:center; justify-content:flex-end; }
     nav a { color:#fff; font-weight:1000; text-transform:uppercase; font-size:.78rem; display:flex; flex-direction:column; align-items:center; gap:3px; min-width:58px; padding:7px 5px; border-radius:8px; }
@@ -45,7 +47,7 @@
     .header-search select { font-weight:700; text-align:center; cursor:pointer; text-transform:lowercase; color:#333; }
     .header-search button { border:0; background:#777; color:#fff; font-weight:1000; cursor:pointer; font-size:1.15rem; border-left:1px solid #686868; border-radius:0; }
     .header-search button:hover { background:#555; }
-    .suggestions { display:none; position:absolute; z-index:999; top:calc(100% + 3px); left:0; width:100%; min-width:360px; background:#fff; color:#111; border:1px solid #bdbdbd; border-radius:0; box-shadow:0 6px 18px rgba(0,0,0,.28); overflow:hidden; max-height:510px; overflow-y:auto; }
+    .suggestions { display:none; position:absolute; z-index:99999; top:calc(100% + 8px); left:0; width:100%; min-width:360px; background:#fff; color:#111; border:1px solid #bdbdbd; border-radius:12px; box-shadow:0 16px 36px rgba(0,0,0,.32); overflow:hidden; max-height:510px; overflow-y:auto; text-align:left; }
     .suggestion-title { background:#1595c6; color:#fff; font-weight:1000; padding:5px 12px; border-bottom:1px solid #0d7ea9; font-size:.9rem; line-height:1.2; }
     .suggestion-showall { display:block; padding:8px 12px; font-weight:1000; color:#222; background:#fff; border-bottom:1px solid #e5e5e5; font-size:.92rem; }
     .suggestion-showall:hover { background:#eaf6fb; text-decoration:none; }
@@ -64,9 +66,14 @@
     .hero-copy { padding:0; max-width:900px; margin:0 auto; text-align:center; }
 
     .hero-search-wrap { max-width:760px; margin:18px auto 10px; position:relative; }
-    .hero-search { display:grid; grid-template-columns:1fr 92px 58px; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 18px 40px rgba(0,0,0,.28); border:1px solid rgba(255,255,255,.55); }
+    .hero-search { display:grid; grid-template-columns:1fr 112px 58px; background:#fff; border-radius:12px; overflow:visible; box-shadow:0 18px 40px rgba(0,0,0,.28); border:1px solid rgba(255,255,255,.55); position:relative; }
     .hero-search input,.hero-search select { border:0; border-right:1px solid #e5e7eb; padding:16px 18px; font-size:1rem; outline:none; background:#fff; color:#111; }
-    .hero-search select { font-weight:900; }
+    .hero-search select { font-weight:900; cursor:pointer; appearance:auto !important; -webkit-appearance:menulist !important; min-width:92px; position:relative; z-index:3; }
+    .hero-search input { position:relative; z-index:2; }
+    .hero-search button { position:relative; z-index:2; }
+    .hero-search-wrap,.hero-search { overflow:visible; }
+    .hero-search { overflow:visible; }
+    .hero-search select option { color:#111; background:#fff; }
     .hero-search button { border:0; background:#7a7a7a; color:#fff; font-size:1.25rem; cursor:pointer; }
     .popular-chips { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:12px; }
     .popular-chips span { color:#fff; font-weight:900; font-size:.9rem; }
@@ -141,7 +148,7 @@
     <span><a href="/latest/">LATEST</a><a href="/themes/">THEMES</a><a href="https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU" target="_blank" rel="noopener">YOUTUBE</a></span>
   </div></div>
   <header><div class="nav-inner">
-    <a class="brand" href="/"><span class="brand-mark">🧱</span><span class="brand-text">Instructions<span>For You</span></span></a>
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-text">Instructions<span>For You</span></span></a>
     <nav><a href="/">🏠<span>Home</span></a><a href="/2025/">▦<span>2025</span></a><a href="/2026/">▦<span>2026</span></a><a href="/themes/">▣<span>Themes</span></a><a href="/latest/">ⓘ<span>Latest</span></a></nav>
   </div></header>
   
@@ -154,7 +161,7 @@
           <div class="hero-search-wrap">
             <form class="hero-search" action="/search/" method="get" role="search">
               <input id="globalSearch" type="search" name="q" placeholder="Search by set number, name or theme..." aria-label="Search LEGO instructions" autocomplete="off">
-              <select id="globalSearchType" name="type" aria-label="Search type"><option value="all">All</option><option value="set">Set</option><option value="theme">Theme</option></select>
+              <select id="globalSearchType" name="type" aria-label="Search type"><option value="all">All</option><option value="set">Set No.</option><option value="name">Name</option><option value="theme">Theme</option><option value="year">Year</option></select>
               <button type="submit" aria-label="Search">🔍</button>
             </form>
             <div id="globalSuggestions" class="suggestions" aria-label="Search suggestions"></div>
@@ -239,13 +246,13 @@
   let sets = [];
   let activeIndex = -1;
 
-  fetch('/assets/search-data.json')
-    .then(r => r.json())
-    .then(data => { sets = Array.isArray(data) ? data : []; })
+  fetch('/assets/search-data.json', { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : [])
+    .then(data => { sets = Array.isArray(data) ? data : []; renderSuggestions(); })
     .catch(() => { sets = []; });
 
   function clean(value) { return String(value || '').trim(); }
-  function searchUrl(q) { return '/search/?q=' + encodeURIComponent(q); }
+  function searchUrl(q) { const mode = type ? type.value : 'all'; return '/search/?q=' + encodeURIComponent(q) + '&type=' + encodeURIComponent(mode); }
   function escapeHtml(value) {
     return clean(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   }
@@ -259,9 +266,11 @@
   function getMatches(q) {
     const mode = type ? type.value : 'all';
     let list = sets.filter(s => itemText(s).includes(q));
-    if (mode === 'set') list = list.filter(s => (s.number + ' ' + s.name).toLowerCase().includes(q));
-    if (mode === 'theme') list = list.filter(s => (s.theme + ' ' + s.year).toLowerCase().includes(q));
-    return list.slice(0, 10);
+    if (mode === 'set') list = list.filter(s => String(s.number || '').toLowerCase().includes(q));
+    if (mode === 'name') list = list.filter(s => String(s.name || '').toLowerCase().includes(q));
+    if (mode === 'theme') list = list.filter(s => String(s.theme || '').toLowerCase().includes(q));
+    if (mode === 'year') list = list.filter(s => String(s.year || '').toLowerCase().includes(q));
+    return list.slice(0, 12);
   }
   function setActive(items) {
     items.forEach((el, i) => el.classList.toggle('active', i === activeIndex));
@@ -270,9 +279,14 @@
     const qRaw = clean(input.value);
     const q = qRaw.toLowerCase();
     activeIndex = -1;
-    if (q.length < 2 || !sets.length) {
+    if (q.length < 2) {
       box.style.display = 'none';
       box.innerHTML = '';
+      return;
+    }
+    if (!sets.length) {
+      box.innerHTML = '<div class="suggestion-title">Search</div><div style="padding:14px;color:#666">Loading quick results...</div>';
+      box.style.display = 'block';
       return;
     }
     const matches = getMatches(q);
