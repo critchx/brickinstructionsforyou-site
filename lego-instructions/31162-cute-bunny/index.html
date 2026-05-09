@@ -23,28 +23,34 @@
     * { box-sizing:border-box; }
     body { margin:0; font-family:Arial, Helvetica, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
     a { color:inherit; text-decoration:none; } a:hover { text-decoration:underline; }
-    .container { width:min(1220px, calc(100% - 40px)); margin:0 auto; }
+    .container { width:min(1240px, calc(100% - 40px)); margin:0 auto; }
     .muted,.meta { color:var(--muted); font-size:.95rem; }
     .top-strip { background:#111; color:#fff; font-size:.88rem; }
     .top-strip .container { display:flex; justify-content:space-between; gap:18px; align-items:center; padding:8px 0; }
     .top-strip a { color:#fff; font-weight:800; margin-left:18px; }
     header { background:#fff; color:var(--text); position:sticky; top:0; z-index:20; border-bottom:1px solid #e5e7eb; box-shadow:0 2px 10px rgba(0,0,0,.04); }
-    .nav-inner { width:min(1220px, calc(100% - 40px)); margin:0 auto; display:grid; grid-template-columns:270px 1fr 420px; gap:22px; align-items:center; padding:24px 0; }
+    .nav-inner { width:min(1240px, calc(100% - 40px)); margin:0 auto; display:grid; grid-template-columns:300px 1fr 470px; gap:28px; align-items:center; padding:26px 0; }
     .brand { display:flex; align-items:center; gap:12px; color:#111; font-weight:1000; letter-spacing:-.5px; text-transform:uppercase; line-height:1; }
-    .brand-mark { width:58px; height:58px; border-radius:14px; display:grid; place-items:center; background:linear-gradient(135deg,var(--red),#ff4d55); color:#fff; font-size:2rem; box-shadow:0 8px 18px rgba(237,28,36,.25); }
-    .brand-text { font-size:1.5rem; } .brand-text span { display:block; color:var(--red); }
-    nav { display:flex; gap:22px; flex-wrap:wrap; align-items:center; justify-content:center; }
+    .brand-mark { width:64px; height:64px; border-radius:14px; display:grid; place-items:center; background:linear-gradient(135deg,var(--red),#ff4d55); color:#fff; font-size:2rem; box-shadow:0 8px 18px rgba(237,28,36,.25); }
+    .brand-text { font-size:1.6rem; } .brand-text span { display:block; color:var(--red); }
+    nav { display:flex; gap:26px; flex-wrap:wrap; align-items:center; justify-content:center; }
     nav a { color:#1f2937; font-weight:1000; text-transform:uppercase; font-size:.95rem; }
-    .header-search { justify-self:end; display:grid; grid-template-columns:1fr 92px 54px; width:100%; border:2px solid var(--red); border-radius:8px; overflow:hidden; background:#fff; box-shadow:var(--shadow); }
-    .header-search input,.header-search select { border:0; border-right:1px solid #ddd; padding:15px 16px; font-size:1rem; outline:none; background:#fff; }
-    .header-search button { border:0; background:#151515; color:#fff; font-weight:1000; cursor:pointer; font-size:1.25rem; }
+    .header-search-wrap { position:relative; width:100%; }
+    .header-search { justify-self:end; display:grid; grid-template-columns:1fr 96px 58px; width:100%; border:2px solid var(--red); border-radius:12px; overflow:hidden; background:#fff; box-shadow:var(--shadow); }
+    .header-search input,.header-search select { border:0; border-right:1px solid #ddd; padding:17px 17px; font-size:1rem; outline:none; background:#fff; }
+    .header-search button { border:0; background:#151515; color:#fff; font-weight:1000; cursor:pointer; font-size:1.3rem; }
+    .suggestions { display:none; position:absolute; z-index:50; top:calc(100% + 8px); left:0; right:0; background:#fff; border:1px solid var(--border); border-radius:12px; box-shadow:0 18px 42px rgba(15,23,42,.18); overflow:hidden; max-height:360px; overflow-y:auto; }
+    .suggestions a { display:grid; grid-template-columns:52px 1fr; gap:12px; align-items:center; padding:10px 12px; color:#111; border-bottom:1px solid #f1f1f1; }
+    .suggestions a:hover { background:#f8fafc; text-decoration:none; }
+    .suggestions img { width:52px; height:42px; object-fit:contain; background:#fff; }
+    .suggestions strong { display:block; font-size:.95rem; }
     .header-search button:hover { background:var(--red); }
-    .banner { background:#f8fafc; padding:32px 0 12px; border-bottom:1px solid #e5e7eb; }
+    .banner { background:radial-gradient(circle at top left, #fff 0, #f8fafc 42%, #eef2ff 100%); padding:38px 0 18px; border-bottom:1px solid #e5e7eb; }
     .banner h1 { font-size:clamp(2.2rem,5vw,4.2rem); line-height:1; margin:0 0 12px; letter-spacing:-1.5px; text-transform:uppercase; }
     .banner p { font-size:1.12rem; color:#4b5563; max-width:760px; }
     .banner-badge { display:inline-block; background:var(--red); color:#fff; font-weight:1000; border-radius:999px; padding:8px 14px; margin-bottom:14px; text-transform:uppercase; }
     .hero-actions { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:28px; }
-    .action-card { min-height:200px; color:#fff; border-radius:18px; display:grid; place-items:center; text-align:center; padding:28px; box-shadow:var(--shadow); overflow:hidden; position:relative; }
+    .action-card { min-height:215px; color:#fff; border-radius:18px; display:grid; place-items:center; text-align:center; padding:28px; box-shadow:var(--shadow); overflow:hidden; position:relative; }
     .action-card::after { content:""; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.18),transparent); pointer-events:none; }
     .action-card h2 { margin:0 0 10px; font-size:1.75rem; color:#fff; text-transform:uppercase; }
     .action-card p { margin:0 0 16px; color:#fff; font-weight:700; }
@@ -53,10 +59,18 @@
     .action-card.red { background:linear-gradient(135deg,#ff1f2d,#d9111d); }
     section { padding:42px 0; } h1,h2,h3 { line-height:1.15; } h2 { font-size:2rem; margin:0 0 12px; text-transform:uppercase; }
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:22px; margin-top:24px; }
+    .section-head { display:flex; justify-content:space-between; gap:18px; align-items:center; margin-bottom:8px; }
+    .section-head .btn { margin-top:0; }
+    .theme-card { overflow:hidden; min-height:150px; display:flex; flex-direction:column; justify-content:space-between; position:relative; }
+    .theme-icon { width:58px; height:58px; border-radius:16px; display:grid; place-items:center; background:#fef2f2; color:var(--red); font-size:2rem; margin-bottom:12px; }
+    .people-search { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+    .people-search a { background:#fff; border:1px solid var(--border); border-radius:999px; padding:10px 13px; font-weight:900; color:#111; }
+    .people-search a:hover { border-color:var(--red); color:var(--red); text-decoration:none; }
     .card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px; box-shadow:var(--shadow); }
     .set-card { position:relative; transition:transform .15s ease, box-shadow .15s ease; } .set-card:hover { transform:translateY(-3px); box-shadow:0 14px 30px rgba(15,23,42,.12); }
     .set-card::before { content:"NEW"; position:absolute; top:16px; left:16px; background:var(--red); color:#fff; font-weight:1000; font-size:.8rem; border-radius:6px; padding:6px 9px; z-index:1; }
-    .set-card img { width:100%; aspect-ratio:4/3; object-fit:contain; background:white; border:0; border-radius:10px; padding:10px; }
+    .set-card img { width:100%; aspect-ratio:4/3; object-fit:contain; background:white; border:0; border-radius:10px; padding:8px; transition:transform .18s ease; }
+    .set-card:hover img { transform:scale(1.035); }
     .set-card h3 { font-size:1.25rem; margin:12px 0 6px; }
     .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--red); color:white; padding:12px 18px; border-radius:10px; font-weight:1000; margin-top:10px; text-transform:uppercase; border:0; cursor:pointer; }
     .btn:hover { color:white; text-decoration:none; filter:brightness(.95); } .btn.dark { background:#151515; } .btn.light { background:#fff; color:#111; border:1px solid #d1d5db; }
@@ -98,11 +112,14 @@
   <header><div class="nav-inner">
     <a class="brand" href="/"><span class="brand-mark">🧱</span><span class="brand-text">Brick Instructions<span>For You</span></span></a>
     <nav><a href="/">⌂ Home</a><a href="/2025/">▦ 2025</a><a href="/2026/">▦ 2026</a><a href="/themes/">▣ Themes</a><a href="/latest/">◷ Latest</a></nav>
-    <form class="header-search" action="/search/" method="get" role="search">
-      <input type="search" name="q" placeholder="Search set number or theme..." aria-label="Search LEGO instructions" autocomplete="off">
-      <select name="type" aria-label="Search type"><option value="all">All</option><option value="set">Set</option><option value="theme">Theme</option></select>
-      <button type="submit" aria-label="Search">🔍</button>
-    </form>
+    <div class="header-search-wrap">
+      <form class="header-search" action="/search/" method="get" role="search">
+        <input id="globalSearch" type="search" name="q" placeholder="Search set number or theme..." aria-label="Search LEGO instructions" autocomplete="off">
+        <select name="type" aria-label="Search type"><option value="all">All</option><option value="set">Set</option><option value="theme">Theme</option></select>
+        <button type="submit" aria-label="Search">🔍</button>
+      </form>
+      <div id="globalSuggestions" class="suggestions" aria-label="Search suggestions"></div>
+    </div>
   </div></header>
   
         <main>
@@ -118,6 +135,8 @@
                   <div class="detail"><strong>31162</strong>Set number</div>
                   <div class="detail"><strong>2025</strong>Year</div>
                   <div class="detail"><strong>326</strong>Pieces</div>
+                  <div class="detail"><strong>Unknown</strong>Minifigures</div>
+                  <div class="detail"><strong>X</strong>Release</div>
                   <div class="detail"><strong>£17.99 GBP<br>$19.99 USD</strong>Prices</div>
                 </div>
                 
@@ -195,7 +214,15 @@
 
           <section><div class="container">
             <h2>About LEGO 31162 Cute Bunny</h2>
-            <p>LEGO 31162 Cute Bunny is part of the Creator theme and the 3 in 1 subtheme. This page helps fans find matching instruction videos and YouTube build guides quickly.</p>
+            <p>LEGO 31162 Cute Bunny is part of the Creator theme and the 3 in 1 subtheme. This page helps fans find matching instruction videos, set details and YouTube build guides quickly.</p>
+            <p>Use this page to find the correct LEGO 31162 build video, compare related Creator sets, and browse more LEGO instructions by theme, year or set number.</p>
+            <h3>People also search for</h3>
+            <div class="people-search">
+              <a href="/search/?q=31162">LEGO 31162 instructions</a>
+              <a href="/search/?q=cute-bunny">LEGO Cute Bunny build</a>
+              <a href="/themes/creator/">LEGO Creator instructions</a>
+              <a href="/2025/">LEGO 2025 instructions</a>
+            </div>
           </div></section>
 
           <section><div class="container">
@@ -382,5 +409,24 @@
     <p>LEGO® is a trademark of the LEGO Group, which does not sponsor, authorise or endorse this website.</p>
     <p><a href="/sitemap.xml">Sitemap</a> · <a href="/llms.txt">AI / LLMs</a></p>
   </div></footer>
+<script>
+(function() {
+  const input = document.getElementById('globalSearch');
+  const box = document.getElementById('globalSuggestions');
+  if (!input || !box) return;
+  let sets = [];
+  fetch('/assets/search-data.json').then(r => r.json()).then(data => { sets = data || []; }).catch(() => { sets = []; });
+  function renderSuggestions() {
+    const q = input.value.toLowerCase().trim();
+    if (q.length < 2 || !sets.length) { box.style.display = 'none'; box.innerHTML = ''; return; }
+    const matches = sets.filter(s => (s.number + ' ' + s.name + ' ' + s.theme + ' ' + s.year).toLowerCase().includes(q)).slice(0, 8);
+    if (!matches.length) { box.style.display = 'none'; box.innerHTML = ''; return; }
+    box.innerHTML = matches.map(s => `<a href="${s.url}"><img src="${s.image}" alt=""><span><strong>LEGO ${s.number} ${s.name}</strong><small>${s.theme} · ${s.year}</small></span></a>`).join('');
+    box.style.display = 'block';
+  }
+  input.addEventListener('input', renderSuggestions);
+  document.addEventListener('click', e => { if (!box.contains(e.target) && e.target !== input) box.style.display = 'none'; });
+})();
+</script>
 </body>
 </html>
