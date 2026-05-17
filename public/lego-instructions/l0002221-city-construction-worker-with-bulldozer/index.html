@@ -103,9 +103,9 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </form>
 <div class="search-suggestions" id="searchSuggestions"></div>
 </div>
-<div class="popular">
+<div class="popular" aria-label="Popular LEGO instruction searches">
 <strong>Popular searches:</strong>
-<button class="chip" data-search="75313">75313</button><button class="chip" data-search="42115">42115</button><button class="chip" data-search="10300">10300</button><button class="chip" data-search="Harry Potter">Harry Potter</button><button class="chip" data-search="Technic">Technic</button><button class="chip" data-search="Star Wars">Star Wars</button>
+<a class="chip" href="/search/?q=75313&type=set" data-search="75313" data-type="set">75313</a><a class="chip" href="/search/?q=42115&type=set" data-search="42115" data-type="set">42115</a><a class="chip" href="/search/?q=10300&type=set" data-search="10300" data-type="set">10300</a><a class="chip" href="/search/?q=Harry%20Potter&type=theme" data-search="Harry Potter" data-type="theme">Harry Potter</a><a class="chip" href="/search/?q=Technic&type=theme" data-search="Technic" data-type="theme">Technic</a><a class="chip" href="/search/?q=Star%20Wars&type=theme" data-search="Star Wars" data-type="theme">Star Wars</a>
 </div>
 <div class="quick-cards">
 <a class="quick-card blue-card" href="/years/"><h2>🗓️ BROWSE BY YEAR</h2><p>View LEGO sets by year of release.</p><span class="btn">BROWSE YEARS</span></a>
@@ -137,6 +137,13 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
     <p style="font-size:20px;margin:0 0 8px;">Set number: <strong>L0002221</strong></p>
     <p style="color:#667085;margin:0;font-size:16px;">Theme: <strong>City</strong> • Year: <strong>2026</strong></p>
   </section>
+  
+  <section class="instruction-intro" style="max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px;">
+    <p style="font-size:17px;line-height:1.6;margin:0 0 12px;">Looking for LEGO L0002221 Construction Worker with Bulldozer instructions? This page is ready for the City 2026 set, and the step-by-step video guide will be added when available.</p>
+    <h2 style="font-size:22px;margin:0 0 8px;">About this LEGO instructions video</h2>
+    <p style="font-size:16px;line-height:1.6;margin:0;color:#475467;">Use this page to find LEGO L0002221 Construction Worker with Bulldozer by set number, theme and year. When the instruction video is published, it will appear here automatically.</p>
+  </section>
+
   
 </div>
 </main>
@@ -199,7 +206,7 @@ input.addEventListener("input",showSuggestions);typeSelect.addEventListener("cha
 suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
 document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
 form.addEventListener("submit",function(e){e.preventDefault();renderResults(input.value,typeSelect.value,true);});
-document.querySelectorAll(".chip").forEach(chip=>chip.addEventListener("click",()=>renderResults(chip.dataset.search,"all",true)));
+document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();renderResults(chip.dataset.search,chip.dataset.type||"all",true);}));
 window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
 (function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))renderResults(q,t,false);})();
 </script>
