@@ -338,10 +338,16 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 <script>
 window.LEGO_SETS = [];
 let LEGO_SETS_LOADED = false;
-const LEGO_SETS_READY = fetch("/data/search-index.json", {cache:"no-store"})
- .then(response => response.ok ? response.json() : [])
- .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
- .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+let LEGO_SETS_READY = null;
+function loadSearchIndex(){
+ if(!LEGO_SETS_READY){
+  LEGO_SETS_READY = fetch("/data/search-index.json")
+   .then(response => response.ok ? response.json() : [])
+   .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
+   .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+ }
+ return LEGO_SETS_READY;
+}
 const input=document.getElementById("mainSearchInput");
 const typeSelect=document.getElementById("mainSearchType");
 const form=document.getElementById("mainSearchForm");
@@ -394,13 +400,15 @@ function showSuggestions(){
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",showSuggestions);typeSelect.addEventListener("change",showSuggestions);
+input.addEventListener("focus",function(){loadSearchIndex();},{once:true});
+input.addEventListener("input",function(){loadSearchIndex().then(showSuggestions);});
+typeSelect.addEventListener("change",function(){loadSearchIndex().then(showSuggestions);});
 suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
 document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();LEGO_SETS_READY.then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();renderResults(chip.dataset.search,chip.dataset.type||"all",true);}));
-window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))LEGO_SETS_READY.then(()=>renderResults(q,t,false));})();
+form.addEventListener("submit",function(e){e.preventDefault();loadSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();loadSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
+window.addEventListener("popstate",()=>{const p=params();loadSearchIndex().then(()=>renderResults(p.get("q")||"",p.get("type")||"all",false));});
+(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))loadSearchIndex().then(()=>renderResults(q,t,false));})();
 </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "99db6ec5719548b582f077bfc6bb2c7f"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
