@@ -114,7 +114,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><a href="/themes/duplo/">DUPLO</a><span>›</span><strong>My First</strong></nav><div class="results-header"><div><h1>LEGO My First Instructions</h1><p>4 LEGO DUPLO instruction pages in the My First subtheme.</p></div><a class="btn-outline" href="/themes/duplo/">ALL LEGO DUPLO</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/duplo/">All LEGO DUPLO Instructions</a><a class="btn-outline" href="/2026/duplo/">LEGO DUPLO 2026</a><a class="btn-outline" href="/2025/duplo/">LEGO DUPLO 2025</a><a class="btn-outline" href="/2024/duplo/">LEGO DUPLO 2024</a><a class="btn-outline" href="/2021/duplo/">LEGO DUPLO 2021</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/30686-duplo-my-first-flower-bee/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/UwbGB_sPAXc/maxresdefault.jpg" alt="My First Flower &amp; Bee LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/UwbGB_sPAXc/maxresdefault.jpg" alt="LEGO DUPLO 30686 My First Flower &amp; Bee building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">30686</div>
     <div class="set-name">My First Flower &amp; Bee</div>
@@ -123,7 +123,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/30673-duplo-my-first-duck/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/7rK2Bs16vjM/maxresdefault.jpg" alt="My First Duck LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/7rK2Bs16vjM/maxresdefault.jpg" alt="LEGO DUPLO 30673 My First Duck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">30673</div>
     <div class="set-name">My First Duck</div>
@@ -132,7 +132,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/30332-duplo-my-first-space-rocket/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/fgLkFM8kMHA/maxresdefault.jpg" alt="My First Space Rocket LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/fgLkFM8kMHA/maxresdefault.jpg" alt="LEGO DUPLO 30332 My First Space Rocket building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">30332</div>
     <div class="set-name">My First Space Rocket</div>
@@ -140,7 +140,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO My First Instructions</h2><p>1 named pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/10477-duplo-3-in-1-my-first-creative-cute-pets/">
   <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="3 in 1 My First Creative Cute Pets LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO DUPLO 10477 3 in 1 My First Creative Cute Pets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">10477</div>
     <div class="set-name">3 in 1 My First Creative Cute Pets</div>
@@ -190,7 +190,14 @@ function searchSets(query,type){
   })
   .slice(0,250);
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(set.name)} LEGO instructions" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function setImageAlt(set){
+ const name=String(set.name||"").trim(),theme=String(set.theme||"").trim(),number=String(set.set_number||"").trim();
+ const parts=["LEGO"];
+ if(theme&&normalise(theme)!=="lego"&&!normalise(name).includes(normalise(theme)))parts.push(theme);
+ if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
+ return parts.join(" ").replace(/\s+/g," ").trim();
+}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;

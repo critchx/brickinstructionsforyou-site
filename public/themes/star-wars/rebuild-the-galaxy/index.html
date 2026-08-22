@@ -114,7 +114,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><a href="/themes/star-wars/">Star Wars</a><span>›</span><strong>Rebuild the Galaxy</strong></nav><div class="results-header"><div><h1>LEGO Rebuild the Galaxy Instructions</h1><p>4 LEGO Star Wars instruction pages in the Rebuild the Galaxy subtheme.</p></div><a class="btn-outline" href="/themes/star-wars/">ALL LEGO Star Wars</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/star-wars/">All LEGO Star Wars Instructions</a><a class="btn-outline" href="/2025/star-wars/">LEGO Star Wars 2025</a><a class="btn-outline" href="/2024/star-wars/">LEGO Star Wars 2024</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/75414-star-wars-the-force-burner-snowspeeder/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ohVKlwznIYM/maxresdefault.jpg" alt="The Force Burner Snowspeeder LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/ohVKlwznIYM/maxresdefault.jpg" alt="LEGO Star Wars 75414 The Force Burner Snowspeeder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">75414</div>
     <div class="set-name">The Force Burner Snowspeeder</div>
@@ -123,7 +123,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/75388-star-wars-jedi-bob-s-starfighter/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/jQ8PbOOzvWk/maxresdefault.jpg" alt="Jedi Bob&#x27;s Starfighter LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/jQ8PbOOzvWk/maxresdefault.jpg" alt="LEGO Star Wars 75388 Jedi Bob&#x27;s Starfighter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">75388</div>
     <div class="set-name">Jedi Bob&#x27;s Starfighter</div>
@@ -132,7 +132,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/75389-star-wars-the-dark-falcon/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/s5F_VgAGjc4/maxresdefault.jpg" alt="The Dark Falcon LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/s5F_VgAGjc4/maxresdefault.jpg" alt="LEGO Star Wars 75389 The Dark Falcon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">75389</div>
     <div class="set-name">The Dark Falcon</div>
@@ -141,7 +141,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/75393-star-wars-tie-fighter-x-wing-mash-up/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/D7CR7fdC00Y/maxresdefault.jpg" alt="TIE Fighter &amp; X-wing Mash-up LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/D7CR7fdC00Y/maxresdefault.jpg" alt="LEGO Star Wars 75393 TIE Fighter &amp; X-wing Mash-up building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">75393</div>
     <div class="set-name">TIE Fighter &amp; X-wing Mash-up</div>
@@ -191,7 +191,14 @@ function searchSets(query,type){
   })
   .slice(0,250);
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(set.name)} LEGO instructions" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function setImageAlt(set){
+ const name=String(set.name||"").trim(),theme=String(set.theme||"").trim(),number=String(set.set_number||"").trim();
+ const parts=["LEGO"];
+ if(theme&&normalise(theme)!=="lego"&&!normalise(name).includes(normalise(theme)))parts.push(theme);
+ if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
+ return parts.join(" ").replace(/\s+/g," ").trim();
+}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;

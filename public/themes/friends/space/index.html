@@ -114,7 +114,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><a href="/themes/friends/">Friends</a><span>›</span><strong>Space</strong></nav><div class="results-header"><div><h1>LEGO Space Instructions</h1><p>4 LEGO Friends instruction pages in the Space subtheme.</p></div><a class="btn-outline" href="/themes/friends/">ALL LEGO Friends</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/friends/">All LEGO Friends Instructions</a><a class="btn-outline" href="/2024/friends/">LEGO Friends 2024</a><a class="btn-outline" href="/2022/friends/">LEGO Friends 2022</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/42602-friends-space-research-rover/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/weeTYZupNSM/maxresdefault.jpg" alt="Space Research Rover LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/weeTYZupNSM/maxresdefault.jpg" alt="LEGO Friends 42602 Space Research Rover building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">42602</div>
     <div class="set-name">Space Research Rover</div>
@@ -123,7 +123,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/42603-friends-stargazing-camping-vehicle/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/4YPloNFQ3pE/maxresdefault.jpg" alt="Stargazing Camping Vehicle LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/4YPloNFQ3pE/maxresdefault.jpg" alt="LEGO Friends 42603 Stargazing Camping Vehicle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">42603</div>
     <div class="set-name">Stargazing Camping Vehicle</div>
@@ -132,7 +132,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/42605-friends-mars-space-base-and-rocket/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/yHriUAxBu4w/maxresdefault.jpg" alt="Mars Space Base and Rocket LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/yHriUAxBu4w/maxresdefault.jpg" alt="LEGO Friends 42605 Mars Space Base and Rocket building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">42605</div>
     <div class="set-name">Mars Space Base and Rocket</div>
@@ -141,7 +141,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/41713-friends-olivia-s-space-academy/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/zw1_qNYFROY/maxresdefault.jpg" alt="Olivia&#x27;s Space Academy LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/zw1_qNYFROY/maxresdefault.jpg" alt="LEGO Friends 41713 Olivia&#x27;s Space Academy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">41713</div>
     <div class="set-name">Olivia&#x27;s Space Academy</div>
@@ -191,7 +191,14 @@ function searchSets(query,type){
   })
   .slice(0,250);
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(set.name)} LEGO instructions" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function setImageAlt(set){
+ const name=String(set.name||"").trim(),theme=String(set.theme||"").trim(),number=String(set.set_number||"").trim();
+ const parts=["LEGO"];
+ if(theme&&normalise(theme)!=="lego"&&!normalise(name).includes(normalise(theme)))parts.push(theme);
+ if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
+ return parts.join(" ").replace(/\s+/g," ").trim();
+}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;

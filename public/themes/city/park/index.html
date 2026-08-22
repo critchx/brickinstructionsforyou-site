@@ -114,7 +114,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><a href="/themes/city/">City</a><span>›</span><strong>Park</strong></nav><div class="results-header"><div><h1>LEGO Park Instructions</h1><p>4 LEGO City instruction pages in the Park subtheme.</p></div><a class="btn-outline" href="/themes/city/">ALL LEGO City</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/city/">All LEGO City Instructions</a><a class="btn-outline" href="/2023/city/">LEGO City 2023</a><a class="btn-outline" href="/2022/city/">LEGO City 2022</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/30639-city-dog-park-and-scooter/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/zTm_g2dsXJE/maxresdefault.jpg" alt="Dog Park and Scooter LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/zTm_g2dsXJE/maxresdefault.jpg" alt="LEGO City 30639 Dog Park and Scooter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">30639</div>
     <div class="set-name">Dog Park and Scooter</div>
@@ -123,7 +123,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/60394-city-atv-and-otter-habitat/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/VhAWtAPWeY8/maxresdefault.jpg" alt="ATV and Otter Habitat LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/VhAWtAPWeY8/maxresdefault.jpg" alt="LEGO City 60394 ATV and Otter Habitat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">60394</div>
     <div class="set-name">ATV and Otter Habitat</div>
@@ -132,7 +132,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/30588-city-kids-playground/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/-g-nWIP4FaE/maxresdefault.jpg" alt="Kids&#x27; Playground LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/-g-nWIP4FaE/maxresdefault.jpg" alt="LEGO City 30588 Kids&#x27; Playground building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">30588</div>
     <div class="set-name">Kids&#x27; Playground</div>
@@ -141,7 +141,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/60326-city-picnic-in-the-park/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/42vp_7L4JTI/maxresdefault.jpg" alt="Picnic in the Park LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/42vp_7L4JTI/maxresdefault.jpg" alt="LEGO City 60326 Picnic in the Park building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">60326</div>
     <div class="set-name">Picnic in the Park</div>
@@ -191,7 +191,14 @@ function searchSets(query,type){
   })
   .slice(0,250);
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(set.name)} LEGO instructions" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function setImageAlt(set){
+ const name=String(set.name||"").trim(),theme=String(set.theme||"").trim(),number=String(set.set_number||"").trim();
+ const parts=["LEGO"];
+ if(theme&&normalise(theme)!=="lego"&&!normalise(name).includes(normalise(theme)))parts.push(theme);
+ if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
+ return parts.join(" ").replace(/\s+/g," ").trim();
+}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;

@@ -114,7 +114,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><a href="/themes/wednesday/">Wednesday</a><span>›</span><strong>Season 1</strong></nav><div class="results-header"><div><h1>LEGO Season 1 Instructions</h1><p>3 LEGO Wednesday instruction pages in the Season 1 subtheme.</p></div><a class="btn-outline" href="/themes/wednesday/">ALL LEGO Wednesday</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/wednesday/">All LEGO Wednesday Instructions</a><a class="btn-outline" href="/2025/wednesday/">LEGO Wednesday 2025</a><a class="btn-outline" href="/2024/wednesday/">LEGO Wednesday 2024</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/76784-wednesday-black-dahlia-flower/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/JYF4UOaAn_Q/maxresdefault.jpg" alt="Black Dahlia Flower LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/JYF4UOaAn_Q/maxresdefault.jpg" alt="LEGO Wednesday 76784 Black Dahlia Flower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">76784</div>
     <div class="set-name">Black Dahlia Flower</div>
@@ -123,7 +123,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/76780-wednesday-addams-figure/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0r11b61r-i0/maxresdefault.jpg" alt="Wednesday Addams Figure LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/0r11b61r-i0/maxresdefault.jpg" alt="LEGO 76780 Wednesday Addams Figure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">76780</div>
     <div class="set-name">Wednesday Addams Figure</div>
@@ -132,7 +132,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/76781-wednesday-enid-s-dorm-room/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/H8GwWlAr21I/maxresdefault.jpg" alt="Wednesday &amp; Enid&#x27;s Dorm Room LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/H8GwWlAr21I/maxresdefault.jpg" alt="LEGO 76781 Wednesday &amp; Enid&#x27;s Dorm Room building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">76781</div>
     <div class="set-name">Wednesday &amp; Enid&#x27;s Dorm Room</div>
@@ -182,7 +182,14 @@ function searchSets(query,type){
   })
   .slice(0,250);
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(set.name)} LEGO instructions" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function setImageAlt(set){
+ const name=String(set.name||"").trim(),theme=String(set.theme||"").trim(),number=String(set.set_number||"").trim();
+ const parts=["LEGO"];
+ if(theme&&normalise(theme)!=="lego"&&!normalise(name).includes(normalise(theme)))parts.push(theme);
+ if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
+ return parts.join(" ").replace(/\s+/g," ").trim();
+}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;

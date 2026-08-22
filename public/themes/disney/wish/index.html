@@ -114,7 +114,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><a href="/themes/disney/">Disney</a><span>›</span><strong>Wish</strong></nav><div class="results-header"><div><h1>LEGO Wish Instructions</h1><p>4 LEGO Disney instruction pages in the Wish subtheme.</p></div><a class="btn-outline" href="/themes/disney/">ALL LEGO Disney</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/disney/">All LEGO Disney Instructions</a><a class="btn-outline" href="/2024/disney/">LEGO Disney 2024</a><a class="btn-outline" href="/2023/disney/">LEGO Disney 2023</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/30661-disney-asha-s-welcome-booth/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/E35KCdkKFaQ/maxresdefault.jpg" alt="Asha&#x27;s Welcome Booth LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/E35KCdkKFaQ/maxresdefault.jpg" alt="LEGO Disney 30661 Asha&#x27;s Welcome Booth building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">30661</div>
     <div class="set-name">Asha&#x27;s Welcome Booth</div>
@@ -123,7 +123,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/43223-disney-asha-in-the-city-of-rosas/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/EAMQeIfKcbY/maxresdefault.jpg" alt="Asha in the City of Rosas LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/EAMQeIfKcbY/maxresdefault.jpg" alt="LEGO Disney 43223 Asha in the City of Rosas building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">43223</div>
     <div class="set-name">Asha in the City of Rosas</div>
@@ -132,7 +132,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/43224-disney-king-magnifico-s-castle/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/eCt54ZY5xgo/maxresdefault.jpg" alt="King Magnifico&#x27;s Castle LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/eCt54ZY5xgo/maxresdefault.jpg" alt="LEGO Disney 43224 King Magnifico&#x27;s Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">43224</div>
     <div class="set-name">King Magnifico&#x27;s Castle</div>
@@ -141,7 +141,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </a>
 <a class="set-card" href="/lego-instructions/43231-disney-asha-s-cottage/">
   <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/9NmK7fmxoSc/maxresdefault.jpg" alt="Asha&#x27;s Cottage LEGO instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <img src="https://i.ytimg.com/vi/9NmK7fmxoSc/maxresdefault.jpg" alt="LEGO Disney 43231 Asha&#x27;s Cottage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
     <div class="set-number">43231</div>
     <div class="set-name">Asha&#x27;s Cottage</div>
@@ -191,7 +191,14 @@ function searchSets(query,type){
   })
   .slice(0,250);
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(set.name)} LEGO instructions" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function setImageAlt(set){
+ const name=String(set.name||"").trim(),theme=String(set.theme||"").trim(),number=String(set.set_number||"").trim();
+ const parts=["LEGO"];
+ if(theme&&normalise(theme)!=="lego"&&!normalise(name).includes(normalise(theme)))parts.push(theme);
+ if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
+ return parts.join(" ").replace(/\s+/g," ").trim();
+}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;
