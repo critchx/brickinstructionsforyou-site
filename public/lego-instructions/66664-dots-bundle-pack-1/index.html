@@ -12,7 +12,7 @@
   gtag('config', 'G-37MCSDDYEW');
 </script>
 <title>66664 Bundle Pack 1 Instructions | Brick Instructions For You</title>
-<meta name="description" content="Find details for LEGO 66664 Bundle Pack 1, a Dots set, released in 2021 and with 388 pieces. The building instruction video guide will be added when it.">
+<meta name="description" content="Find details for LEGO 66664 Bundle Pack 1, a Dots set, released in 2021 and with 388 pieces.">
 <link rel="canonical" href="https://www.brickinstructionsforyou.com/lego-instructions/66664-dots-bundle-pack-1/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <meta name="robots" content="noindex,follow">
@@ -52,11 +52,13 @@ a{color:inherit;text-decoration:none}
 .suggestion-meta{font-size:12px;color:var(--muted);margin-top:2px}
 .popular{max-width:780px;margin:14px auto 0;display:flex;justify-content:center;gap:9px;flex-wrap:wrap;align-items:center;color:white;font-size:14px}
 .chip{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.12);color:white;border-radius:999px;padding:10px 16px;font-weight:800;cursor:pointer}
+.chip-new{background:var(--yellow);border-color:var(--yellow);color:var(--navy)}
 .quick-cards{max-width:1240px;margin:34px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:center}
 .quick-card{border-radius:16px;padding:28px 18px 22px;color:#fff;min-height:165px}
 .quick-card h2{margin:0 0 10px;font-size:22px}
 .quick-card p{margin:0 0 24px;font-weight:700;line-height:1.5}
-.quick-card .btn{display:inline-block;background:#fff;color:#222;padding:14px 20px;border-radius:9px;font-weight:900;border:1px solid rgba(0,0,0,.15)}
+.red-card p{font-weight:800}
+.quick-card .btn{display:inline-block;background:#fff;color:var(--text);padding:14px 20px;border-radius:9px;font-weight:900;border:1px solid rgba(0,0,0,.15)}
 .blue-card{background:linear-gradient(135deg,#34c0ec,#0588dc)}
 .orange-card{background:linear-gradient(135deg,#ffd64a,#ff8a00)}
 .red-card{background:linear-gradient(135deg,#ff4b61,#e60012)}
@@ -95,6 +97,7 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 @media(max-width:520px){.related-set-grid{grid-template-columns:1fr}}
 .section-title{font-size:30px;margin:0 0 22px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
+@media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
 @media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
 </style>
@@ -109,6 +112,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
       <a href="/themes/">Themes</a>
       <a href="/years/">Years</a>
       <a href="/latest/">Latest</a>
+      <a href="/coming-soon/">Upcoming</a>
       <a href="/search/">Search</a>
     </div>
   </div>
@@ -195,7 +199,14 @@ function searchSets(query,type){
   })
   .slice(0,250);
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(set.name)} LEGO instructions" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function setImageAlt(set){
+ const name=String(set.name||"").trim(),theme=String(set.theme||"").trim(),number=String(set.set_number||"").trim();
+ const parts=["LEGO"];
+ if(theme&&normalise(theme)!=="lego"&&!normalise(name).includes(normalise(theme)))parts.push(theme);
+ if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
+ return parts.join(" ").replace(/\s+/g," ").trim();
+}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;
