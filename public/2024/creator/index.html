@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,234 +159,208 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/creator/">Creator</a><span>›</span><strong>2024 Creator</strong></nav><div class="results-header"><div><h2>LEGO 2024 Creator Instructions</h2><p>26 LEGO instruction pages found for this year and theme.</p></div><a class="btn-outline" href="/2024/">BACK TO 2024</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2024/">All LEGO 2024 Instructions</a><a class="btn-outline" href="/themes/creator/">All LEGO Creator Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/66789-creator-animal-gift-set/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/NrZhKjK5e_g/maxresdefault.jpg" alt="LEGO Creator 66789 Animal Gift Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/NrZhKjK5e_g/maxresdefault.jpg" alt="LEGO Creator 66789 Animal Gift Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">66789</div>
+    <div class="set-number-row"><div class="set-number">66789</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Animal Gift Set</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66791-creator-space-play-pack/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/sl22eQYbo-M/maxresdefault.jpg" alt="LEGO Creator 66791 Space Play Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/sl22eQYbo-M/maxresdefault.jpg" alt="LEGO Creator 66791 Space Play Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">66791</div>
+    <div class="set-number-row"><div class="set-number">66791</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Space Play Pack</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40700-creator-winter-holiday-train/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/q93fHs6GE_k/maxresdefault.jpg" alt="LEGO Creator 40700 Winter Holiday Train building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/q93fHs6GE_k/maxresdefault.jpg" alt="LEGO Creator 40700 Winter Holiday Train building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40700</div>
+    <div class="set-number-row"><div class="set-number">40700</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Winter Holiday Train</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31145-creator-red-dragon/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/eyImUr8Awx0/maxresdefault.jpg" alt="LEGO Creator 31145 Red Dragon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/eyImUr8Awx0/maxresdefault.jpg" alt="LEGO Creator 31145 Red Dragon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31145</div>
+    <div class="set-number-row"><div class="set-number">31145</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Red Dragon</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40697-creator-halloween-pumpkin/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/yKJf2iziz4Y/maxresdefault.jpg" alt="LEGO Creator 40697 Halloween Pumpkin building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yKJf2iziz4Y/maxresdefault.jpg" alt="LEGO Creator 40697 Halloween Pumpkin building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40697</div>
+    <div class="set-number-row"><div class="set-number">40697</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Halloween Pumpkin</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40713-creator-japan-postcard/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/yFq0gW9Pti0/maxresdefault.jpg" alt="LEGO Creator 40713 Japan Postcard building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yFq0gW9Pti0/maxresdefault.jpg" alt="LEGO Creator 40713 Japan Postcard building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40713</div>
+    <div class="set-number-row"><div class="set-number">40713</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Japan Postcard</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31158-creator-sea-animals/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/na2RzbFTbm4/maxresdefault.jpg" alt="LEGO Creator 31158 Sea Animals building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/na2RzbFTbm4/maxresdefault.jpg" alt="LEGO Creator 31158 Sea Animals building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31158</div>
+    <div class="set-number-row"><div class="set-number">31158</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Sea Animals</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31157-creator-exotic-peacock/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/UpXZAaJmriM/maxresdefault.jpg" alt="LEGO Creator 31157 Exotic Peacock building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/UpXZAaJmriM/maxresdefault.jpg" alt="LEGO Creator 31157 Exotic Peacock building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31157</div>
+    <div class="set-number-row"><div class="set-number">31157</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Exotic Peacock</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31156-creator-tropical-ukulele/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/eqf8AaSR-ew/maxresdefault.jpg" alt="LEGO Creator 31156 Tropical Ukulele building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/eqf8AaSR-ew/maxresdefault.jpg" alt="LEGO Creator 31156 Tropical Ukulele building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31156</div>
+    <div class="set-number-row"><div class="set-number">31156</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Tropical Ukulele</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31155-creator-hamster-wheel/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/hlVE-7Tpor8/maxresdefault.jpg" alt="LEGO Creator 31155 Hamster Wheel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/hlVE-7Tpor8/maxresdefault.jpg" alt="LEGO Creator 31155 Hamster Wheel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31155</div>
+    <div class="set-number-row"><div class="set-number">31155</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hamster Wheel</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31154-creator-forest-animals-red-fox/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/a7FaYdQzGT0/maxresdefault.jpg" alt="LEGO Creator 31154 Forest Animals: Red Fox building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/a7FaYdQzGT0/maxresdefault.jpg" alt="LEGO Creator 31154 Forest Animals: Red Fox building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31154</div>
+    <div class="set-number-row"><div class="set-number">31154</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Forest Animals: Red Fox</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30669-creator-iconic-red-plane/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/LTqsZ-vg1-w/maxresdefault.jpg" alt="LEGO Creator 30669 Iconic Red Plane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/LTqsZ-vg1-w/maxresdefault.jpg" alt="LEGO Creator 30669 Iconic Red Plane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30669</div>
+    <div class="set-number-row"><div class="set-number">30669</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Iconic Red Plane</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30667-creator-animal-birthday-party/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/iElYmWH9IS8/maxresdefault.jpg" alt="LEGO Creator 30667 Animal Birthday Party building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/iElYmWH9IS8/maxresdefault.jpg" alt="LEGO Creator 30667 Animal Birthday Party building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30667</div>
+    <div class="set-number-row"><div class="set-number">30667</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Animal Birthday Party</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40691-creator-mythical-pegasus/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/bMOgc3XOaFo/maxresdefault.jpg" alt="LEGO Creator 40691 Mythical Pegasus building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/bMOgc3XOaFo/maxresdefault.jpg" alt="LEGO Creator 40691 Mythical Pegasus building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40691</div>
+    <div class="set-number-row"><div class="set-number">40691</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Mythical Pegasus</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40747-creator-daffodils/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/9K0-NPxihq8/maxresdefault.jpg" alt="LEGO Creator 40747 Daffodils building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9K0-NPxihq8/maxresdefault.jpg" alt="LEGO Creator 40747 Daffodils building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40747</div>
+    <div class="set-number-row"><div class="set-number">40747</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Daffodils</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31153-creator-modern-house/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/FSPLMSKdt-I/maxresdefault.jpg" alt="LEGO Creator 31153 Modern House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/FSPLMSKdt-I/maxresdefault.jpg" alt="LEGO Creator 31153 Modern House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31153</div>
+    <div class="set-number-row"><div class="set-number">31153</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Modern House</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30670-creator-santa-s-sleigh-ride/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/pS4aGXeqBZU/maxresdefault.jpg" alt="LEGO Creator 30670 Santa&#x27;s Sleigh Ride building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pS4aGXeqBZU/maxresdefault.jpg" alt="LEGO Creator 30670 Santa&#x27;s Sleigh Ride building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30670</div>
+    <div class="set-number-row"><div class="set-number">30670</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Santa&#x27;s Sleigh Ride</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31151-creator-t-rex/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/VF5Km0ReKRw/maxresdefault.jpg" alt="LEGO Creator 31151 T. rex building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/VF5Km0ReKRw/maxresdefault.jpg" alt="LEGO Creator 31151 T. rex building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31151</div>
+    <div class="set-number-row"><div class="set-number">31151</div><span class="badge-new">NEW</span></div>
     <div class="set-name">T. rex</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30668-creator-easter-bunny-with-colourful-eggs/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/9kvZZJOyIbk/maxresdefault.jpg" alt="LEGO Creator 30668 Easter Bunny with Colourful Eggs building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9kvZZJOyIbk/maxresdefault.jpg" alt="LEGO Creator 30668 Easter Bunny with Colourful Eggs building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30668</div>
+    <div class="set-number-row"><div class="set-number">30668</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Easter Bunny with Colourful Eggs</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO 2024 Creator Instructions</h2><p>7 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/30666-creator-gift-animals/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 30666 Gift Animals building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 30666 Gift Animals building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30666</div>
+    <div class="set-number-row"><div class="set-number">30666</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Gift Animals</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31146-creator-flatbed-truck-with-helicopter/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 31146 Flatbed Truck with Helicopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 31146 Flatbed Truck with Helicopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31146</div>
+    <div class="set-number-row"><div class="set-number">31146</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Flatbed Truck with Helicopter</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31147-creator-retro-camera/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 31147 Retro Camera building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 31147 Retro Camera building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31147</div>
+    <div class="set-number-row"><div class="set-number">31147</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Retro Camera</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31148-creator-retro-roller-skate/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 31148 Retro Roller Skate building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 31148 Retro Roller Skate building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31148</div>
+    <div class="set-number-row"><div class="set-number">31148</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Retro Roller Skate</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31149-creator-flowers-in-watering-can/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 31149 Flowers in Watering Can building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 31149 Flowers in Watering Can building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31149</div>
+    <div class="set-number-row"><div class="set-number">31149</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Flowers in Watering Can</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31150-creator-wild-safari-animals/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 31150 Wild Safari Animals building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 31150 Wild Safari Animals building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31150</div>
+    <div class="set-number-row"><div class="set-number">31150</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Wild Safari Animals</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/31152-creator-space-astronaut/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 31152 Space Astronaut building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Creator 31152 Space Astronaut building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">31152</div>
+    <div class="set-number-row"><div class="set-number">31152</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Space Astronaut</div>
     <div class="set-meta">Creator • 2024</div>
   </div>

@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,324 +159,288 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/miscellaneous/">Miscellaneous</a><span>›</span><strong>2023 Miscellaneous</strong></nav><div class="results-header"><div><h2>LEGO 2023 Miscellaneous Instructions</h2><p>36 LEGO instruction pages found for this year and theme.</p></div><a class="btn-outline" href="/2023/">BACK TO 2023</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2023/">All LEGO 2023 Instructions</a><a class="btn-outline" href="/themes/miscellaneous/">All LEGO Miscellaneous Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/4000041-miscellaneous-mri-scanner/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/QqY-oXJ8iIQ/maxresdefault.jpg" alt="LEGO Miscellaneous 4000041 LEGO MRI Scanner building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QqY-oXJ8iIQ/maxresdefault.jpg" alt="LEGO Miscellaneous 4000041 LEGO MRI Scanner building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">4000041</div>
+    <div class="set-number-row"><div class="set-number">4000041</div><span class="badge-new">NEW</span></div>
     <div class="set-name">LEGO MRI Scanner</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66777-miscellaneous-vehicle-pack/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/w1h11m1Ol78/maxresdefault.jpg" alt="LEGO Miscellaneous 66777 Vehicle Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/w1h11m1Ol78/maxresdefault.jpg" alt="LEGO Miscellaneous 66777 Vehicle Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">66777</div>
+    <div class="set-number-row"><div class="set-number">66777</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Vehicle Pack</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/4002023-miscellaneous-gingerbread-house/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/IJu_t1stR9s/maxresdefault.jpg" alt="LEGO Miscellaneous 4002023 Gingerbread House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IJu_t1stR9s/maxresdefault.jpg" alt="LEGO Miscellaneous 4002023 Gingerbread House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">4002023</div>
+    <div class="set-number-row"><div class="set-number">4002023</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Gingerbread House</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/ideaspab6-miscellaneous-garden-dreams/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/crYXJi3jKNs/maxresdefault.jpg" alt="LEGO Miscellaneous IDEASPAB6 Garden Dreams building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/crYXJi3jKNs/maxresdefault.jpg" alt="LEGO Miscellaneous IDEASPAB6 Garden Dreams building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">IDEASPAB6</div>
+    <div class="set-number-row"><div class="set-number">IDEASPAB6</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Garden Dreams</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/ideaspab7-miscellaneous-brick-quarium/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/X_wFwx8ppfs/maxresdefault.jpg" alt="LEGO Miscellaneous IDEASPAB7 Brick-quarium building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/X_wFwx8ppfs/maxresdefault.jpg" alt="LEGO Miscellaneous IDEASPAB7 Brick-quarium building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">IDEASPAB7</div>
+    <div class="set-number-row"><div class="set-number">IDEASPAB7</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Brick-quarium</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/ideaspab5-miscellaneous-modular-racers/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ijJGPFM7Xss/maxresdefault.jpg" alt="LEGO Miscellaneous IDEASPAB5 Modular Racers building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ijJGPFM7Xss/maxresdefault.jpg" alt="LEGO Miscellaneous IDEASPAB5 Modular Racers building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">IDEASPAB5</div>
+    <div class="set-number-row"><div class="set-number">IDEASPAB5</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Modular Racers</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40649-miscellaneous-up-scaled-minifigure/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/SSShfzTVePM/maxresdefault.jpg" alt="LEGO Miscellaneous 40649 Up-Scaled LEGO Minifigure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/SSShfzTVePM/maxresdefault.jpg" alt="LEGO Miscellaneous 40649 Up-Scaled LEGO Minifigure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40649</div>
+    <div class="set-number-row"><div class="set-number">40649</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Up-Scaled LEGO Minifigure</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40634-miscellaneous-icons-of-play/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/p8aDjt2Wp_M/maxresdefault.jpg" alt="LEGO Miscellaneous 40634 Icons of Play building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/p8aDjt2Wp_M/maxresdefault.jpg" alt="LEGO Miscellaneous 40634 Icons of Play building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40634</div>
+    <div class="set-number-row"><div class="set-number">40634</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Icons of Play</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO 2023 Miscellaneous Instructions</h2><p>28 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/010423-miscellaneous-the-majestic-horse/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 010423 The Majestic Horse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 010423 The Majestic Horse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">010423</div>
+    <div class="set-number-row"><div class="set-number">010423</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">The Majestic Horse</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/11959-miscellaneous-your-own-escape-room-parts/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 11959 Build Your Own LEGO Escape Room parts building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 11959 Build Your Own LEGO Escape Room parts building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">11959</div>
+    <div class="set-number-row"><div class="set-number">11959</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Build Your Own LEGO Escape Room parts</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/11973-miscellaneous-outdoor-adventures/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 11973 Outdoor Adventures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 11973 Outdoor Adventures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">11973</div>
+    <div class="set-number-row"><div class="set-number">11973</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Outdoor Adventures</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/11984-miscellaneous-the-christmas-games-book-parts/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 11984 The LEGO Christmas Games Book Parts building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 11984 The LEGO Christmas Games Book Parts building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">11984</div>
+    <div class="set-number-row"><div class="set-number">11984</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">The LEGO Christmas Games Book Parts</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40605-miscellaneous-lunar-new-year-vip-add-on-pack/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40605 Lunar New Year VIP Add-On Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40605 Lunar New Year VIP Add-On Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40605</div>
+    <div class="set-number-row"><div class="set-number">40605</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Lunar New Year VIP Add-On Pack</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40606-miscellaneous-spring-fun-vip-add-on-pack/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40606 Spring Fun VIP Add-On Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40606 Spring Fun VIP Add-On Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40606</div>
+    <div class="set-number-row"><div class="set-number">40606</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Spring Fun VIP Add-On Pack</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40607-miscellaneous-summer-fun-vip-add-on-pack/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40607 Summer Fun VIP Add-On Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40607 Summer Fun VIP Add-On Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40607</div>
+    <div class="set-number-row"><div class="set-number">40607</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Summer Fun VIP Add-On Pack</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40608-miscellaneous-halloween-fun-vip-add-on-pack/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40608 Halloween Fun VIP Add-On Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40608 Halloween Fun VIP Add-On Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40608</div>
+    <div class="set-number-row"><div class="set-number">40608</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Halloween Fun VIP Add-On Pack</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40609-miscellaneous-christmas-fun-vip-add-on-pack/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40609 Christmas Fun VIP Add-On Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40609 Christmas Fun VIP Add-On Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40609</div>
+    <div class="set-number-row"><div class="set-number">40609</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Christmas Fun VIP Add-On Pack</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40610-miscellaneous-winter-fun-vip-add-on-pack/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40610 Winter Fun VIP Add-On Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40610 Winter Fun VIP Add-On Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40610</div>
+    <div class="set-number-row"><div class="set-number">40610</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Winter Fun VIP Add-On Pack</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40655-miscellaneous-play-with-braille-french-alphabet/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40655 Play with Braille - French Alphabet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40655 Play with Braille - French Alphabet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40655</div>
+    <div class="set-number-row"><div class="set-number">40655</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Play with Braille - French Alphabet</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40656-miscellaneous-play-with-braille-english-alphabet/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40656 Play with Braille - English Alphabet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 40656 Play with Braille - English Alphabet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40656</div>
+    <div class="set-number-row"><div class="set-number">40656</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Play with Braille - English Alphabet</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66747-miscellaneous-animal-play-pack/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 66747 Animal Play Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 66747 Animal Play Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">66747</div>
+    <div class="set-number-row"><div class="set-number">66747</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Animal Play Pack</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/4000040-miscellaneous-fire-engine/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 4000040 LEGO Fire Engine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 4000040 LEGO Fire Engine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">4000040</div>
+    <div class="set-number-row"><div class="set-number">4000040</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">LEGO Fire Engine</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/5007871-miscellaneous-the-mysteries-of-play/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 5007871 The Mysteries of Play building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 5007871 The Mysteries of Play building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">5007871</div>
+    <div class="set-number-row"><div class="set-number">5007871</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">The Mysteries of Play</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6472282-miscellaneous-car-racing/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 6472282 Car Racing building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous 6472282 Car Racing building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6472282</div>
+    <div class="set-number-row"><div class="set-number">6472282</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Car Racing</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/bricktales1-miscellaneous-desert-market-stall/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous BRICKTALES1 Desert Market Stall building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous BRICKTALES1 Desert Market Stall building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">BRICKTALES1</div>
+    <div class="set-number-row"><div class="set-number">BRICKTALES1</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Desert Market Stall</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/bricktales2-miscellaneous-medieval-throne/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous BRICKTALES2 Medieval Throne building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous BRICKTALES2 Medieval Throne building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">BRICKTALES2</div>
+    <div class="set-number-row"><div class="set-number">BRICKTALES2</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Medieval Throne</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/bricktales3-miscellaneous-city-racer/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous BRICKTALES3 City Racer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous BRICKTALES3 City Racer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">BRICKTALES3</div>
+    <div class="set-number-row"><div class="set-number">BRICKTALES3</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">City Racer</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/ds2023-miscellaneous-cosmic-daydreams/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous DS2023 Cosmic Daydreams building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous DS2023 Cosmic Daydreams building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">DS2023</div>
+    <div class="set-number-row"><div class="set-number">DS2023</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Cosmic Daydreams</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/fd2023-miscellaneous-family-days-2023-promotional-brick/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous FD2023 Family Days 2023 Promotional Brick building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous FD2023 Family Days 2023 Promotional Brick building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">FD2023</div>
+    <div class="set-number-row"><div class="set-number">FD2023</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Family Days 2023 Promotional Brick</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/ideaspab1-miscellaneous-billboard-fun/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous IDEASPAB1 Billboard Fun building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous IDEASPAB1 Billboard Fun building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">IDEASPAB1</div>
+    <div class="set-number-row"><div class="set-number">IDEASPAB1</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Billboard Fun</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/ideaspab2-miscellaneous-cyber-explorers/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous IDEASPAB2 Cyber Explorers building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous IDEASPAB2 Cyber Explorers building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">IDEASPAB2</div>
+    <div class="set-number-row"><div class="set-number">IDEASPAB2</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Cyber Explorers</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/ideaspab3-miscellaneous-4-season-greenhouse/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous IDEASPAB3 4-Season Greenhouse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous IDEASPAB3 4-Season Greenhouse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">IDEASPAB3</div>
+    <div class="set-number-row"><div class="set-number">IDEASPAB3</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">4-Season Greenhouse</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/ideaspab4-miscellaneous-market-magic/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous IDEASPAB4 Market Magic building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous IDEASPAB4 Market Magic building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">IDEASPAB4</div>
+    <div class="set-number-row"><div class="set-number">IDEASPAB4</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Market Magic</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/modular1-miscellaneous-winter-modular/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous MODULAR1 Winter Modular building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous MODULAR1 Winter Modular building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">MODULAR1</div>
+    <div class="set-number-row"><div class="set-number">MODULAR1</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Winter Modular</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/modular2-miscellaneous-construction-modular/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous MODULAR2 Construction Modular building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous MODULAR2 Construction Modular building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">MODULAR2</div>
+    <div class="set-number-row"><div class="set-number">MODULAR2</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Construction Modular</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/modular3-miscellaneous-wig-stand-modular/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous MODULAR3 Wig Stand Modular building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Miscellaneous MODULAR3 Wig Stand Modular building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">MODULAR3</div>
+    <div class="set-number-row"><div class="set-number">MODULAR3</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Wig Stand Modular</div>
     <div class="set-meta">Miscellaneous • 2023</div>
   </div>

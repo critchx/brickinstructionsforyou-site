@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,369 +159,328 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/ninjago/">Ninjago</a><span>›</span><strong>2026 Ninjago</strong></nav><div class="results-header"><div><h2>LEGO 2026 Ninjago Instructions</h2><p>41 LEGO instruction pages found for this year and theme.</p></div><a class="btn-outline" href="/2026/">BACK TO 2026</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2026/">All LEGO 2026 Instructions</a><a class="btn-outline" href="/themes/ninjago/">All LEGO Ninjago Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/l0002214-ninjago-jay-vs-tentacle-monster/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/jhRh5PtGsEw/maxresdefault.jpg" alt="LEGO Ninjago L0002214 Jay vs. Tentacle Monster building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jhRh5PtGsEw/maxresdefault.jpg" alt="LEGO Ninjago L0002214 Jay vs. Tentacle Monster building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002214</div>
+    <div class="set-number-row"><div class="set-number">L0002214</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Jay vs. Tentacle Monster</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002206-ninjago-cole-magazine-gift/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/OTsEIvHd22U/maxresdefault.jpg" alt="LEGO L0002206 Ninjago - Cole - Magazine Gift building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OTsEIvHd22U/maxresdefault.jpg" alt="LEGO L0002206 Ninjago - Cole - Magazine Gift building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002206</div>
+    <div class="set-number-row"><div class="set-number">L0002206</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ninjago - Cole - Magazine Gift</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6614227-ninjago-dragon-of-life/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/IziLCKEvh-g/maxresdefault.jpg" alt="LEGO Ninjago 6614227 Dragon of Life building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IziLCKEvh-g/maxresdefault.jpg" alt="LEGO Ninjago 6614227 Dragon of Life building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6614227</div>
+    <div class="set-number-row"><div class="set-number">6614227</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Dragon of Life</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71864-ninjago-kai-and-cole-s-combiner-vehicles/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/98higR3KiSM/maxresdefault.jpg" alt="LEGO Ninjago 71864 Kai and Cole&#x27;s Combiner Vehicles building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/98higR3KiSM/maxresdefault.jpg" alt="LEGO Ninjago 71864 Kai and Cole&#x27;s Combiner Vehicles building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71864</div>
+    <div class="set-number-row"><div class="set-number">71864</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Kai and Cole&#x27;s Combiner Vehicles</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71868-ninjago-wyldfyre-s-transforming-dragon-mech/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/AwF5g7X4UA0/maxresdefault.jpg" alt="LEGO Ninjago 71868 Wyldfyre&#x27;s Transforming Dragon Mech building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AwF5g7X4UA0/maxresdefault.jpg" alt="LEGO Ninjago 71868 Wyldfyre&#x27;s Transforming Dragon Mech building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71868</div>
+    <div class="set-number-row"><div class="set-number">71868</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Wyldfyre&#x27;s Transforming Dragon Mech</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002204-ninjago-dragon-kai/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/WKA4COUwH6Y/maxresdefault.jpg" alt="LEGO Ninjago L0002204 Dragon Kai building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/WKA4COUwH6Y/maxresdefault.jpg" alt="LEGO Ninjago L0002204 Dragon Kai building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002204</div>
+    <div class="set-number-row"><div class="set-number">L0002204</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Dragon Kai</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002213-ninjago-kai-vs-rox/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/jFUGx-nVBEk/maxresdefault.jpg" alt="LEGO Ninjago L0002213 Kai vs. Rox building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jFUGx-nVBEk/maxresdefault.jpg" alt="LEGO Ninjago L0002213 Kai vs. Rox building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002213</div>
+    <div class="set-number-row"><div class="set-number">L0002213</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Kai vs. Rox</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71871-ninjago-battle-at-the-dragon-s-blade/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/rGStRkb5tlw/maxresdefault.jpg" alt="LEGO Ninjago 71871 Battle at the Dragon&#x27;s Blade building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/rGStRkb5tlw/maxresdefault.jpg" alt="LEGO Ninjago 71871 Battle at the Dragon&#x27;s Blade building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71871</div>
+    <div class="set-number-row"><div class="set-number">71871</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Battle at the Dragon&#x27;s Blade</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71865-ninjago-zane-s-ice-dragon-battle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/UUQVyZ_iskM/maxresdefault.jpg" alt="LEGO Ninjago 71865 Zane&#x27;s Ice Dragon Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/UUQVyZ_iskM/maxresdefault.jpg" alt="LEGO Ninjago 71865 Zane&#x27;s Ice Dragon Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71865</div>
+    <div class="set-number-row"><div class="set-number">71865</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Zane&#x27;s Ice Dragon Battle</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71870-ninjago-the-twin-titan-mechs/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/mchzxBvxDc4/maxresdefault.jpg" alt="LEGO Ninjago 71870 The Twin Titan Mechs building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mchzxBvxDc4/maxresdefault.jpg" alt="LEGO Ninjago 71870 The Twin Titan Mechs building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71870</div>
+    <div class="set-number-row"><div class="set-number">71870</div><span class="badge-new">NEW</span></div>
     <div class="set-name">The Twin Titan Mechs</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71872-ninjago-ultra-dragon-battle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/C2MW4zXd7dw/maxresdefault.jpg" alt="LEGO Ninjago 71872 Ultra Dragon Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/C2MW4zXd7dw/maxresdefault.jpg" alt="LEGO Ninjago 71872 Ultra Dragon Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71872</div>
+    <div class="set-number-row"><div class="set-number">71872</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ultra Dragon Battle</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71869-ninjago-land-bounty/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/i7xNNlcv9iI/maxresdefault.jpg" alt="LEGO Ninjago 71869 Land Bounty building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/i7xNNlcv9iI/maxresdefault.jpg" alt="LEGO Ninjago 71869 Land Bounty building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71869</div>
+    <div class="set-number-row"><div class="set-number">71869</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Land Bounty</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71863-ninjago-zilvar-and-grimtak-the-dragon-beast/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/7ro-iESRE8Y/maxresdefault.jpg" alt="LEGO Ninjago 71863 Zilvar and Grimtak the Dragon Beast building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/7ro-iESRE8Y/maxresdefault.jpg" alt="LEGO Ninjago 71863 Zilvar and Grimtak the Dragon Beast building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71863</div>
+    <div class="set-number-row"><div class="set-number">71863</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Zilvar and Grimtak the Dragon Beast</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71867-ninjago-x-1-ninja-charger/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/xh7hvenAYQQ/maxresdefault.jpg" alt="LEGO Ninjago 71867 X-1 Ninja Charger building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xh7hvenAYQQ/maxresdefault.jpg" alt="LEGO Ninjago 71867 X-1 Ninja Charger building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71867</div>
+    <div class="set-number-row"><div class="set-number">71867</div><span class="badge-new">NEW</span></div>
     <div class="set-name">X-1 Ninja Charger</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71862-ninjago-lloyd-s-dragon-mech-battle-pack/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/bCcYWHlw3hY/maxresdefault.jpg" alt="LEGO Ninjago 71862 Lloyd&#x27;s Dragon Mech Battle Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/bCcYWHlw3hY/maxresdefault.jpg" alt="LEGO Ninjago 71862 Lloyd&#x27;s Dragon Mech Battle Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71862</div>
+    <div class="set-number-row"><div class="set-number">71862</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lloyd&#x27;s Dragon Mech Battle Pack</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002201-ninjago-dragon-lloyd/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/_GbbmL8nSj4/maxresdefault.jpg" alt="LEGO Ninjago L0002201 Dragon Lloyd building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_GbbmL8nSj4/maxresdefault.jpg" alt="LEGO Ninjago L0002201 Dragon Lloyd building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002201</div>
+    <div class="set-number-row"><div class="set-number">L0002201</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Dragon Lloyd</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002212-ninjago-zane-mech/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/-QszDWTDPzU/maxresdefault.jpg" alt="LEGO Ninjago L0002212 Zane-Mech building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-QszDWTDPzU/maxresdefault.jpg" alt="LEGO Ninjago L0002212 Zane-Mech building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002212</div>
+    <div class="set-number-row"><div class="set-number">L0002212</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Zane-Mech</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002200-ninjago-dragon-jay/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/4PjutswHXBQ/maxresdefault.jpg" alt="LEGO Ninjago L0002200 Dragon Jay building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4PjutswHXBQ/maxresdefault.jpg" alt="LEGO Ninjago L0002200 Dragon Jay building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002200</div>
+    <div class="set-number-row"><div class="set-number">L0002200</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Dragon Jay</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002199-ninjago-kur/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0wOrWHutd2o/maxresdefault.jpg" alt="LEGO Ninjago L0002199 Kur building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0wOrWHutd2o/maxresdefault.jpg" alt="LEGO Ninjago L0002199 Kur building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002199</div>
+    <div class="set-number-row"><div class="set-number">L0002199</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Kur</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002203-ninjago-dragon-nya/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/fQxOoFr_5j4/maxresdefault.jpg" alt="LEGO Ninjago L0002203 Dragon Nya building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/fQxOoFr_5j4/maxresdefault.jpg" alt="LEGO Ninjago L0002203 Dragon Nya building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002203</div>
+    <div class="set-number-row"><div class="set-number">L0002203</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Dragon Nya</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71860-ninjago-lloyd-s-titan-mech/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/L70uIwh-7BA/maxresdefault.jpg" alt="LEGO Ninjago 71860 Lloyd&#x27;s Titan Mech building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/L70uIwh-7BA/maxresdefault.jpg" alt="LEGO Ninjago 71860 Lloyd&#x27;s Titan Mech building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71860</div>
+    <div class="set-number-row"><div class="set-number">71860</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lloyd&#x27;s Titan Mech</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/951466-ninjago-kai-with-motorcycle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/QkrOlqtD7YM/maxresdefault.jpg" alt="LEGO Ninjago 951466 Kai with Motorcycle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QkrOlqtD7YM/maxresdefault.jpg" alt="LEGO Ninjago 951466 Kai with Motorcycle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">951466</div>
+    <div class="set-number-row"><div class="set-number">951466</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Kai with Motorcycle</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/951467-ninjago-lloyd-with-mech/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/z4Ns1F6aB2g/maxresdefault.jpg" alt="LEGO Ninjago 951467 Lloyd with Mech building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/z4Ns1F6aB2g/maxresdefault.jpg" alt="LEGO Ninjago 951467 Lloyd with Mech building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">951467</div>
+    <div class="set-number-row"><div class="set-number">951467</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lloyd with Mech</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71855-ninjago-ninja-dragon-riyu-s-battle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/MhXXEv6pxqo/maxresdefault.jpg" alt="LEGO Ninjago 71855 Ninja Dragon Riyu&#x27;s Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/MhXXEv6pxqo/maxresdefault.jpg" alt="LEGO Ninjago 71855 Ninja Dragon Riyu&#x27;s Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71855</div>
+    <div class="set-number-row"><div class="set-number">71855</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ninja Dragon Riyu&#x27;s Battle</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71856-ninjago-jay-s-transforming-car/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0MO2sMgpJGQ/maxresdefault.jpg" alt="LEGO Ninjago 71856 Jay&#x27;s Transforming Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0MO2sMgpJGQ/maxresdefault.jpg" alt="LEGO Ninjago 71856 Jay&#x27;s Transforming Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71856</div>
+    <div class="set-number-row"><div class="set-number">71856</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Jay&#x27;s Transforming Car</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30723-ninjago-cole-s-car/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/DSyI9KVSUIc/maxresdefault.jpg" alt="LEGO Ninjago 30723 Cole&#x27;s Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DSyI9KVSUIc/maxresdefault.jpg" alt="LEGO Ninjago 30723 Cole&#x27;s Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30723</div>
+    <div class="set-number-row"><div class="set-number">30723</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Cole&#x27;s Car</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71854-ninjago-cole-s-mission-mech/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/nSMkjCr1KFA/maxresdefault.jpg" alt="LEGO Ninjago 71854 Cole&#x27;s Mission Mech building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nSMkjCr1KFA/maxresdefault.jpg" alt="LEGO Ninjago 71854 Cole&#x27;s Mission Mech building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71854</div>
+    <div class="set-number-row"><div class="set-number">71854</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Cole&#x27;s Mission Mech</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71866-ninjago-ninja-character-display/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/twuKRSYqVHQ/maxresdefault.jpg" alt="LEGO Ninjago 71866 Ninja Character Display building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/twuKRSYqVHQ/maxresdefault.jpg" alt="LEGO Ninjago 71866 Ninja Character Display building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71866</div>
+    <div class="set-number-row"><div class="set-number">71866</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ninja Character Display</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71857-ninjago-ninja-vehicle-tree-house-battle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/8XagXC79Z5A/maxresdefault.jpg" alt="LEGO Ninjago 71857 Ninja Vehicle Tree House Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8XagXC79Z5A/maxresdefault.jpg" alt="LEGO Ninjago 71857 Ninja Vehicle Tree House Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71857</div>
+    <div class="set-number-row"><div class="set-number">71857</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ninja Vehicle Tree House Battle</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71850-ninjago-lloyd-vs-earth-monster-spinner/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/eBH4O0wbqd0/maxresdefault.jpg" alt="LEGO Ninjago 71850 Lloyd vs. Earth Monster Spinner building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/eBH4O0wbqd0/maxresdefault.jpg" alt="LEGO Ninjago 71850 Lloyd vs. Earth Monster Spinner building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71850</div>
+    <div class="set-number-row"><div class="set-number">71850</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lloyd vs. Earth Monster Spinner</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71861-ninjago-the-old-town/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/iU3oqSp_FWk/maxresdefault.jpg" alt="LEGO Ninjago 71861 The Old Town building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/iU3oqSp_FWk/maxresdefault.jpg" alt="LEGO Ninjago 71861 The Old Town building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71861</div>
+    <div class="set-number-row"><div class="set-number">71861</div><span class="badge-new">NEW</span></div>
     <div class="set-name">The Old Town</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71849-ninjago-nya-vs-mutation-monster-spinner/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/akbsGNgfzZE/maxresdefault.jpg" alt="LEGO Ninjago 71849 Nya vs. Mutation Monster Spinner building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/akbsGNgfzZE/maxresdefault.jpg" alt="LEGO Ninjago 71849 Nya vs. Mutation Monster Spinner building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71849</div>
+    <div class="set-number-row"><div class="set-number">71849</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Nya vs. Mutation Monster Spinner</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71851-ninjago-kai-s-dragon-mech-battle-pack/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/DdJ7cdbOIBw/maxresdefault.jpg" alt="LEGO Ninjago 71851 Kai&#x27;s Dragon Mech Battle Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DdJ7cdbOIBw/maxresdefault.jpg" alt="LEGO Ninjago 71851 Kai&#x27;s Dragon Mech Battle Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71851</div>
+    <div class="set-number-row"><div class="set-number">71851</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Kai&#x27;s Dragon Mech Battle Pack</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71859-ninjago-the-dragon-of-life/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/MSuS4pIOAaE/maxresdefault.jpg" alt="LEGO Ninjago 71859 The Dragon of Life building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/MSuS4pIOAaE/maxresdefault.jpg" alt="LEGO Ninjago 71859 The Dragon of Life building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71859</div>
+    <div class="set-number-row"><div class="set-number">71859</div><span class="badge-new">NEW</span></div>
     <div class="set-name">The Dragon of Life</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71858-ninjago-four-weapons-blacksmith/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/o__CRaha1yA/maxresdefault.jpg" alt="LEGO Ninjago 71858 Four Weapons Blacksmith building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/o__CRaha1yA/maxresdefault.jpg" alt="LEGO Ninjago 71858 Four Weapons Blacksmith building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71858</div>
+    <div class="set-number-row"><div class="set-number">71858</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Four Weapons Blacksmith</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO 2026 Ninjago Instructions</h2><p>6 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/71853-ninjago-jay-s-dragon-mech-fight/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Ninjago 71853 Jay&#x27;s Dragon Mech Fight building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Ninjago 71853 Jay&#x27;s Dragon Mech Fight building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">71853</div>
+    <div class="set-number-row"><div class="set-number">71853</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Jay&#x27;s Dragon Mech Fight</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/112601-ninjago-lloyd-vs-dragonian-warrior/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Ninjago 112601 Lloyd vs. Dragonian Warrior building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Ninjago 112601 Lloyd vs. Dragonian Warrior building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">112601</div>
+    <div class="set-number-row"><div class="set-number">112601</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Lloyd vs. Dragonian Warrior</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6614229-ninjago-red-mask/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO 6614229 Ninjago Red Mask building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 6614229 Ninjago Red Mask building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6614229</div>
+    <div class="set-number-row"><div class="set-number">6614229</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Ninjago Red Mask</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002202-ninjago-earth-monster/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Ninjago L0002202 Earth Monster building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Ninjago L0002202 Earth Monster building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002202</div>
+    <div class="set-number-row"><div class="set-number">L0002202</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Earth Monster</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002205-ninjago-dragon-zane/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Ninjago L0002205 Dragon Zane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Ninjago L0002205 Dragon Zane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002205</div>
+    <div class="set-number-row"><div class="set-number">L0002205</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Dragon Zane</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002215-ninjago-nya-and-grimfax/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Ninjago L0002215 Nya and Grimfax building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Ninjago L0002215 Nya and Grimfax building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002215</div>
+    <div class="set-number-row"><div class="set-number">L0002215</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Nya and Grimfax</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>

@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,163 +159,145 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/icons/">Icons</a><span>›</span><strong>2022 Icons</strong></nav><div class="results-header"><div><h2>LEGO 2022 Icons Instructions</h2><p>18 LEGO instruction pages found for this year and theme.</p></div><a class="btn-outline" href="/2022/">BACK TO 2022</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2022/">All LEGO 2022 Instructions</a><a class="btn-outline" href="/themes/icons/">All LEGO Icons Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/76989-icons-horizon-forbidden-west-tallneck/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/8_ouj2Bd42E/maxresdefault.jpg" alt="LEGO Icons 76989 Horizon Forbidden West: Tallneck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8_ouj2Bd42E/maxresdefault.jpg" alt="LEGO Icons 76989 Horizon Forbidden West: Tallneck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76989</div>
+    <div class="set-number-row"><div class="set-number">76989</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Horizon Forbidden West: Tallneck</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40579-icons-eiffel-s-apartment/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/KR43O9xG41o/maxresdefault.jpg" alt="LEGO Icons 40579 Eiffel&#x27;s Apartment building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/KR43O9xG41o/maxresdefault.jpg" alt="LEGO Icons 40579 Eiffel&#x27;s Apartment building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40579</div>
+    <div class="set-number-row"><div class="set-number">40579</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Eiffel&#x27;s Apartment</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40567-icons-forest-hideout/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/OTQg2OJb6XE/maxresdefault.jpg" alt="LEGO Icons 40567 Forest Hideout building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OTQg2OJb6XE/maxresdefault.jpg" alt="LEGO Icons 40567 Forest Hideout building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40567</div>
+    <div class="set-number-row"><div class="set-number">40567</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Forest Hideout</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40532-icons-vintage-taxi/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/HmlH4wm247E/maxresdefault.jpg" alt="LEGO Icons 40532 Vintage Taxi building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HmlH4wm247E/maxresdefault.jpg" alt="LEGO Icons 40532 Vintage Taxi building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40532</div>
+    <div class="set-number-row"><div class="set-number">40532</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Vintage Taxi</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10497-icons-galaxy-explorer/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ptqnbmgglcw/maxresdefault.jpg" alt="LEGO Icons 10497 Galaxy Explorer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ptqnbmgglcw/maxresdefault.jpg" alt="LEGO Icons 10497 Galaxy Explorer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10497</div>
+    <div class="set-number-row"><div class="set-number">10497</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Galaxy Explorer</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10311-icons-orchid/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/H8kCxKLFVJQ/maxresdefault.jpg" alt="LEGO Icons 10311 Orchid building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/H8kCxKLFVJQ/maxresdefault.jpg" alt="LEGO Icons 10311 Orchid building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10311</div>
+    <div class="set-number-row"><div class="set-number">10311</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Orchid</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10309-icons-succulents/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/IPAE6ZvZrJQ/maxresdefault.jpg" alt="LEGO Icons 10309 Succulents building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IPAE6ZvZrJQ/maxresdefault.jpg" alt="LEGO Icons 10309 Succulents building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10309</div>
+    <div class="set-number-row"><div class="set-number">10309</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Succulents</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10308-icons-holiday-main-street/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/c_I2JR-tnLE/maxresdefault.jpg" alt="LEGO Icons 10308 Holiday Main Street building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/c_I2JR-tnLE/maxresdefault.jpg" alt="LEGO Icons 10308 Holiday Main Street building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10308</div>
+    <div class="set-number-row"><div class="set-number">10308</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Holiday Main Street</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10307-icons-eiffel-tower/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/gjmI5wq5QGs/maxresdefault.jpg" alt="LEGO Icons 10307 Eiffel Tower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/gjmI5wq5QGs/maxresdefault.jpg" alt="LEGO Icons 10307 Eiffel Tower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10307</div>
+    <div class="set-number-row"><div class="set-number">10307</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Eiffel Tower</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10306-icons-atari-2600/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/jtOZ4X1Ci5k/maxresdefault.jpg" alt="LEGO Icons 10306 Atari 2600 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jtOZ4X1Ci5k/maxresdefault.jpg" alt="LEGO Icons 10306 Atari 2600 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10306</div>
+    <div class="set-number-row"><div class="set-number">10306</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Atari 2600</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10305-icons-lion-knights-castle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/o3F5J4E-Pjg/maxresdefault.jpg" alt="LEGO Icons 10305 Lion Knights&#x27; Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/o3F5J4E-Pjg/maxresdefault.jpg" alt="LEGO Icons 10305 Lion Knights&#x27; Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10305</div>
+    <div class="set-number-row"><div class="set-number">10305</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lion Knights&#x27; Castle</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10304-icons-chevrolet-camaro-z-28-1969/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ExrZ___g98M/maxresdefault.jpg" alt="LEGO Icons 10304 Chevrolet Camaro Z/28 1969 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ExrZ___g98M/maxresdefault.jpg" alt="LEGO Icons 10304 Chevrolet Camaro Z/28 1969 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10304</div>
+    <div class="set-number-row"><div class="set-number">10304</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Chevrolet Camaro Z/28 1969</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10303-icons-loop-coaster/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/tVNxg3sxoVs/maxresdefault.jpg" alt="LEGO Icons 10303 Loop Coaster building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/tVNxg3sxoVs/maxresdefault.jpg" alt="LEGO Icons 10303 Loop Coaster building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10303</div>
+    <div class="set-number-row"><div class="set-number">10303</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Loop Coaster</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10302-icons-optimus-prime/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ZXackiVutnw/maxresdefault.jpg" alt="LEGO Icons 10302 Optimus Prime building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ZXackiVutnw/maxresdefault.jpg" alt="LEGO Icons 10302 Optimus Prime building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10302</div>
+    <div class="set-number-row"><div class="set-number">10302</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Optimus Prime</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10300-icons-back-to-the-future-time-machine/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Z6w14lpucmo/maxresdefault.jpg" alt="LEGO Icons 10300 Back to the Future Time Machine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Z6w14lpucmo/maxresdefault.jpg" alt="LEGO Icons 10300 Back to the Future Time Machine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10300</div>
+    <div class="set-number-row"><div class="set-number">10300</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Back to the Future Time Machine</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10299-icons-real-madrid-santiago-bernab-u-stadium/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/UBep5Ektro8/maxresdefault.jpg" alt="LEGO Icons 10299 Real Madrid - Santiago Bernabéu Stadium building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/UBep5Ektro8/maxresdefault.jpg" alt="LEGO Icons 10299 Real Madrid - Santiago Bernabéu Stadium building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10299</div>
+    <div class="set-number-row"><div class="set-number">10299</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Real Madrid - Santiago Bernabéu Stadium</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10298-icons-vespa-125/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/WVGptREl7k0/maxresdefault.jpg" alt="LEGO Icons 10298 Vespa 125 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/WVGptREl7k0/maxresdefault.jpg" alt="LEGO Icons 10298 Vespa 125 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10298</div>
+    <div class="set-number-row"><div class="set-number">10298</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Vespa 125</div>
     <div class="set-meta">Icons • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10297-icons-boutique-hotel/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/IaemBgu2Wuo/maxresdefault.jpg" alt="LEGO Icons 10297 Boutique Hotel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IaemBgu2Wuo/maxresdefault.jpg" alt="LEGO Icons 10297 Boutique Hotel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10297</div>
+    <div class="set-number-row"><div class="set-number">10297</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Boutique Hotel</div>
     <div class="set-meta">Icons • 2022</div>
   </div>

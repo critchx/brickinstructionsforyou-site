@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,954 +159,848 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><strong>Seasonal</strong></nav><div class="results-header"><div><h2>LEGO Seasonal Instructions</h2><p>106 LEGO instruction pages found in this theme.</p></div><a class="btn-outline" href="/themes/">ALL THEMES</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Seasonal by year</h3><nav aria-label="Browse LEGO Seasonal by year" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2026/seasonal/">LEGO Seasonal 2026</a><a class="btn-outline" href="/2025/seasonal/">LEGO Seasonal 2025</a><a class="btn-outline" href="/2024/seasonal/">LEGO Seasonal 2024</a><a class="btn-outline" href="/2023/seasonal/">LEGO Seasonal 2023</a><a class="btn-outline" href="/2022/seasonal/">LEGO Seasonal 2022</a><a class="btn-outline" href="/2021/seasonal/">LEGO Seasonal 2021</a></nav></section><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Seasonal subthemes</h3><nav aria-label="Browse LEGO Seasonal subthemes" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/seasonal/birthday/">LEGO Birthday Instructions</a><a class="btn-outline" href="/themes/seasonal/chinese-traditional-festival/">LEGO Chinese Traditional Festival Instructions</a><a class="btn-outline" href="/themes/seasonal/christmas/">LEGO Christmas Instructions</a><a class="btn-outline" href="/themes/seasonal/easter/">LEGO Easter Instructions</a><a class="btn-outline" href="/themes/seasonal/halloween/">LEGO Halloween Instructions</a><a class="btn-outline" href="/themes/seasonal/valentine-s-day/">LEGO Valentine&#x27;s Day Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/66822-seasonal-haunted-halloween-set/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/xfkR3DHOsKc/maxresdefault.jpg" alt="LEGO Seasonal 66822 Haunted Halloween Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xfkR3DHOsKc/maxresdefault.jpg" alt="LEGO Seasonal 66822 Haunted Halloween Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">66822</div>
+    <div class="set-number-row"><div class="set-number">66822</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Haunted Halloween Set</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40873-seasonal-colourful-lantern/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/qcZmlobdA48/maxresdefault.jpg" alt="LEGO Seasonal 40873 Colourful Lantern building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/qcZmlobdA48/maxresdefault.jpg" alt="LEGO Seasonal 40873 Colourful Lantern building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40873</div>
+    <div class="set-number-row"><div class="set-number">40873</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Colourful Lantern</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40883-seasonal-halloween-skull-candle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0tcuWMsme0g/maxresdefault.jpg" alt="LEGO Seasonal 40883 Halloween Skull Candle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0tcuWMsme0g/maxresdefault.jpg" alt="LEGO Seasonal 40883 Halloween Skull Candle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40883</div>
+    <div class="set-number-row"><div class="set-number">40883</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Halloween Skull Candle</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40872-seasonal-halloween-pumpkin-lantern/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/29CLOGCENN8/maxresdefault.jpg" alt="LEGO Seasonal 40872 Halloween Pumpkin Lantern building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/29CLOGCENN8/maxresdefault.jpg" alt="LEGO Seasonal 40872 Halloween Pumpkin Lantern building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40872</div>
+    <div class="set-number-row"><div class="set-number">40872</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Halloween Pumpkin Lantern</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40462-seasonal-valentine-s-brown-bear/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/BvvZYoZjUVE/maxresdefault.jpg" alt="LEGO Seasonal 40462 Valentine&#x27;s Brown Bear building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/BvvZYoZjUVE/maxresdefault.jpg" alt="LEGO Seasonal 40462 Valentine&#x27;s Brown Bear building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40462</div>
+    <div class="set-number-row"><div class="set-number">40462</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Valentine&#x27;s Brown Bear</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80109-seasonal-lunar-new-year-ice-festival/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/GdglhOLpPVU/maxresdefault.jpg" alt="LEGO Seasonal 80109 Lunar New Year Ice Festival building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/GdglhOLpPVU/maxresdefault.jpg" alt="LEGO Seasonal 80109 Lunar New Year Ice Festival building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80109</div>
+    <div class="set-number-row"><div class="set-number">80109</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lunar New Year Ice Festival</div>
     <div class="set-meta">Seasonal • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80108-seasonal-lunar-new-year-traditions/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/DIOgye4U7pg/maxresdefault.jpg" alt="LEGO Seasonal 80108 Lunar New Year Traditions building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DIOgye4U7pg/maxresdefault.jpg" alt="LEGO Seasonal 80108 Lunar New Year Traditions building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80108</div>
+    <div class="set-number-row"><div class="set-number">80108</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lunar New Year Traditions</div>
     <div class="set-meta">Seasonal • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40573-seasonal-christmas-tree/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/FbG4JZBdzLo/maxresdefault.jpg" alt="LEGO Seasonal 40573 Christmas Tree building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/FbG4JZBdzLo/maxresdefault.jpg" alt="LEGO Seasonal 40573 Christmas Tree building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40573</div>
+    <div class="set-number-row"><div class="set-number">40573</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Christmas Tree</div>
     <div class="set-meta">Seasonal • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40572-seasonal-penguin-snowflake/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/B8Ol00pEZkA/maxresdefault.jpg" alt="LEGO Seasonal 40572 Penguin &amp; Snowflake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/B8Ol00pEZkA/maxresdefault.jpg" alt="LEGO Seasonal 40572 Penguin &amp; Snowflake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40572</div>
+    <div class="set-number-row"><div class="set-number">40572</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Penguin &amp; Snowflake</div>
     <div class="set-meta">Seasonal • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40571-seasonal-wintertime-polar-bears/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Z9Zt_K70GJQ/maxresdefault.jpg" alt="LEGO Seasonal 40571 Wintertime Polar Bears building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Z9Zt_K70GJQ/maxresdefault.jpg" alt="LEGO Seasonal 40571 Wintertime Polar Bears building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40571</div>
+    <div class="set-number-row"><div class="set-number">40571</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Wintertime Polar Bears</div>
     <div class="set-meta">Seasonal • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40570-seasonal-halloween-cat-and-mouse/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/3QjsBxikCqc/maxresdefault.jpg" alt="LEGO Seasonal 40570 Halloween Cat and Mouse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3QjsBxikCqc/maxresdefault.jpg" alt="LEGO Seasonal 40570 Halloween Cat and Mouse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40570</div>
+    <div class="set-number-row"><div class="set-number">40570</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Halloween Cat and Mouse</div>
     <div class="set-meta">Seasonal • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40565-seasonal-santa-s-workshop/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/v8V3_FhQ75s/maxresdefault.jpg" alt="LEGO Seasonal 40565 Santa&#x27;s Workshop building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/v8V3_FhQ75s/maxresdefault.jpg" alt="LEGO Seasonal 40565 Santa&#x27;s Workshop building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40565</div>
+    <div class="set-number-row"><div class="set-number">40565</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Santa&#x27;s Workshop</div>
     <div class="set-meta">Seasonal • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40564-seasonal-winter-elves-scene/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/xERrkDyPdjg/maxresdefault.jpg" alt="LEGO Seasonal 40564 Winter Elves Scene building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xERrkDyPdjg/maxresdefault.jpg" alt="LEGO Seasonal 40564 Winter Elves Scene building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40564</div>
+    <div class="set-number-row"><div class="set-number">40564</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Winter Elves Scene</div>
     <div class="set-meta">Seasonal • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40527-seasonal-easter-chicks/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/yELnbKn0CBQ/maxresdefault.jpg" alt="LEGO Seasonal 40527 Easter Chicks building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yELnbKn0CBQ/maxresdefault.jpg" alt="LEGO Seasonal 40527 Easter Chicks building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40527</div>
+    <div class="set-number-row"><div class="set-number">40527</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Easter Chicks</div>
     <div class="set-meta">Seasonal • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40523-seasonal-easter-rabbits-display/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/KaWx7m8wZbc/maxresdefault.jpg" alt="LEGO Seasonal 40523 Easter Rabbits Display building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/KaWx7m8wZbc/maxresdefault.jpg" alt="LEGO Seasonal 40523 Easter Rabbits Display building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40523</div>
+    <div class="set-number-row"><div class="set-number">40523</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Easter Rabbits Display</div>
     <div class="set-meta">Seasonal • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40522-seasonal-valentine-lovebirds/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/oNlKQWZEiI0/maxresdefault.jpg" alt="LEGO Seasonal 40522 Valentine Lovebirds building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/oNlKQWZEiI0/maxresdefault.jpg" alt="LEGO Seasonal 40522 Valentine Lovebirds building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40522</div>
+    <div class="set-number-row"><div class="set-number">40522</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Valentine Lovebirds</div>
     <div class="set-meta">Seasonal • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40491-seasonal-year-of-the-tiger/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/5qg_cV_yVVE/maxresdefault.jpg" alt="LEGO Seasonal 40491 Year of the Tiger building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/5qg_cV_yVVE/maxresdefault.jpg" alt="LEGO Seasonal 40491 Year of the Tiger building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40491</div>
+    <div class="set-number-row"><div class="set-number">40491</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Year of the Tiger</div>
     <div class="set-meta">Seasonal • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80120-seasonal-prosperity-carp-leaping/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ZNPeNk4k3o0/maxresdefault.jpg" alt="LEGO Seasonal 80120 Prosperity Carp Leaping building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ZNPeNk4k3o0/maxresdefault.jpg" alt="LEGO Seasonal 80120 Prosperity Carp Leaping building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80120</div>
+    <div class="set-number-row"><div class="set-number">80120</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Prosperity Carp Leaping</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80121-seasonal-ancient-moon-gazing-inn/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/78uOSLY6Byk/maxresdefault.jpg" alt="LEGO Seasonal 80121 Ancient Moon-Gazing Inn building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/78uOSLY6Byk/maxresdefault.jpg" alt="LEGO Seasonal 80121 Ancient Moon-Gazing Inn building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80121</div>
+    <div class="set-number-row"><div class="set-number">80121</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ancient Moon-Gazing Inn</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40815-seasonal-birthday-party-cake/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/qpHG8xllKxA/maxresdefault.jpg" alt="LEGO Seasonal 40815 Birthday Party Cake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/qpHG8xllKxA/maxresdefault.jpg" alt="LEGO Seasonal 40815 Birthday Party Cake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40815</div>
+    <div class="set-number-row"><div class="set-number">40815</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Birthday Party Cake</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40807-seasonal-birthday-numbers/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/kkpKu010urI/maxresdefault.jpg" alt="LEGO Seasonal 40807 Birthday Numbers building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kkpKu010urI/maxresdefault.jpg" alt="LEGO Seasonal 40807 Birthday Numbers building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40807</div>
+    <div class="set-number-row"><div class="set-number">40807</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Birthday Numbers</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40890-seasonal-easter-decorations/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ej_EEKehnPU/maxresdefault.jpg" alt="LEGO Seasonal 40890 Easter Decorations building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ej_EEKehnPU/maxresdefault.jpg" alt="LEGO Seasonal 40890 Easter Decorations building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40890</div>
+    <div class="set-number-row"><div class="set-number">40890</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Easter Decorations</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40957-seasonal-spring-wreath/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/hP7VGUT8YlQ/maxresdefault.jpg" alt="LEGO Seasonal 40957 Spring Wreath building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/hP7VGUT8YlQ/maxresdefault.jpg" alt="LEGO Seasonal 40957 Spring Wreath building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40957</div>
+    <div class="set-number-row"><div class="set-number">40957</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Spring Wreath</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40886-seasonal-penguins-in-love/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/HBeh7IxWCrA/maxresdefault.jpg" alt="LEGO Seasonal 40886 Penguins in Love building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HBeh7IxWCrA/maxresdefault.jpg" alt="LEGO Seasonal 40886 Penguins in Love building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40886</div>
+    <div class="set-number-row"><div class="set-number">40886</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Penguins in Love</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40915-seasonal-lion-dance/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/yxYwyP6YAcQ/maxresdefault.jpg" alt="LEGO Seasonal 40915 Lion Dance building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yxYwyP6YAcQ/maxresdefault.jpg" alt="LEGO Seasonal 40915 Lion Dance building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40915</div>
+    <div class="set-number-row"><div class="set-number">40915</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lion Dance</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40863-seasonal-easter-egg-basket/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/XmxdLLZwYVI/maxresdefault.jpg" alt="LEGO Seasonal 40863 Easter Egg Basket building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/XmxdLLZwYVI/maxresdefault.jpg" alt="LEGO Seasonal 40863 Easter Egg Basket building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40863</div>
+    <div class="set-number-row"><div class="set-number">40863</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Easter Egg Basket</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80119-seasonal-galloping-horse-canvas/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/yqudXYgBFDA/maxresdefault.jpg" alt="LEGO Seasonal 80119 Galloping Horse Canvas building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yqudXYgBFDA/maxresdefault.jpg" alt="LEGO Seasonal 80119 Galloping Horse Canvas building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80119</div>
+    <div class="set-number-row"><div class="set-number">80119</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Galloping Horse Canvas</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40867-seasonal-love-letters/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/3rkpAfNljY8/maxresdefault.jpg" alt="LEGO Seasonal 40867 Love Letters building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3rkpAfNljY8/maxresdefault.jpg" alt="LEGO Seasonal 40867 Love Letters building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40867</div>
+    <div class="set-number-row"><div class="set-number">40867</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Love Letters</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40920-seasonal-bugs-bunny/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/m4sFj-AL_tY/maxresdefault.jpg" alt="LEGO Seasonal 40920 Bugs Bunny building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/m4sFj-AL_tY/maxresdefault.jpg" alt="LEGO Seasonal 40920 Bugs Bunny building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40920</div>
+    <div class="set-number-row"><div class="set-number">40920</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Bugs Bunny</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80118-seasonal-fortune-firecracker/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/2clVd3nE_eU/maxresdefault.jpg" alt="LEGO Seasonal 80118 Fortune Firecracker building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/2clVd3nE_eU/maxresdefault.jpg" alt="LEGO Seasonal 80118 Fortune Firecracker building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80118</div>
+    <div class="set-number-row"><div class="set-number">80118</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Fortune Firecracker</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40779-seasonal-year-of-the-horse/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Bli18x8ikho/maxresdefault.jpg" alt="LEGO Seasonal 40779 Year of the Horse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Bli18x8ikho/maxresdefault.jpg" alt="LEGO Seasonal 40779 Year of the Horse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40779</div>
+    <div class="set-number-row"><div class="set-number">40779</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Year of the Horse</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40864-seasonal-fortune-master/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/kO2uLeCPs58/maxresdefault.jpg" alt="LEGO Seasonal 40864 Fortune Master building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kO2uLeCPs58/maxresdefault.jpg" alt="LEGO Seasonal 40864 Fortune Master building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40864</div>
+    <div class="set-number-row"><div class="set-number">40864</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Fortune Master</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40820-seasonal-up-scaled-santa-minifigure/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/-ztIycGamRA/maxresdefault.jpg" alt="LEGO Seasonal 40820 Up-Scaled Santa Minifigure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-ztIycGamRA/maxresdefault.jpg" alt="LEGO Seasonal 40820 Up-Scaled Santa Minifigure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40820</div>
+    <div class="set-number-row"><div class="set-number">40820</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Up-Scaled Santa Minifigure</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41843-seasonal-family-christmas-tree-decoration/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/60FpE1hcZSc/maxresdefault.jpg" alt="LEGO Seasonal 41843 Family Christmas Tree Decoration building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/60FpE1hcZSc/maxresdefault.jpg" alt="LEGO Seasonal 41843 Family Christmas Tree Decoration building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41843</div>
+    <div class="set-number-row"><div class="set-number">41843</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Family Christmas Tree Decoration</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40812-seasonal-snowman-ornaments/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/-T8U7NUtXl8/maxresdefault.jpg" alt="LEGO Seasonal 40812 Snowman Ornaments building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-T8U7NUtXl8/maxresdefault.jpg" alt="LEGO Seasonal 40812 Snowman Ornaments building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40812</div>
+    <div class="set-number-row"><div class="set-number">40812</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Snowman Ornaments</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40809-seasonal-festive-gingerbread-house/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/otQMWirgeJA/maxresdefault.jpg" alt="LEGO Seasonal 40809 Festive Gingerbread House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/otQMWirgeJA/maxresdefault.jpg" alt="LEGO Seasonal 40809 Festive Gingerbread House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40809</div>
+    <div class="set-number-row"><div class="set-number">40809</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Festive Gingerbread House</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40825-seasonal-halloween-wreath/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/n2bNXNNAGD4/maxresdefault.jpg" alt="LEGO Seasonal 40825 Halloween Wreath building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/n2bNXNNAGD4/maxresdefault.jpg" alt="LEGO Seasonal 40825 Halloween Wreath building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40825</div>
+    <div class="set-number-row"><div class="set-number">40825</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Halloween Wreath</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40811-seasonal-altar-of-the-dead/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/kJ2cghSk528/maxresdefault.jpg" alt="LEGO Seasonal 40811 Altar of the Dead building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kJ2cghSk528/maxresdefault.jpg" alt="LEGO Seasonal 40811 Altar of the Dead building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40811</div>
+    <div class="set-number-row"><div class="set-number">40811</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Altar of the Dead</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40822-seasonal-jack-o-lantern-pickup-truck/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/OzYC06UcqBQ/maxresdefault.jpg" alt="LEGO Seasonal 40822 Jack-O&#x27;-Lantern Pickup Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OzYC06UcqBQ/maxresdefault.jpg" alt="LEGO Seasonal 40822 Jack-O&#x27;-Lantern Pickup Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40822</div>
+    <div class="set-number-row"><div class="set-number">40822</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Jack-O&#x27;-Lantern Pickup Truck</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40816-seasonal-decorative-easter-egg/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/yjlLIgZeIX8/maxresdefault.jpg" alt="LEGO Seasonal 40816 Decorative Easter Egg building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yjlLIgZeIX8/maxresdefault.jpg" alt="LEGO Seasonal 40816 Decorative Easter Egg building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40816</div>
+    <div class="set-number-row"><div class="set-number">40816</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Decorative Easter Egg</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40808-seasonal-easter-bunny-and-chick-egg-hunt/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/v0ANFfBtzPI/maxresdefault.jpg" alt="LEGO Seasonal 40808 Easter Bunny and Chick Egg Hunt building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/v0ANFfBtzPI/maxresdefault.jpg" alt="LEGO Seasonal 40808 Easter Bunny and Chick Egg Hunt building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40808</div>
+    <div class="set-number-row"><div class="set-number">40808</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Easter Bunny and Chick Egg Hunt</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40780-seasonal-birthday-cake/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/gmL5WYy-Ta8/maxresdefault.jpg" alt="LEGO Seasonal 40780 Birthday Cake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/gmL5WYy-Ta8/maxresdefault.jpg" alt="LEGO Seasonal 40780 Birthday Cake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40780</div>
+    <div class="set-number-row"><div class="set-number">40780</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Birthday Cake</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40756-seasonal-lucky-knots/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/6HQu0X2nbJc/maxresdefault.jpg" alt="LEGO Seasonal 40756 Lucky Knots building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/6HQu0X2nbJc/maxresdefault.jpg" alt="LEGO Seasonal 40756 Lucky Knots building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40756</div>
+    <div class="set-number-row"><div class="set-number">40756</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lucky Knots</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40764-seasonal-easter-bunny-surprise/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/NMHnOv2-868/maxresdefault.jpg" alt="LEGO Seasonal 40764 Easter Bunny Surprise building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/NMHnOv2-868/maxresdefault.jpg" alt="LEGO Seasonal 40764 Easter Bunny Surprise building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40764</div>
+    <div class="set-number-row"><div class="set-number">40764</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Easter Bunny Surprise</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40702-seasonal-christmas-picture-frame/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Wd2l9KVSKEM/maxresdefault.jpg" alt="LEGO Seasonal 40702 Christmas Picture Frame building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Wd2l9KVSKEM/maxresdefault.jpg" alt="LEGO Seasonal 40702 Christmas Picture Frame building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40702</div>
+    <div class="set-number-row"><div class="set-number">40702</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Christmas Picture Frame</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40821-seasonal-love-bears/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/jSb46qRyPYE/maxresdefault.jpg" alt="LEGO Seasonal 40821 Love Bears building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jSb46qRyPYE/maxresdefault.jpg" alt="LEGO Seasonal 40821 Love Bears building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40821</div>
+    <div class="set-number-row"><div class="set-number">40821</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Love Bears</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40824-seasonal-sweetheart-tweety-bird/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/hI7iij9vFrU/maxresdefault.jpg" alt="LEGO Seasonal 40824 Sweetheart Tweety Bird building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/hI7iij9vFrU/maxresdefault.jpg" alt="LEGO Seasonal 40824 Sweetheart Tweety Bird building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40824</div>
+    <div class="set-number-row"><div class="set-number">40824</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Sweetheart Tweety Bird</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40707-seasonal-year-of-the-snake/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/mUG58RNWIsg/maxresdefault.jpg" alt="LEGO Seasonal 40707 Year of the Snake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mUG58RNWIsg/maxresdefault.jpg" alt="LEGO Seasonal 40707 Year of the Snake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40707</div>
+    <div class="set-number-row"><div class="set-number">40707</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Year of the Snake</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80117-seasonal-good-fortune/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/uR3jS9XgGXY/maxresdefault.jpg" alt="LEGO Seasonal 80117 Good Fortune building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/uR3jS9XgGXY/maxresdefault.jpg" alt="LEGO Seasonal 80117 Good Fortune building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80117</div>
+    <div class="set-number-row"><div class="set-number">80117</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Good Fortune</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40813-seasonal-lucky-cat/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/OLW4BTJy58Q/maxresdefault.jpg" alt="LEGO Seasonal 40813 Lucky Cat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OLW4BTJy58Q/maxresdefault.jpg" alt="LEGO Seasonal 40813 Lucky Cat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40813</div>
+    <div class="set-number-row"><div class="set-number">40813</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lucky Cat</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80116-seasonal-trotting-lantern/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/LJ1ByDW20eg/maxresdefault.jpg" alt="LEGO Seasonal 80116 Trotting Lantern building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/LJ1ByDW20eg/maxresdefault.jpg" alt="LEGO Seasonal 80116 Trotting Lantern building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80116</div>
+    <div class="set-number-row"><div class="set-number">80116</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Trotting Lantern</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40701-seasonal-ballerina-nutcracker-scene/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/uHXYG5XR30s/maxresdefault.jpg" alt="LEGO Seasonal 40701 Ballerina &amp; Nutcracker Scene building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/uHXYG5XR30s/maxresdefault.jpg" alt="LEGO Seasonal 40701 Ballerina &amp; Nutcracker Scene building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40701</div>
+    <div class="set-number-row"><div class="set-number">40701</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ballerina &amp; Nutcracker Scene</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40746-seasonal-santa-s-delivery-truck/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/_UxfEvZtUJs/maxresdefault.jpg" alt="LEGO Seasonal 40746 Santa&#x27;s Delivery Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_UxfEvZtUJs/maxresdefault.jpg" alt="LEGO Seasonal 40746 Santa&#x27;s Delivery Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40746</div>
+    <div class="set-number-row"><div class="set-number">40746</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Santa&#x27;s Delivery Truck</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40743-seasonal-christmas-table-decoration/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/KfcTZ0zdqSE/maxresdefault.jpg" alt="LEGO Seasonal 40743 Christmas Table Decoration building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/KfcTZ0zdqSE/maxresdefault.jpg" alt="LEGO Seasonal 40743 Christmas Table Decoration building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40743</div>
+    <div class="set-number-row"><div class="set-number">40743</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Christmas Table Decoration</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40744-seasonal-christmas-ornament-selection/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/omXHgB_pzmk/maxresdefault.jpg" alt="LEGO Seasonal 40744 Christmas Ornament Selection building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/omXHgB_pzmk/maxresdefault.jpg" alt="LEGO Seasonal 40744 Christmas Ornament Selection building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40744</div>
+    <div class="set-number-row"><div class="set-number">40744</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Christmas Ornament Selection</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40721-seasonal-halloween-barn/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/y_4DgVqxe9A/maxresdefault.jpg" alt="LEGO Seasonal 40721 Halloween Barn building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/y_4DgVqxe9A/maxresdefault.jpg" alt="LEGO Seasonal 40721 Halloween Barn building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40721</div>
+    <div class="set-number-row"><div class="set-number">40721</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Halloween Barn</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40682-seasonal-spring-garden-house/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/osnP8_tNXa4/maxresdefault.jpg" alt="LEGO Seasonal 40682 Spring Garden House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/osnP8_tNXa4/maxresdefault.jpg" alt="LEGO Seasonal 40682 Spring Garden House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40682</div>
+    <div class="set-number-row"><div class="set-number">40682</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Spring Garden House</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40679-seasonal-love-gift-box/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/sd8VhWXrSGk/maxresdefault.jpg" alt="LEGO Seasonal 40679 Love Gift Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/sd8VhWXrSGk/maxresdefault.jpg" alt="LEGO Seasonal 40679 Love Gift Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40679</div>
+    <div class="set-number-row"><div class="set-number">40679</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Love Gift Box</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40709-seasonal-spring-animal-playground/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/qGKE69GEseI/maxresdefault.jpg" alt="LEGO Seasonal 40709 Spring Animal Playground building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/qGKE69GEseI/maxresdefault.jpg" alt="LEGO Seasonal 40709 Spring Animal Playground building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40709</div>
+    <div class="set-number-row"><div class="set-number">40709</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Spring Animal Playground</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40678-seasonal-festival-calendar/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/eCAwyuVDb_Y/maxresdefault.jpg" alt="LEGO Seasonal 40678 Festival Calendar building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/eCAwyuVDb_Y/maxresdefault.jpg" alt="LEGO Seasonal 40678 Festival Calendar building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40678</div>
+    <div class="set-number-row"><div class="set-number">40678</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Festival Calendar</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40711-seasonal-hedgehog-picnic-date/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/3SJiHu3QQ9E/maxresdefault.jpg" alt="LEGO Seasonal 40711 Hedgehog Picnic Date building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3SJiHu3QQ9E/maxresdefault.jpg" alt="LEGO Seasonal 40711 Hedgehog Picnic Date building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40711</div>
+    <div class="set-number-row"><div class="set-number">40711</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hedgehog Picnic Date</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40640-seasonal-nutcracker/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0CdWHBPjbiE/maxresdefault.jpg" alt="LEGO Seasonal 40640 LEGO Nutcracker building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0CdWHBPjbiE/maxresdefault.jpg" alt="LEGO Seasonal 40640 LEGO Nutcracker building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40640</div>
+    <div class="set-number-row"><div class="set-number">40640</div><span class="badge-new">NEW</span></div>
     <div class="set-name">LEGO Nutcracker</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40642-seasonal-gingerbread-ornaments/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/shlJcFqq8GM/maxresdefault.jpg" alt="LEGO Seasonal 40642 Gingerbread Ornaments building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/shlJcFqq8GM/maxresdefault.jpg" alt="LEGO Seasonal 40642 Gingerbread Ornaments building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40642</div>
+    <div class="set-number-row"><div class="set-number">40642</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Gingerbread Ornaments</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40587-seasonal-easter-basket/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/DjaMWkKx7QQ/maxresdefault.jpg" alt="LEGO Seasonal 40587 Easter Basket building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DjaMWkKx7QQ/maxresdefault.jpg" alt="LEGO Seasonal 40587 Easter Basket building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40587</div>
+    <div class="set-number-row"><div class="set-number">40587</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Easter Basket</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40641-seasonal-birthday-cake/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/q41cNKI-yQ8/maxresdefault.jpg" alt="LEGO Seasonal 40641 Birthday Cake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/q41cNKI-yQ8/maxresdefault.jpg" alt="LEGO Seasonal 40641 Birthday Cake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40641</div>
+    <div class="set-number-row"><div class="set-number">40641</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Birthday Cake</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40643-seasonal-jade-rabbit/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/JttQ1ZB31iE/maxresdefault.jpg" alt="LEGO Seasonal 40643 Jade Rabbit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/JttQ1ZB31iE/maxresdefault.jpg" alt="LEGO Seasonal 40643 Jade Rabbit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40643</div>
+    <div class="set-number-row"><div class="set-number">40643</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Jade Rabbit</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40639-seasonal-bird-s-nest/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/-esrR4993i4/maxresdefault.jpg" alt="LEGO Seasonal 40639 Bird&#x27;s Nest building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-esrR4993i4/maxresdefault.jpg" alt="LEGO Seasonal 40639 Bird&#x27;s Nest building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40639</div>
+    <div class="set-number-row"><div class="set-number">40639</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Bird&#x27;s Nest</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80110-seasonal-lunar-new-year-display/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/uks_Q2RdZJY/maxresdefault.jpg" alt="LEGO Seasonal 80110 Lunar New Year Display building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/uks_Q2RdZJY/maxresdefault.jpg" alt="LEGO Seasonal 80110 Lunar New Year Display building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80110</div>
+    <div class="set-number-row"><div class="set-number">80110</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lunar New Year Display</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80111-seasonal-lunar-new-year-parade/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/yMGgeErS41M/maxresdefault.jpg" alt="LEGO Seasonal 80111 Lunar New Year Parade building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yMGgeErS41M/maxresdefault.jpg" alt="LEGO Seasonal 80111 Lunar New Year Parade building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80111</div>
+    <div class="set-number-row"><div class="set-number">80111</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lunar New Year Parade</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40648-seasonal-money-tree/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/qbc9SdreGHU/maxresdefault.jpg" alt="LEGO Seasonal 40648 Money Tree building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/qbc9SdreGHU/maxresdefault.jpg" alt="LEGO Seasonal 40648 Money Tree building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40648</div>
+    <div class="set-number-row"><div class="set-number">40648</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Money Tree</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40644-seasonal-pi-ata/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/i4pj0KAbdA0/maxresdefault.jpg" alt="LEGO Seasonal 40644 Piñata building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/i4pj0KAbdA0/maxresdefault.jpg" alt="LEGO Seasonal 40644 Piñata building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40644</div>
+    <div class="set-number-row"><div class="set-number">40644</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Piñata</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40584-seasonal-birthday-diorama/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/uRhKPAGC-Og/maxresdefault.jpg" alt="LEGO Seasonal 40584 Birthday Diorama building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/uRhKPAGC-Og/maxresdefault.jpg" alt="LEGO Seasonal 40584 Birthday Diorama building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40584</div>
+    <div class="set-number-row"><div class="set-number">40584</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Birthday Diorama</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40575-seasonal-year-of-the-rabbit/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/xPkrtTKqCYQ/maxresdefault.jpg" alt="LEGO Seasonal 40575 Year of the Rabbit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xPkrtTKqCYQ/maxresdefault.jpg" alt="LEGO Seasonal 40575 Year of the Rabbit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40575</div>
+    <div class="set-number-row"><div class="set-number">40575</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Year of the Rabbit</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40638-seasonal-heart-ornament/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/nHGYZx8Jz8c/maxresdefault.jpg" alt="LEGO Seasonal 40638 Heart Ornament building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nHGYZx8Jz8c/maxresdefault.jpg" alt="LEGO Seasonal 40638 Heart Ornament building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40638</div>
+    <div class="set-number-row"><div class="set-number">40638</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Heart Ornament</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40484-seasonal-santa-s-front-yard/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/NVSIY2EqXxs/maxresdefault.jpg" alt="LEGO Seasonal 40484 Santa&#x27;s Front Yard building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/NVSIY2EqXxs/maxresdefault.jpg" alt="LEGO Seasonal 40484 Santa&#x27;s Front Yard building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40484</div>
+    <div class="set-number-row"><div class="set-number">40484</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Santa&#x27;s Front Yard</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40499-seasonal-santa-s-sleigh/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/IqVwNl3FR3k/maxresdefault.jpg" alt="LEGO Seasonal 40499 Santa&#x27;s Sleigh building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IqVwNl3FR3k/maxresdefault.jpg" alt="LEGO Seasonal 40499 Santa&#x27;s Sleigh building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40499</div>
+    <div class="set-number-row"><div class="set-number">40499</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Santa&#x27;s Sleigh</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40494-seasonal-polar-bear-gift-pack/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/4w1_e-c5FlE/maxresdefault.jpg" alt="LEGO Seasonal 40494 Polar Bear &amp; Gift Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4w1_e-c5FlE/maxresdefault.jpg" alt="LEGO Seasonal 40494 Polar Bear &amp; Gift Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40494</div>
+    <div class="set-number-row"><div class="set-number">40494</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Polar Bear &amp; Gift Pack</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40498-seasonal-christmas-penguin/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/jiF0oq5pyno/maxresdefault.jpg" alt="LEGO Seasonal 40498 Christmas Penguin building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jiF0oq5pyno/maxresdefault.jpg" alt="LEGO Seasonal 40498 Christmas Penguin building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40498</div>
+    <div class="set-number-row"><div class="set-number">40498</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Christmas Penguin</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40497-seasonal-halloween-owl/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/si_TAR1DZMU/maxresdefault.jpg" alt="LEGO Seasonal 40497 Halloween Owl building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/si_TAR1DZMU/maxresdefault.jpg" alt="LEGO Seasonal 40497 Halloween Owl building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40497</div>
+    <div class="set-number-row"><div class="set-number">40497</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Halloween Owl</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40493-seasonal-spider-haunted-house-pack/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/RrYF1m9-uYM/maxresdefault.jpg" alt="LEGO Seasonal 40493 Spider &amp; Haunted House Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/RrYF1m9-uYM/maxresdefault.jpg" alt="LEGO Seasonal 40493 Spider &amp; Haunted House Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40493</div>
+    <div class="set-number-row"><div class="set-number">40493</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Spider &amp; Haunted House Pack</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40449-seasonal-easter-bunny-s-carrot-house/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/vEJu89kBTbM/maxresdefault.jpg" alt="LEGO Seasonal 40449 Easter Bunny&#x27;s Carrot House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vEJu89kBTbM/maxresdefault.jpg" alt="LEGO Seasonal 40449 Easter Bunny&#x27;s Carrot House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40449</div>
+    <div class="set-number-row"><div class="set-number">40449</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Easter Bunny&#x27;s Carrot House</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40417-seasonal-year-of-the-ox/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/R2KYYjLz6vQ/maxresdefault.jpg" alt="LEGO Seasonal 40417 Year of the Ox building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/R2KYYjLz6vQ/maxresdefault.jpg" alt="LEGO Seasonal 40417 Year of the Ox building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40417</div>
+    <div class="set-number-row"><div class="set-number">40417</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Year of the Ox</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40463-seasonal-easter-bunny/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/f3AvkapOH7g/maxresdefault.jpg" alt="LEGO Seasonal 40463 Easter Bunny building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/f3AvkapOH7g/maxresdefault.jpg" alt="LEGO Seasonal 40463 Easter Bunny building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40463</div>
+    <div class="set-number-row"><div class="set-number">40463</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Easter Bunny</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40416-seasonal-ice-skating-rink-christmas/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/bZMmz8dadSg/maxresdefault.jpg" alt="LEGO 40416 Seasonal - Ice Skating Rink - Christmas building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/bZMmz8dadSg/maxresdefault.jpg" alt="LEGO 40416 Seasonal - Ice Skating Rink - Christmas building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40416</div>
+    <div class="set-number-row"><div class="set-number">40416</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Seasonal - Ice Skating Rink - Christmas</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40410-seasonal-charles-dickens-tribute-christmas/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/xEoDEEM5aMo/maxresdefault.jpg" alt="LEGO 40410 Seasonal - Charles Dickens Tribute - Christmas building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xEoDEEM5aMo/maxresdefault.jpg" alt="LEGO 40410 Seasonal - Charles Dickens Tribute - Christmas building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40410</div>
+    <div class="set-number-row"><div class="set-number">40410</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Seasonal - Charles Dickens Tribute - Christmas</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80106-seasonal-story-of-nian/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/4syJDBI58IY/maxresdefault.jpg" alt="LEGO Seasonal 80106 Story of Nian building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4syJDBI58IY/maxresdefault.jpg" alt="LEGO Seasonal 80106 Story of Nian building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80106</div>
+    <div class="set-number-row"><div class="set-number">80106</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Story of Nian</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80107-seasonal-spring-lantern-festival/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/nrXMV4sjl_Y/maxresdefault.jpg" alt="LEGO Seasonal 80107 Spring Lantern Festival building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nrXMV4sjl_Y/maxresdefault.jpg" alt="LEGO Seasonal 80107 Spring Lantern Festival building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80107</div>
+    <div class="set-number-row"><div class="set-number">80107</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Spring Lantern Festival</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO Seasonal Instructions</h2><p>19 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/40871-seasonal-gift-box-celebration/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40871 Gift Box Celebration building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40871 Gift Box Celebration building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40871</div>
+    <div class="set-number-row"><div class="set-number">40871</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Gift Box Celebration</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40905-seasonal-birthday-cupcake/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40905 Birthday Cupcake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40905 Birthday Cupcake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40905</div>
+    <div class="set-number-row"><div class="set-number">40905</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Birthday Cupcake</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40958-seasonal-christmas-stocking/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40958 Christmas Stocking building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40958 Christmas Stocking building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40958</div>
+    <div class="set-number-row"><div class="set-number">40958</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Christmas Stocking</div>
     <div class="set-meta">Seasonal • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66801-seasonal-springtime-animal-play-pack/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 66801 Springtime Animal Play Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 66801 Springtime Animal Play Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">66801</div>
+    <div class="set-number-row"><div class="set-number">66801</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Springtime Animal Play Pack</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/5009616-seasonal-turkey-time/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 5009616 Turkey Time Build building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 5009616 Turkey Time Build building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">5009616</div>
+    <div class="set-number-row"><div class="set-number">5009616</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Turkey Time Build</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6602967-seasonal-holiday-snowman/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6602967 Holiday Snowman building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6602967 Holiday Snowman building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6602967</div>
+    <div class="set-number-row"><div class="set-number">6602967</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Holiday Snowman</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6606295-seasonal-holiday-train/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6606295 Holiday Train building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6606295 Holiday Train building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6606295</div>
+    <div class="set-number-row"><div class="set-number">6606295</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Holiday Train</div>
     <div class="set-meta">Seasonal • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40611-seasonal-year-of-the-dragon/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40611 Year of the Dragon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40611 Year of the Dragon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40611</div>
+    <div class="set-number-row"><div class="set-number">40611</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Year of the Dragon</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80112-seasonal-auspicious-dragon/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 80112 Auspicious Dragon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 80112 Auspicious Dragon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80112</div>
+    <div class="set-number-row"><div class="set-number">80112</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Auspicious Dragon</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/80113-seasonal-family-reunion-celebration/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 80113 Family Reunion Celebration building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 80113 Family Reunion Celebration building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">80113</div>
+    <div class="set-number-row"><div class="set-number">80113</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Family Reunion Celebration</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6509762-seasonal-birthday-cake/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6509762 Birthday Cake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6509762 Birthday Cake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6509762</div>
+    <div class="set-number-row"><div class="set-number">6509762</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Birthday Cake</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6550806-seasonal-gingerbread-lane/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6550806 Gingerbread Lane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6550806 Gingerbread Lane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6550806</div>
+    <div class="set-number-row"><div class="set-number">6550806</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Gingerbread Lane</div>
     <div class="set-meta">Seasonal • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40603-seasonal-wintertime-carriage-ride/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40603 Wintertime Carriage Ride building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40603 Wintertime Carriage Ride building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40603</div>
+    <div class="set-number-row"><div class="set-number">40603</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Wintertime Carriage Ride</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40604-seasonal-christmas-decor-set/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40604 Christmas Decor Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40604 Christmas Decor Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40604</div>
+    <div class="set-number-row"><div class="set-number">40604</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Christmas Decor Set</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6444659-seasonal-god-of-fortune/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6444659 God of Fortune building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6444659 God of Fortune building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6444659</div>
+    <div class="set-number-row"><div class="set-number">6444659</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">God of Fortune</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6490363-seasonal-by-the-fireplace/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6490363 By the Fireplace building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6490363 By the Fireplace building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6490363</div>
+    <div class="set-number-row"><div class="set-number">6490363</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">By the Fireplace</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/bnjol-seasonal-jack-o-lantern/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal BNJOL Jack-o&#x27;-lantern building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal BNJOL Jack-o&#x27;-lantern building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">BNJOL</div>
+    <div class="set-number-row"><div class="set-number">BNJOL</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Jack-o&#x27;-lantern</div>
     <div class="set-meta">Seasonal • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40489-seasonal-mr-and-mrs-claus-living-room/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40489 Mr. and Mrs. Claus&#x27; Living Room building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 40489 Mr. and Mrs. Claus&#x27; Living Room building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40489</div>
+    <div class="set-number-row"><div class="set-number">40489</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Mr. and Mrs. Claus&#x27; Living Room</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6412186-seasonal-egg-and-chick/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6412186 Egg and Chick building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Seasonal 6412186 Egg and Chick building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6412186</div>
+    <div class="set-number-row"><div class="set-number">6412186</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Egg and Chick</div>
     <div class="set-meta">Seasonal • 2021</div>
   </div>

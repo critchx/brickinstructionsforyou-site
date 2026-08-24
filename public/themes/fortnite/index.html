@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,135 +159,120 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><strong>Fortnite</strong></nav><div class="results-header"><div><h2>LEGO Fortnite Instructions</h2><p>15 LEGO instruction pages found in this theme.</p></div><a class="btn-outline" href="/themes/">ALL THEMES</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Fortnite by year</h3><nav aria-label="Browse LEGO Fortnite by year" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2026/fortnite/">LEGO Fortnite 2026</a><a class="btn-outline" href="/2025/fortnite/">LEGO Fortnite 2025</a><a class="btn-outline" href="/2024/fortnite/">LEGO Fortnite 2024</a><a class="btn-outline" href="/2023/fortnite/">LEGO Fortnite 2023</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/77081-fortnite-kit/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/8CZSTvMKHQY/maxresdefault.jpg" alt="LEGO Fortnite 77081 KIT building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8CZSTvMKHQY/maxresdefault.jpg" alt="LEGO Fortnite 77081 KIT building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">77081</div>
+    <div class="set-number-row"><div class="set-number">77081</div><span class="badge-new">NEW</span></div>
     <div class="set-name">KIT</div>
     <div class="set-meta">Fortnite • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77080-fortnite-supply-drop/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/fEzPPnGAKpM/maxresdefault.jpg" alt="LEGO Fortnite 77080 Supply Drop building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/fEzPPnGAKpM/maxresdefault.jpg" alt="LEGO Fortnite 77080 Supply Drop building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">77080</div>
+    <div class="set-number-row"><div class="set-number">77080</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Supply Drop</div>
     <div class="set-meta">Fortnite • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77079-fortnite-tomatohead/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/QMU3VPi3Gbs/maxresdefault.jpg" alt="LEGO Fortnite 77079 Tomatohead building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QMU3VPi3Gbs/maxresdefault.jpg" alt="LEGO Fortnite 77079 Tomatohead building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">77079</div>
+    <div class="set-number-row"><div class="set-number">77079</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Tomatohead</div>
     <div class="set-meta">Fortnite • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77082-fortnite-rave-cave/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/GI9uoJ_McBY/maxresdefault.jpg" alt="LEGO Fortnite 77082 Rave Cave building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/GI9uoJ_McBY/maxresdefault.jpg" alt="LEGO Fortnite 77082 Rave Cave building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">77082</div>
+    <div class="set-number-row"><div class="set-number">77082</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Rave Cave</div>
     <div class="set-meta">Fortnite • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/eg00166-fortnite-ninjago-ninjago-fortnite-nunchucks/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/zVp5Ifmc_34/maxresdefault.jpg" alt="LEGO EG00166 Ninjago - Ninjago Fortnite Nunchucks building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zVp5Ifmc_34/maxresdefault.jpg" alt="LEGO EG00166 Ninjago - Ninjago Fortnite Nunchucks building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">EG00166</div>
+    <div class="set-number-row"><div class="set-number">EG00166</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ninjago - Ninjago Fortnite Nunchucks</div>
     <div class="set-meta">Fortnite • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77078-fortnite-mecha-team-leader/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/zkvXQe0eDWE/maxresdefault.jpg" alt="LEGO Fortnite 77078 Mecha Team Leader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zkvXQe0eDWE/maxresdefault.jpg" alt="LEGO Fortnite 77078 Mecha Team Leader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">77078</div>
+    <div class="set-number-row"><div class="set-number">77078</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Mecha Team Leader</div>
     <div class="set-meta">Fortnite • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77076-fortnite-durrr-burger-restaurant/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/bCy2EynmjyU/maxresdefault.jpg" alt="LEGO Fortnite 77076 Durrr Burger Restaurant building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/bCy2EynmjyU/maxresdefault.jpg" alt="LEGO Fortnite 77076 Durrr Burger Restaurant building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">77076</div>
+    <div class="set-number-row"><div class="set-number">77076</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Durrr Burger Restaurant</div>
     <div class="set-meta">Fortnite • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77075-fortnite-peely-sparkplug-s-camp/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/4pcjDsUnY00/maxresdefault.jpg" alt="LEGO Fortnite 77075 Peely &amp; Sparkplug&#x27;s Camp building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4pcjDsUnY00/maxresdefault.jpg" alt="LEGO Fortnite 77075 Peely &amp; Sparkplug&#x27;s Camp building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">77075</div>
+    <div class="set-number-row"><div class="set-number">77075</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Peely &amp; Sparkplug&#x27;s Camp</div>
     <div class="set-meta">Fortnite • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77077-fortnite-klombo/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/aNx_Rv-7cnI/maxresdefault.jpg" alt="LEGO Fortnite 77077 Klombo building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/aNx_Rv-7cnI/maxresdefault.jpg" alt="LEGO Fortnite 77077 Klombo building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">77077</div>
+    <div class="set-number-row"><div class="set-number">77077</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Klombo</div>
     <div class="set-meta">Fortnite • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77072-fortnite-peely-bone/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/D8los9H8KXQ/maxresdefault.jpg" alt="LEGO Fortnite 77072 Peely Bone building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/D8los9H8KXQ/maxresdefault.jpg" alt="LEGO Fortnite 77072 Peely Bone building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">77072</div>
+    <div class="set-number-row"><div class="set-number">77072</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Peely Bone</div>
     <div class="set-meta">Fortnite • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77071-fortnite-supply-llama/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/KBabMzl7sPk/maxresdefault.jpg" alt="LEGO Fortnite 77071 Supply Llama building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/KBabMzl7sPk/maxresdefault.jpg" alt="LEGO Fortnite 77071 Supply Llama building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">77071</div>
+    <div class="set-number-row"><div class="set-number">77071</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Supply Llama</div>
     <div class="set-meta">Fortnite • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77073-fortnite-battle-bus/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/PuuNtdrfjFk/maxresdefault.jpg" alt="LEGO Fortnite 77073 Battle Bus building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PuuNtdrfjFk/maxresdefault.jpg" alt="LEGO Fortnite 77073 Battle Bus building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">77073</div>
+    <div class="set-number-row"><div class="set-number">77073</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Battle Bus</div>
     <div class="set-meta">Fortnite • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77070-fortnite-durrr-burger/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/c7zYCxJJytk/maxresdefault.jpg" alt="LEGO Fortnite 77070 Durrr Burger building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/c7zYCxJJytk/maxresdefault.jpg" alt="LEGO Fortnite 77070 Durrr Burger building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">77070</div>
+    <div class="set-number-row"><div class="set-number">77070</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Durrr Burger</div>
     <div class="set-meta">Fortnite • 2024</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO Fortnite Instructions</h2><p>2 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/5008257-fortnite-llama/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Fortnite 5008257 Llama building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Fortnite 5008257 Llama building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">5008257</div>
+    <div class="set-number-row"><div class="set-number">5008257</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Llama</div>
     <div class="set-meta">Fortnite • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/fnik-fortnite-influencer-kit/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO FNIK LEGO Fortnite Influencer Kit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO FNIK LEGO Fortnite Influencer Kit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">FNIK</div>
+    <div class="set-number-row"><div class="set-number">FNIK</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">LEGO Fortnite Influencer Kit</div>
     <div class="set-meta">Fortnite • 2023</div>
   </div>

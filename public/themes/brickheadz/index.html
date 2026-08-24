@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,900 +159,800 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><strong>BrickHeadz</strong></nav><div class="results-header"><div><h2>LEGO BrickHeadz Instructions</h2><p>100 LEGO instruction pages found in this theme.</p></div><a class="btn-outline" href="/themes/">ALL THEMES</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO BrickHeadz by year</h3><nav aria-label="Browse LEGO BrickHeadz by year" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2026/brickheadz/">LEGO BrickHeadz 2026</a><a class="btn-outline" href="/2025/brickheadz/">LEGO BrickHeadz 2025</a><a class="btn-outline" href="/2024/brickheadz/">LEGO BrickHeadz 2024</a><a class="btn-outline" href="/2023/brickheadz/">LEGO BrickHeadz 2023</a><a class="btn-outline" href="/2022/brickheadz/">LEGO BrickHeadz 2022</a><a class="btn-outline" href="/2021/brickheadz/">LEGO BrickHeadz 2021</a></nav></section><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO BrickHeadz subthemes</h3><nav aria-label="Browse LEGO BrickHeadz subthemes" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/brickheadz/disney/">LEGO Disney Instructions</a><a class="btn-outline" href="/themes/brickheadz/fortnite/">LEGO Fortnite Instructions</a><a class="btn-outline" href="/themes/brickheadz/marvel-super-heroes/">LEGO Marvel Super Heroes Instructions</a><a class="btn-outline" href="/themes/brickheadz/minecraft/">LEGO Minecraft Instructions</a><a class="btn-outline" href="/themes/brickheadz/pets/">LEGO Pets Instructions</a><a class="btn-outline" href="/themes/brickheadz/seasonal/">LEGO Seasonal Instructions</a><a class="btn-outline" href="/themes/brickheadz/sonic-the-hedgehog/">LEGO Sonic the Hedgehog Instructions</a><a class="btn-outline" href="/themes/brickheadz/star-wars/">LEGO Star Wars Instructions</a><a class="btn-outline" href="/themes/brickheadz/stranger-things/">LEGO Stranger Things Instructions</a><a class="btn-outline" href="/themes/brickheadz/the-lord-of-the-rings/">LEGO The Lord of the Rings Instructions</a><a class="btn-outline" href="/themes/brickheadz/transformers/">LEGO Transformers Instructions</a><a class="btn-outline" href="/themes/brickheadz/wizarding-world/">LEGO Wizarding World Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/40923-brickheadz-shrek-donkey-gingy-figures/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/dXWzdIabxGs/maxresdefault.jpg" alt="LEGO BrickHeadz 40923 Shrek, Donkey &amp; Gingy Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dXWzdIabxGs/maxresdefault.jpg" alt="LEGO BrickHeadz 40923 Shrek, Donkey &amp; Gingy Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40923</div>
+    <div class="set-number-row"><div class="set-number">40923</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Shrek, Donkey &amp; Gingy Figures</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40860-brickheadz-toy-story/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/U2xtwsj_jp8/maxresdefault.jpg" alt="LEGO BrickHeadz 40860 Toy Story building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/U2xtwsj_jp8/maxresdefault.jpg" alt="LEGO BrickHeadz 40860 Toy Story building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40860</div>
+    <div class="set-number-row"><div class="set-number">40860</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Toy Story</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40924-brickheadz-megatron-robot-vehicle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/nNWGaZ7E6pk/maxresdefault.jpg" alt="LEGO BrickHeadz 40924 Megatron Robot &amp; Vehicle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nNWGaZ7E6pk/maxresdefault.jpg" alt="LEGO BrickHeadz 40924 Megatron Robot &amp; Vehicle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40924</div>
+    <div class="set-number-row"><div class="set-number">40924</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Megatron Robot &amp; Vehicle</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40925-brickheadz-alice-in-wonderland/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/JcM3m_vZ8Cs/maxresdefault.jpg" alt="LEGO BrickHeadz 40925 Alice in Wonderland building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/JcM3m_vZ8Cs/maxresdefault.jpg" alt="LEGO BrickHeadz 40925 Alice in Wonderland building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40925</div>
+    <div class="set-number-row"><div class="set-number">40925</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Alice in Wonderland</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40560-brickheadz-professors-of-hogwarts/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/N3NnoSBJ-0I/maxresdefault.jpg" alt="LEGO BrickHeadz 40560 Professors of Hogwarts building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/N3NnoSBJ-0I/maxresdefault.jpg" alt="LEGO BrickHeadz 40560 Professors of Hogwarts building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40560</div>
+    <div class="set-number-row"><div class="set-number">40560</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Professors of Hogwarts</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40559-brickheadz-road-runner-wile-e-coyote/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/o2Gx_orSy6M/maxresdefault.jpg" alt="LEGO BrickHeadz 40559 Road Runner &amp; Wile E. Coyote building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/o2Gx_orSy6M/maxresdefault.jpg" alt="LEGO BrickHeadz 40559 Road Runner &amp; Wile E. Coyote building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40559</div>
+    <div class="set-number-row"><div class="set-number">40559</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Road Runner &amp; Wile E. Coyote</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40554-brickheadz-jake-sully-his-avatar/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/KKaYtpl3_lc/maxresdefault.jpg" alt="LEGO BrickHeadz 40554 Jake Sully &amp; his Avatar building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/KKaYtpl3_lc/maxresdefault.jpg" alt="LEGO BrickHeadz 40554 Jake Sully &amp; his Avatar building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40554</div>
+    <div class="set-number-row"><div class="set-number">40554</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Jake Sully &amp; his Avatar</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40553-brickheadz-woody-and-bo-peep/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/6iSg5w68S_M/maxresdefault.jpg" alt="LEGO BrickHeadz 40553 Woody and Bo Peep building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/6iSg5w68S_M/maxresdefault.jpg" alt="LEGO BrickHeadz 40553 Woody and Bo Peep building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40553</div>
+    <div class="set-number-row"><div class="set-number">40553</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Woody and Bo Peep</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40552-brickheadz-buzz-lightyear/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ey1_IfDZkeI/maxresdefault.jpg" alt="LEGO BrickHeadz 40552 Buzz Lightyear building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ey1_IfDZkeI/maxresdefault.jpg" alt="LEGO BrickHeadz 40552 Buzz Lightyear building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40552</div>
+    <div class="set-number-row"><div class="set-number">40552</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Buzz Lightyear</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40550-brickheadz-chip-dale/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/xuCI5-1Y-C0/maxresdefault.jpg" alt="LEGO BrickHeadz 40550 Chip &amp; Dale building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xuCI5-1Y-C0/maxresdefault.jpg" alt="LEGO BrickHeadz 40550 Chip &amp; Dale building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40550</div>
+    <div class="set-number-row"><div class="set-number">40550</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Chip &amp; Dale</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40549-brickheadz-demogorgon-eleven/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/3MoUsun7JF4/maxresdefault.jpg" alt="LEGO BrickHeadz 40549 Demogorgon &amp; Eleven building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3MoUsun7JF4/maxresdefault.jpg" alt="LEGO BrickHeadz 40549 Demogorgon &amp; Eleven building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40549</div>
+    <div class="set-number-row"><div class="set-number">40549</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Demogorgon &amp; Eleven</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40548-brickheadz-spice-girls-tribute/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/pRtXF5AfSfA/maxresdefault.jpg" alt="LEGO BrickHeadz 40548 Spice Girls Tribute building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pRtXF5AfSfA/maxresdefault.jpg" alt="LEGO BrickHeadz 40548 Spice Girls Tribute building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40548</div>
+    <div class="set-number-row"><div class="set-number">40548</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Spice Girls Tribute</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40547-brickheadz-obi-wan-kenobi-darth-vader/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/JD4RnkN3aYY/maxresdefault.jpg" alt="LEGO BrickHeadz 40547 Obi-Wan Kenobi &amp; Darth Vader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/JD4RnkN3aYY/maxresdefault.jpg" alt="LEGO BrickHeadz 40547 Obi-Wan Kenobi &amp; Darth Vader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40547</div>
+    <div class="set-number-row"><div class="set-number">40547</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Obi-Wan Kenobi &amp; Darth Vader</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40546-brickheadz-poodles/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/jtNrkubc0u0/maxresdefault.jpg" alt="LEGO BrickHeadz 40546 Poodles building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jtNrkubc0u0/maxresdefault.jpg" alt="LEGO BrickHeadz 40546 Poodles building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40546</div>
+    <div class="set-number-row"><div class="set-number">40546</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Poodles</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40545-brickheadz-koi-fish/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Kucw9lEyHoM/maxresdefault.jpg" alt="LEGO BrickHeadz 40545 Koi Fish building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Kucw9lEyHoM/maxresdefault.jpg" alt="LEGO BrickHeadz 40545 Koi Fish building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40545</div>
+    <div class="set-number-row"><div class="set-number">40545</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Koi Fish</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40544-brickheadz-french-bulldog/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/B-zkYWwm9Iw/maxresdefault.jpg" alt="LEGO BrickHeadz 40544 French Bulldog building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/B-zkYWwm9Iw/maxresdefault.jpg" alt="LEGO BrickHeadz 40544 French Bulldog building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40544</div>
+    <div class="set-number-row"><div class="set-number">40544</div><span class="badge-new">NEW</span></div>
     <div class="set-name">French Bulldog</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40543-brickheadz-st-bernard/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/MlYAuDIhrK8/maxresdefault.jpg" alt="LEGO BrickHeadz 40543 St. Bernard building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/MlYAuDIhrK8/maxresdefault.jpg" alt="LEGO BrickHeadz 40543 St. Bernard building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40543</div>
+    <div class="set-number-row"><div class="set-number">40543</div><span class="badge-new">NEW</span></div>
     <div class="set-name">St. Bernard</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40542-brickheadz-fc-barcelona-go-brick-me/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/tRLNok2sxH4/maxresdefault.jpg" alt="LEGO BrickHeadz 40542 FC Barcelona Go Brick Me building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/tRLNok2sxH4/maxresdefault.jpg" alt="LEGO BrickHeadz 40542 FC Barcelona Go Brick Me building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40542</div>
+    <div class="set-number-row"><div class="set-number">40542</div><span class="badge-new">NEW</span></div>
     <div class="set-name">FC Barcelona Go Brick Me</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40541-brickheadz-manchester-united-go-brick-me/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/rgJEHQGxB8Q/maxresdefault.jpg" alt="LEGO BrickHeadz 40541 Manchester United Go Brick Me building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/rgJEHQGxB8Q/maxresdefault.jpg" alt="LEGO BrickHeadz 40541 Manchester United Go Brick Me building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40541</div>
+    <div class="set-number-row"><div class="set-number">40541</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Manchester United Go Brick Me</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40540-brickheadz-lion-dance-guy/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/BEdRKuEga1I/maxresdefault.jpg" alt="LEGO BrickHeadz 40540 Lion Dance Guy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/BEdRKuEga1I/maxresdefault.jpg" alt="LEGO BrickHeadz 40540 Lion Dance Guy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40540</div>
+    <div class="set-number-row"><div class="set-number">40540</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lion Dance Guy</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40539-brickheadz-ahsoka-tano/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/zlLJ3GBrvpg/maxresdefault.jpg" alt="LEGO BrickHeadz 40539 Ahsoka Tano building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zlLJ3GBrvpg/maxresdefault.jpg" alt="LEGO BrickHeadz 40539 Ahsoka Tano building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40539</div>
+    <div class="set-number-row"><div class="set-number">40539</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ahsoka Tano</div>
     <div class="set-meta">BrickHeadz • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40628-brickheadz-miles-tails-prower/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/FUrFIfrkyeA/maxresdefault.jpg" alt="LEGO BrickHeadz 40628 Miles &#x27;Tails&#x27; Prower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/FUrFIfrkyeA/maxresdefault.jpg" alt="LEGO BrickHeadz 40628 Miles &#x27;Tails&#x27; Prower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40628</div>
+    <div class="set-number-row"><div class="set-number">40628</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Miles &#x27;Tails&#x27; Prower</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40856-brickheadz-the-mandalorian-and-grogu-allies-villains/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/fN2aAuC4nH0/maxresdefault.jpg" alt="LEGO BrickHeadz 40856 The Mandalorian and Grogu: Allies &amp; Villains building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/fN2aAuC4nH0/maxresdefault.jpg" alt="LEGO BrickHeadz 40856 The Mandalorian and Grogu: Allies &amp; Villains building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40856</div>
+    <div class="set-number-row"><div class="set-number">40856</div><span class="badge-new">NEW</span></div>
     <div class="set-name">The Mandalorian and Grogu: Allies &amp; Villains</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40878-brickheadz-teenage-mutant-ninja-turtles-figures/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ZT1xFe-bosg/maxresdefault.jpg" alt="LEGO BrickHeadz 40878 Teenage Mutant Ninja Turtles Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ZT1xFe-bosg/maxresdefault.jpg" alt="LEGO BrickHeadz 40878 Teenage Mutant Ninja Turtles Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40878</div>
+    <div class="set-number-row"><div class="set-number">40878</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Teenage Mutant Ninja Turtles Figures</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40861-brickheadz-sulley-mike-and-boo-figures/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/7H0uvoEBfyY/maxresdefault.jpg" alt="LEGO BrickHeadz 40861 Sulley, Mike and Boo Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/7H0uvoEBfyY/maxresdefault.jpg" alt="LEGO BrickHeadz 40861 Sulley, Mike and Boo Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40861</div>
+    <div class="set-number-row"><div class="set-number">40861</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Sulley, Mike and Boo Figures</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40881-brickheadz-supply-llama-fishstick/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/dzja7fCMlM8/maxresdefault.jpg" alt="LEGO BrickHeadz 40881 Supply Llama &amp; Fishstick building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dzja7fCMlM8/maxresdefault.jpg" alt="LEGO BrickHeadz 40881 Supply Llama &amp; Fishstick building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40881</div>
+    <div class="set-number-row"><div class="set-number">40881</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Supply Llama &amp; Fishstick</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40910-brickheadz-beef-boss-skye/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/kYeNQw8p5Ew/maxresdefault.jpg" alt="LEGO BrickHeadz 40910 Beef Boss &amp; Skye building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kYeNQw8p5Ew/maxresdefault.jpg" alt="LEGO BrickHeadz 40910 Beef Boss &amp; Skye building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40910</div>
+    <div class="set-number-row"><div class="set-number">40910</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Beef Boss &amp; Skye</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40879-brickheadz-eleven-max-demogorgon-and-holly-figures/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/sLztAR19FDU/maxresdefault.jpg" alt="LEGO BrickHeadz 40879 Eleven, Max, Demogorgon and Holly Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/sLztAR19FDU/maxresdefault.jpg" alt="LEGO BrickHeadz 40879 Eleven, Max, Demogorgon and Holly Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40879</div>
+    <div class="set-number-row"><div class="set-number">40879</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Eleven, Max, Demogorgon and Holly Figures</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40922-brickheadz-angel/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Q9HZ88Wnmm8/maxresdefault.jpg" alt="LEGO BrickHeadz 40922 Angel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Q9HZ88Wnmm8/maxresdefault.jpg" alt="LEGO BrickHeadz 40922 Angel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40922</div>
+    <div class="set-number-row"><div class="set-number">40922</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Angel</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40801-brickheadz-mike-dustin-lucas-and-will-figures/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/46bIPNETjm0/maxresdefault.jpg" alt="LEGO BrickHeadz 40801 Mike, Dustin, Lucas and Will Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/46bIPNETjm0/maxresdefault.jpg" alt="LEGO BrickHeadz 40801 Mike, Dustin, Lucas and Will Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40801</div>
+    <div class="set-number-row"><div class="set-number">40801</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Mike, Dustin, Lucas and Will Figures</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40884-brickheadz-drift-raven/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/DL5Q0jBpudA/maxresdefault.jpg" alt="LEGO BrickHeadz 40884 Drift &amp; Raven building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DL5Q0jBpudA/maxresdefault.jpg" alt="LEGO BrickHeadz 40884 Drift &amp; Raven building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40884</div>
+    <div class="set-number-row"><div class="set-number">40884</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Drift &amp; Raven</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40794-brickheadz-elphaba-glinda-figures/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/BlXeB1yPiKY/maxresdefault.jpg" alt="LEGO BrickHeadz 40794 Elphaba &amp; Glinda Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/BlXeB1yPiKY/maxresdefault.jpg" alt="LEGO BrickHeadz 40794 Elphaba &amp; Glinda Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40794</div>
+    <div class="set-number-row"><div class="set-number">40794</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Elphaba &amp; Glinda Figures</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40802-brickheadz-luna-lovegood-thestral-figures/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/GQ0ku94K8Uk/maxresdefault.jpg" alt="LEGO BrickHeadz 40802 Luna Lovegood &amp; Thestral Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/GQ0ku94K8Uk/maxresdefault.jpg" alt="LEGO BrickHeadz 40802 Luna Lovegood &amp; Thestral Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40802</div>
+    <div class="set-number-row"><div class="set-number">40802</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Luna Lovegood &amp; Thestral Figures</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40791-brickheadz-the-goblet-of-fire-figures/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/wYiiOVUSr-0/maxresdefault.jpg" alt="LEGO BrickHeadz 40791 The Goblet of Fire Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/wYiiOVUSr-0/maxresdefault.jpg" alt="LEGO BrickHeadz 40791 The Goblet of Fire Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40791</div>
+    <div class="set-number-row"><div class="set-number">40791</div><span class="badge-new">NEW</span></div>
     <div class="set-name">The Goblet of Fire Figures</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40760-brickheadz-adventure-peely-cuddle-team-leader/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/aYoLr1w0wN4/maxresdefault.jpg" alt="LEGO BrickHeadz 40760 Adventure Peely &amp; Cuddle Team Leader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/aYoLr1w0wN4/maxresdefault.jpg" alt="LEGO BrickHeadz 40760 Adventure Peely &amp; Cuddle Team Leader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40760</div>
+    <div class="set-number-row"><div class="set-number">40760</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Adventure Peely &amp; Cuddle Team Leader</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40799-brickheadz-monkey-d-luffy-figure/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/7vjyJnz9ZiY/maxresdefault.jpg" alt="LEGO BrickHeadz 40799 Monkey D. Luffy Figure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/7vjyJnz9ZiY/maxresdefault.jpg" alt="LEGO BrickHeadz 40799 Monkey D. Luffy Figure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40799</div>
+    <div class="set-number-row"><div class="set-number">40799</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Monkey D. Luffy Figure</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40800-brickheadz-buggy-the-clown-figure/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ktmtvq1IrlI/maxresdefault.jpg" alt="LEGO BrickHeadz 40800 Buggy the Clown Figure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ktmtvq1IrlI/maxresdefault.jpg" alt="LEGO BrickHeadz 40800 Buggy the Clown Figure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40800</div>
+    <div class="set-number-row"><div class="set-number">40800</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Buggy the Clown Figure</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40795-brickheadz-luke-skywalker-rebel-pilot/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/mOzbjY4LDjM/maxresdefault.jpg" alt="LEGO BrickHeadz 40795 Luke Skywalker (Rebel Pilot) building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mOzbjY4LDjM/maxresdefault.jpg" alt="LEGO BrickHeadz 40795 Luke Skywalker (Rebel Pilot) building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40795</div>
+    <div class="set-number-row"><div class="set-number">40795</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Luke Skywalker (Rebel Pilot)</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40796-brickheadz-revenge-of-the-sith-heroes-villains/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/gr48OF1xKLA/maxresdefault.jpg" alt="LEGO BrickHeadz 40796 Revenge of the Sith Heroes &amp; Villains building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/gr48OF1xKLA/maxresdefault.jpg" alt="LEGO BrickHeadz 40796 Revenge of the Sith Heroes &amp; Villains building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40796</div>
+    <div class="set-number-row"><div class="set-number">40796</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Revenge of the Sith Heroes &amp; Villains</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40798-brickheadz-red-panda-mei/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/LNqxDJvQybE/maxresdefault.jpg" alt="LEGO BrickHeadz 40798 Red Panda Mei building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/LNqxDJvQybE/maxresdefault.jpg" alt="LEGO BrickHeadz 40798 Red Panda Mei building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40798</div>
+    <div class="set-number-row"><div class="set-number">40798</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Red Panda Mei</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40797-brickheadz-eeyore/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/J3w2tYZzwhc/maxresdefault.jpg" alt="LEGO BrickHeadz 40797 Eeyore building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/J3w2tYZzwhc/maxresdefault.jpg" alt="LEGO BrickHeadz 40797 Eeyore building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40797</div>
+    <div class="set-number-row"><div class="set-number">40797</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Eeyore</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40792-brickheadz-dumbo/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/WZOwIGdGO1o/maxresdefault.jpg" alt="LEGO BrickHeadz 40792 Dumbo building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/WZOwIGdGO1o/maxresdefault.jpg" alt="LEGO BrickHeadz 40792 Dumbo building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40792</div>
+    <div class="set-number-row"><div class="set-number">40792</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Dumbo</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40804-brickheadz-bumblebee-robot-vehicle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/3ALA8sJxOF4/maxresdefault.jpg" alt="LEGO BrickHeadz 40804 Bumblebee Robot &amp; Vehicle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3ALA8sJxOF4/maxresdefault.jpg" alt="LEGO BrickHeadz 40804 Bumblebee Robot &amp; Vehicle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40804</div>
+    <div class="set-number-row"><div class="set-number">40804</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Bumblebee Robot &amp; Vehicle</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40803-brickheadz-optimus-prime-robot-vehicle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/-eGb1o3rTXM/maxresdefault.jpg" alt="LEGO BrickHeadz 40803 Optimus Prime Robot &amp; Vehicle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-eGb1o3rTXM/maxresdefault.jpg" alt="LEGO BrickHeadz 40803 Optimus Prime Robot &amp; Vehicle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40803</div>
+    <div class="set-number-row"><div class="set-number">40803</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Optimus Prime Robot &amp; Vehicle</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40793-brickheadz-tom-jerry-figures/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/MeNGYIos440/maxresdefault.jpg" alt="LEGO BrickHeadz 40793 Tom &amp; Jerry Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/MeNGYIos440/maxresdefault.jpg" alt="LEGO BrickHeadz 40793 Tom &amp; Jerry Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40793</div>
+    <div class="set-number-row"><div class="set-number">40793</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Tom &amp; Jerry Figures</div>
     <div class="set-meta">BrickHeadz • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40668-brickheadz-captain-america-red-hulk/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/zlJw-97KhEE/maxresdefault.jpg" alt="LEGO BrickHeadz 40668 Captain America &amp; Red Hulk building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zlJw-97KhEE/maxresdefault.jpg" alt="LEGO BrickHeadz 40668 Captain America &amp; Red Hulk building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40668</div>
+    <div class="set-number-row"><div class="set-number">40668</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Captain America &amp; Red Hulk</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40728-brickheadz-brite-bomber/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Ml4GMO3WQ88/maxresdefault.jpg" alt="LEGO BrickHeadz 40728 Brite Bomber building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Ml4GMO3WQ88/maxresdefault.jpg" alt="LEGO BrickHeadz 40728 Brite Bomber building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40728</div>
+    <div class="set-number-row"><div class="set-number">40728</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Brite Bomber</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40750-brickheadz-wednesday-enid/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/PisvRXC-Qe8/maxresdefault.jpg" alt="LEGO BrickHeadz 40750 Wednesday &amp; Enid building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PisvRXC-Qe8/maxresdefault.jpg" alt="LEGO BrickHeadz 40750 Wednesday &amp; Enid building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40750</div>
+    <div class="set-number-row"><div class="set-number">40750</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Wednesday &amp; Enid</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40753-brickheadz-mirabel-madrigal/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/P3sUQXq0Ybw/maxresdefault.jpg" alt="LEGO BrickHeadz 40753 Mirabel Madrigal building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/P3sUQXq0Ybw/maxresdefault.jpg" alt="LEGO BrickHeadz 40753 Mirabel Madrigal building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40753</div>
+    <div class="set-number-row"><div class="set-number">40753</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Mirabel Madrigal</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40748-brickheadz-batman-8-in-1/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/l3ufBinSiC8/maxresdefault.jpg" alt="LEGO BrickHeadz 40748 Batman 8 in 1 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/l3ufBinSiC8/maxresdefault.jpg" alt="LEGO BrickHeadz 40748 Batman 8 in 1 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40748</div>
+    <div class="set-number-row"><div class="set-number">40748</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Batman 8 in 1</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40669-brickheadz-iron-man-mk5/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Pp4Hc8lAXfM/maxresdefault.jpg" alt="LEGO BrickHeadz 40669 Iron Man MK5 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Pp4Hc8lAXfM/maxresdefault.jpg" alt="LEGO BrickHeadz 40669 Iron Man MK5 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40669</div>
+    <div class="set-number-row"><div class="set-number">40669</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Iron Man MK5</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40752-brickheadz-carl-russell-kevin/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/_sqJJ58-eC8/maxresdefault.jpg" alt="LEGO BrickHeadz 40752 Carl, Russell &amp; Kevin building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_sqJJ58-eC8/maxresdefault.jpg" alt="LEGO BrickHeadz 40752 Carl, Russell &amp; Kevin building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40752</div>
+    <div class="set-number-row"><div class="set-number">40752</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Carl, Russell &amp; Kevin</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40751-brickheadz-las-gimli/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/WWV - pdAO9k/maxresdefault.jpg" alt="LEGO BrickHeadz 40751 Legolas &amp; Gimli building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/WWV - pdAO9k/maxresdefault.jpg" alt="LEGO BrickHeadz 40751 Legolas &amp; Gimli building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40751</div>
+    <div class="set-number-row"><div class="set-number">40751</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Legolas &amp; Gimli</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40749-brickheadz-joy-sadness-anxiety/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/3fB8xZF7SME/maxresdefault.jpg" alt="LEGO BrickHeadz 40749 Joy, Sadness &amp; Anxiety building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3fB8xZF7SME/maxresdefault.jpg" alt="LEGO BrickHeadz 40749 Joy, Sadness &amp; Anxiety building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40749</div>
+    <div class="set-number-row"><div class="set-number">40749</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Joy, Sadness &amp; Anxiety</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40676-brickheadz-the-phantom-menace/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/loyh8Gm1OGQ/maxresdefault.jpg" alt="LEGO BrickHeadz 40676 The Phantom Menace building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/loyh8Gm1OGQ/maxresdefault.jpg" alt="LEGO BrickHeadz 40676 The Phantom Menace building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40676</div>
+    <div class="set-number-row"><div class="set-number">40676</div><span class="badge-new">NEW</span></div>
     <div class="set-name">The Phantom Menace</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40675-brickheadz-clone-commander-cody/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/KZn9gjR053E/maxresdefault.jpg" alt="LEGO BrickHeadz 40675 Clone Commander Cody building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/KZn9gjR053E/maxresdefault.jpg" alt="LEGO BrickHeadz 40675 Clone Commander Cody building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40675</div>
+    <div class="set-number-row"><div class="set-number">40675</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Clone Commander Cody</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40677-brickheadz-prisoner-of-azkaban-figures/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/07Np8T8lItA/maxresdefault.jpg" alt="LEGO BrickHeadz 40677 Prisoner of Azkaban Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/07Np8T8lItA/maxresdefault.jpg" alt="LEGO BrickHeadz 40677 Prisoner of Azkaban Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40677</div>
+    <div class="set-number-row"><div class="set-number">40677</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Prisoner of Azkaban Figures</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40674-brickheadz-stitch/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/s6bE8-KqFCA/maxresdefault.jpg" alt="LEGO BrickHeadz 40674 Stitch building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/s6bE8-KqFCA/maxresdefault.jpg" alt="LEGO BrickHeadz 40674 Stitch building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40674</div>
+    <div class="set-number-row"><div class="set-number">40674</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Stitch</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40671-brickheadz-potted-groot/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/pxKs_y3mKu4/maxresdefault.jpg" alt="LEGO BrickHeadz 40671 Potted Groot building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pxKs_y3mKu4/maxresdefault.jpg" alt="LEGO BrickHeadz 40671 Potted Groot building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40671</div>
+    <div class="set-number-row"><div class="set-number">40671</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Potted Groot</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40672-brickheadz-sonic-the-hedgehog-knuckles-shadow/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/4HUkiRgcfi4/maxresdefault.jpg" alt="LEGO BrickHeadz 40672 Sonic the Hedgehog: Knuckles &amp; Shadow building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4HUkiRgcfi4/maxresdefault.jpg" alt="LEGO BrickHeadz 40672 Sonic the Hedgehog: Knuckles &amp; Shadow building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40672</div>
+    <div class="set-number-row"><div class="set-number">40672</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Sonic the Hedgehog: Knuckles &amp; Shadow</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40670-brickheadz-iron-spider-man/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/1zlTxBmVafM/maxresdefault.jpg" alt="LEGO BrickHeadz 40670 Iron Spider-Man building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/1zlTxBmVafM/maxresdefault.jpg" alt="LEGO BrickHeadz 40670 Iron Spider-Man building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40670</div>
+    <div class="set-number-row"><div class="set-number">40670</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Iron Spider-Man</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40627-brickheadz-sonic-the-hedgehog/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/8Ps3cKjttcc/maxresdefault.jpg" alt="LEGO BrickHeadz 40627 Sonic the Hedgehog building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8Ps3cKjttcc/maxresdefault.jpg" alt="LEGO BrickHeadz 40627 Sonic the Hedgehog building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40627</div>
+    <div class="set-number-row"><div class="set-number">40627</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Sonic the Hedgehog</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40618-brickheadz-kingsley-shacklebolt-nymphadora-tonks/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/CCFEI3Kad24/maxresdefault.jpg" alt="LEGO BrickHeadz 40618 Kingsley Shacklebolt &amp; Nymphadora Tonks building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/CCFEI3Kad24/maxresdefault.jpg" alt="LEGO BrickHeadz 40618 Kingsley Shacklebolt &amp; Nymphadora Tonks building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40618</div>
+    <div class="set-number-row"><div class="set-number">40618</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Kingsley Shacklebolt &amp; Nymphadora Tonks</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40617-brickheadz-draco-malfoy-cedric-diggory/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/nTi6PGOOQRA/maxresdefault.jpg" alt="LEGO BrickHeadz 40617 Draco Malfoy &amp; Cedric Diggory building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nTi6PGOOQRA/maxresdefault.jpg" alt="LEGO BrickHeadz 40617 Draco Malfoy &amp; Cedric Diggory building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40617</div>
+    <div class="set-number-row"><div class="set-number">40617</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Draco Malfoy &amp; Cedric Diggory</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40616-brickheadz-harry-potter-cho-chang/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/OTdWV0okxco/maxresdefault.jpg" alt="LEGO BrickHeadz 40616 Harry Potter &amp; Cho Chang building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OTdWV0okxco/maxresdefault.jpg" alt="LEGO BrickHeadz 40616 Harry Potter &amp; Cho Chang building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40616</div>
+    <div class="set-number-row"><div class="set-number">40616</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Harry Potter &amp; Cho Chang</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40623-brickheadz-battle-of-endor-heroes/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/CCqvBWjEmnc/maxresdefault.jpg" alt="LEGO BrickHeadz 40623 Battle of Endor Heroes building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/CCqvBWjEmnc/maxresdefault.jpg" alt="LEGO BrickHeadz 40623 Battle of Endor Heroes building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40623</div>
+    <div class="set-number-row"><div class="set-number">40623</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Battle of Endor Heroes</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40626-brickheadz-zombie/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/5C1PPM_IkFs/maxresdefault.jpg" alt="LEGO BrickHeadz 40626 Zombie building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/5C1PPM_IkFs/maxresdefault.jpg" alt="LEGO BrickHeadz 40626 Zombie building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40626</div>
+    <div class="set-number-row"><div class="set-number">40626</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Zombie</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40625-brickheadz-llama/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/V6EUEWksVkQ/maxresdefault.jpg" alt="LEGO BrickHeadz 40625 Llama building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/V6EUEWksVkQ/maxresdefault.jpg" alt="LEGO BrickHeadz 40625 Llama building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40625</div>
+    <div class="set-number-row"><div class="set-number">40625</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Llama</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40624-brickheadz-alex/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/V0xewpOy-cM/maxresdefault.jpg" alt="LEGO BrickHeadz 40624 Alex building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/V0xewpOy-cM/maxresdefault.jpg" alt="LEGO BrickHeadz 40624 Alex building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40624</div>
+    <div class="set-number-row"><div class="set-number">40624</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Alex</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40619-brickheadz-eve-wall-e/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/HbjaayCUscs/maxresdefault.jpg" alt="LEGO BrickHeadz 40619 EVE &amp; WALL-E building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HbjaayCUscs/maxresdefault.jpg" alt="LEGO BrickHeadz 40619 EVE &amp; WALL-E building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40619</div>
+    <div class="set-number-row"><div class="set-number">40619</div><span class="badge-new">NEW</span></div>
     <div class="set-name">EVE &amp; WALL-E</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40621-brickheadz-moana-merida/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/y7zNauXS4xs/maxresdefault.jpg" alt="LEGO BrickHeadz 40621 Moana &amp; Merida building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/y7zNauXS4xs/maxresdefault.jpg" alt="LEGO BrickHeadz 40621 Moana &amp; Merida building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40621</div>
+    <div class="set-number-row"><div class="set-number">40621</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Moana &amp; Merida</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40620-brickheadz-cruella-maleficent/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/rw_JYbhAUeI/maxresdefault.jpg" alt="LEGO BrickHeadz 40620 Cruella &amp; Maleficent building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/rw_JYbhAUeI/maxresdefault.jpg" alt="LEGO BrickHeadz 40620 Cruella &amp; Maleficent building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40620</div>
+    <div class="set-number-row"><div class="set-number">40620</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Cruella &amp; Maleficent</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40622-brickheadz-disney-100th-celebration/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/p-Isa_Ds-4c/maxresdefault.jpg" alt="LEGO BrickHeadz 40622 Disney 100th Celebration building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/p-Isa_Ds-4c/maxresdefault.jpg" alt="LEGO BrickHeadz 40622 Disney 100th Celebration building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40622</div>
+    <div class="set-number-row"><div class="set-number">40622</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Disney 100th Celebration</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40632-brickheadz-aragorn-arwen/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/r5LJkn3j7aY/maxresdefault.jpg" alt="LEGO BrickHeadz 40632 Aragorn &amp; Arwen building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/r5LJkn3j7aY/maxresdefault.jpg" alt="LEGO BrickHeadz 40632 Aragorn &amp; Arwen building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40632</div>
+    <div class="set-number-row"><div class="set-number">40632</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Aragorn &amp; Arwen</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40631-brickheadz-gandalf-the-grey-balrog/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/vSiqr3FH-b4/maxresdefault.jpg" alt="LEGO BrickHeadz 40631 Gandalf the Grey &amp; Balrog building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vSiqr3FH-b4/maxresdefault.jpg" alt="LEGO BrickHeadz 40631 Gandalf the Grey &amp; Balrog building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40631</div>
+    <div class="set-number-row"><div class="set-number">40631</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Gandalf the Grey &amp; Balrog</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40630-brickheadz-frodo-gollum/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/kTJ52Pzfc3I/maxresdefault.jpg" alt="LEGO BrickHeadz 40630 Frodo &amp; Gollum building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kTJ52Pzfc3I/maxresdefault.jpg" alt="LEGO BrickHeadz 40630 Frodo &amp; Gollum building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40630</div>
+    <div class="set-number-row"><div class="set-number">40630</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Frodo &amp; Gollum</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40615-brickheadz-tusken-raider/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/EZNn5o7y1Ng/maxresdefault.jpg" alt="LEGO BrickHeadz 40615 Tusken Raider building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/EZNn5o7y1Ng/maxresdefault.jpg" alt="LEGO BrickHeadz 40615 Tusken Raider building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40615</div>
+    <div class="set-number-row"><div class="set-number">40615</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Tusken Raider</div>
     <div class="set-meta">BrickHeadz • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40481-brickheadz-cockatiel/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/JRQodtqtEzY/maxresdefault.jpg" alt="LEGO BrickHeadz 40481 Cockatiel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/JRQodtqtEzY/maxresdefault.jpg" alt="LEGO BrickHeadz 40481 Cockatiel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40481</div>
+    <div class="set-number-row"><div class="set-number">40481</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Cockatiel</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40482-brickheadz-hamster/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/r1a75F_0Wns/maxresdefault.jpg" alt="LEGO BrickHeadz 40482 Hamster building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/r1a75F_0Wns/maxresdefault.jpg" alt="LEGO BrickHeadz 40482 Hamster building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40482</div>
+    <div class="set-number-row"><div class="set-number">40482</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hamster</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40480-brickheadz-ginger-tabby/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/iwihJZM28SY/maxresdefault.jpg" alt="LEGO BrickHeadz 40480 Ginger Tabby building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/iwihJZM28SY/maxresdefault.jpg" alt="LEGO BrickHeadz 40480 Ginger Tabby building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40480</div>
+    <div class="set-number-row"><div class="set-number">40480</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ginger Tabby</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40492-brickheadz-la-catrina/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/RgkE2Mc-pZ0/maxresdefault.jpg" alt="LEGO BrickHeadz 40492 La Catrina building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/RgkE2Mc-pZ0/maxresdefault.jpg" alt="LEGO BrickHeadz 40492 La Catrina building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40492</div>
+    <div class="set-number-row"><div class="set-number">40492</div><span class="badge-new">NEW</span></div>
     <div class="set-name">La Catrina</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40496-brickheadz-voldemort-nagini-bellatrix/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/3Mtoam2HK7o/maxresdefault.jpg" alt="LEGO BrickHeadz 40496 Voldemort, Nagini &amp; Bellatrix building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3Mtoam2HK7o/maxresdefault.jpg" alt="LEGO BrickHeadz 40496 Voldemort, Nagini &amp; Bellatrix building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40496</div>
+    <div class="set-number-row"><div class="set-number">40496</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Voldemort, Nagini &amp; Bellatrix</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40479-brickheadz-dalmatians/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/MzH-sn82-uQ/maxresdefault.jpg" alt="LEGO BrickHeadz 40479 Dalmatians building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/MzH-sn82-uQ/maxresdefault.jpg" alt="LEGO BrickHeadz 40479 Dalmatians building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40479</div>
+    <div class="set-number-row"><div class="set-number">40479</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Dalmatians</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40477-brickheadz-scrooge-mcduck-huey-dewey-louie/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/jsGUEJM3qQk/maxresdefault.jpg" alt="LEGO BrickHeadz 40477 Scrooge McDuck, Huey, Dewey &amp; Louie building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jsGUEJM3qQk/maxresdefault.jpg" alt="LEGO BrickHeadz 40477 Scrooge McDuck, Huey, Dewey &amp; Louie building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40477</div>
+    <div class="set-number-row"><div class="set-number">40477</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Scrooge McDuck, Huey, Dewey &amp; Louie</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40495-brickheadz-harry-hermione-ron-hagrid/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/eh50KpisCYU/maxresdefault.jpg" alt="LEGO BrickHeadz 40495 Harry, Hermione, Ron &amp; Hagrid building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/eh50KpisCYU/maxresdefault.jpg" alt="LEGO BrickHeadz 40495 Harry, Hermione, Ron &amp; Hagrid building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40495</div>
+    <div class="set-number-row"><div class="set-number">40495</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Harry, Hermione, Ron &amp; Hagrid</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40476-brickheadz-daisy-duck/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/XjOaLwjfzNw/maxresdefault.jpg" alt="LEGO BrickHeadz 40476 Daisy Duck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/XjOaLwjfzNw/maxresdefault.jpg" alt="LEGO BrickHeadz 40476 Daisy Duck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40476</div>
+    <div class="set-number-row"><div class="set-number">40476</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Daisy Duck</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40490-brickheadz-ninjago-10/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/nDo1uZe4El4/maxresdefault.jpg" alt="LEGO BrickHeadz 40490 NINJAGO 10 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nDo1uZe4El4/maxresdefault.jpg" alt="LEGO BrickHeadz 40490 NINJAGO 10 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40490</div>
+    <div class="set-number-row"><div class="set-number">40490</div><span class="badge-new">NEW</span></div>
     <div class="set-name">NINJAGO 10</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40443-brickheadz-budgies/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/1kL2CrJUAgg/maxresdefault.jpg" alt="LEGO BrickHeadz 40443 Budgies building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/1kL2CrJUAgg/maxresdefault.jpg" alt="LEGO BrickHeadz 40443 Budgies building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40443</div>
+    <div class="set-number-row"><div class="set-number">40443</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Budgies</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40442-brickheadz-goldfish/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/-Jc4Qyv01Gs/maxresdefault.jpg" alt="LEGO BrickHeadz 40442 Goldfish building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-Jc4Qyv01Gs/maxresdefault.jpg" alt="LEGO BrickHeadz 40442 Goldfish building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40442</div>
+    <div class="set-number-row"><div class="set-number">40442</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Goldfish</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40421-brickheadz-belle-bottom-kevin-and-bob/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/qgum8nQM97M/maxresdefault.jpg" alt="LEGO BrickHeadz 40421 Belle Bottom, Kevin and Bob building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/qgum8nQM97M/maxresdefault.jpg" alt="LEGO BrickHeadz 40421 Belle Bottom, Kevin and Bob building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40421</div>
+    <div class="set-number-row"><div class="set-number">40421</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Belle Bottom, Kevin and Bob</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40420-brickheadz-gru-stuart-and-otto/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/5OWcKdsF72w/maxresdefault.jpg" alt="LEGO BrickHeadz 40420 Gru, Stuart and Otto building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/5OWcKdsF72w/maxresdefault.jpg" alt="LEGO BrickHeadz 40420 Gru, Stuart and Otto building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40420</div>
+    <div class="set-number-row"><div class="set-number">40420</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Gru, Stuart and Otto</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40466-brickheadz-chinese-new-year-pandas/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/LBEr8NBLmtg/maxresdefault.jpg" alt="LEGO BrickHeadz 40466 Chinese New Year Pandas building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/LBEr8NBLmtg/maxresdefault.jpg" alt="LEGO BrickHeadz 40466 Chinese New Year Pandas building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40466</div>
+    <div class="set-number-row"><div class="set-number">40466</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Chinese New Year Pandas</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40441-brickheadz-shorthair-cats/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/4sAPxqtC-uM/maxresdefault.jpg" alt="LEGO BrickHeadz 40441 Shorthair Cats building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4sAPxqtC-uM/maxresdefault.jpg" alt="LEGO BrickHeadz 40441 Shorthair Cats building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40441</div>
+    <div class="set-number-row"><div class="set-number">40441</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Shorthair Cats</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40440-brickheadz-german-shepherds/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Y74f897R54k/maxresdefault.jpg" alt="LEGO BrickHeadz 40440 German Shepherds building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Y74f897R54k/maxresdefault.jpg" alt="LEGO BrickHeadz 40440 German Shepherds building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40440</div>
+    <div class="set-number-row"><div class="set-number">40440</div><span class="badge-new">NEW</span></div>
     <div class="set-name">German Shepherds</div>
     <div class="set-meta">BrickHeadz • 2021</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO BrickHeadz Instructions</h2><p>6 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/40858-brickheadz-spongebob-squarepants-figure/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO BrickHeadz 40858 SpongeBob SquarePants Figure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO BrickHeadz 40858 SpongeBob SquarePants Figure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40858</div>
+    <div class="set-number-row"><div class="set-number">40858</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">SpongeBob SquarePants Figure</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40859-brickheadz-golden-age-superman-and-batman/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO BrickHeadz 40859 Golden Age Superman and Batman building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO BrickHeadz 40859 Golden Age Superman and Batman building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40859</div>
+    <div class="set-number-row"><div class="set-number">40859</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Golden Age Superman and Batman</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40880-brickheadz-avengers-doomsday-heroes-villain/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO BrickHeadz 40880 Avengers: Doomsday Heroes &amp; Villain building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO BrickHeadz 40880 Avengers: Doomsday Heroes &amp; Villain building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40880</div>
+    <div class="set-number-row"><div class="set-number">40880</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Avengers: Doomsday Heroes &amp; Villain</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40919-brickheadz-gremlins-gizmo-and-stripe-figures/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO BrickHeadz 40919 Gremlins: Gizmo and Stripe Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO BrickHeadz 40919 Gremlins: Gizmo and Stripe Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40919</div>
+    <div class="set-number-row"><div class="set-number">40919</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Gremlins: Gizmo and Stripe Figures</div>
     <div class="set-meta">BrickHeadz • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40673-brickheadz-spring-festival-mickey-mouse/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO BrickHeadz 40673 Spring Festival Mickey Mouse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO BrickHeadz 40673 Spring Festival Mickey Mouse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40673</div>
+    <div class="set-number-row"><div class="set-number">40673</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Spring Festival Mickey Mouse</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40726-brickheadz-limited-edition-batman-85th-anniversary/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO BrickHeadz 40726 Limited Edition Batman 85th Anniversary building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO BrickHeadz 40726 Limited Edition Batman 85th Anniversary building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40726</div>
+    <div class="set-number-row"><div class="set-number">40726</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Limited Edition Batman 85th Anniversary</div>
     <div class="set-meta">BrickHeadz • 2024</div>
   </div>

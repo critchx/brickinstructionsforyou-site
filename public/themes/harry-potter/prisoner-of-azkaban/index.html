@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -128,100 +135,89 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </nav>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><a href="/themes/harry-potter/">Harry Potter</a><span>›</span><strong>Prisoner of Azkaban</strong></nav><div class="results-header"><div><h1>LEGO Prisoner of Azkaban Instructions</h1><p>11 LEGO Harry Potter instruction pages in the Prisoner of Azkaban subtheme.</p></div><a class="btn-outline" href="/themes/harry-potter/">ALL LEGO Harry Potter</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/harry-potter/">All LEGO Harry Potter Instructions</a><a class="btn-outline" href="/2026/harry-potter/">LEGO Harry Potter 2026</a><a class="btn-outline" href="/2025/harry-potter/">LEGO Harry Potter 2025</a><a class="btn-outline" href="/2024/harry-potter/">LEGO Harry Potter 2024</a><a class="btn-outline" href="/2023/harry-potter/">LEGO Harry Potter 2023</a><a class="btn-outline" href="/2022/harry-potter/">LEGO Harry Potter 2022</a><a class="btn-outline" href="/2021/harry-potter/">LEGO Harry Potter 2021</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/76463-harry-potter-hogwarts-castle-hospital-wing/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/z4n7oVgt3zA/maxresdefault.jpg" alt="LEGO Harry Potter 76463 Hogwarts Castle: Hospital Wing building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/z4n7oVgt3zA/maxresdefault.jpg" alt="LEGO Harry Potter 76463 Hogwarts Castle: Hospital Wing building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76463</div>
+    <div class="set-number-row"><div class="set-number">76463</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hogwarts Castle: Hospital Wing</div>
     <div class="set-meta">Harry Potter • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76475-harry-potter-forbidden-forest-expecto-patronum/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/dX1dk6Gx9i4/maxresdefault.jpg" alt="LEGO Harry Potter 76475 Forbidden Forest: Expecto Patronum building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dX1dk6Gx9i4/maxresdefault.jpg" alt="LEGO Harry Potter 76475 Forbidden Forest: Expecto Patronum building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76475</div>
+    <div class="set-number-row"><div class="set-number">76475</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Forbidden Forest: Expecto Patronum</div>
     <div class="set-meta">Harry Potter • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76446-harry-potter-knight-bus-adventure/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/hhb4VO9jq1U/maxresdefault.jpg" alt="LEGO Harry Potter 76446 Knight Bus Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/hhb4VO9jq1U/maxresdefault.jpg" alt="LEGO Harry Potter 76446 Knight Bus Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76446</div>
+    <div class="set-number-row"><div class="set-number">76446</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Knight Bus Adventure</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76449-harry-potter-chomping-monster-book-of-monsters/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/sFADUot0DWo/maxresdefault.jpg" alt="LEGO Harry Potter 76449 Chomping Monster Book of Monsters building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/sFADUot0DWo/maxresdefault.jpg" alt="LEGO Harry Potter 76449 Chomping Monster Book of Monsters building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76449</div>
+    <div class="set-number-row"><div class="set-number">76449</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Chomping Monster Book of Monsters</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76451-harry-potter-privet-drive-aunt-marge-s-visit/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/iqdp6mRQyTI/maxresdefault.jpg" alt="LEGO Harry Potter 76451 Privet Drive: Aunt Marge&#x27;s Visit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/iqdp6mRQyTI/maxresdefault.jpg" alt="LEGO Harry Potter 76451 Privet Drive: Aunt Marge&#x27;s Visit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76451</div>
+    <div class="set-number-row"><div class="set-number">76451</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Privet Drive: Aunt Marge&#x27;s Visit</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76427-harry-potter-buckbeak/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/K0iBMG3LUOw/maxresdefault.jpg" alt="LEGO Harry Potter 76427 Buckbeak building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/K0iBMG3LUOw/maxresdefault.jpg" alt="LEGO Harry Potter 76427 Buckbeak building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76427</div>
+    <div class="set-number-row"><div class="set-number">76427</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Buckbeak</div>
     <div class="set-meta">Harry Potter • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76414-harry-potter-expecto-patronum/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/FbkwNesEMM0/maxresdefault.jpg" alt="LEGO Harry Potter 76414 Expecto Patronum building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/FbkwNesEMM0/maxresdefault.jpg" alt="LEGO Harry Potter 76414 Expecto Patronum building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76414</div>
+    <div class="set-number-row"><div class="set-number">76414</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Expecto Patronum</div>
     <div class="set-meta">Harry Potter • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76398-harry-potter-hogwarts-hospital-wing/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/c12azxL_dZY/maxresdefault.jpg" alt="LEGO Harry Potter 76398 Hogwarts Hospital Wing building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/c12azxL_dZY/maxresdefault.jpg" alt="LEGO Harry Potter 76398 Hogwarts Hospital Wing building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76398</div>
+    <div class="set-number-row"><div class="set-number">76398</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hogwarts Hospital Wing</div>
     <div class="set-meta">Harry Potter • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76401-harry-potter-hogwarts-courtyard-sirius-s-rescue/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/d2sunF - sHM/maxresdefault.jpg" alt="LEGO Harry Potter 76401 Hogwarts Courtyard: Sirius&#x27;s Rescue building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/d2sunF - sHM/maxresdefault.jpg" alt="LEGO Harry Potter 76401 Hogwarts Courtyard: Sirius&#x27;s Rescue building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76401</div>
+    <div class="set-number-row"><div class="set-number">76401</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hogwarts Courtyard: Sirius&#x27;s Rescue</div>
     <div class="set-meta">Harry Potter • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76407-harry-potter-the-shrieking-shack-whomping-willow/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/06MOxI_s8Qc/maxresdefault.jpg" alt="LEGO Harry Potter 76407 The Shrieking Shack &amp; Whomping Willow building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/06MOxI_s8Qc/maxresdefault.jpg" alt="LEGO Harry Potter 76407 The Shrieking Shack &amp; Whomping Willow building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76407</div>
+    <div class="set-number-row"><div class="set-number">76407</div><span class="badge-new">NEW</span></div>
     <div class="set-name">The Shrieking Shack &amp; Whomping Willow</div>
     <div class="set-meta">Harry Potter • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76388-harry-potter-hogsmeade-village-visit/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ashXDw0uCQM/maxresdefault.jpg" alt="LEGO Harry Potter 76388 Hogsmeade Village Visit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ashXDw0uCQM/maxresdefault.jpg" alt="LEGO Harry Potter 76388 Hogsmeade Village Visit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76388</div>
+    <div class="set-number-row"><div class="set-number">76388</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hogsmeade Village Visit</div>
     <div class="set-meta">Harry Potter • 2021</div>
   </div>

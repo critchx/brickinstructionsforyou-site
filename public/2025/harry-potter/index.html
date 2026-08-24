@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,181 +159,161 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/harry-potter/">Harry Potter</a><span>›</span><strong>2025 Harry Potter</strong></nav><div class="results-header"><div><h2>LEGO 2025 Harry Potter Instructions</h2><p>20 LEGO instruction pages found for this year and theme.</p></div><a class="btn-outline" href="/2025/">BACK TO 2025</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2025/">All LEGO 2025 Instructions</a><a class="btn-outline" href="/themes/harry-potter/">All LEGO Harry Potter Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/6565158-harry-potter-butterbeer-truck/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/fVjAzXYlFMA/maxresdefault.jpg" alt="LEGO Harry Potter 6565158 Butterbeer Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/fVjAzXYlFMA/maxresdefault.jpg" alt="LEGO Harry Potter 6565158 Butterbeer Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6565158</div>
+    <div class="set-number-row"><div class="set-number">6565158</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Butterbeer Truck</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76457-harry-potter-hogsmeade-village-collectors-edition/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/lNfDLzuU6Cw/maxresdefault.jpg" alt="LEGO Harry Potter 76457 Hogsmeade Village - Collectors&#x27; Edition building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/lNfDLzuU6Cw/maxresdefault.jpg" alt="LEGO Harry Potter 76457 Hogsmeade Village - Collectors&#x27; Edition building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76457</div>
+    <div class="set-number-row"><div class="set-number">76457</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hogsmeade Village - Collectors&#x27; Edition</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76456-harry-potter-advent-calendar-2025/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/5bG3ntFHq7I/maxresdefault.jpg" alt="LEGO 76456 LEGO Harry Potter Advent Calendar 2025 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/5bG3ntFHq7I/maxresdefault.jpg" alt="LEGO 76456 LEGO Harry Potter Advent Calendar 2025 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76456</div>
+    <div class="set-number-row"><div class="set-number">76456</div><span class="badge-new">NEW</span></div>
     <div class="set-name">LEGO Harry Potter Advent Calendar 2025</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40770-harry-potter-hogwarts-castle-room-of-requirement/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/dKDirpPtf0w/maxresdefault.jpg" alt="LEGO Harry Potter 40770 Hogwarts Castle: Room of Requirement building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dKDirpPtf0w/maxresdefault.jpg" alt="LEGO Harry Potter 40770 Hogwarts Castle: Room of Requirement building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40770</div>
+    <div class="set-number-row"><div class="set-number">40770</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hogwarts Castle: Room of Requirement</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76451-harry-potter-privet-drive-aunt-marge-s-visit/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/iqdp6mRQyTI/maxresdefault.jpg" alt="LEGO Harry Potter 76451 Privet Drive: Aunt Marge&#x27;s Visit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/iqdp6mRQyTI/maxresdefault.jpg" alt="LEGO Harry Potter 76451 Privet Drive: Aunt Marge&#x27;s Visit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76451</div>
+    <div class="set-number-row"><div class="set-number">76451</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Privet Drive: Aunt Marge&#x27;s Visit</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76449-harry-potter-chomping-monster-book-of-monsters/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/sFADUot0DWo/maxresdefault.jpg" alt="LEGO Harry Potter 76449 Chomping Monster Book of Monsters building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/sFADUot0DWo/maxresdefault.jpg" alt="LEGO Harry Potter 76449 Chomping Monster Book of Monsters building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76449</div>
+    <div class="set-number-row"><div class="set-number">76449</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Chomping Monster Book of Monsters</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76452-harry-potter-quality-quidditch-supplies-ice-cream-parlour/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/vRI55ywqhpg/maxresdefault.jpg" alt="LEGO Harry Potter 76452 Quality Quidditch Supplies &amp; Ice Cream Parlour building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vRI55ywqhpg/maxresdefault.jpg" alt="LEGO Harry Potter 76452 Quality Quidditch Supplies &amp; Ice Cream Parlour building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76452</div>
+    <div class="set-number-row"><div class="set-number">76452</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Quality Quidditch Supplies &amp; Ice Cream Parlour</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76450-harry-potter-book-nook-hogwarts-express/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/mG6nbOE4Z4Y/maxresdefault.jpg" alt="LEGO Harry Potter 76450 Book Nook: Hogwarts Express building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mG6nbOE4Z4Y/maxresdefault.jpg" alt="LEGO Harry Potter 76450 Book Nook: Hogwarts Express building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76450</div>
+    <div class="set-number-row"><div class="set-number">76450</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Book Nook: Hogwarts Express</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76458-harry-potter-thestral-family/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/nM4twp-G_qw/maxresdefault.jpg" alt="LEGO Harry Potter 76458 Thestral Family building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nM4twp-G_qw/maxresdefault.jpg" alt="LEGO Harry Potter 76458 Thestral Family building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76458</div>
+    <div class="set-number-row"><div class="set-number">76458</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Thestral Family</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76445-harry-potter-hogwarts-castle-herbology-class/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/8wmNA1htQLU/maxresdefault.jpg" alt="LEGO Harry Potter 76445 Hogwarts Castle: Herbology Class building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8wmNA1htQLU/maxresdefault.jpg" alt="LEGO Harry Potter 76445 Hogwarts Castle: Herbology Class building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76445</div>
+    <div class="set-number-row"><div class="set-number">76445</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hogwarts Castle: Herbology Class</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76448-harry-potter-fawkes-dumbledore-s-phoenix/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/O0KM5HKTnYc/maxresdefault.jpg" alt="LEGO Harry Potter 76448 Fawkes: Dumbledore&#x27;s Phoenix building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/O0KM5HKTnYc/maxresdefault.jpg" alt="LEGO Harry Potter 76448 Fawkes: Dumbledore&#x27;s Phoenix building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76448</div>
+    <div class="set-number-row"><div class="set-number">76448</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Fawkes: Dumbledore&#x27;s Phoenix</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76454-harry-potter-hogwarts-castle-the-main-tower/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/tXF78Mqe8dY/maxresdefault.jpg" alt="LEGO Harry Potter 76454 Hogwarts Castle: The Main Tower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/tXF78Mqe8dY/maxresdefault.jpg" alt="LEGO Harry Potter 76454 Hogwarts Castle: The Main Tower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76454</div>
+    <div class="set-number-row"><div class="set-number">76454</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hogwarts Castle: The Main Tower</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30706-harry-potter-quidditch-lesson/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/yGoI8fkWsvU/maxresdefault.jpg" alt="LEGO Harry Potter 30706 Quidditch Lesson building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yGoI8fkWsvU/maxresdefault.jpg" alt="LEGO Harry Potter 30706 Quidditch Lesson building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30706</div>
+    <div class="set-number-row"><div class="set-number">30706</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Quidditch Lesson</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76446-harry-potter-knight-bus-adventure/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/hhb4VO9jq1U/maxresdefault.jpg" alt="LEGO Harry Potter 76446 Knight Bus Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/hhb4VO9jq1U/maxresdefault.jpg" alt="LEGO Harry Potter 76446 Knight Bus Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76446</div>
+    <div class="set-number-row"><div class="set-number">76446</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Knight Bus Adventure</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76444-harry-potter-diagon-alley-wizarding-shops/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/bJ2J_LwQyus/maxresdefault.jpg" alt="LEGO Harry Potter 76444 Diagon Alley Wizarding Shops building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/bJ2J_LwQyus/maxresdefault.jpg" alt="LEGO Harry Potter 76444 Diagon Alley Wizarding Shops building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76444</div>
+    <div class="set-number-row"><div class="set-number">76444</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Diagon Alley Wizarding Shops</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76447-harry-potter-hogwarts-castle-flying-lessons/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Dv9xm8VqjoI/maxresdefault.jpg" alt="LEGO Harry Potter 76447 Hogwarts Castle: Flying Lessons building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Dv9xm8VqjoI/maxresdefault.jpg" alt="LEGO Harry Potter 76447 Hogwarts Castle: Flying Lessons building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76447</div>
+    <div class="set-number-row"><div class="set-number">76447</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hogwarts Castle: Flying Lessons</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76442-harry-potter-hogwarts-castle-charms-class/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/2cXPqLiED5M/maxresdefault.jpg" alt="LEGO Harry Potter 76442 Hogwarts Castle: Charms Class building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/2cXPqLiED5M/maxresdefault.jpg" alt="LEGO Harry Potter 76442 Hogwarts Castle: Charms Class building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76442</div>
+    <div class="set-number-row"><div class="set-number">76442</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hogwarts Castle: Charms Class</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76453-harry-potter-malfoy-manor/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/2CvYgXmuLio/maxresdefault.jpg" alt="LEGO Harry Potter 76453 Malfoy Manor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/2CvYgXmuLio/maxresdefault.jpg" alt="LEGO Harry Potter 76453 Malfoy Manor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76453</div>
+    <div class="set-number-row"><div class="set-number">76453</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Malfoy Manor</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76443-harry-potter-hagrid-harry-s-motorcycle-ride/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/xef6mvEJDCU/maxresdefault.jpg" alt="LEGO Harry Potter 76443 Hagrid &amp; Harry&#x27;s Motorcycle Ride building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xef6mvEJDCU/maxresdefault.jpg" alt="LEGO Harry Potter 76443 Hagrid &amp; Harry&#x27;s Motorcycle Ride building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76443</div>
+    <div class="set-number-row"><div class="set-number">76443</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hagrid &amp; Harry&#x27;s Motorcycle Ride</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76441-harry-potter-hogwarts-castle-dueling-club/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/J0W9OPHJKcA/maxresdefault.jpg" alt="LEGO Harry Potter 76441 Hogwarts Castle: Dueling Club building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/J0W9OPHJKcA/maxresdefault.jpg" alt="LEGO Harry Potter 76441 Hogwarts Castle: Dueling Club building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76441</div>
+    <div class="set-number-row"><div class="set-number">76441</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hogwarts Castle: Dueling Club</div>
     <div class="set-meta">Harry Potter • 2025</div>
   </div>

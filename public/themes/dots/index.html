@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,414 +159,368 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><strong>Dots</strong></nav><div class="results-header"><div><h2>LEGO Dots Instructions</h2><p>46 LEGO instruction pages found in this theme.</p></div><a class="btn-outline" href="/themes/">ALL THEMES</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Dots by year</h3><nav aria-label="Browse LEGO Dots by year" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2023/dots/">LEGO Dots 2023</a><a class="btn-outline" href="/2022/dots/">LEGO Dots 2022</a><a class="btn-outline" href="/2021/dots/">LEGO Dots 2021</a></nav></section><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Dots subthemes</h3><nav aria-label="Browse LEGO Dots subthemes" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/dots/accessories/">LEGO Accessories Instructions</a><a class="btn-outline" href="/themes/dots/miscellaneous/">LEGO Miscellaneous Instructions</a><a class="btn-outline" href="/themes/dots/patches/">LEGO Patches Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/41948-dots-cute-banana-pen-holder/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Lbs_3hAXHbI/maxresdefault.jpg" alt="LEGO Dots 41948 Cute Banana Pen Holder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Lbs_3hAXHbI/maxresdefault.jpg" alt="LEGO Dots 41948 Cute Banana Pen Holder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41948</div>
+    <div class="set-number-row"><div class="set-number">41948</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Cute Banana Pen Holder</div>
     <div class="set-meta">Dots • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41955-dots-stitch-on-patch/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/dADyQ4RNaKg/maxresdefault.jpg" alt="LEGO Dots 41955 Stitch-on Patch building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dADyQ4RNaKg/maxresdefault.jpg" alt="LEGO Dots 41955 Stitch-on Patch building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41955</div>
+    <div class="set-number-row"><div class="set-number">41955</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Stitch-on Patch</div>
     <div class="set-meta">Dots • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41811-dots-hogwarts-desktop-kit/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/otnYWQDMVnY/maxresdefault.jpg" alt="LEGO Dots 41811 Hogwarts Desktop Kit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/otnYWQDMVnY/maxresdefault.jpg" alt="LEGO Dots 41811 Hogwarts Desktop Kit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41811</div>
+    <div class="set-number-row"><div class="set-number">41811</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hogwarts Desktop Kit</div>
     <div class="set-meta">Dots • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41809-dots-hedwig-pencil-holder/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/k8wZ-4-DYUo/maxresdefault.jpg" alt="LEGO Dots 41809 Hedwig Pencil Holder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/k8wZ-4-DYUo/maxresdefault.jpg" alt="LEGO Dots 41809 Hedwig Pencil Holder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41809</div>
+    <div class="set-number-row"><div class="set-number">41809</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hedwig Pencil Holder</div>
     <div class="set-meta">Dots • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41806-dots-ultimate-party-kit/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0oegmxzSxZA/maxresdefault.jpg" alt="LEGO Dots 41806 Ultimate Party Kit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0oegmxzSxZA/maxresdefault.jpg" alt="LEGO Dots 41806 Ultimate Party Kit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41806</div>
+    <div class="set-number-row"><div class="set-number">41806</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ultimate Party Kit</div>
     <div class="set-meta">Dots • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30637-dots-animal-tray-and-bag-tag/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/QZH2ilJ8rHQ/maxresdefault.jpg" alt="LEGO Dots 30637 Animal Tray and Bag Tag building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QZH2ilJ8rHQ/maxresdefault.jpg" alt="LEGO Dots 30637 Animal Tray and Bag Tag building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30637</div>
+    <div class="set-number-row"><div class="set-number">30637</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Animal Tray and Bag Tag</div>
     <div class="set-meta">Dots • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41807-dots-bracelet-designer-mega-pack/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Qb9hFue01Z0/maxresdefault.jpg" alt="LEGO Dots 41807 Bracelet Designer Mega Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Qb9hFue01Z0/maxresdefault.jpg" alt="LEGO Dots 41807 Bracelet Designer Mega Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41807</div>
+    <div class="set-number-row"><div class="set-number">41807</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Bracelet Designer Mega Pack</div>
     <div class="set-meta">Dots • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41964-dots-mickey-mouse-minnie-mouse-back-to-school-project-box/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/G9D7cyTQ3jU/maxresdefault.jpg" alt="LEGO Dots 41964 Mickey Mouse &amp; Minnie Mouse Back-to-School Project Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/G9D7cyTQ3jU/maxresdefault.jpg" alt="LEGO Dots 41964 Mickey Mouse &amp; Minnie Mouse Back-to-School Project Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41964</div>
+    <div class="set-number-row"><div class="set-number">41964</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Mickey Mouse &amp; Minnie Mouse Back-to-School Project Box</div>
     <div class="set-meta">Dots • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41957-dots-adhesive-patches-mega-pack/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/z5CJH9LrWP0/maxresdefault.jpg" alt="LEGO Dots 41957 Adhesive Patches Mega Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/z5CJH9LrWP0/maxresdefault.jpg" alt="LEGO Dots 41957 Adhesive Patches Mega Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41957</div>
+    <div class="set-number-row"><div class="set-number">41957</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Adhesive Patches Mega Pack</div>
     <div class="set-meta">Dots • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41960-dots-big-box/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0AxBz3ro0BM/maxresdefault.jpg" alt="LEGO Dots 41960 Big Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0AxBz3ro0BM/maxresdefault.jpg" alt="LEGO Dots 41960 Big Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41960</div>
+    <div class="set-number-row"><div class="set-number">41960</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Big Box</div>
     <div class="set-meta">Dots • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41961-dots-designer-toolkit-patterns/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/aI3XxzrmYUw/maxresdefault.jpg" alt="LEGO Dots 41961 Designer Toolkit - Patterns building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/aI3XxzrmYUw/maxresdefault.jpg" alt="LEGO Dots 41961 Designer Toolkit - Patterns building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41961</div>
+    <div class="set-number-row"><div class="set-number">41961</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Designer Toolkit - Patterns</div>
     <div class="set-meta">Dots • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41959-dots-cute-panda-tray/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/9iz-Aj-_0Jk/maxresdefault.jpg" alt="LEGO Dots 41959 Cute Panda Tray building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9iz-Aj-_0Jk/maxresdefault.jpg" alt="LEGO Dots 41959 Cute Panda Tray building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41959</div>
+    <div class="set-number-row"><div class="set-number">41959</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Cute Panda Tray</div>
     <div class="set-meta">Dots • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41954-dots-adhesive-patch/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/YOA8lef_5lc/maxresdefault.jpg" alt="LEGO Dots 41954 Adhesive Patch building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/YOA8lef_5lc/maxresdefault.jpg" alt="LEGO Dots 41954 Adhesive Patch building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41954</div>
+    <div class="set-number-row"><div class="set-number">41954</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Adhesive Patch</div>
     <div class="set-meta">Dots • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41956-dots-picture-frames-bracelet-ice-cream/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/8Vyn6Ru5sY8/maxresdefault.jpg" alt="LEGO Dots 41956 Picture Frames &amp; Bracelet Ice Cream building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8Vyn6Ru5sY8/maxresdefault.jpg" alt="LEGO Dots 41956 Picture Frames &amp; Bracelet Ice Cream building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41956</div>
+    <div class="set-number-row"><div class="set-number">41956</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Picture Frames &amp; Bracelet Ice Cream</div>
     <div class="set-meta">Dots • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41952-dots-big-message-board/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/9ZqkO7UEtIQ/maxresdefault.jpg" alt="LEGO Dots 41952 Big Message Board building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9ZqkO7UEtIQ/maxresdefault.jpg" alt="LEGO Dots 41952 Big Message Board building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41952</div>
+    <div class="set-number-row"><div class="set-number">41952</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Big Message Board</div>
     <div class="set-meta">Dots • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41938-dots-creative-designer-box/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/QSiCWULEJ-0/maxresdefault.jpg" alt="LEGO Dots 41938 Creative Designer Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QSiCWULEJ-0/maxresdefault.jpg" alt="LEGO Dots 41938 Creative Designer Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41938</div>
+    <div class="set-number-row"><div class="set-number">41938</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Creative Designer Box</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41924-dots-secret-holder/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/gGdFf4oBjik/maxresdefault.jpg" alt="LEGO Dots 41924 Secret Holder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/gGdFf4oBjik/maxresdefault.jpg" alt="LEGO Dots 41924 Secret Holder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41924</div>
+    <div class="set-number-row"><div class="set-number">41924</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Secret Holder</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41926-dots-creative-party-kit/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/4A4u8-OtvT4/maxresdefault.jpg" alt="LEGO Dots 41926 Creative Party Kit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4A4u8-OtvT4/maxresdefault.jpg" alt="LEGO Dots 41926 Creative Party Kit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41926</div>
+    <div class="set-number-row"><div class="set-number">41926</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Creative Party Kit</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41925-dots-secret-boxes/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ARJJdI_1aCs/maxresdefault.jpg" alt="LEGO Dots 41925 Secret Boxes building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ARJJdI_1aCs/maxresdefault.jpg" alt="LEGO Dots 41925 Secret Boxes building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41925</div>
+    <div class="set-number-row"><div class="set-number">41925</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Secret Boxes</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30557-dots-photo-holder-cube/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Tn6kpQFOhw8/maxresdefault.jpg" alt="LEGO Dots 30557 Photo Holder Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Tn6kpQFOhw8/maxresdefault.jpg" alt="LEGO Dots 30557 Photo Holder Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30557</div>
+    <div class="set-number-row"><div class="set-number">30557</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Photo Holder Cube</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO Dots Instructions</h2><p>26 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/41801-dots-my-pets-bracelet/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41801 My Pets Bracelet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41801 My Pets Bracelet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41801</div>
+    <div class="set-number-row"><div class="set-number">41801</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">My Pets Bracelet</div>
     <div class="set-meta">Dots • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41802-dots-unicorns-forever-bracelet/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41802 Unicorns Forever Bracelet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41802 Unicorns Forever Bracelet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41802</div>
+    <div class="set-number-row"><div class="set-number">41802</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Unicorns Forever Bracelet</div>
     <div class="set-meta">Dots • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41803-dots-extra-dots-series-8-glitter-and-shine/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO 41803 Extra DOTS Series 8 - Glitter and Shine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 41803 Extra DOTS Series 8 - Glitter and Shine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41803</div>
+    <div class="set-number-row"><div class="set-number">41803</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Extra DOTS Series 8 - Glitter and Shine</div>
     <div class="set-meta">Dots • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41805-dots-creative-animal-drawer/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41805 Creative Animal Drawer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41805 Creative Animal Drawer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41805</div>
+    <div class="set-number-row"><div class="set-number">41805</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Creative Animal Drawer</div>
     <div class="set-meta">Dots • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41808-dots-hogwarts-accessories-pack/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41808 Hogwarts Accessories Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41808 Hogwarts Accessories Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41808</div>
+    <div class="set-number-row"><div class="set-number">41808</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Hogwarts Accessories Pack</div>
     <div class="set-meta">Dots • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41909-dots-mermaid-vibes-bracelets/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41909 Mermaid Vibes Bracelets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41909 Mermaid Vibes Bracelets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41909</div>
+    <div class="set-number-row"><div class="set-number">41909</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Mermaid Vibes Bracelets</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41910-dots-ice-cream-besties-bracelets/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41910 Ice Cream Besties Bracelets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41910 Ice Cream Besties Bracelets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41910</div>
+    <div class="set-number-row"><div class="set-number">41910</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Ice Cream Besties Bracelets</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41918-dots-adventure-bracelets/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41918 Adventure Bracelets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41918 Adventure Bracelets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41918</div>
+    <div class="set-number-row"><div class="set-number">41918</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Adventure Bracelets</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41921-dots-extra-dots-series-3/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO 41921 Extra DOTS - Series 3 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 41921 Extra DOTS - Series 3 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41921</div>
+    <div class="set-number-row"><div class="set-number">41921</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Extra DOTS - Series 3</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41922-dots-cool-cactus-bracelet/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41922 Cool Cactus Bracelet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41922 Cool Cactus Bracelet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41922</div>
+    <div class="set-number-row"><div class="set-number">41922</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Cool Cactus Bracelet</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41923-dots-monster-bracelets/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41923 Monster Bracelets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41923 Monster Bracelets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41923</div>
+    <div class="set-number-row"><div class="set-number">41923</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Monster Bracelets</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41927-dots-bag-tag-dog/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41927 Bag Tag Dog building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41927 Bag Tag Dog building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41927</div>
+    <div class="set-number-row"><div class="set-number">41927</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Bag Tag Dog</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41928-dots-bag-tag-narwhal/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41928 Bag Tag Narwhal building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41928 Bag Tag Narwhal building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41928</div>
+    <div class="set-number-row"><div class="set-number">41928</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Bag Tag Narwhal</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41929-dots-bag-tag-leopard/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41929 Bag Tag Leopard building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41929 Bag Tag Leopard building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41929</div>
+    <div class="set-number-row"><div class="set-number">41929</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Bag Tag Leopard</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41930-dots-bag-tag-panda/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41930 Bag Tag Panda building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41930 Bag Tag Panda building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41930</div>
+    <div class="set-number-row"><div class="set-number">41930</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Bag Tag Panda</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41931-dots-extra-dots-series-4/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO 41931 Extra DOTS - Series 4 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 41931 Extra DOTS - Series 4 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41931</div>
+    <div class="set-number-row"><div class="set-number">41931</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Extra DOTS - Series 4</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41932-dots-extra-dots-series-5/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO 41932 Extra DOTS - Series 5 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 41932 Extra DOTS - Series 5 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41932</div>
+    <div class="set-number-row"><div class="set-number">41932</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Extra DOTS - Series 5</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41933-dots-music-bracelet/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41933 Music Bracelet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41933 Music Bracelet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41933</div>
+    <div class="set-number-row"><div class="set-number">41933</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Music Bracelet</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41934-dots-starlight-bracelets/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41934 Starlight Bracelets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41934 Starlight Bracelets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41934</div>
+    <div class="set-number-row"><div class="set-number">41934</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Starlight Bracelets</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41935-dots-lots-of-dots/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO 41935 Lots of DOTS building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 41935 Lots of DOTS building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41935</div>
+    <div class="set-number-row"><div class="set-number">41935</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Lots of DOTS</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41936-dots-pencil-holder/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41936 Pencil Holder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41936 Pencil Holder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41936</div>
+    <div class="set-number-row"><div class="set-number">41936</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Pencil Holder</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41937-dots-multi-pack-summer-vibes/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41937 Multi Pack - Summer Vibes building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41937 Multi Pack - Summer Vibes building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41937</div>
+    <div class="set-number-row"><div class="set-number">41937</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Multi Pack - Summer Vibes</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41939-dots-bag-tag-dragon/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41939 Bag Tag Dragon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41939 Bag Tag Dragon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41939</div>
+    <div class="set-number-row"><div class="set-number">41939</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Bag Tag Dragon</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41940-dots-bag-tag-unicorn/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41940 Bag Tag Unicorn building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 41940 Bag Tag Unicorn building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">41940</div>
+    <div class="set-number-row"><div class="set-number">41940</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Bag Tag Unicorn</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66664-dots-bundle-pack-1/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 66664 Bundle Pack 1 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 66664 Bundle Pack 1 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">66664</div>
+    <div class="set-number-row"><div class="set-number">66664</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Bundle Pack 1</div>
     <div class="set-meta">Dots • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66665-dots-bundle-pack-2/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 66665 Bundle Pack 2 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Dots 66665 Bundle Pack 2 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">66665</div>
+    <div class="set-number-row"><div class="set-number">66665</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Bundle Pack 2</div>
     <div class="set-meta">Dots • 2021</div>
   </div>

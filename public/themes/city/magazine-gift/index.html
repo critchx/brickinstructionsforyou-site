@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -128,522 +135,464 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </nav>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><a href="/themes/city/">City</a><span>›</span><strong>Magazine Gift</strong></nav><div class="results-header"><div><h1>LEGO Magazine Gift Instructions</h1><p>58 LEGO City instruction pages in the Magazine Gift subtheme.</p></div><a class="btn-outline" href="/themes/city/">ALL LEGO City</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/city/">All LEGO City Instructions</a><a class="btn-outline" href="/2026/city/">LEGO City 2026</a><a class="btn-outline" href="/2025/city/">LEGO City 2025</a><a class="btn-outline" href="/2024/city/">LEGO City 2024</a><a class="btn-outline" href="/2023/city/">LEGO City 2023</a><a class="btn-outline" href="/2022/city/">LEGO City 2022</a><a class="btn-outline" href="/2021/city/">LEGO City 2021</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/951440-city-police-buggy/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/gpQtF6ySGMQ/maxresdefault.jpg" alt="LEGO City 951440 Police Buggy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/gpQtF6ySGMQ/maxresdefault.jpg" alt="LEGO City 951440 Police Buggy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">951440</div>
+    <div class="set-number-row"><div class="set-number">951440</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Police Buggy</div>
     <div class="set-meta">City • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/951441-city-construction-worker-with-wheel-loader/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/nvzXXkYKkKg/maxresdefault.jpg" alt="LEGO City 951441 Construction Worker with Wheel Loader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nvzXXkYKkKg/maxresdefault.jpg" alt="LEGO City 951441 Construction Worker with Wheel Loader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">951441</div>
+    <div class="set-number-row"><div class="set-number">951441</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Construction Worker with Wheel Loader</div>
     <div class="set-meta">City • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002220-city-police-officer-with-snowmobile/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/t-rWniCwYTs/maxresdefault.jpg" alt="LEGO City L0002220 Police Officer with Snowmobile building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/t-rWniCwYTs/maxresdefault.jpg" alt="LEGO City L0002220 Police Officer with Snowmobile building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002220</div>
+    <div class="set-number-row"><div class="set-number">L0002220</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Police Officer with Snowmobile</div>
     <div class="set-meta">City • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002222-city-stunt-rider-with-motorcycle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/nloEX9mYoGo/maxresdefault.jpg" alt="LEGO City L0002222 Stunt Rider with Motorcycle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nloEX9mYoGo/maxresdefault.jpg" alt="LEGO City L0002222 Stunt Rider with Motorcycle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002222</div>
+    <div class="set-number-row"><div class="set-number">L0002222</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Stunt Rider with Motorcycle</div>
     <div class="set-meta">City • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002223-city-sweeper/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/vfrpqV3bDaE/maxresdefault.jpg" alt="LEGO City L0002223 Sweeper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vfrpqV3bDaE/maxresdefault.jpg" alt="LEGO City L0002223 Sweeper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002223</div>
+    <div class="set-number-row"><div class="set-number">L0002223</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Sweeper</div>
     <div class="set-meta">City • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002224-city-firefighter-and-robot/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/UJa4o7giQ0g/maxresdefault.jpg" alt="LEGO City L0002224 Firefighter and robot building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/UJa4o7giQ0g/maxresdefault.jpg" alt="LEGO City L0002224 Firefighter and robot building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002224</div>
+    <div class="set-number-row"><div class="set-number">L0002224</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Firefighter and robot</div>
     <div class="set-meta">City • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002225-city-construction-worker-with-roller/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/8O80NgGIPPg/maxresdefault.jpg" alt="LEGO City L0002225 Construction Worker with Roller building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8O80NgGIPPg/maxresdefault.jpg" alt="LEGO City L0002225 Construction Worker with Roller building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002225</div>
+    <div class="set-number-row"><div class="set-number">L0002225</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Construction Worker with Roller</div>
     <div class="set-meta">City • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952501-city-police-chase/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/CTUcdKPrv4w/maxresdefault.jpg" alt="LEGO City 952501 Police Chase building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/CTUcdKPrv4w/maxresdefault.jpg" alt="LEGO City 952501 Police Chase building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952501</div>
+    <div class="set-number-row"><div class="set-number">952501</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Police Chase</div>
     <div class="set-meta">City • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952502-city-construction-worker-with-rotary-cutter/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/cG3BQeLQxZY/maxresdefault.jpg" alt="LEGO City 952502 Construction Worker with Rotary Cutter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/cG3BQeLQxZY/maxresdefault.jpg" alt="LEGO City 952502 Construction Worker with Rotary Cutter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952502</div>
+    <div class="set-number-row"><div class="set-number">952502</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Construction Worker with Rotary Cutter</div>
     <div class="set-meta">City • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952503-city-diver-with-robot-and-shark/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Kntio67sCbI/maxresdefault.jpg" alt="LEGO City 952503 Diver with Robot and Shark building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Kntio67sCbI/maxresdefault.jpg" alt="LEGO City 952503 Diver with Robot and Shark building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952503</div>
+    <div class="set-number-row"><div class="set-number">952503</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Diver with Robot and Shark</div>
     <div class="set-meta">City • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952504-city-astronaut-with-space-hoverbike/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/7mNPRuXQaJk/maxresdefault.jpg" alt="LEGO City 952504 Astronaut with Space Hoverbike building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/7mNPRuXQaJk/maxresdefault.jpg" alt="LEGO City 952504 Astronaut with Space Hoverbike building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952504</div>
+    <div class="set-number-row"><div class="set-number">952504</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Astronaut with Space Hoverbike</div>
     <div class="set-meta">City • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952505-city-fireman-with-water-scooter/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/RyhiGJdF_4o/maxresdefault.jpg" alt="LEGO City 952505 Fireman with Water Scooter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/RyhiGJdF_4o/maxresdefault.jpg" alt="LEGO City 952505 Fireman with Water Scooter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952505</div>
+    <div class="set-number-row"><div class="set-number">952505</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Fireman with Water Scooter</div>
     <div class="set-meta">City • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952506-city-firefighter-with-bulldozer/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ujiKz1Zf9KQ/maxresdefault.jpg" alt="LEGO City 952506 Firefighter with Bulldozer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ujiKz1Zf9KQ/maxresdefault.jpg" alt="LEGO City 952506 Firefighter with Bulldozer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952506</div>
+    <div class="set-number-row"><div class="set-number">952506</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Firefighter with Bulldozer</div>
     <div class="set-meta">City • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952508-city-air-boat/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/u45BaF7I2jw/hqdefault.jpg" alt="LEGO City 952508 Air boat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/u45BaF7I2jw/hqdefault.jpg" alt="LEGO City 952508 Air boat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952508</div>
+    <div class="set-number-row"><div class="set-number">952508</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Air boat</div>
     <div class="set-meta">City • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952509-city-tractor/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0aGW6EVxG1A/hqdefault.jpg" alt="LEGO City 952509 Tractor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0aGW6EVxG1A/hqdefault.jpg" alt="LEGO City 952509 Tractor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952509</div>
+    <div class="set-number-row"><div class="set-number">952509</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Tractor</div>
     <div class="set-meta">City • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952511-city-astronaut-with-alien-and-crystal/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/PissiXR8f_4/maxresdefault.jpg" alt="LEGO City 952511 Astronaut with Alien and Crystal building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PissiXR8f_4/maxresdefault.jpg" alt="LEGO City 952511 Astronaut with Alien and Crystal building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952511</div>
+    <div class="set-number-row"><div class="set-number">952511</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Astronaut with Alien and Crystal</div>
     <div class="set-meta">City • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952512-city-snowmobile/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/A8u_TZklGtU/maxresdefault.jpg" alt="LEGO City 952512 Snowmobile building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/A8u_TZklGtU/maxresdefault.jpg" alt="LEGO City 952512 Snowmobile building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952512</div>
+    <div class="set-number-row"><div class="set-number">952512</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Snowmobile</div>
     <div class="set-meta">City • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952402-city-policeman-with-helicopter/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Ekah_OlBtuc/maxresdefault.jpg" alt="LEGO City 952402 Policeman with Helicopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Ekah_OlBtuc/maxresdefault.jpg" alt="LEGO City 952402 Policeman with Helicopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952402</div>
+    <div class="set-number-row"><div class="set-number">952402</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Policeman with Helicopter</div>
     <div class="set-meta">City • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952403-city-builder-with-cement-mixer/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/t7KijEcJYj8/maxresdefault.jpg" alt="LEGO City 952403 Builder with Cement Mixer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/t7KijEcJYj8/maxresdefault.jpg" alt="LEGO City 952403 Builder with Cement Mixer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952403</div>
+    <div class="set-number-row"><div class="set-number">952403</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Builder with Cement Mixer</div>
     <div class="set-meta">City • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952404-city-farmer-with-lawn-mower/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/eAMXDG6oYbQ/maxresdefault.jpg" alt="LEGO City 952404 Farmer with lawn mower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/eAMXDG6oYbQ/maxresdefault.jpg" alt="LEGO City 952404 Farmer with lawn mower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952404</div>
+    <div class="set-number-row"><div class="set-number">952404</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Farmer with lawn mower</div>
     <div class="set-meta">City • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952405-city-astronaut-and-robot/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/-0FcjJAgGP4/maxresdefault.jpg" alt="LEGO City 952405 Astronaut and Robot building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-0FcjJAgGP4/maxresdefault.jpg" alt="LEGO City 952405 Astronaut and Robot building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952405</div>
+    <div class="set-number-row"><div class="set-number">952405</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Astronaut and Robot</div>
     <div class="set-meta">City • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952406-city-diver-and-shark/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/YIYbsJV9ICA/maxresdefault.jpg" alt="LEGO City 952406 Diver and Shark building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/YIYbsJV9ICA/maxresdefault.jpg" alt="LEGO City 952406 Diver and Shark building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952406</div>
+    <div class="set-number-row"><div class="set-number">952406</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Diver and Shark</div>
     <div class="set-meta">City • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952407-city-astronaut-with-quad/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/KIv1Vm0ETrM/maxresdefault.jpg" alt="LEGO City 952407 Astronaut with Quad building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/KIv1Vm0ETrM/maxresdefault.jpg" alt="LEGO City 952407 Astronaut with Quad building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952407</div>
+    <div class="set-number-row"><div class="set-number">952407</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Astronaut with Quad</div>
     <div class="set-meta">City • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952408-city-policeman-with-jetboat/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/KhBPTkGPIfY/maxresdefault.jpg" alt="LEGO City 952408 Policeman with Jetboat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/KhBPTkGPIfY/maxresdefault.jpg" alt="LEGO City 952408 Policeman with Jetboat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952408</div>
+    <div class="set-number-row"><div class="set-number">952408</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Policeman with Jetboat</div>
     <div class="set-meta">City • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952409-city-fire-buggy/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Mlbe0qtECpI/maxresdefault.jpg" alt="LEGO City 952409 Fire Buggy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Mlbe0qtECpI/maxresdefault.jpg" alt="LEGO City 952409 Fire Buggy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952409</div>
+    <div class="set-number-row"><div class="set-number">952409</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Fire Buggy</div>
     <div class="set-meta">City • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952410-city-jungle-explorer/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/D7cphfBa9e4/maxresdefault.jpg" alt="LEGO City 952410 Jungle Explorer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/D7cphfBa9e4/maxresdefault.jpg" alt="LEGO City 952410 Jungle Explorer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952410</div>
+    <div class="set-number-row"><div class="set-number">952410</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Jungle Explorer</div>
     <div class="set-meta">City • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952411-city-astronaut-with-equipment/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/IymO1Jv-aP0/maxresdefault.jpg" alt="LEGO City 952411 Astronaut with Equipment building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IymO1Jv-aP0/maxresdefault.jpg" alt="LEGO City 952411 Astronaut with Equipment building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952411</div>
+    <div class="set-number-row"><div class="set-number">952411</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Astronaut with Equipment</div>
     <div class="set-meta">City • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952302-city-police-buggy/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/sudo3lD6zJY/maxresdefault.jpg" alt="LEGO City 952302 Police Buggy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/sudo3lD6zJY/maxresdefault.jpg" alt="LEGO City 952302 Police Buggy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952302</div>
+    <div class="set-number-row"><div class="set-number">952302</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Police Buggy</div>
     <div class="set-meta">City • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952303-city-worker-with-lawnmower/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/f09F2RAIoSU/maxresdefault.jpg" alt="LEGO City 952303 Worker with Lawnmower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/f09F2RAIoSU/maxresdefault.jpg" alt="LEGO City 952303 Worker with Lawnmower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952303</div>
+    <div class="set-number-row"><div class="set-number">952303</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Worker with Lawnmower</div>
     <div class="set-meta">City • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952304-city-policeman-and-crook-with-atm/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/JHCWft36AXU/maxresdefault.jpg" alt="LEGO City 952304 Policeman and Crook with ATM building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/JHCWft36AXU/maxresdefault.jpg" alt="LEGO City 952304 Policeman and Crook with ATM building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952304</div>
+    <div class="set-number-row"><div class="set-number">952304</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Policeman and Crook with ATM</div>
     <div class="set-meta">City • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952305-city-building-team-with-tools/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ccI1dbplpZs/maxresdefault.jpg" alt="LEGO City 952305 Building Team with Tools building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ccI1dbplpZs/maxresdefault.jpg" alt="LEGO City 952305 Building Team with Tools building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952305</div>
+    <div class="set-number-row"><div class="set-number">952305</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Building Team with Tools</div>
     <div class="set-meta">City • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952306-city-airport-worker-with-service-car/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/IJlU28KgwQI/maxresdefault.jpg" alt="LEGO City 952306 Airport Worker with Service Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IJlU28KgwQI/maxresdefault.jpg" alt="LEGO City 952306 Airport Worker with Service Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952306</div>
+    <div class="set-number-row"><div class="set-number">952306</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Airport Worker with Service Car</div>
     <div class="set-meta">City • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952307-city-policeman-with-jet/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/jf5rCyrtiRY/maxresdefault.jpg" alt="LEGO City 952307 Policeman with Jet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jf5rCyrtiRY/maxresdefault.jpg" alt="LEGO City 952307 Policeman with Jet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952307</div>
+    <div class="set-number-row"><div class="set-number">952307</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Policeman with Jet</div>
     <div class="set-meta">City • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952308-city-stuntman-with-quad-bike/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/3AgG_be1YYs/maxresdefault.jpg" alt="LEGO City 952308 Stuntman with Quad Bike building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3AgG_be1YYs/maxresdefault.jpg" alt="LEGO City 952308 Stuntman with Quad Bike building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952308</div>
+    <div class="set-number-row"><div class="set-number">952308</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Stuntman with Quad Bike</div>
     <div class="set-meta">City • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952309-city-explorer-with-water-scooter/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/EL2WOCHCGh8/maxresdefault.jpg" alt="LEGO City 952309 Explorer with Water Scooter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/EL2WOCHCGh8/maxresdefault.jpg" alt="LEGO City 952309 Explorer with Water Scooter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952309</div>
+    <div class="set-number-row"><div class="set-number">952309</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Explorer with Water Scooter</div>
     <div class="set-meta">City • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952401-city-builder-with-crane/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/RvqngSuLzvo/maxresdefault.jpg" alt="LEGO City 952401 Builder with Crane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/RvqngSuLzvo/maxresdefault.jpg" alt="LEGO City 952401 Builder with Crane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952401</div>
+    <div class="set-number-row"><div class="set-number">952401</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Builder with Crane</div>
     <div class="set-meta">City • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952201-city-justin-justice-s-police-car/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Cjz9y28UoHo/maxresdefault.jpg" alt="LEGO City 952201 Justin Justice&#x27;s Police Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Cjz9y28UoHo/maxresdefault.jpg" alt="LEGO City 952201 Justin Justice&#x27;s Police Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952201</div>
+    <div class="set-number-row"><div class="set-number">952201</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Justin Justice&#x27;s Police Car</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952205-city-sally-stardust-s-satellite/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/QRpD7Cs33K0/maxresdefault.jpg" alt="LEGO City 952205 Sally Stardust&#x27;s Satellite building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QRpD7Cs33K0/maxresdefault.jpg" alt="LEGO City 952205 Sally Stardust&#x27;s Satellite building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952205</div>
+    <div class="set-number-row"><div class="set-number">952205</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Sally Stardust&#x27;s Satellite</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952301-city-fire-helicopter/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/DBhVwLrLbpI/maxresdefault.jpg" alt="LEGO City 952301 Fire Helicopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DBhVwLrLbpI/maxresdefault.jpg" alt="LEGO City 952301 Fire Helicopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952301</div>
+    <div class="set-number-row"><div class="set-number">952301</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Fire Helicopter</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952101-city-police-helicopter/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/2-2UHfq-VBo/maxresdefault.jpg" alt="LEGO City 952101 Police Helicopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/2-2UHfq-VBo/maxresdefault.jpg" alt="LEGO City 952101 Police Helicopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952101</div>
+    <div class="set-number-row"><div class="set-number">952101</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Police Helicopter</div>
     <div class="set-meta">City • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952102-city-digger/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/w8Xvkv-k4b8/maxresdefault.jpg" alt="LEGO City 952102 Digger building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/w8Xvkv-k4b8/maxresdefault.jpg" alt="LEGO City 952102 Digger building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952102</div>
+    <div class="set-number-row"><div class="set-number">952102</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Digger</div>
     <div class="set-meta">City • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952103-city-policeman-and-motorcycle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/pbBbVOwmeek/maxresdefault.jpg" alt="LEGO City 952103 Policeman and Motorcycle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pbBbVOwmeek/maxresdefault.jpg" alt="LEGO City 952103 Policeman and Motorcycle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952103</div>
+    <div class="set-number-row"><div class="set-number">952103</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Policeman and Motorcycle</div>
     <div class="set-meta">City • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952104-city-fireman-bob/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/maKV5YPlW7I/maxresdefault.jpg" alt="LEGO City 952104 Fireman Bob building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/maKV5YPlW7I/maxresdefault.jpg" alt="LEGO City 952104 Fireman Bob building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952104</div>
+    <div class="set-number-row"><div class="set-number">952104</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Fireman Bob</div>
     <div class="set-meta">City • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952106-city-sweeper/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/R4pUVnh-cJw/maxresdefault.jpg" alt="LEGO City 952106 Sweeper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/R4pUVnh-cJw/maxresdefault.jpg" alt="LEGO City 952106 Sweeper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952106</div>
+    <div class="set-number-row"><div class="set-number">952106</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Sweeper</div>
     <div class="set-meta">City • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952107-city-diver-and-crab/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/3ytugtFElLI/maxresdefault.jpg" alt="LEGO City 952107 Diver and Crab building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3ytugtFElLI/maxresdefault.jpg" alt="LEGO City 952107 Diver and Crab building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952107</div>
+    <div class="set-number-row"><div class="set-number">952107</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Diver and Crab</div>
     <div class="set-meta">City • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952108-city-stunt-man/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/PXFAWXtQBcY/maxresdefault.jpg" alt="LEGO City 952108 Stunt man building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PXFAWXtQBcY/maxresdefault.jpg" alt="LEGO City 952108 Stunt man building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952108</div>
+    <div class="set-number-row"><div class="set-number">952108</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Stunt man</div>
     <div class="set-meta">City • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952110-city-explorer/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/RUKIcHbt0JE/maxresdefault.jpg" alt="LEGO City 952110 Explorer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/RUKIcHbt0JE/maxresdefault.jpg" alt="LEGO City 952110 Explorer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952110</div>
+    <div class="set-number-row"><div class="set-number">952110</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Explorer</div>
     <div class="set-meta">City • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952111-city-construction-worker/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/tA3r_nrgJfc/maxresdefault.jpg" alt="LEGO City 952111 Construction worker building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/tA3r_nrgJfc/maxresdefault.jpg" alt="LEGO City 952111 Construction worker building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952111</div>
+    <div class="set-number-row"><div class="set-number">952111</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Construction worker</div>
     <div class="set-meta">City • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952112-city-jessica-sharpe-and-lion-cub/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/HmP3nk4Bdjk/maxresdefault.jpg" alt="LEGO City 952112 Jessica Sharpe and Lion Cub building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HmP3nk4Bdjk/maxresdefault.jpg" alt="LEGO City 952112 Jessica Sharpe and Lion Cub building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952112</div>
+    <div class="set-number-row"><div class="set-number">952112</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Jessica Sharpe and Lion Cub</div>
     <div class="set-meta">City • 2021</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO Magazine Gift Instructions</h2><p>9 named pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/l0002221-city-construction-worker-with-bulldozer/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO City L0002221 Construction Worker with Bulldozer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO City L0002221 Construction Worker with Bulldozer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002221</div>
+    <div class="set-number-row"><div class="set-number">L0002221</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Construction Worker with Bulldozer</div>
     <div class="set-meta">City • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952507-city-police-officer-with-jet-pack/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO City 952507 Police Officer with Jet Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO City 952507 Police Officer with Jet Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952507</div>
+    <div class="set-number-row"><div class="set-number">952507</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Police Officer with Jet Pack</div>
     <div class="set-meta">City • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952510-city-construction-worker-with-vibration-plate/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO City 952510 Construction Worker with Vibration Plate building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO City 952510 Construction Worker with Vibration Plate building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952510</div>
+    <div class="set-number-row"><div class="set-number">952510</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Construction Worker with Vibration Plate</div>
     <div class="set-meta">City • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952412-city-ice-adventure/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO City 952412 Ice Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO City 952412 Ice Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952412</div>
+    <div class="set-number-row"><div class="set-number">952412</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Ice Adventure</div>
     <div class="set-meta">City • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952310-city-builder-with-digger/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO City 952310 Builder with Digger building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO City 952310 Builder with Digger building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952310</div>
+    <div class="set-number-row"><div class="set-number">952310</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Builder with Digger</div>
     <div class="set-meta">City • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952311-city-diver-with-underwater-scooter/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO City 952311 Diver with Underwater Scooter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO City 952311 Diver with Underwater Scooter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952311</div>
+    <div class="set-number-row"><div class="set-number">952311</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Diver with Underwater Scooter</div>
     <div class="set-meta">City • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952312-city-snowmobile/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO City 952312 Snowmobile building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO City 952312 Snowmobile building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952312</div>
+    <div class="set-number-row"><div class="set-number">952312</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Snowmobile</div>
     <div class="set-meta">City • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952105-city-doctor-and-patient/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO City 952105 Doctor and Patient building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO City 952105 Doctor and Patient building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952105</div>
+    <div class="set-number-row"><div class="set-number">952105</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Doctor and Patient</div>
     <div class="set-meta">City • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952109-city-policeman-and-dog/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO City 952109 Policeman and dog building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO City 952109 Policeman and dog building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">952109</div>
+    <div class="set-number-row"><div class="set-number">952109</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Policeman and dog</div>
     <div class="set-meta">City • 2021</div>
   </div>

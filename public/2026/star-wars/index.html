@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,486 +159,432 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/star-wars/">Star Wars</a><span>›</span><strong>2026 Star Wars</strong></nav><div class="results-header"><div><h2>LEGO 2026 Star Wars Instructions</h2><p>54 LEGO instruction pages found for this year and theme.</p></div><a class="btn-outline" href="/2026/">BACK TO 2026</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2026/">All LEGO 2026 Instructions</a><a class="btn-outline" href="/themes/star-wars/">All LEGO Star Wars Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/l0002239-star-wars-death-trooper/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Vpopq4SGFgY/maxresdefault.jpg" alt="LEGO Star Wars L0002239 Death Trooper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Vpopq4SGFgY/maxresdefault.jpg" alt="LEGO Star Wars L0002239 Death Trooper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002239</div>
+    <div class="set-number-row"><div class="set-number">L0002239</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Death Trooper</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6657699-star-wars-bo-katan-promotional/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/6RD361MJ95U/maxresdefault.jpg" alt="LEGO 6657699 Star Wars - Bo Katan - Promotional building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/6RD361MJ95U/maxresdefault.jpg" alt="LEGO 6657699 Star Wars - Bo Katan - Promotional building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6657699</div>
+    <div class="set-number-row"><div class="set-number">6657699</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Star Wars - Bo Katan - Promotional</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6648338-star-wars-the-mandalorian-and-grogu-promotional/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/7w5CF3Fd2fg/maxresdefault.jpg" alt="LEGO 6648338 Star Wars - The Mandalorian and Grogu - Promotional building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/7w5CF3Fd2fg/maxresdefault.jpg" alt="LEGO 6648338 Star Wars - The Mandalorian and Grogu - Promotional building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6648338</div>
+    <div class="set-number-row"><div class="set-number">6648338</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Star Wars - The Mandalorian and Grogu - Promotional</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6643541-star-wars-grogu-in-pram-promotional/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/khdR50qDIzE/maxresdefault.jpg" alt="LEGO 6643541 Star Wars - Grogu in Pram - Promotional building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/khdR50qDIzE/maxresdefault.jpg" alt="LEGO 6643541 Star Wars - Grogu in Pram - Promotional building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6643541</div>
+    <div class="set-number-row"><div class="set-number">6643541</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Star Wars - Grogu in Pram - Promotional</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6626047-star-wars-landspeeder/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/TMVEi1KL7UY/maxresdefault.jpg" alt="LEGO Star Wars 6626047 Landspeeder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/TMVEi1KL7UY/maxresdefault.jpg" alt="LEGO Star Wars 6626047 Landspeeder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6626047</div>
+    <div class="set-number-row"><div class="set-number">6626047</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Landspeeder</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002238-star-wars-327th-star-corps-clone-trooper/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/vZ9XKz_-jaU/maxresdefault.jpg" alt="LEGO Star Wars L0002238 327th Star Corps Clone Trooper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vZ9XKz_-jaU/maxresdefault.jpg" alt="LEGO Star Wars L0002238 327th Star Corps Clone Trooper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002238</div>
+    <div class="set-number-row"><div class="set-number">L0002238</div><span class="badge-new">NEW</span></div>
     <div class="set-name">327th Star Corps Clone Trooper</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75454-star-wars-imperial-remnant-at-at-with-int-4/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/4eKvcLluIbQ/maxresdefault.jpg" alt="LEGO Star Wars 75454 Imperial Remnant AT-AT with INT-4 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4eKvcLluIbQ/maxresdefault.jpg" alt="LEGO Star Wars 75454 Imperial Remnant AT-AT with INT-4 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75454</div>
+    <div class="set-number-row"><div class="set-number">75454</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Imperial Remnant AT-AT with INT-4</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75451-star-wars-hutt-palace-sentry-droid-showdown/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/gjGvCoXha3I/maxresdefault.jpg" alt="LEGO Star Wars 75451 Hutt Palace Sentry Droid Showdown building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/gjGvCoXha3I/maxresdefault.jpg" alt="LEGO Star Wars 75451 Hutt Palace Sentry Droid Showdown building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75451</div>
+    <div class="set-number-row"><div class="set-number">75451</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Hutt Palace Sentry Droid Showdown</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75453-star-wars-offworld-sandcrawler-and-mudhorn/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/MGqGg6YOcv4/maxresdefault.jpg" alt="LEGO Star Wars 75453 Offworld Sandcrawler and Mudhorn building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/MGqGg6YOcv4/maxresdefault.jpg" alt="LEGO Star Wars 75453 Offworld Sandcrawler and Mudhorn building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75453</div>
+    <div class="set-number-row"><div class="set-number">75453</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Offworld Sandcrawler and Mudhorn</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75455-star-wars-boba-fett/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/LjUDaAVDaDg/maxresdefault.jpg" alt="LEGO Star Wars 75455 Boba Fett building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/LjUDaAVDaDg/maxresdefault.jpg" alt="LEGO Star Wars 75455 Boba Fett building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75455</div>
+    <div class="set-number-row"><div class="set-number">75455</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Boba Fett</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75459-star-wars-imperial-lambda-class-shuttle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/CtDgdBPFYmQ/maxresdefault.jpg" alt="LEGO Star Wars 75459 Imperial Lambda-class Shuttle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/CtDgdBPFYmQ/maxresdefault.jpg" alt="LEGO Star Wars 75459 Imperial Lambda-class Shuttle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75459</div>
+    <div class="set-number-row"><div class="set-number">75459</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Imperial Lambda-class Shuttle</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002237-star-wars-galactic-marine/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/YO0m-4EARp0/maxresdefault.jpg" alt="LEGO Star Wars L0002237 Galactic Marine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/YO0m-4EARp0/maxresdefault.jpg" alt="LEGO Star Wars L0002237 Galactic Marine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002237</div>
+    <div class="set-number-row"><div class="set-number">L0002237</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Galactic Marine</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002236-star-wars-republic-gunship/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/cxnF3UmaK0M/maxresdefault.jpg" alt="LEGO Star Wars L0002236 Republic Gunship building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/cxnF3UmaK0M/maxresdefault.jpg" alt="LEGO Star Wars L0002236 Republic Gunship building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002236</div>
+    <div class="set-number-row"><div class="set-number">L0002236</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Republic Gunship</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75461-star-wars-up-scaled-darth-vader-minifigure/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/taV03mpRI4A/maxresdefault.jpg" alt="LEGO Star Wars 75461 Up-Scaled Darth Vader Minifigure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/taV03mpRI4A/maxresdefault.jpg" alt="LEGO Star Wars 75461 Up-Scaled Darth Vader Minifigure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75461</div>
+    <div class="set-number-row"><div class="set-number">75461</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Up-Scaled Darth Vader Minifigure</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75458-star-wars-imperial-remnant-at-rt-driver-helmet/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/AWmfZmEPC1Y/maxresdefault.jpg" alt="LEGO Star Wars 75458 Imperial Remnant AT-RT Driver Helmet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AWmfZmEPC1Y/maxresdefault.jpg" alt="LEGO Star Wars 75458 Imperial Remnant AT-RT Driver Helmet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75458</div>
+    <div class="set-number-row"><div class="set-number">75458</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Imperial Remnant AT-RT Driver Helmet</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6626051-star-wars-bantha/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/OhDyV7H3wCY/maxresdefault.jpg" alt="LEGO Star Wars 6626051 Bantha building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OhDyV7H3wCY/maxresdefault.jpg" alt="LEGO Star Wars 6626051 Bantha building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6626051</div>
+    <div class="set-number-row"><div class="set-number">6626051</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Bantha</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6626049-star-wars-n-1-starfighter/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0HQtWt2-6Z0/maxresdefault.jpg" alt="LEGO Star Wars 6626049 N-1 Starfighter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0HQtWt2-6Z0/maxresdefault.jpg" alt="LEGO Star Wars 6626049 N-1 Starfighter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6626049</div>
+    <div class="set-number-row"><div class="set-number">6626049</div><span class="badge-new">NEW</span></div>
     <div class="set-name">N-1 Starfighter</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75444-star-wars-at-rt-attack/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/_q5gFTbngsM/maxresdefault.jpg" alt="LEGO Star Wars 75444 AT-RT Attack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_q5gFTbngsM/maxresdefault.jpg" alt="LEGO Star Wars 75444 AT-RT Attack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75444</div>
+    <div class="set-number-row"><div class="set-number">75444</div><span class="badge-new">NEW</span></div>
     <div class="set-name">AT-RT Attack</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40917-star-wars-the-darksaber/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/_rvtTUtlfxw/maxresdefault.jpg" alt="LEGO Star Wars 40917 The Darksaber building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_rvtTUtlfxw/maxresdefault.jpg" alt="LEGO Star Wars 40917 The Darksaber building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">40917</div>
+    <div class="set-number-row"><div class="set-number">40917</div><span class="badge-new">NEW</span></div>
     <div class="set-name">The Darksaber</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75442-star-wars-the-mandalorian-s-n-1-starfighter/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/c1syCg8uHX0/maxresdefault.jpg" alt="LEGO Star Wars 75442 The Mandalorian&#x27;s N-1 Starfighter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/c1syCg8uHX0/maxresdefault.jpg" alt="LEGO Star Wars 75442 The Mandalorian&#x27;s N-1 Starfighter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75442</div>
+    <div class="set-number-row"><div class="set-number">75442</div><span class="badge-new">NEW</span></div>
     <div class="set-name">The Mandalorian&#x27;s N-1 Starfighter</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75447-star-wars-the-razor-crest/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/bz0l3lzLIhs/maxresdefault.jpg" alt="LEGO Star Wars 75447 The Razor Crest building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/bz0l3lzLIhs/maxresdefault.jpg" alt="LEGO Star Wars 75447 The Razor Crest building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75447</div>
+    <div class="set-number-row"><div class="set-number">75447</div><span class="badge-new">NEW</span></div>
     <div class="set-name">The Razor Crest</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75439-star-wars-darth-vader-bust/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/vDnoATHBQ-A/maxresdefault.jpg" alt="LEGO Star Wars 75439 Darth Vader Bust building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vDnoATHBQ-A/maxresdefault.jpg" alt="LEGO Star Wars 75439 Darth Vader Bust building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75439</div>
+    <div class="set-number-row"><div class="set-number">75439</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Darth Vader Bust</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75446-star-wars-grogu-mandalorian-apprentice/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/3CMEmxxGg34/maxresdefault.jpg" alt="LEGO Star Wars 75446 Grogu (Mandalorian Apprentice) building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3CMEmxxGg34/maxresdefault.jpg" alt="LEGO Star Wars 75446 Grogu (Mandalorian Apprentice) building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75446</div>
+    <div class="set-number-row"><div class="set-number">75446</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Grogu (Mandalorian Apprentice)</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75438-star-wars-yoda-bust/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/3AfrLAxpLrc/maxresdefault.jpg" alt="LEGO Star Wars 75438 Yoda Bust building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3AfrLAxpLrc/maxresdefault.jpg" alt="LEGO Star Wars 75438 Yoda Bust building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75438</div>
+    <div class="set-number-row"><div class="set-number">75438</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Yoda Bust</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75445-star-wars-anzellan-starship/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/liS6ymQ538w/maxresdefault.jpg" alt="LEGO Star Wars 75445 Anzellan Starship building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/liS6ymQ538w/maxresdefault.jpg" alt="LEGO Star Wars 75445 Anzellan Starship building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75445</div>
+    <div class="set-number-row"><div class="set-number">75445</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Anzellan Starship</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30728-star-wars-the-razor-crest/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/_TpMGqiR5bY/maxresdefault.jpg" alt="LEGO Star Wars 30728 The Razor Crest building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_TpMGqiR5bY/maxresdefault.jpg" alt="LEGO Star Wars 30728 The Razor Crest building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30728</div>
+    <div class="set-number-row"><div class="set-number">30728</div><span class="badge-new">NEW</span></div>
     <div class="set-name">The Razor Crest</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75423-star-wars-luke-s-red-five-x-wing/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/uApg0jcKjzI/maxresdefault.jpg" alt="LEGO Star Wars 75423 Luke&#x27;s Red Five X-wing building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/uApg0jcKjzI/maxresdefault.jpg" alt="LEGO Star Wars 75423 Luke&#x27;s Red Five X-wing building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75423</div>
+    <div class="set-number-row"><div class="set-number">75423</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Luke&#x27;s Red Five X-wing</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75460-star-wars-new-republic-x-wing-starfighter/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/F4h86OILd-8/maxresdefault.jpg" alt="LEGO Star Wars 75460 New Republic X-wing Starfighter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/F4h86OILd-8/maxresdefault.jpg" alt="LEGO Star Wars 75460 New Republic X-wing Starfighter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75460</div>
+    <div class="set-number-row"><div class="set-number">75460</div><span class="badge-new">NEW</span></div>
     <div class="set-name">New Republic X-wing Starfighter</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75422-star-wars-yoda-s-hut-and-jedi-training/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/eRKScrS_DZQ/maxresdefault.jpg" alt="LEGO Star Wars 75422 Yoda&#x27;s Hut and Jedi Training building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/eRKScrS_DZQ/maxresdefault.jpg" alt="LEGO Star Wars 75422 Yoda&#x27;s Hut and Jedi Training building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75422</div>
+    <div class="set-number-row"><div class="set-number">75422</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Yoda&#x27;s Hut and Jedi Training</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75424-star-wars-at-st-attack-on-endor/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/XXaUrHGrS50/maxresdefault.jpg" alt="LEGO Star Wars 75424 AT-ST Attack on Endor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/XXaUrHGrS50/maxresdefault.jpg" alt="LEGO Star Wars 75424 AT-ST Attack on Endor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75424</div>
+    <div class="set-number-row"><div class="set-number">75424</div><span class="badge-new">NEW</span></div>
     <div class="set-name">AT-ST Attack on Endor</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75427-star-wars-throne-room-duel-a-wing/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/yIbARsGbyc0/maxresdefault.jpg" alt="LEGO Star Wars 75427 Throne Room Duel &amp; A-wing building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yIbARsGbyc0/maxresdefault.jpg" alt="LEGO Star Wars 75427 Throne Room Duel &amp; A-wing building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75427</div>
+    <div class="set-number-row"><div class="set-number">75427</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Throne Room Duel &amp; A-wing</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75425-star-wars-mos-eisley-cantina/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/UXLX3DRc3EQ/maxresdefault.jpg" alt="LEGO Star Wars 75425 Mos Eisley Cantina building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/UXLX3DRc3EQ/maxresdefault.jpg" alt="LEGO Star Wars 75425 Mos Eisley Cantina building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75425</div>
+    <div class="set-number-row"><div class="set-number">75425</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Mos Eisley Cantina</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75421-star-wars-darth-vader-s-tie-fighter/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Ea9-pnk3KOw/maxresdefault.jpg" alt="LEGO Star Wars 75421 Darth Vader&#x27;s TIE Fighter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Ea9-pnk3KOw/maxresdefault.jpg" alt="LEGO Star Wars 75421 Darth Vader&#x27;s TIE Fighter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75421</div>
+    <div class="set-number-row"><div class="set-number">75421</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Darth Vader&#x27;s TIE Fighter</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75420-star-wars-luke-s-landspeeder/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/_7ED39CpAwU/maxresdefault.jpg" alt="LEGO Star Wars 75420 Luke&#x27;s Landspeeder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_7ED39CpAwU/maxresdefault.jpg" alt="LEGO Star Wars 75420 Luke&#x27;s Landspeeder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75420</div>
+    <div class="set-number-row"><div class="set-number">75420</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Luke&#x27;s Landspeeder</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75426-star-wars-millennium-falcon/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/6XEYvPXdiuo/maxresdefault.jpg" alt="LEGO Star Wars 75426 Millennium Falcon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/6XEYvPXdiuo/maxresdefault.jpg" alt="LEGO Star Wars 75426 Millennium Falcon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75426</div>
+    <div class="set-number-row"><div class="set-number">75426</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Millennium Falcon</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75449-star-wars-siege-of-mandalore-battle-pack/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/8p2nbTGqu6s/maxresdefault.jpg" alt="LEGO Star Wars 75449 Siege of Mandalore Battle Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8p2nbTGqu6s/maxresdefault.jpg" alt="LEGO Star Wars 75449 Siege of Mandalore Battle Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75449</div>
+    <div class="set-number-row"><div class="set-number">75449</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Siege of Mandalore Battle Pack</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75452-star-wars-bb-8/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/a7YnzfK2LoY/maxresdefault.jpg" alt="LEGO Star Wars 75452 BB-8 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/a7YnzfK2LoY/maxresdefault.jpg" alt="LEGO Star Wars 75452 BB-8 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75452</div>
+    <div class="set-number-row"><div class="set-number">75452</div><span class="badge-new">NEW</span></div>
     <div class="set-name">BB-8</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75448-star-wars-clone-shock-trooper-mech/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/y3KA5Q7PMc4/maxresdefault.jpg" alt="LEGO Star Wars 75448 Clone Shock Trooper Mech building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/y3KA5Q7PMc4/maxresdefault.jpg" alt="LEGO Star Wars 75448 Clone Shock Trooper Mech building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75448</div>
+    <div class="set-number-row"><div class="set-number">75448</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Clone Shock Trooper Mech</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75441-star-wars-venator-class-attack-cruiser/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/WbRywIFd5n4/maxresdefault.jpg" alt="LEGO Star Wars 75441 Venator-class Attack Cruiser building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/WbRywIFd5n4/maxresdefault.jpg" alt="LEGO Star Wars 75441 Venator-class Attack Cruiser building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75441</div>
+    <div class="set-number-row"><div class="set-number">75441</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Venator-class Attack Cruiser</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75436-star-wars-the-mandalorian-grogu-s-speeder-bike/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/m1zda_3ww5A/maxresdefault.jpg" alt="LEGO Star Wars 75436 The Mandalorian &amp; Grogu&#x27;s Speeder Bike building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/m1zda_3ww5A/maxresdefault.jpg" alt="LEGO Star Wars 75436 The Mandalorian &amp; Grogu&#x27;s Speeder Bike building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75436</div>
+    <div class="set-number-row"><div class="set-number">75436</div><span class="badge-new">NEW</span></div>
     <div class="set-name">The Mandalorian &amp; Grogu&#x27;s Speeder Bike</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75443-star-wars-grogu-s-homestead/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0HfFfBz7sxk/maxresdefault.jpg" alt="LEGO Star Wars 75443 Grogu&#x27;s Homestead building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0HfFfBz7sxk/maxresdefault.jpg" alt="LEGO Star Wars 75443 Grogu&#x27;s Homestead building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75443</div>
+    <div class="set-number-row"><div class="set-number">75443</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Grogu&#x27;s Homestead</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75440-star-wars-at/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ct8skDcPCTk/maxresdefault.jpg" alt="LEGO Star Wars 75440 AT-AT building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ct8skDcPCTk/maxresdefault.jpg" alt="LEGO Star Wars 75440 AT-AT building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75440</div>
+    <div class="set-number-row"><div class="set-number">75440</div><span class="badge-new">NEW</span></div>
     <div class="set-name">AT-AT</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75437-star-wars-cobb-vanth-s-speeder/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/bO5ktADS5jU/maxresdefault.jpg" alt="LEGO Star Wars 75437 Cobb Vanth&#x27;s Speeder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/bO5ktADS5jU/maxresdefault.jpg" alt="LEGO Star Wars 75437 Cobb Vanth&#x27;s Speeder building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75437</div>
+    <div class="set-number-row"><div class="set-number">75437</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Cobb Vanth&#x27;s Speeder</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30727-star-wars-tie-advanced/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/1JwhUnMSI0Q/maxresdefault.jpg" alt="LEGO Star Wars 30727 TIE Advanced building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/1JwhUnMSI0Q/maxresdefault.jpg" alt="LEGO Star Wars 30727 TIE Advanced building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30727</div>
+    <div class="set-number-row"><div class="set-number">30727</div><span class="badge-new">NEW</span></div>
     <div class="set-name">TIE Advanced</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO 2026 Star Wars Instructions</h2><p>10 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/66821-star-wars-trooper-droid-battle-pack/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO 66821 Star Wars: Trooper &amp; Droid Battle Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 66821 Star Wars: Trooper &amp; Droid Battle Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">66821</div>
+    <div class="set-number-row"><div class="set-number">66821</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Star Wars: Trooper &amp; Droid Battle Pack</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75456-star-wars-advent-calendar-2026/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO 75456 LEGO Star Wars Advent Calendar 2026 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 75456 LEGO Star Wars Advent Calendar 2026 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75456</div>
+    <div class="set-number-row"><div class="set-number">75456</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">LEGO Star Wars Advent Calendar 2026</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/5010204-star-wars-grogu-in-pram/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars 5010204 Grogu in Pram building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars 5010204 Grogu in Pram building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">5010204</div>
+    <div class="set-number-row"><div class="set-number">5010204</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Grogu in Pram</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/5010305-star-wars-the-mandalorian-and-grogu/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars 5010305 The Mandalorian and Grogu building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars 5010305 The Mandalorian and Grogu building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">5010305</div>
+    <div class="set-number-row"><div class="set-number">5010305</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">The Mandalorian and Grogu</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/5010391-star-wars-bo-katan/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars 5010391 Bo Katan building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars 5010391 Bo Katan building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">5010391</div>
+    <div class="set-number-row"><div class="set-number">5010391</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Bo Katan</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002232-star-wars-night-trooper/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars L0002232 Night Trooper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars L0002232 Night Trooper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002232</div>
+    <div class="set-number-row"><div class="set-number">L0002232</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Night Trooper</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002233-star-wars-phase-2-clone-pilot/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars L0002233 Phase 2 Clone Pilot building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars L0002233 Phase 2 Clone Pilot building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002233</div>
+    <div class="set-number-row"><div class="set-number">L0002233</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Phase 2 Clone Pilot</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002234-star-wars-anakin-skywalker/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars L0002234 Anakin Skywalker building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars L0002234 Anakin Skywalker building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002234</div>
+    <div class="set-number-row"><div class="set-number">L0002234</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Anakin Skywalker</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002235-star-wars-commando-droid/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars L0002235 Commando Droid building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars L0002235 Commando Droid building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002235</div>
+    <div class="set-number-row"><div class="set-number">L0002235</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Commando Droid</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002245-star-wars-jango-fett/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars L0002245 Jango Fett building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Star Wars L0002245 Jango Fett building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002245</div>
+    <div class="set-number-row"><div class="set-number">L0002245</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Jango Fett</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>

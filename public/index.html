@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,278 +159,247 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><section id="popular-instructions" style="scroll-margin-top:90px;"><div class="results-header"><div><h2>POPULAR LEGO INSTRUCTIONS — LAST 28 DAYS</h2><p>The LEGO instruction sets receiving the most YouTube views over the latest 28 completed days.</p></div><a class="btn-outline" href="/search/">FIND A SET</a></div><div class="grid"><a class="set-card" href="/lego-instructions/30714-creator-orange-cat/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/P-ADnpoeInw/maxresdefault.jpg" alt="LEGO Creator 30714 Orange Cat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/P-ADnpoeInw/maxresdefault.jpg" alt="LEGO Creator 30714 Orange Cat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30714</div>
+    <div class="set-number-row"><div class="set-number">30714</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Orange Cat</div>
     <div class="set-meta">Creator • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72166-pokemon-cubone-and-gengar-s-spooky-showdown/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0oENPr-HM9o/maxresdefault.jpg" alt="LEGO Pokémon 72166 Cubone and Gengar&#x27;s Spooky Showdown building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0oENPr-HM9o/maxresdefault.jpg" alt="LEGO Pokémon 72166 Cubone and Gengar&#x27;s Spooky Showdown building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">72166</div>
+    <div class="set-number-row"><div class="set-number">72166</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Cubone and Gengar&#x27;s Spooky Showdown</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66789-creator-animal-gift-set/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/NrZhKjK5e_g/maxresdefault.jpg" alt="LEGO Creator 66789 Animal Gift Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/NrZhKjK5e_g/maxresdefault.jpg" alt="LEGO Creator 66789 Animal Gift Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">66789</div>
+    <div class="set-number-row"><div class="set-number">66789</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Animal Gift Set</div>
     <div class="set-meta">Creator • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21591-minecraft-the-twisted-warden-battle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/P4G2Sty1i-8/maxresdefault.jpg" alt="LEGO Minecraft 21591 The Twisted Warden Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/P4G2Sty1i-8/maxresdefault.jpg" alt="LEGO Minecraft 21591 The Twisted Warden Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">21591</div>
+    <div class="set-number-row"><div class="set-number">21591</div><span class="badge-new">NEW</span></div>
     <div class="set-name">The Twisted Warden Battle</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77264-speed-champions-jaguar-f-type-project-7-land-rover-defender-classic/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/PW6aefIIQXM/maxresdefault.jpg" alt="LEGO Speed Champions 77264 Jaguar F-TYPE Project 7 &amp; Land Rover Defender Classic building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PW6aefIIQXM/maxresdefault.jpg" alt="LEGO Speed Champions 77264 Jaguar F-TYPE Project 7 &amp; Land Rover Defender Classic building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">77264</div>
+    <div class="set-number-row"><div class="set-number">77264</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Jaguar F-TYPE Project 7 &amp; Land Rover Defender Classic</div>
     <div class="set-meta">Speed Champions • 2026</div>
   </div>
 </a></div></section><div class="results-header" style="margin-top:38px;"><div><h2>LATEST 2026 LEGO INSTRUCTIONS</h2><p>Step-by-step video guides for the newest LEGO sets added to the site.</p></div><a class="btn-outline" href="/2026/">BROWSE ALL 2026</a></div><div class="grid"><a class="set-card" href="/lego-instructions/6667469-promotional-race-car/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/00H7-3qOsac/maxresdefault.jpg" alt="LEGO Promotional 6667469 Race Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/00H7-3qOsac/maxresdefault.jpg" alt="LEGO Promotional 6667469 Race Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6667469</div>
+    <div class="set-number-row"><div class="set-number">6667469</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Race Car</div>
     <div class="set-meta">Promotional • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6618066-promotional-jersey/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/1Yd6DzyO6l0/maxresdefault.jpg" alt="LEGO Promotional 6618066 Jersey building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/1Yd6DzyO6l0/maxresdefault.jpg" alt="LEGO Promotional 6618066 Jersey building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6618066</div>
+    <div class="set-number-row"><div class="set-number">6618066</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Jersey</div>
     <div class="set-meta">Promotional • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6614220-promotional-micro-pink-rose/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/pC8yLV23o3I/maxresdefault.jpg" alt="LEGO Promotional 6614220 Micro Pink Rose building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pC8yLV23o3I/maxresdefault.jpg" alt="LEGO Promotional 6614220 Micro Pink Rose building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6614220</div>
+    <div class="set-number-row"><div class="set-number">6614220</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Micro Pink Rose</div>
     <div class="set-meta">Promotional • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002214-ninjago-jay-vs-tentacle-monster/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/jhRh5PtGsEw/maxresdefault.jpg" alt="LEGO Ninjago L0002214 Jay vs. Tentacle Monster building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jhRh5PtGsEw/maxresdefault.jpg" alt="LEGO Ninjago L0002214 Jay vs. Tentacle Monster building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002214</div>
+    <div class="set-number-row"><div class="set-number">L0002214</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Jay vs. Tentacle Monster</div>
     <div class="set-meta">Ninjago • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002261-jurassic-world-raptor-and-volcano-magazine-gift/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/wZo0efPiLbI/maxresdefault.jpg" alt="LEGO L0002261 Jurassic World - Raptor and Volcano - Magazine Gift building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/wZo0efPiLbI/maxresdefault.jpg" alt="LEGO L0002261 Jurassic World - Raptor and Volcano - Magazine Gift building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002261</div>
+    <div class="set-number-row"><div class="set-number">L0002261</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Jurassic World - Raptor and Volcano - Magazine Gift</div>
     <div class="set-meta">Jurassic World • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/75644-one-piece-dorry-vs-brogy-giants-of-little-garden/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/yK7vJ521_1I/maxresdefault.jpg" alt="LEGO One Piece 75644 Dorry vs. Brogy - Giants of Little Garden building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yK7vJ521_1I/maxresdefault.jpg" alt="LEGO One Piece 75644 Dorry vs. Brogy - Giants of Little Garden building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">75644</div>
+    <div class="set-number-row"><div class="set-number">75644</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Dorry vs. Brogy - Giants of Little Garden</div>
     <div class="set-meta">One Piece • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6626065-promotional-f1-academy-race-car/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/x05JahZrl1s/maxresdefault.jpg" alt="LEGO Promotional 6626065 F1 ACADEMY LEGO Race Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/x05JahZrl1s/maxresdefault.jpg" alt="LEGO Promotional 6626065 F1 ACADEMY LEGO Race Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6626065</div>
+    <div class="set-number-row"><div class="set-number">6626065</div><span class="badge-new">NEW</span></div>
     <div class="set-name">F1 ACADEMY LEGO Race Car</div>
     <div class="set-meta">Promotional • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002239-star-wars-death-trooper/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Vpopq4SGFgY/maxresdefault.jpg" alt="LEGO Star Wars L0002239 Death Trooper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Vpopq4SGFgY/maxresdefault.jpg" alt="LEGO Star Wars L0002239 Death Trooper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002239</div>
+    <div class="set-number-row"><div class="set-number">L0002239</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Death Trooper</div>
     <div class="set-meta">Star Wars • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72161-pokemon-drone-search-for-mythical-mew/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ImhObkGMWa8/maxresdefault.jpg" alt="LEGO Pokémon 72161 Drone Search for Mythical Mew building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ImhObkGMWa8/maxresdefault.jpg" alt="LEGO Pokémon 72161 Drone Search for Mythical Mew building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">72161</div>
+    <div class="set-number-row"><div class="set-number">72161</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Drone Search for Mythical Mew</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6652991-promotional-rock-guitar-brand-stores/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ZNsqkmEGt0k/maxresdefault.jpg" alt="LEGO 6652991 Promotional - Rock Guitar - LEGO brand stores building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ZNsqkmEGt0k/maxresdefault.jpg" alt="LEGO 6652991 Promotional - Rock Guitar - LEGO brand stores building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6652991</div>
+    <div class="set-number-row"><div class="set-number">6652991</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Promotional - Rock Guitar - LEGO brand stores</div>
     <div class="set-meta">LEGO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6647174-promotional-stadium/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/MdM07fUAs1k/maxresdefault.jpg" alt="LEGO Promotional 6647174 Stadium building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/MdM07fUAs1k/maxresdefault.jpg" alt="LEGO Promotional 6647174 Stadium building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6647174</div>
+    <div class="set-number-row"><div class="set-number">6647174</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Stadium</div>
     <div class="set-meta">Promotional • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6611591-promotional-crescent-moon/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/D9JDiO0eDpo/maxresdefault.jpg" alt="LEGO Promotional 6611591 Crescent Moon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/D9JDiO0eDpo/maxresdefault.jpg" alt="LEGO Promotional 6611591 Crescent Moon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6611591</div>
+    <div class="set-number-row"><div class="set-number">6611591</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Crescent Moon</div>
     <div class="set-meta">Promotional • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002226-city-beach-quad-magazine-gift/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/mMKEwKVU7-w/maxresdefault.jpg" alt="LEGO L0002226 City - Beach Quad - Magazine Gift building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mMKEwKVU7-w/maxresdefault.jpg" alt="LEGO L0002226 City - Beach Quad - Magazine Gift building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">L0002226</div>
+    <div class="set-number-row"><div class="set-number">L0002226</div><span class="badge-new">NEW</span></div>
     <div class="set-name">City - Beach Quad - Magazine Gift</div>
     <div class="set-meta">City • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6608561-promotional-lucky-money-bag/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/nipvft9odLE/maxresdefault.jpg" alt="LEGO Promotional 6608561 Lucky Money Bag building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nipvft9odLE/maxresdefault.jpg" alt="LEGO Promotional 6608561 Lucky Money Bag building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6608561</div>
+    <div class="set-number-row"><div class="set-number">6608561</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lucky Money Bag</div>
     <div class="set-meta">Promotional • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/petshow-promotional-pet-show/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/a0tKqC4Eang/maxresdefault.jpg" alt="LEGO Promotional PETSHOW Pet Show building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/a0tKqC4Eang/maxresdefault.jpg" alt="LEGO Promotional PETSHOW Pet Show building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">PETSHOW</div>
+    <div class="set-number-row"><div class="set-number">PETSHOW</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Pet Show</div>
     <div class="set-meta">Promotional • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72162-pokemon-eevee-and-lapras-s-treasure-hunt/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/fXCAUycgZ-w/maxresdefault.jpg" alt="LEGO Pokémon 72162 Eevee and Lapras&#x27;s Treasure Hunt building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/fXCAUycgZ-w/maxresdefault.jpg" alt="LEGO Pokémon 72162 Eevee and Lapras&#x27;s Treasure Hunt building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">72162</div>
+    <div class="set-number-row"><div class="set-number">72162</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Eevee and Lapras&#x27;s Treasure Hunt</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6626057-promotional-bush-plane/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/_1o4cDUU5sc/maxresdefault.jpg" alt="LEGO Promotional 6626057 Bush Plane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_1o4cDUU5sc/maxresdefault.jpg" alt="LEGO Promotional 6626057 Bush Plane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6626057</div>
+    <div class="set-number-row"><div class="set-number">6626057</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Bush Plane</div>
     <div class="set-meta">Promotional • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6614225-promotional-baby-seahorse/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/A7z32T3St1Q/maxresdefault.jpg" alt="LEGO Promotional 6614225 Baby Seahorse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/A7z32T3St1Q/maxresdefault.jpg" alt="LEGO Promotional 6614225 Baby Seahorse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6614225</div>
+    <div class="set-number-row"><div class="set-number">6614225</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Baby Seahorse</div>
     <div class="set-meta">Promotional • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6626067-promotional-cleat/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/iL_1VkvrtGU/maxresdefault.jpg" alt="LEGO Promotional 6626067 Cleat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/iL_1VkvrtGU/maxresdefault.jpg" alt="LEGO Promotional 6626067 Cleat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6626067</div>
+    <div class="set-number-row"><div class="set-number">6626067</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Cleat</div>
     <div class="set-meta">Promotional • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6626060-promotional-sports-car/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/2vKjpkNCNdM/maxresdefault.jpg" alt="LEGO Promotional 6626060 Sports Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/2vKjpkNCNdM/maxresdefault.jpg" alt="LEGO Promotional 6626060 Sports Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">6626060</div>
+    <div class="set-number-row"><div class="set-number">6626060</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Sports Car</div>
     <div class="set-meta">Promotional • 2026</div>
   </div>
 </a></div><section id="upcoming-instructions" style="margin-top:38px;"><div class="results-header"><div><h2>UPCOMING 2026 LEGO INSTRUCTIONS</h2><p>Upcoming 2026 LEGO sets we are preparing step-by-step instruction guides for.</p></div></div><div class="grid upcoming-grid"><a class="set-card" href="/lego-instructions/21065-architecture-sagrada-fam-lia/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Architecture 21065 Sagrada Família building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Architecture 21065 Sagrada Família building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">21065</div>
+    <div class="set-number-row"><div class="set-number">21065</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Sagrada Família</div>
     <div class="set-meta">Architecture • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910068-bricklink-university-of-science/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910068 University of Science building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910068 University of Science building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">910068</div>
+    <div class="set-number-row"><div class="set-number">910068</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">University of Science</div>
     <div class="set-meta">Bricklink • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910064-bricklink-dustmark-keep/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910064 Dustmark Keep building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910064 Dustmark Keep building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">910064</div>
+    <div class="set-number-row"><div class="set-number">910064</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Dustmark Keep</div>
     <div class="set-meta">Bricklink • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76476-harry-potter-the-ministry-of-magic-collectors-edition/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Harry Potter 76476 The Ministry of Magic - Collectors&#x27; Edition building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Harry Potter 76476 The Ministry of Magic - Collectors&#x27; Edition building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">76476</div>
+    <div class="set-number-row"><div class="set-number">76476</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">The Ministry of Magic - Collectors&#x27; Edition</div>
     <div class="set-meta">Harry Potter • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/4000351-editions-fifa-world-cup-official-trophy-champions-edition/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Editions 4000351 FIFA World Cup Official Trophy - Champions Edition building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Editions 4000351 FIFA World Cup Official Trophy - Champions Edition building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">4000351</div>
+    <div class="set-number-row"><div class="set-number">4000351</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">FIFA World Cup Official Trophy - Champions Edition</div>
     <div class="set-meta">Editions • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910065-bricklink-coconut-cape/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910065 Coconut Cape building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910065 Coconut Cape building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">910065</div>
+    <div class="set-number-row"><div class="set-number">910065</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">Coconut Cape</div>
     <div class="set-meta">Bricklink • 2026</div>
   </div>

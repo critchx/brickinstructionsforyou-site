@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,198 +159,176 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/duplo/">DUPLO</a><span>›</span><strong>2026 DUPLO</strong></nav><div class="results-header"><div><h2>LEGO 2026 DUPLO Instructions</h2><p>22 LEGO instruction pages found for this year and theme.</p></div><a class="btn-outline" href="/2026/">BACK TO 2026</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2026/">All LEGO 2026 Instructions</a><a class="btn-outline" href="/themes/duplo/">All LEGO DUPLO Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/10462-duplo-frozen-creative-box-with-elsa-and-olaf/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/rPN0T26IVHk/maxresdefault.jpg" alt="LEGO DUPLO 10462 Frozen Creative Box with Elsa and Olaf building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/rPN0T26IVHk/maxresdefault.jpg" alt="LEGO DUPLO 10462 Frozen Creative Box with Elsa and Olaf building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10462</div>
+    <div class="set-number-row"><div class="set-number">10462</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Frozen Creative Box with Elsa and Olaf</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10472-duplo-animal-building-game/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/505I7lz4Yms/maxresdefault.jpg" alt="LEGO DUPLO 10472 Animal Building Game building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/505I7lz4Yms/maxresdefault.jpg" alt="LEGO DUPLO 10472 Animal Building Game building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10472</div>
+    <div class="set-number-row"><div class="set-number">10472</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Animal Building Game</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10479-duplo-colourful-creative-box/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Wog9CtfrEw0/maxresdefault.jpg" alt="LEGO DUPLO 10479 Colourful Creative Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Wog9CtfrEw0/maxresdefault.jpg" alt="LEGO DUPLO 10479 Colourful Creative Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10479</div>
+    <div class="set-number-row"><div class="set-number">10479</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Colourful Creative Box</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10480-duplo-discovery-forest-with-wild-animals/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Zewv5ujmCcc/maxresdefault.jpg" alt="LEGO DUPLO 10480 Discovery Forest with Wild Animals building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Zewv5ujmCcc/maxresdefault.jpg" alt="LEGO DUPLO 10480 Discovery Forest with Wild Animals building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10480</div>
+    <div class="set-number-row"><div class="set-number">10480</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Discovery Forest with Wild Animals</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10478-duplo-3-in-1-creative-ramps-with-vehicles/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/QhFGFPWKMIg/maxresdefault.jpg" alt="LEGO DUPLO 10478 3 in 1 Creative Ramps with Vehicles building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QhFGFPWKMIg/maxresdefault.jpg" alt="LEGO DUPLO 10478 3 in 1 Creative Ramps with Vehicles building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10478</div>
+    <div class="set-number-row"><div class="set-number">10478</div><span class="badge-new">NEW</span></div>
     <div class="set-name">3 in 1 Creative Ramps with Vehicles</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10464-duplo-team-spidey-webquarters/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0H9m7r8x0Bg/maxresdefault.jpg" alt="LEGO DUPLO 10464 Team Spidey Webquarters building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0H9m7r8x0Bg/maxresdefault.jpg" alt="LEGO DUPLO 10464 Team Spidey Webquarters building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10464</div>
+    <div class="set-number-row"><div class="set-number">10464</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Team Spidey Webquarters</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10469-duplo-pizza-girls-with-muffin-and-bluey/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/UpPB1ipzRqA/maxresdefault.jpg" alt="LEGO DUPLO 10469 Pizza Girls with Muffin and Bluey building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/UpPB1ipzRqA/maxresdefault.jpg" alt="LEGO DUPLO 10469 Pizza Girls with Muffin and Bluey building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10469</div>
+    <div class="set-number-row"><div class="set-number">10469</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Pizza Girls with Muffin and Bluey</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10466-duplo-train-ride-with-grandpa-pig/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/zlx3Y5tI6Ks/maxresdefault.jpg" alt="LEGO DUPLO 10466 Train Ride with Grandpa Pig building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zlx3Y5tI6Ks/maxresdefault.jpg" alt="LEGO DUPLO 10466 Train Ride with Grandpa Pig building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10466</div>
+    <div class="set-number-row"><div class="set-number">10466</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Train Ride with Grandpa Pig</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10465-duplo-mickey-mouse-clubhouse-with-minnie-pluto/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/WwTxUIGBNaE/maxresdefault.jpg" alt="LEGO DUPLO 10465 Mickey Mouse Clubhouse with Minnie &amp; Pluto building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/WwTxUIGBNaE/maxresdefault.jpg" alt="LEGO DUPLO 10465 Mickey Mouse Clubhouse with Minnie &amp; Pluto building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10465</div>
+    <div class="set-number-row"><div class="set-number">10465</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Mickey Mouse Clubhouse with Minnie &amp; Pluto</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10468-duplo-tractor-and-market/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/y_292RLVEys/maxresdefault.jpg" alt="LEGO DUPLO 10468 Tractor and Market building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/y_292RLVEys/maxresdefault.jpg" alt="LEGO DUPLO 10468 Tractor and Market building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10468</div>
+    <div class="set-number-row"><div class="set-number">10468</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Tractor and Market</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10467-duplo-family-house/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/fBAS1DfNu8w/maxresdefault.jpg" alt="LEGO DUPLO 10467 Family House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/fBAS1DfNu8w/maxresdefault.jpg" alt="LEGO DUPLO 10467 Family House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10467</div>
+    <div class="set-number-row"><div class="set-number">10467</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Family House</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10463-duplo-dinosaur-spidey-rex-vs-green-goblin/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/HmSiGusfkpk/maxresdefault.jpg" alt="LEGO DUPLO 10463 Dinosaur Spidey-Rex vs. Green Goblin building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HmSiGusfkpk/maxresdefault.jpg" alt="LEGO DUPLO 10463 Dinosaur Spidey-Rex vs. Green Goblin building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10463</div>
+    <div class="set-number-row"><div class="set-number">10463</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Dinosaur Spidey-Rex vs. Green Goblin</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10470-duplo-3-in-1-modern-family-house-with-figures/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/EW2OI46gi3Y/maxresdefault.jpg" alt="LEGO DUPLO 10470 3 in 1 Modern Family House with Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/EW2OI46gi3Y/maxresdefault.jpg" alt="LEGO DUPLO 10470 3 in 1 Modern Family House with Figures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10470</div>
+    <div class="set-number-row"><div class="set-number">10470</div><span class="badge-new">NEW</span></div>
     <div class="set-name">3 in 1 Modern Family House with Figures</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10471-duplo-blue-police-motorcycle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/RTOSagr8wBk/maxresdefault.jpg" alt="LEGO DUPLO 10471 Blue Police Motorcycle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/RTOSagr8wBk/maxresdefault.jpg" alt="LEGO DUPLO 10471 Blue Police Motorcycle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10471</div>
+    <div class="set-number-row"><div class="set-number">10471</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Blue Police Motorcycle</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10477-duplo-3-in-1-my-first-creative-cute-pets/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/jGzJvcD6SPM/maxresdefault.jpg" alt="LEGO DUPLO 10477 3 in 1 My First Creative Cute Pets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jGzJvcD6SPM/maxresdefault.jpg" alt="LEGO DUPLO 10477 3 in 1 My First Creative Cute Pets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10477</div>
+    <div class="set-number-row"><div class="set-number">10477</div><span class="badge-new">NEW</span></div>
     <div class="set-name">3 in 1 My First Creative Cute Pets</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30712-duplo-celebration-cake/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Q1PgsVHcd9Y/maxresdefault.jpg" alt="LEGO DUPLO 30712 Celebration Cake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Q1PgsVHcd9Y/maxresdefault.jpg" alt="LEGO DUPLO 30712 Celebration Cake building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30712</div>
+    <div class="set-number-row"><div class="set-number">30712</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Celebration Cake</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10473-duplo-fire-truck-with-hose-and-firefighter/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/zFJG6In-zF4/maxresdefault.jpg" alt="LEGO DUPLO 10473 Fire Truck with Hose and Firefighter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zFJG6In-zF4/maxresdefault.jpg" alt="LEGO DUPLO 10473 Fire Truck with Hose and Firefighter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10473</div>
+    <div class="set-number-row"><div class="set-number">10473</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Fire Truck with Hose and Firefighter</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10475-duplo-3-in-1-construction-vehicles/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/wD5dGOROdcQ/maxresdefault.jpg" alt="LEGO DUPLO 10475 3 in 1 Construction Vehicles building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/wD5dGOROdcQ/maxresdefault.jpg" alt="LEGO DUPLO 10475 3 in 1 Construction Vehicles building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10475</div>
+    <div class="set-number-row"><div class="set-number">10475</div><span class="badge-new">NEW</span></div>
     <div class="set-name">3 in 1 Construction Vehicles</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10474-duplo-creative-vehicles/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/uQJnYDQZsgM/maxresdefault.jpg" alt="LEGO DUPLO 10474 Creative Vehicles building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/uQJnYDQZsgM/maxresdefault.jpg" alt="LEGO DUPLO 10474 Creative Vehicles building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10474</div>
+    <div class="set-number-row"><div class="set-number">10474</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Creative Vehicles</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10476-duplo-3-in-1-construction-site-and-vehicles/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/ZMGKSztvj5o/maxresdefault.jpg" alt="LEGO DUPLO 10476 3 in 1 Construction Site and Vehicles building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ZMGKSztvj5o/maxresdefault.jpg" alt="LEGO DUPLO 10476 3 in 1 Construction Site and Vehicles building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">10476</div>
+    <div class="set-number-row"><div class="set-number">10476</div><span class="badge-new">NEW</span></div>
     <div class="set-name">3 in 1 Construction Site and Vehicles</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO 2026 DUPLO Instructions</h2><p>2 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/landduck-duplo-m-t-land-duck/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO DUPLO LANDDUCK M&amp;T Land Duck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO DUPLO LANDDUCK M&amp;T Land Duck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">LANDDUCK</div>
+    <div class="set-number-row"><div class="set-number">LANDDUCK</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">M&amp;T Land Duck</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/pondduck-duplo-m-t-pond-duck/">
-  <span class="badge-new badge-soon">COMING SOON</span>
-  <img src="/assets/coming-soon-option3.svg" alt="LEGO DUPLO PONDDUCK M&amp;T Pond Duck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO DUPLO PONDDUCK M&amp;T Pond Duck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">PONDDUCK</div>
+    <div class="set-number-row"><div class="set-number">PONDDUCK</div><span class="badge-new badge-soon">COMING SOON</span></div>
     <div class="set-name">M&amp;T Pond Duck</div>
     <div class="set-meta">DUPLO • 2026</div>
   </div>

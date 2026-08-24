@@ -76,11 +76,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{position:absolute;top:16px;left:16px;background:#ff1d25;color:white;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
-.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
+.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
+.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
+.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
-.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
+.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
+.set-number{color:#e60012;font-weight:900;font-size:13px}
+.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -96,7 +98,8 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
+.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
+.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -105,9 +108,13 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
+.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
+.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
+.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,244 +159,217 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/technic/">Technic</a><span>›</span><strong>2025 Technic</strong></nav><div class="results-header"><div><h2>LEGO 2025 Technic Instructions</h2><p>27 LEGO instruction pages found for this year and theme.</p></div><a class="btn-outline" href="/2025/">BACK TO 2025</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2025/">All LEGO 2025 Instructions</a><a class="btn-outline" href="/themes/technic/">All LEGO Technic Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/42217-technic-chevrolet-corvette-stingray/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/9AqwLksfJy4/maxresdefault.jpg" alt="LEGO Technic 42217 Chevrolet Corvette Stingray building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9AqwLksfJy4/maxresdefault.jpg" alt="LEGO Technic 42217 Chevrolet Corvette Stingray building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42217</div>
+    <div class="set-number-row"><div class="set-number">42217</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Chevrolet Corvette Stingray</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42215-technic-volvo-ec500-hybrid-excavator/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/dSL-O8mXnX4/maxresdefault.jpg" alt="LEGO Technic 42215 Volvo EC500 Hybrid Excavator building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dSL-O8mXnX4/maxresdefault.jpg" alt="LEGO Technic 42215 Volvo EC500 Hybrid Excavator building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42215</div>
+    <div class="set-number-row"><div class="set-number">42215</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Volvo EC500 Hybrid Excavator</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/412601-technic-submarine-magazine-gift/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/P_wuGsDnE_0/maxresdefault.jpg" alt="LEGO 412601 Technic - Submarine - Magazine Gift building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/P_wuGsDnE_0/maxresdefault.jpg" alt="LEGO 412601 Technic - Submarine - Magazine Gift building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">412601</div>
+    <div class="set-number-row"><div class="set-number">412601</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Technic - Submarine - Magazine Gift</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/412506-technic-offroader/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/IT2NTPhcHiI/maxresdefault.jpg" alt="LEGO Technic 412506 Offroader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IT2NTPhcHiI/maxresdefault.jpg" alt="LEGO Technic 412506 Offroader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">412506</div>
+    <div class="set-number-row"><div class="set-number">412506</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Offroader</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/412505-technic-space-buggy/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/TbP6mupToKA/maxresdefault.jpg" alt="LEGO Technic 412505 Space Buggy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/TbP6mupToKA/maxresdefault.jpg" alt="LEGO Technic 412505 Space Buggy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">412505</div>
+    <div class="set-number-row"><div class="set-number">412505</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Space Buggy</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42211-technic-lunar-outpost-moon-rover/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/remOnylE_Is/maxresdefault.jpg" alt="LEGO Technic 42211 Lunar Outpost Moon Rover building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/remOnylE_Is/maxresdefault.jpg" alt="LEGO Technic 42211 Lunar Outpost Moon Rover building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42211</div>
+    <div class="set-number-row"><div class="set-number">42211</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lunar Outpost Moon Rover</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42212-technic-ferrari-fxx-k/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/q-FCVS5b6sU/maxresdefault.jpg" alt="LEGO Technic 42212 Ferrari FXX K building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/q-FCVS5b6sU/maxresdefault.jpg" alt="LEGO Technic 42212 Ferrari FXX K building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42212</div>
+    <div class="set-number-row"><div class="set-number">42212</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ferrari FXX K</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42214-technic-lamborghini-revuelto/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/attHkP-DsJc/maxresdefault.jpg" alt="LEGO Technic 42214 Lamborghini Revuelto building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/attHkP-DsJc/maxresdefault.jpg" alt="LEGO Technic 42214 Lamborghini Revuelto building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42214</div>
+    <div class="set-number-row"><div class="set-number">42214</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Lamborghini Revuelto</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42213-technic-ford-bronco-suv/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/TnMpVavhMc8/maxresdefault.jpg" alt="LEGO Technic 42213 Ford Bronco SUV building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/TnMpVavhMc8/maxresdefault.jpg" alt="LEGO Technic 42213 Ford Bronco SUV building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42213</div>
+    <div class="set-number-row"><div class="set-number">42213</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ford Bronco SUV</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/412504-technic-wheeled-excavator/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/aAFZRj0qV0A/maxresdefault.jpg" alt="LEGO Technic 412504 Wheeled Excavator building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/aAFZRj0qV0A/maxresdefault.jpg" alt="LEGO Technic 412504 Wheeled Excavator building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">412504</div>
+    <div class="set-number-row"><div class="set-number">412504</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Wheeled Excavator</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42210-technic-2-fast-2-furious-nissan-skyline-gt-r-r34-car/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/W4IxtV2DkNM/maxresdefault.jpg" alt="LEGO Technic 42210 2 Fast 2 Furious Nissan Skyline GT-R (R34) Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/W4IxtV2DkNM/maxresdefault.jpg" alt="LEGO Technic 42210 2 Fast 2 Furious Nissan Skyline GT-R (R34) Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42210</div>
+    <div class="set-number-row"><div class="set-number">42210</div><span class="badge-new">NEW</span></div>
     <div class="set-name">2 Fast 2 Furious Nissan Skyline GT-R (R34) Car</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42209-technic-volvo-l120-electric-wheel-loader/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/uUCueq_44GM/maxresdefault.jpg" alt="LEGO Technic 42209 Volvo L120 Electric Wheel Loader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/uUCueq_44GM/maxresdefault.jpg" alt="LEGO Technic 42209 Volvo L120 Electric Wheel Loader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42209</div>
+    <div class="set-number-row"><div class="set-number">42209</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Volvo L120 Electric Wheel Loader</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42208-technic-aston-martin-valkyrie/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/tMxoqLBe8RI/maxresdefault.jpg" alt="LEGO Technic 42208 Aston Martin Valkyrie building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/tMxoqLBe8RI/maxresdefault.jpg" alt="LEGO Technic 42208 Aston Martin Valkyrie building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42208</div>
+    <div class="set-number-row"><div class="set-number">42208</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Aston Martin Valkyrie</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/412503-technic-gyrocopter/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0Vz1wxLa63g/maxresdefault.jpg" alt="LEGO Technic 412503 Gyrocopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0Vz1wxLa63g/maxresdefault.jpg" alt="LEGO Technic 412503 Gyrocopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">412503</div>
+    <div class="set-number-row"><div class="set-number">412503</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Gyrocopter</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/412502-technic-combine-harvester/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/oIa2NvSfqoA/maxresdefault.jpg" alt="LEGO Technic 412502 Combine Harvester building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/oIa2NvSfqoA/maxresdefault.jpg" alt="LEGO Technic 412502 Combine Harvester building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">412502</div>
+    <div class="set-number-row"><div class="set-number">412502</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Combine Harvester</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42207-technic-ferrari-sf-24-f1-car/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/Qfs7adggaxE/maxresdefault.jpg" alt="LEGO Technic 42207 Ferrari SF-24 F1 Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Qfs7adggaxE/maxresdefault.jpg" alt="LEGO Technic 42207 Ferrari SF-24 F1 Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42207</div>
+    <div class="set-number-row"><div class="set-number">42207</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ferrari SF-24 F1 Car</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42204-technic-fast-furious-toyota-supra-mk4/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/qGZpXqObav8/maxresdefault.jpg" alt="LEGO Technic 42204 Fast &amp; Furious Toyota Supra MK4 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/qGZpXqObav8/maxresdefault.jpg" alt="LEGO Technic 42204 Fast &amp; Furious Toyota Supra MK4 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42204</div>
+    <div class="set-number-row"><div class="set-number">42204</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Fast &amp; Furious Toyota Supra MK4</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42206-technic-oracle-red-bull-racing-rb20-f1-car/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/QHRjzVXhxCA/maxresdefault.jpg" alt="LEGO Technic 42206 Oracle Red Bull Racing RB20 F1 Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QHRjzVXhxCA/maxresdefault.jpg" alt="LEGO Technic 42206 Oracle Red Bull Racing RB20 F1 Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42206</div>
+    <div class="set-number-row"><div class="set-number">42206</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Oracle Red Bull Racing RB20 F1 Car</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42205-technic-chevrolet-corvette-stingray/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/FZ2dFWFGWNY/maxresdefault.jpg" alt="LEGO Technic 42205 Chevrolet Corvette Stingray building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/FZ2dFWFGWNY/maxresdefault.jpg" alt="LEGO Technic 42205 Chevrolet Corvette Stingray building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42205</div>
+    <div class="set-number-row"><div class="set-number">42205</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Chevrolet Corvette Stingray</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42203-technic-tipping-dump-truck/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/9UYhnZDovTg/maxresdefault.jpg" alt="LEGO Technic 42203 Tipping Dump Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9UYhnZDovTg/maxresdefault.jpg" alt="LEGO Technic 42203 Tipping Dump Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42203</div>
+    <div class="set-number-row"><div class="set-number">42203</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Tipping Dump Truck</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42201-technic-deep-sea-research-submarine/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/jmHSmOtClBI/maxresdefault.jpg" alt="LEGO Technic 42201 Deep-Sea Research Submarine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jmHSmOtClBI/maxresdefault.jpg" alt="LEGO Technic 42201 Deep-Sea Research Submarine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42201</div>
+    <div class="set-number-row"><div class="set-number">42201</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Deep-Sea Research Submarine</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42199-technic-monster-jam-digatron-pull-back/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/PpzMsMS2j88/maxresdefault.jpg" alt="LEGO Technic 42199 Monster Jam DIGatron Pull-Back building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PpzMsMS2j88/maxresdefault.jpg" alt="LEGO Technic 42199 Monster Jam DIGatron Pull-Back building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42199</div>
+    <div class="set-number-row"><div class="set-number">42199</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Monster Jam DIGatron Pull-Back</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42197-technic-backhoe-loader/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/0N4DBvnzJK8/maxresdefault.jpg" alt="LEGO Technic 42197 Backhoe Loader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0N4DBvnzJK8/maxresdefault.jpg" alt="LEGO Technic 42197 Backhoe Loader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42197</div>
+    <div class="set-number-row"><div class="set-number">42197</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Backhoe Loader</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42198-technic-bush-plane/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/HTDnmf3cEZ4/maxresdefault.jpg" alt="LEGO Technic 42198 Bush Plane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HTDnmf3cEZ4/maxresdefault.jpg" alt="LEGO Technic 42198 Bush Plane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42198</div>
+    <div class="set-number-row"><div class="set-number">42198</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Bush Plane</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30710-technic-skid-steer-loader/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/pHXLt5RbUBk/maxresdefault.jpg" alt="LEGO Technic 30710 Skid-Steer Loader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pHXLt5RbUBk/maxresdefault.jpg" alt="LEGO Technic 30710 Skid-Steer Loader building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">30710</div>
+    <div class="set-number-row"><div class="set-number">30710</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Skid-Steer Loader</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42200-technic-monster-jam-thunderroarus-pull-back/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/LAxg1iticlI/maxresdefault.jpg" alt="LEGO Technic 42200 Monster Jam ThunderROARus Pull-Back building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/LAxg1iticlI/maxresdefault.jpg" alt="LEGO Technic 42200 Monster Jam ThunderROARus Pull-Back building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42200</div>
+    <div class="set-number-row"><div class="set-number">42200</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Monster Jam ThunderROARus Pull-Back</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42202-technic-ducati-panigale-v4-s-motorcycle/">
-  <span class="badge-new">NEW</span>
-  <img src="https://i.ytimg.com/vi/z5aGkWgBSJk/maxresdefault.jpg" alt="LEGO Technic 42202 Ducati Panigale V4 S Motorcycle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
+  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/z5aGkWgBSJk/maxresdefault.jpg" alt="LEGO Technic 42202 Ducati Panigale V4 S Motorcycle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
   <div class="set-info">
-    <div class="set-number">42202</div>
+    <div class="set-number-row"><div class="set-number">42202</div><span class="badge-new">NEW</span></div>
     <div class="set-name">Ducati Panigale V4 S Motorcycle</div>
     <div class="set-meta">Technic • 2025</div>
   </div>
