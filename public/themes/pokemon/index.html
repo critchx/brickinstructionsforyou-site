@@ -3,19 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW"></script>
+<!-- Google tag (gtag.js), deferred until interaction/idle -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-37MCSDDYEW');
+  (() => {
+    let loaded = false;
+    const loadAnalytics = () => {
+      if (loaded) return;
+      loaded = true;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW';
+      document.head.appendChild(script);
+    };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(eventName =>
+      addEventListener(eventName, loadAnalytics, {once:true, passive:true}));
+    addEventListener('load', () => setTimeout(loadAnalytics, 8000), {once:true});
+  })();
 </script>
 <title>LEGO Pokémon Instructions | Brick Instructions For You</title>
 <meta name="description" content="Browse 28 LEGO Pokémon building instruction pages with step-by-step video guides, set details, release information and upcoming Pokémon sets.">
 <link rel="canonical" href="https://www.brickinstructionsforyou.com/themes/pokemon/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul Critchlow"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
 
 <style>
 :root{--navy:#061b35;--yellow:#ffcc00;--text:#1d1d1f;--muted:#667085;--line:#e5e7eb;--bg:#f5f5f5}
@@ -66,23 +79,14 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .results-header h1,.results-header h2{font-size:32px;margin:0 0 14px;text-transform:uppercase}
 .results-header p{margin:0;color:var(--muted)}
 .btn-outline{display:inline-block;border:1px solid #cfd5df;background:#fff;border-radius:9px;padding:14px 18px;font-weight:900;white-space:nowrap}
-.about-page-card{margin-top:10px!important}
-.about-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 6px}
-.about-action{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;padding:13px 18px;color:#fff;font-weight:900;box-shadow:0 4px 10px rgba(6,27,53,.14);transition:transform .16s ease,box-shadow .16s ease}
-.about-action:hover{color:#fff;transform:translateY(-2px);box-shadow:0 8px 16px rgba(6,27,53,.2)}
-.about-youtube{background:#e60012}
-.about-facebook{background:#1877f2}
-.about-instagram{background:linear-gradient(135deg,#833ab4,#e1306c 55%,#f77737)}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
-.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
-.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
+.badge-new{position:absolute;top:16px;left:16px;background:#c7000b;color:#fff;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
+.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
-.set-number{color:#e60012;font-weight:900;font-size:13px}
-.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
+.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -98,8 +102,7 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
-.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
+.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -108,20 +111,16 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
-.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
-.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
-.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
-.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
 </style>
 </head>
 <body>
 <div class="topline"></div>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="site-nav-inner">
-    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo"></a>
+    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo" width="900" height="260" decoding="async"></a>
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/themes/">Themes</a>
@@ -159,240 +158,273 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><strong>Pokémon</strong></nav><div class="results-header"><div><h2>LEGO Pokémon Instructions</h2><p>28 LEGO instruction pages found in this theme.</p></div><a class="btn-outline" href="/themes/">ALL THEMES</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Pokémon by year</h3><nav aria-label="Browse LEGO Pokémon by year" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2026/pokemon/">LEGO Pokémon 2026</a></nav></section><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Pokémon subthemes</h3><nav aria-label="Browse LEGO Pokémon subthemes" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/pokemon/promotional/">LEGO Promotional Instructions</a><a class="btn-outline" href="/themes/pokemon/sculptures/">LEGO Sculptures Instructions</a><a class="btn-outline" href="/themes/pokemon/smart-play/">LEGO SMART Play Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/72161-pokemon-drone-search-for-mythical-mew/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ImhObkGMWa8/maxresdefault.jpg" alt="LEGO Pokémon 72161 Drone Search for Mythical Mew building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ImhObkGMWa8/mqdefault.jpg" alt="LEGO Pokémon 72161 Drone Search for Mythical Mew building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72161</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72161</div>
     <div class="set-name">Drone Search for Mythical Mew</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72162-pokemon-eevee-and-lapras-s-treasure-hunt/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/fXCAUycgZ-w/maxresdefault.jpg" alt="LEGO Pokémon 72162 Eevee and Lapras&#x27;s Treasure Hunt building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/fXCAUycgZ-w/mqdefault.jpg" alt="LEGO Pokémon 72162 Eevee and Lapras&#x27;s Treasure Hunt building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72162</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72162</div>
     <div class="set-name">Eevee and Lapras&#x27;s Treasure Hunt</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40911-pokemon-mini-pokemon-centre/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/bCtrCrIstag/maxresdefault.jpg" alt="LEGO 40911 Mini Pokémon Centre building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/bCtrCrIstag/mqdefault.jpg" alt="LEGO 40911 Mini Pokémon Centre building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40911</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40911</div>
     <div class="set-name">Mini Pokémon Centre</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72166-pokemon-cubone-and-gengar-s-spooky-showdown/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0oENPr-HM9o/maxresdefault.jpg" alt="LEGO Pokémon 72166 Cubone and Gengar&#x27;s Spooky Showdown building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/0oENPr-HM9o/mqdefault.jpg" alt="LEGO Pokémon 72166 Cubone and Gengar&#x27;s Spooky Showdown building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72166</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72166</div>
     <div class="set-name">Cubone and Gengar&#x27;s Spooky Showdown</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72163-pokemon-mewtwo-s-lab-break/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/fLq7NKRZ7iA/maxresdefault.jpg" alt="LEGO Pokémon 72163 Mewtwo&#x27;s Lab Break building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/fLq7NKRZ7iA/mqdefault.jpg" alt="LEGO Pokémon 72163 Mewtwo&#x27;s Lab Break building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72163</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72163</div>
     <div class="set-name">Mewtwo&#x27;s Lab Break</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72156-pokemon-trainer-s-buggy-adventure-with-squirtle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/UJOIrxVnx9g/maxresdefault.jpg" alt="LEGO Pokémon 72156 Trainer&#x27;s Buggy Adventure with Squirtle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/UJOIrxVnx9g/mqdefault.jpg" alt="LEGO Pokémon 72156 Trainer&#x27;s Buggy Adventure with Squirtle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72156</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72156</div>
     <div class="set-name">Trainer&#x27;s Buggy Adventure with Squirtle</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72164-pokemon-training-house-with-pikachu/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/bRAartTi60Y/maxresdefault.jpg" alt="LEGO Pokémon 72164 Training House with Pikachu building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/bRAartTi60Y/mqdefault.jpg" alt="LEGO Pokémon 72164 Training House with Pikachu building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72164</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72164</div>
     <div class="set-name">Training House with Pikachu</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72165-pokemon-umbreon-vs-garchomp-championship-battle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8wer9QhmU0o/maxresdefault.jpg" alt="LEGO Pokémon 72165 Umbreon vs. Garchomp Championship Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/8wer9QhmU0o/mqdefault.jpg" alt="LEGO Pokémon 72165 Umbreon vs. Garchomp Championship Battle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72165</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72165</div>
     <div class="set-name">Umbreon vs. Garchomp Championship Battle</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72167-pokemon-charizard-vs-jolteon-ultimate-battle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/tkQb8T0x5_A/maxresdefault.jpg" alt="LEGO Pokémon 72167 Charizard vs. Jolteon Ultimate Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/tkQb8T0x5_A/mqdefault.jpg" alt="LEGO Pokémon 72167 Charizard vs. Jolteon Ultimate Battle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72167</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72167</div>
     <div class="set-name">Charizard vs. Jolteon Ultimate Battle</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72159-pokemon-jigglypuff-concert/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/333Wr2jBdNE/maxresdefault.jpg" alt="LEGO Pokémon 72159 Jigglypuff Concert building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/333Wr2jBdNE/mqdefault.jpg" alt="LEGO Pokémon 72159 Jigglypuff Concert building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72159</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72159</div>
     <div class="set-name">Jigglypuff Concert</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72158-pokemon-sprigatito-fuecoco-and-quaxly-battle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ro1s8ocCaJc/maxresdefault.jpg" alt="LEGO Pokémon 72158 Sprigatito, Fuecoco and Quaxly Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ro1s8ocCaJc/mqdefault.jpg" alt="LEGO Pokémon 72158 Sprigatito, Fuecoco and Quaxly Battle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72158</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72158</div>
     <div class="set-name">Sprigatito, Fuecoco and Quaxly Battle</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40887-pokemon-ditto-as-squirtle-movie-night/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/JV6N8b3EYDM/maxresdefault.jpg" alt="LEGO Pokémon 40887 Ditto as Squirtle: Movie Night building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/JV6N8b3EYDM/mqdefault.jpg" alt="LEGO Pokémon 40887 Ditto as Squirtle: Movie Night building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40887</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40887</div>
     <div class="set-name">Ditto as Squirtle: Movie Night</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72157-pokemon-charmander-and-geodude-s-cavern-clash/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vgV7je5ShjI/maxresdefault.jpg" alt="LEGO Pokémon 72157 Charmander and Geodude&#x27;s Cavern Clash building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/vgV7je5ShjI/mqdefault.jpg" alt="LEGO Pokémon 72157 Charmander and Geodude&#x27;s Cavern Clash building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72157</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72157</div>
     <div class="set-name">Charmander and Geodude&#x27;s Cavern Clash</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72155-pokemon-berry-bash-with-bulbasaur-and-bidoof/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3dWFeqe7C4w/maxresdefault.jpg" alt="LEGO Pokémon 72155 Berry Bash with Bulbasaur and Bidoof building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/3dWFeqe7C4w/mqdefault.jpg" alt="LEGO Pokémon 72155 Berry Bash with Bulbasaur and Bidoof building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72155</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72155</div>
     <div class="set-name">Berry Bash with Bulbasaur and Bidoof</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30730-pokemon-trainer-supplies/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/FGbxN8PEAxc/maxresdefault.jpg" alt="LEGO Pokémon 30730 Trainer Supplies building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/FGbxN8PEAxc/mqdefault.jpg" alt="LEGO Pokémon 30730 Trainer Supplies building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30730</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30730</div>
     <div class="set-name">Trainer Supplies</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72160-pokemon-arcanine/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/bVAI6aY182w/maxresdefault.jpg" alt="LEGO Pokémon 72160 Arcanine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/bVAI6aY182w/mqdefault.jpg" alt="LEGO Pokémon 72160 Arcanine building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72160</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72160</div>
     <div class="set-name">Arcanine</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72168-pokemon-rayquaza/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vf50UJJ278s/maxresdefault.jpg" alt="LEGO Pokémon 72168 Rayquaza building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/vf50UJJ278s/mqdefault.jpg" alt="LEGO Pokémon 72168 Rayquaza building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72168</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72168</div>
     <div class="set-name">Rayquaza</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30729-pokemon-premier-ball/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/iHI1201d2xE/maxresdefault.jpg" alt="LEGO Pokémon 30729 Premier Ball building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/iHI1201d2xE/mqdefault.jpg" alt="LEGO Pokémon 30729 Premier Ball building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30729</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30729</div>
     <div class="set-name">Premier Ball</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72150-pokemon-munchlax/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/gEkL0fnEXHg/maxresdefault.jpg" alt="LEGO Pokémon 72150 Munchlax building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/gEkL0fnEXHg/mqdefault.jpg" alt="LEGO Pokémon 72150 Munchlax building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72150</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72150</div>
     <div class="set-name">Munchlax</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40892-pokemon-kanto-region-badge-collection/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/MLP8XKVfVjA/maxresdefault.jpg" alt="LEGO Pokémon 40892 Kanto Region Badge Collection building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/MLP8XKVfVjA/mqdefault.jpg" alt="LEGO Pokémon 40892 Kanto Region Badge Collection building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40892</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40892</div>
     <div class="set-name">Kanto Region Badge Collection</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72153-pokemon-venusaur-charizard-and-blastoise/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yoafs-pV9nQ/maxresdefault.jpg" alt="LEGO Pokémon 72153 Venusaur, Charizard and Blastoise building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/yoafs-pV9nQ/mqdefault.jpg" alt="LEGO Pokémon 72153 Venusaur, Charizard and Blastoise building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72153</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72153</div>
     <div class="set-name">Venusaur, Charizard and Blastoise</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72151-pokemon-eevee/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mUkWfqGb7yM/maxresdefault.jpg" alt="LEGO Pokémon 72151 Eevee building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/mUkWfqGb7yM/mqdefault.jpg" alt="LEGO Pokémon 72151 Eevee building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72151</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72151</div>
     <div class="set-name">Eevee</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72152-pokemon-pikachu-and-pok-ball/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/s23o3thGdNI/maxresdefault.jpg" alt="LEGO Pokémon 72152 Pikachu and Poké Ball building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/s23o3thGdNI/mqdefault.jpg" alt="LEGO Pokémon 72152 Pikachu and Poké Ball building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72152</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72152</div>
     <div class="set-name">Pikachu and Poké Ball</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO Pokémon Instructions</h2><p>5 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/40868-pokemon-up-scaled-red-minifigure/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Pokémon 40868 Up-Scaled Red Minifigure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Pokémon 40868 Up-Scaled Red Minifigure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40868</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">40868</div>
     <div class="set-name">Up-Scaled Red Minifigure</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72154-pokemon-iconic-trainer-moments-pok-ball/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Pokémon 72154 Iconic Trainer Moments Poké Ball building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Pokémon 72154 Iconic Trainer Moments Poké Ball building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72154</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">72154</div>
     <div class="set-name">Iconic Trainer Moments Poké Ball</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/4000701-pokemon-smart-oran-berry-tag/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Pokémon 4000701 SMART Oran Berry Tag building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Pokémon 4000701 SMART Oran Berry Tag building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">4000701</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">4000701</div>
     <div class="set-name">SMART Oran Berry Tag</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/4000702-pokemon-smart-trophy-tag/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Pokémon 4000702 SMART Trophy Tag building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Pokémon 4000702 SMART Trophy Tag building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">4000702</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">4000702</div>
     <div class="set-name">SMART Trophy Tag</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/4000703-pokemon-smart-sitrus-berry-tag/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Pokémon 4000703 SMART Sitrus Berry Tag building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Pokémon 4000703 SMART Sitrus Berry Tag building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">4000703</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">4000703</div>
     <div class="set-name">SMART Sitrus Berry Tag</div>
     <div class="set-meta">Pokémon • 2026</div>
   </div>
 </a></div></main>
 <footer>
   <div class="footer-links"><a href="/about/">About</a><a href="https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/LEGOInstructionsForLEGOFans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/legoinstructionsforyou/" target="_blank" rel="noopener">Instagram</a></div>
-  <div>Brick Instructions For You is independently run by Paul.</div>
+  <div>Brick Instructions For You is independently run by Paul Critchlow.</div>
   <div style="margin-top:8px;opacity:.86;">LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorise or endorse this site.</div>
 </footer>
 <script>
 window.LEGO_SETS = [];
 let LEGO_SETS_LOADED = false;
-const LEGO_SETS_READY = fetch("/data/search-index.json", {cache:"no-store"})
- .then(response => response.ok ? response.json() : [])
- .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
- .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+let legoSetsPromise = null;
+function ensureSearchIndex() {
+ if (legoSetsPromise) return legoSetsPromise;
+ legoSetsPromise = fetch("/data/search-index.json", {cache:"default"})
+  .then(response => response.ok ? response.json() : [])
+  .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
+  .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+ return legoSetsPromise;
+}
 const input=document.getElementById("mainSearchInput");
 const typeSelect=document.getElementById("mainSearchType");
 const form=document.getElementById("mainSearchForm");
@@ -435,7 +467,7 @@ function setImageAlt(set){
  if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
  return parts.join(" ").replace(/\s+/g," ").trim();
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;
@@ -448,18 +480,18 @@ function renderResults(query,type,pushState=true){
 function showSuggestions(){
  const q=input.value.trim();const t=typeSelect.value||"all"; if(q.length<1){hideSuggestions();return;}
  const matches=searchSets(q,t).slice(0,8); if(!matches.length){hideSuggestions();return;}
- suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
+ suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",showSuggestions);typeSelect.addEventListener("change",showSuggestions);
+input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
 suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
 document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();LEGO_SETS_READY.then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();renderResults(chip.dataset.search,chip.dataset.type||"all",true);}));
+form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
 window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))LEGO_SETS_READY.then(()=>renderResults(q,t,false));})();
+(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
 </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "99db6ec5719548b582f077bfc6bb2c7f"}'></script><!-- End Cloudflare Web Analytics -->
+
 </body>
 </html>

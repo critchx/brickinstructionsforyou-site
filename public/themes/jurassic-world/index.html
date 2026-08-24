@@ -3,19 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW"></script>
+<!-- Google tag (gtag.js), deferred until interaction/idle -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-37MCSDDYEW');
+  (() => {
+    let loaded = false;
+    const loadAnalytics = () => {
+      if (loaded) return;
+      loaded = true;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW';
+      document.head.appendChild(script);
+    };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(eventName =>
+      addEventListener(eventName, loadAnalytics, {once:true, passive:true}));
+    addEventListener('load', () => setTimeout(loadAnalytics, 8000), {once:true});
+  })();
 </script>
 <title>LEGO Jurassic World Instructions | Brick Instructions For You</title>
 <meta name="description" content="Browse 86 LEGO Jurassic World building instruction pages with step-by-step video guides, set details, release information and upcoming Jurassic World sets.">
 <link rel="canonical" href="https://www.brickinstructionsforyou.com/themes/jurassic-world/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul Critchlow"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
 
 <style>
 :root{--navy:#061b35;--yellow:#ffcc00;--text:#1d1d1f;--muted:#667085;--line:#e5e7eb;--bg:#f5f5f5}
@@ -66,23 +79,14 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .results-header h1,.results-header h2{font-size:32px;margin:0 0 14px;text-transform:uppercase}
 .results-header p{margin:0;color:var(--muted)}
 .btn-outline{display:inline-block;border:1px solid #cfd5df;background:#fff;border-radius:9px;padding:14px 18px;font-weight:900;white-space:nowrap}
-.about-page-card{margin-top:10px!important}
-.about-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 6px}
-.about-action{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;padding:13px 18px;color:#fff;font-weight:900;box-shadow:0 4px 10px rgba(6,27,53,.14);transition:transform .16s ease,box-shadow .16s ease}
-.about-action:hover{color:#fff;transform:translateY(-2px);box-shadow:0 8px 16px rgba(6,27,53,.2)}
-.about-youtube{background:#e60012}
-.about-facebook{background:#1877f2}
-.about-instagram{background:linear-gradient(135deg,#833ab4,#e1306c 55%,#f77737)}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
-.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
-.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
+.badge-new{position:absolute;top:16px;left:16px;background:#c7000b;color:#fff;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
+.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
-.set-number{color:#e60012;font-weight:900;font-size:13px}
-.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
+.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -98,8 +102,7 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
-.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
+.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -108,20 +111,16 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
-.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
-.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
-.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
-.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
 </style>
 </head>
 <body>
 <div class="topline"></div>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="site-nav-inner">
-    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo"></a>
+    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo" width="900" height="260" decoding="async"></a>
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/themes/">Themes</a>
@@ -159,704 +158,795 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><strong>Jurassic World</strong></nav><div class="results-header"><div><h2>LEGO Jurassic World Instructions</h2><p>86 LEGO instruction pages found in this theme.</p></div><a class="btn-outline" href="/themes/">ALL THEMES</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Jurassic World by year</h3><nav aria-label="Browse LEGO Jurassic World by year" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2026/jurassic-world/">LEGO Jurassic World 2026</a><a class="btn-outline" href="/2025/jurassic-world/">LEGO Jurassic World 2025</a><a class="btn-outline" href="/2024/jurassic-world/">LEGO Jurassic World 2024</a><a class="btn-outline" href="/2023/jurassic-world/">LEGO Jurassic World 2023</a><a class="btn-outline" href="/2022/jurassic-world/">LEGO Jurassic World 2022</a><a class="btn-outline" href="/2021/jurassic-world/">LEGO Jurassic World 2021</a></nav></section><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Jurassic World subthemes</h3><nav aria-label="Browse LEGO Jurassic World subthemes" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/jurassic-world/camp-cretaceous/">LEGO Camp Cretaceous Instructions</a><a class="btn-outline" href="/themes/jurassic-world/chaos-theory/">LEGO Chaos Theory Instructions</a><a class="btn-outline" href="/themes/jurassic-world/dinosaur-fossils/">LEGO Dinosaur Fossils Instructions</a><a class="btn-outline" href="/themes/jurassic-world/dominion/">LEGO Dominion Instructions</a><a class="btn-outline" href="/themes/jurassic-world/jurassic-park/">LEGO Jurassic Park Instructions</a><a class="btn-outline" href="/themes/jurassic-world/magazine-gift/">LEGO Magazine Gift Instructions</a><a class="btn-outline" href="/themes/jurassic-world/rebirth/">LEGO Rebirth Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/l0002261-jurassic-world-raptor-and-volcano-magazine-gift/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/wZo0efPiLbI/maxresdefault.jpg" alt="LEGO L0002261 Jurassic World - Raptor and Volcano - Magazine Gift building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/wZo0efPiLbI/mqdefault.jpg" alt="LEGO L0002261 Jurassic World - Raptor and Volcano - Magazine Gift building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">L0002261</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">L0002261</div>
     <div class="set-name">Jurassic World - Raptor and Volcano - Magazine Gift</div>
     <div class="set-meta">Jurassic World • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77978-jurassic-world-young-t-rex-transport-truck/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nzJ8AyEMAwc/maxresdefault.jpg" alt="LEGO Jurassic World 77978 Young T. rex Transport Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/nzJ8AyEMAwc/mqdefault.jpg" alt="LEGO Jurassic World 77978 Young T. rex Transport Truck building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">77978</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">77978</div>
     <div class="set-name">Young T. rex Transport Truck</div>
     <div class="set-meta">Jurassic World • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77981-jurassic-world-velociraptor-stegosaurus-pteranodon-rescue/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8cJDpKgCD6k/maxresdefault.jpg" alt="LEGO Jurassic World 77981 Velociraptor, Stegosaurus &amp; Pteranodon Rescue building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/8cJDpKgCD6k/mqdefault.jpg" alt="LEGO Jurassic World 77981 Velociraptor, Stegosaurus &amp; Pteranodon Rescue building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">77981</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">77981</div>
     <div class="set-name">Velociraptor, Stegosaurus &amp; Pteranodon Rescue</div>
     <div class="set-meta">Jurassic World • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77983-jurassic-world-mosasaurus-dinosaur-boat-attack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mQVrAiFnkxA/maxresdefault.jpg" alt="LEGO Jurassic World 77983 Mosasaurus Dinosaur Boat Attack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/mQVrAiFnkxA/mqdefault.jpg" alt="LEGO Jurassic World 77983 Mosasaurus Dinosaur Boat Attack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">77983</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">77983</div>
     <div class="set-name">Mosasaurus Dinosaur Boat Attack</div>
     <div class="set-meta">Jurassic World • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77977-jurassic-world-baby-dinosaur-pteranodon/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/qCEZ7C_fSKU/maxresdefault.jpg" alt="LEGO Jurassic World 77977 Baby Dinosaur: Pteranodon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/qCEZ7C_fSKU/mqdefault.jpg" alt="LEGO Jurassic World 77977 Baby Dinosaur: Pteranodon building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">77977</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">77977</div>
     <div class="set-name">Baby Dinosaur: Pteranodon</div>
     <div class="set-meta">Jurassic World • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77982-jurassic-world-spinosaurus-dinosaur-escape/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OKtRprVWmCY/maxresdefault.jpg" alt="LEGO Jurassic World 77982 Spinosaurus Dinosaur Escape building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/OKtRprVWmCY/mqdefault.jpg" alt="LEGO Jurassic World 77982 Spinosaurus Dinosaur Escape building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">77982</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">77982</div>
     <div class="set-name">Spinosaurus Dinosaur Escape</div>
     <div class="set-meta">Jurassic World • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/jeep-jurassic-world-jeep/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/LZgVdQReJR8/maxresdefault.jpg" alt="LEGO Jurassic World JEEP Jeep building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/LZgVdQReJR8/mqdefault.jpg" alt="LEGO Jurassic World JEEP Jeep building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">JEEP</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">JEEP</div>
     <div class="set-name">Jeep</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/triceratops-jurassic-world-triceratops/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/hfDcQR3vV0I/maxresdefault.jpg" alt="LEGO Jurassic World TRICERATOPS Triceratops building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/hfDcQR3vV0I/mqdefault.jpg" alt="LEGO Jurassic World TRICERATOPS Triceratops building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">TRICERATOPS</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">TRICERATOPS</div>
     <div class="set-name">Triceratops</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76956-jurassic-world-t-rex-breakout/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/rT4j1xXDgTo/maxresdefault.jpg" alt="LEGO 76956 Jurassic World - T. rex Breakout building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/rT4j1xXDgTo/mqdefault.jpg" alt="LEGO 76956 Jurassic World - T. rex Breakout building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76956</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76956</div>
     <div class="set-name">Jurassic World - T. rex Breakout</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76951-jurassic-world-pyroraptor-dilophosaurus-transport/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pzktyDxfySs/maxresdefault.jpg" alt="LEGO Jurassic World 76951 Pyroraptor &amp; Dilophosaurus Transport building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/pzktyDxfySs/mqdefault.jpg" alt="LEGO Jurassic World 76951 Pyroraptor &amp; Dilophosaurus Transport building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76951</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76951</div>
     <div class="set-name">Pyroraptor &amp; Dilophosaurus Transport</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76950-jurassic-world-triceratops-pickup-truck-ambush/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9kwr3e6Dxio/maxresdefault.jpg" alt="LEGO Jurassic World 76950 Triceratops Pickup Truck Ambush building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/9kwr3e6Dxio/mqdefault.jpg" alt="LEGO Jurassic World 76950 Triceratops Pickup Truck Ambush building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76950</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76950</div>
     <div class="set-name">Triceratops Pickup Truck Ambush</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76949-jurassic-world-giganotosaurus-therizinosaurus-attack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xONQu89XRDo/maxresdefault.jpg" alt="LEGO Jurassic World 76949 Giganotosaurus &amp; Therizinosaurus Attack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/xONQu89XRDo/mqdefault.jpg" alt="LEGO Jurassic World 76949 Giganotosaurus &amp; Therizinosaurus Attack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76949</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76949</div>
     <div class="set-name">Giganotosaurus &amp; Therizinosaurus Attack</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76948-jurassic-world-t-rex-atrociraptor-dinosaur-breakout/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/7ohS5omhSzg/maxresdefault.jpg" alt="LEGO Jurassic World 76948 T. rex &amp; Atrociraptor Dinosaur Breakout building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/7ohS5omhSzg/mqdefault.jpg" alt="LEGO Jurassic World 76948 T. rex &amp; Atrociraptor Dinosaur Breakout building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76948</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76948</div>
     <div class="set-name">T. rex &amp; Atrociraptor Dinosaur Breakout</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76947-jurassic-world-quetzalcoatlus-plane-ambush/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/tKdYwdUe2uA/maxresdefault.jpg" alt="LEGO Jurassic World 76947 Quetzalcoatlus Plane Ambush building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/tKdYwdUe2uA/mqdefault.jpg" alt="LEGO Jurassic World 76947 Quetzalcoatlus Plane Ambush building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76947</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76947</div>
     <div class="set-name">Quetzalcoatlus Plane Ambush</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76946-jurassic-world-blue-beta-velociraptor-capture/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0vgBWjfwYOk/maxresdefault.jpg" alt="LEGO Jurassic World 76946 Blue &amp; Beta Velociraptor Capture building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/0vgBWjfwYOk/mqdefault.jpg" alt="LEGO Jurassic World 76946 Blue &amp; Beta Velociraptor Capture building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76946</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76946</div>
     <div class="set-name">Blue &amp; Beta Velociraptor Capture</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76945-jurassic-world-atrociraptor-dinosaur-bike-chase/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yIcMDxPkDpo/maxresdefault.jpg" alt="LEGO Jurassic World 76945 Atrociraptor Dinosaur: Bike Chase building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/yIcMDxPkDpo/mqdefault.jpg" alt="LEGO Jurassic World 76945 Atrociraptor Dinosaur: Bike Chase building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76945</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76945</div>
     <div class="set-name">Atrociraptor Dinosaur: Bike Chase</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76944-jurassic-world-t-rex-dinosaur-breakout/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AE39QBG2blw/maxresdefault.jpg" alt="LEGO Jurassic World 76944 T. rex Dinosaur Breakout building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/AE39QBG2blw/mqdefault.jpg" alt="LEGO Jurassic World 76944 T. rex Dinosaur Breakout building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76944</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76944</div>
     <div class="set-name">T. rex Dinosaur Breakout</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76943-jurassic-world-pteranodon-chase/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/UjFiPSxf9jQ/maxresdefault.jpg" alt="LEGO Jurassic World 76943 Pteranodon Chase building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/UjFiPSxf9jQ/mqdefault.jpg" alt="LEGO Jurassic World 76943 Pteranodon Chase building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76943</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76943</div>
     <div class="set-name">Pteranodon Chase</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77985-jurassic-world-dinosaur-fossils-triceratops/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OXPGJDCM2SE/maxresdefault.jpg" alt="LEGO Jurassic World 77985 Dinosaur Fossils: Triceratops building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/OXPGJDCM2SE/mqdefault.jpg" alt="LEGO Jurassic World 77985 Dinosaur Fossils: Triceratops building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">77985</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">77985</div>
     <div class="set-name">Dinosaur Fossils: Triceratops</div>
     <div class="set-meta">Jurassic World • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30390-jurassic-world-dinosaur-market/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zYzbGzv5LAY/maxresdefault.jpg" alt="LEGO Jurassic World 30390 Dinosaur Market building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/zYzbGzv5LAY/mqdefault.jpg" alt="LEGO Jurassic World 30390 Dinosaur Market building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30390</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30390</div>
     <div class="set-name">Dinosaur Market</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122506-jurassic-world-raptor-breakout/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/T8ukdWym-i4/maxresdefault.jpg" alt="LEGO Jurassic World 122506 Raptor Breakout building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/T8ukdWym-i4/mqdefault.jpg" alt="LEGO Jurassic World 122506 Raptor Breakout building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122506</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122506</div>
     <div class="set-name">Raptor Breakout</div>
     <div class="set-meta">Jurassic World • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122509-jurassic-world-ranger-with-laboratory/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/l9eVk - wkvY/maxresdefault.jpg" alt="LEGO Jurassic World 122509 Ranger with Laboratory building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/l9eVk - wkvY/mqdefault.jpg" alt="LEGO Jurassic World 122509 Ranger with Laboratory building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122509</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122509</div>
     <div class="set-name">Ranger with Laboratory</div>
     <div class="set-meta">Jurassic World • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/951351-jurassic-world-guard-and-raptor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4qFdEEk4VKw/maxresdefault.jpg" alt="LEGO Jurassic World 951351 Guard and Raptor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/4qFdEEk4VKw/mqdefault.jpg" alt="LEGO Jurassic World 951351 Guard and Raptor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">951351</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">951351</div>
     <div class="set-name">Guard and Raptor</div>
     <div class="set-meta">Jurassic World • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/77984-jurassic-world-jurassic-park-jeep-wrangler/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/S1kJnmuh_Kg/maxresdefault.jpg" alt="LEGO Jurassic World 77984 Jurassic Park Jeep Wrangler building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/S1kJnmuh_Kg/mqdefault.jpg" alt="LEGO Jurassic World 77984 Jurassic Park Jeep Wrangler building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">77984</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">77984</div>
     <div class="set-name">Jurassic Park Jeep Wrangler</div>
     <div class="set-meta">Jurassic World • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122508-jurassic-world-alan-grant-with-hovercraft/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/qEkIo1w9nkw/sddefault.jpg" alt="LEGO Jurassic World 122508 Alan Grant with Hovercraft building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/qEkIo1w9nkw/mqdefault.jpg" alt="LEGO Jurassic World 122508 Alan Grant with Hovercraft building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122508</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122508</div>
     <div class="set-name">Alan Grant with Hovercraft</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122502-jurassic-world-owen-with-cage-and-raptor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/fIpQa4IlY9I/maxresdefault.jpg" alt="LEGO Jurassic World 122502 Owen with Cage and Raptor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/fIpQa4IlY9I/mqdefault.jpg" alt="LEGO Jurassic World 122502 Owen with Cage and Raptor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122502</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122502</div>
     <div class="set-name">Owen with Cage and Raptor</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122505-jurassic-world-ranger-with-helipack-and-baby-raptor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QwphTVWHoIs/sddefault.jpg" alt="LEGO Jurassic World 122505 Ranger with Helipack and Baby Raptor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/QwphTVWHoIs/mqdefault.jpg" alt="LEGO Jurassic World 122505 Ranger with Helipack and Baby Raptor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122505</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122505</div>
     <div class="set-name">Ranger with Helipack and Baby Raptor</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76973-jurassic-world-raptor-titanosaurus-tracking-mission/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pvhXdAgCzFU/maxresdefault.jpg" alt="LEGO Jurassic World 76973 Raptor &amp; Titanosaurus Tracking Mission building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/pvhXdAgCzFU/mqdefault.jpg" alt="LEGO Jurassic World 76973 Raptor &amp; Titanosaurus Tracking Mission building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76973</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76973</div>
     <div class="set-name">Raptor &amp; Titanosaurus Tracking Mission</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76976-jurassic-world-spinosaurus-quetzalcoatlus-air-mission/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/tSOsVJR4WYg/maxresdefault.jpg" alt="LEGO Jurassic World 76976 Spinosaurus &amp; Quetzalcoatlus Air Mission building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/tSOsVJR4WYg/mqdefault.jpg" alt="LEGO Jurassic World 76976 Spinosaurus &amp; Quetzalcoatlus Air Mission building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76976</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76976</div>
     <div class="set-name">Spinosaurus &amp; Quetzalcoatlus Air Mission</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76974-jurassic-world-brick-built-mosasaurus-boat-mission/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3VylDq7RjRA/maxresdefault.jpg" alt="LEGO Jurassic World 76974 Brick-Built Mosasaurus Boat Mission building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/3VylDq7RjRA/mqdefault.jpg" alt="LEGO Jurassic World 76974 Brick-Built Mosasaurus Boat Mission building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76974</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76974</div>
     <div class="set-name">Brick-Built Mosasaurus Boat Mission</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76972-jurassic-world-raptor-off-road-escape/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pFx1hU_gCaI/maxresdefault.jpg" alt="LEGO Jurassic World 76972 Raptor Off-Road Escape building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/pFx1hU_gCaI/mqdefault.jpg" alt="LEGO Jurassic World 76972 Raptor Off-Road Escape building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76972</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76972</div>
     <div class="set-name">Raptor Off-Road Escape</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76975-jurassic-world-t-rex-river-escape/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4aXfxqYSSxE/maxresdefault.jpg" alt="LEGO Jurassic World 76975 T. rex River Escape building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/4aXfxqYSSxE/mqdefault.jpg" alt="LEGO Jurassic World 76975 T. rex River Escape building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76975</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76975</div>
     <div class="set-name">T. rex River Escape</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76970-jurassic-world-baby-dinosaur-dolores-aquilops/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AXpKOu0-AH0/maxresdefault.jpg" alt="LEGO Jurassic World 76970 Baby Dinosaur Dolores: Aquilops building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/AXpKOu0-AH0/mqdefault.jpg" alt="LEGO Jurassic World 76970 Baby Dinosaur Dolores: Aquilops building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76970</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76970</div>
     <div class="set-name">Baby Dinosaur Dolores: Aquilops</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122409-jurassic-world-robert-muldoon-and-raptor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/tjlboheSoKc/maxresdefault.jpg" alt="LEGO Jurassic World 122409 Robert Muldoon and Raptor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/tjlboheSoKc/mqdefault.jpg" alt="LEGO Jurassic World 122409 Robert Muldoon and Raptor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122409</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122409</div>
     <div class="set-name">Robert Muldoon and Raptor</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122501-jurassic-world-ranger-and-raptor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/qmHSHmxRpJ4/maxresdefault.jpg" alt="LEGO Jurassic World 122501 Ranger and Raptor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/qmHSHmxRpJ4/mqdefault.jpg" alt="LEGO Jurassic World 122501 Ranger and Raptor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122501</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122501</div>
     <div class="set-name">Ranger and Raptor</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76967-jurassic-world-little-eatie-t-rex/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/XBmQkG2umkY/maxresdefault.jpg" alt="LEGO Jurassic World 76967 Little Eatie: T. rex building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/XBmQkG2umkY/mqdefault.jpg" alt="LEGO Jurassic World 76967 Little Eatie: T. rex building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76967</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76967</div>
     <div class="set-name">Little Eatie: T. rex</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76969-jurassic-world-dinosaur-fossils-triceratops-skull/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kqgqp2-F9EM/maxresdefault.jpg" alt="LEGO Jurassic World 76969 Dinosaur Fossils: Triceratops Skull building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/kqgqp2-F9EM/mqdefault.jpg" alt="LEGO Jurassic World 76969 Dinosaur Fossils: Triceratops Skull building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76969</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76969</div>
     <div class="set-name">Dinosaur Fossils: Triceratops Skull</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76968-jurassic-world-dinosaur-fossils-tyrannosaurus-rex/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/McVM_7YwnDw/maxresdefault.jpg" alt="LEGO Jurassic World 76968 Dinosaur Fossils: Tyrannosaurus rex building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/McVM_7YwnDw/mqdefault.jpg" alt="LEGO Jurassic World 76968 Dinosaur Fossils: Tyrannosaurus rex building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76968</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76968</div>
     <div class="set-name">Dinosaur Fossils: Tyrannosaurus rex</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122405-jurassic-world-velociraptor-baby-with-dna-lab/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/97uRyyh3QlU/maxresdefault.jpg" alt="LEGO Jurassic World 122405 Velociraptor Baby with DNA Lab building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/97uRyyh3QlU/mqdefault.jpg" alt="LEGO Jurassic World 122405 Velociraptor Baby with DNA Lab building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122405</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122405</div>
     <div class="set-name">Velociraptor Baby with DNA Lab</div>
     <div class="set-meta">Jurassic World • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76962-jurassic-world-baby-bumpy-ankylosaurus/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/7F8pUyheQvw/maxresdefault.jpg" alt="LEGO Jurassic World 76962 Baby Bumpy: Ankylosaurus building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/7F8pUyheQvw/mqdefault.jpg" alt="LEGO Jurassic World 76962 Baby Bumpy: Ankylosaurus building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76962</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76962</div>
     <div class="set-name">Baby Bumpy: Ankylosaurus</div>
     <div class="set-meta">Jurassic World • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76965-jurassic-world-dinosaur-missions-stegosaurus-discovery/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/rzJ3Cfxe1sM/maxresdefault.jpg" alt="LEGO Jurassic World 76965 Dinosaur Missions: Stegosaurus Discovery building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/rzJ3Cfxe1sM/mqdefault.jpg" alt="LEGO Jurassic World 76965 Dinosaur Missions: Stegosaurus Discovery building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76965</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76965</div>
     <div class="set-name">Dinosaur Missions: Stegosaurus Discovery</div>
     <div class="set-meta">Jurassic World • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76966-jurassic-world-dinosaur-missions-allosaurus-transport-truck/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/howzEPad_Qk/maxresdefault.jpg" alt="LEGO Jurassic World 76966 Dinosaur Missions: Allosaurus Transport Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/howzEPad_Qk/mqdefault.jpg" alt="LEGO Jurassic World 76966 Dinosaur Missions: Allosaurus Transport Truck building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76966</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76966</div>
     <div class="set-name">Dinosaur Missions: Allosaurus Transport Truck</div>
     <div class="set-meta">Jurassic World • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76963-jurassic-world-baby-dinosaur-rescue-centre/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zYfyjLBtJGU/maxresdefault.jpg" alt="LEGO Jurassic World 76963 Baby Dinosaur Rescue Centre building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/zYfyjLBtJGU/mqdefault.jpg" alt="LEGO Jurassic World 76963 Baby Dinosaur Rescue Centre building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76963</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76963</div>
     <div class="set-name">Baby Dinosaur Rescue Centre</div>
     <div class="set-meta">Jurassic World • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76964-jurassic-world-dinosaur-fossils-t-rex-skull/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/rJek89rRlyg/maxresdefault.jpg" alt="LEGO Jurassic World 76964 Dinosaur Fossils: T. rex Skull building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/rJek89rRlyg/mqdefault.jpg" alt="LEGO Jurassic World 76964 Dinosaur Fossils: T. rex Skull building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76964</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76964</div>
     <div class="set-name">Dinosaur Fossils: T. rex Skull</div>
     <div class="set-meta">Jurassic World • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122332-jurassic-world-jetpack-ranger-raptor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mKgJ2ok2RgI/maxresdefault.jpg" alt="LEGO Jurassic World 122332 Jetpack-Ranger &amp; Raptor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/mKgJ2ok2RgI/mqdefault.jpg" alt="LEGO Jurassic World 122332 Jetpack-Ranger &amp; Raptor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122332</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122332</div>
     <div class="set-name">Jetpack-Ranger &amp; Raptor</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122331-jurassic-world-owen-with-swamp-speeder-and-raptor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ouJseDlAFcA/maxresdefault.jpg" alt="LEGO Jurassic World 122331 Owen with Swamp Speeder and Raptor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ouJseDlAFcA/mqdefault.jpg" alt="LEGO Jurassic World 122331 Owen with Swamp Speeder and Raptor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122331</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122331</div>
     <div class="set-name">Owen with Swamp Speeder and Raptor</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122225-jurassic-world-blue-raptor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/UFY1whBbMF8/maxresdefault.jpg" alt="LEGO Jurassic World 122225 Blue Raptor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/UFY1whBbMF8/mqdefault.jpg" alt="LEGO Jurassic World 122225 Blue Raptor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122225</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122225</div>
     <div class="set-name">Blue Raptor</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122328-jurassic-world-owen-with-jetpack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/f_xq2FN-0fg/maxresdefault.jpg" alt="LEGO Jurassic World 122328 Owen with Jetpack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/f_xq2FN-0fg/mqdefault.jpg" alt="LEGO Jurassic World 122328 Owen with Jetpack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122328</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122328</div>
     <div class="set-name">Owen with Jetpack</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122327-jurassic-world-baby-raptor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dcJsAK-y0IM/maxresdefault.jpg" alt="LEGO Jurassic World 122327 Baby Raptor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/dcJsAK-y0IM/mqdefault.jpg" alt="LEGO Jurassic World 122327 Baby Raptor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122327</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122327</div>
     <div class="set-name">Baby Raptor</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122326-jurassic-world-raptor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/55xo1_atSKQ/maxresdefault.jpg" alt="LEGO Jurassic World 122326 Raptor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/55xo1_atSKQ/mqdefault.jpg" alt="LEGO Jurassic World 122326 Raptor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122326</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122326</div>
     <div class="set-name">Raptor</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/jurassic-world-magazine-gift-raptor-with-trap/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/siArWqjbHyQ/maxresdefault.jpg" alt="LEGO Jurassic World - Magazine Gift - Raptor with Trap building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/siArWqjbHyQ/mqdefault.jpg" alt="LEGO Jurassic World - Magazine Gift - Raptor with Trap building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number"></div><span class="badge-new">NEW</span></div>
+    <div class="set-number"></div>
     <div class="set-name">Jurassic World - Magazine Gift - Raptor with Trap</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76959-jurassic-world-triceratops-research/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mxA_TrOPtuQ/maxresdefault.jpg" alt="LEGO Jurassic World 76959 Triceratops Research building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/mxA_TrOPtuQ/mqdefault.jpg" alt="LEGO Jurassic World 76959 Triceratops Research building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76959</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76959</div>
     <div class="set-name">Triceratops Research</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76958-jurassic-world-dilophosaurus-ambush/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/V4d0l7DZV8w/maxresdefault.jpg" alt="LEGO Jurassic World 76958 Dilophosaurus Ambush building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/V4d0l7DZV8w/mqdefault.jpg" alt="LEGO Jurassic World 76958 Dilophosaurus Ambush building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76958</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76958</div>
     <div class="set-name">Dilophosaurus Ambush</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76957-jurassic-world-velociraptor-escape/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/A_-ncAVTd64/maxresdefault.jpg" alt="LEGO Jurassic World 76957 Velociraptor Escape building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/A_-ncAVTd64/mqdefault.jpg" alt="LEGO Jurassic World 76957 Velociraptor Escape building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76957</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76957</div>
     <div class="set-name">Velociraptor Escape</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76961-jurassic-world-visitor-centre-t-rex-raptor-attack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/bprlpv0t56w/maxresdefault.jpg" alt="LEGO Jurassic World 76961 Visitor Centre: T. rex &amp; Raptor Attack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/bprlpv0t56w/mqdefault.jpg" alt="LEGO Jurassic World 76961 Visitor Centre: T. rex &amp; Raptor Attack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76961</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76961</div>
     <div class="set-name">Visitor Centre: T. rex &amp; Raptor Attack</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76960-jurassic-world-brachiosaurus-discovery/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/qt4OoFPTMTw/maxresdefault.jpg" alt="LEGO Jurassic World 76960 Brachiosaurus Discovery building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/qt4OoFPTMTw/mqdefault.jpg" alt="LEGO Jurassic World 76960 Brachiosaurus Discovery building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76960</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76960</div>
     <div class="set-name">Brachiosaurus Discovery</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122329-jurassic-world-pyroraptor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/52zdpb3-_aA/maxresdefault.jpg" alt="LEGO Jurassic World 122329 Pyroraptor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/52zdpb3-_aA/mqdefault.jpg" alt="LEGO Jurassic World 122329 Pyroraptor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122329</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122329</div>
     <div class="set-name">Pyroraptor</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122218-jurassic-world-tyrannosaurus-rex/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/56DaDJ9Q65A/maxresdefault.jpg" alt="LEGO Jurassic World 122218 Tyrannosaurus Rex building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/56DaDJ9Q65A/mqdefault.jpg" alt="LEGO Jurassic World 122218 Tyrannosaurus Rex building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122218</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122218</div>
     <div class="set-name">Tyrannosaurus Rex</div>
     <div class="set-meta">Jurassic World • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122116-jurassic-world-sinjin-prescott-and-buggy/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/V3E_UQ2pN0I/maxresdefault.jpg" alt="LEGO Jurassic World 122116 Sinjin Prescott and buggy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/V3E_UQ2pN0I/mqdefault.jpg" alt="LEGO Jurassic World 122116 Sinjin Prescott and buggy building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122116</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122116</div>
     <div class="set-name">Sinjin Prescott and buggy</div>
     <div class="set-meta">Jurassic World • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122010-jurassic-world-baby-dino-transport-magazine-gift/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/6CDWt84eJS4/maxresdefault.jpg" alt="LEGO 122010 Jurassic World - Baby Dino Transport - Magazine Gift building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/6CDWt84eJS4/mqdefault.jpg" alt="LEGO 122010 Jurassic World - Baby Dino Transport - Magazine Gift building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122010</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122010</div>
     <div class="set-name">Jurassic World - Baby Dino Transport - Magazine Gift</div>
     <div class="set-meta">Jurassic World • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122008-jurassic-world-create-dino-magazine-gift/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/y6rxkGsf7_U/maxresdefault.jpg" alt="LEGO 122008 Jurassic World - Create Dino - Magazine Gift building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/y6rxkGsf7_U/mqdefault.jpg" alt="LEGO 122008 Jurassic World - Create Dino - Magazine Gift building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122008</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122008</div>
     <div class="set-name">Jurassic World - Create Dino - Magazine Gift</div>
     <div class="set-meta">Jurassic World • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122009-jurassic-world-vic-hoskins-with-buggy-magazine-gift/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pa9O9wybOOA/maxresdefault.jpg" alt="LEGO 122009 Jurassic World - Vic Hoskins with Buggy - Magazine Gift building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/pa9O9wybOOA/mqdefault.jpg" alt="LEGO 122009 Jurassic World - Vic Hoskins with Buggy - Magazine Gift building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122009</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122009</div>
     <div class="set-name">Jurassic World - Vic Hoskins with Buggy - Magazine Gift</div>
     <div class="set-meta">Jurassic World • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122006-jurassic-world-triceratops-magazine-gift/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/eoEsc61Gee4/maxresdefault.jpg" alt="LEGO 122006 Jurassic World - Triceratops - Magazine Gift building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/eoEsc61Gee4/mqdefault.jpg" alt="LEGO 122006 Jurassic World - Triceratops - Magazine Gift building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122006</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122006</div>
     <div class="set-name">Jurassic World - Triceratops - Magazine Gift</div>
     <div class="set-meta">Jurassic World • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122115-jurassic-world-dilophosaurus/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/5Fl45rsPgo4/maxresdefault.jpg" alt="LEGO Jurassic World 122115 Dilophosaurus building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/5Fl45rsPgo4/mqdefault.jpg" alt="LEGO Jurassic World 122115 Dilophosaurus building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122115</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">122115</div>
     <div class="set-name">Dilophosaurus</div>
     <div class="set-meta">Jurassic World • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76939-jurassic-world-stygimoloch-dinosaur-escape/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/rvL4AV7Dq74/maxresdefault.jpg" alt="LEGO Jurassic World 76939 Stygimoloch Dinosaur Escape building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/rvL4AV7Dq74/mqdefault.jpg" alt="LEGO Jurassic World 76939 Stygimoloch Dinosaur Escape building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76939</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76939</div>
     <div class="set-name">Stygimoloch Dinosaur Escape</div>
     <div class="set-meta">Jurassic World • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76941-jurassic-world-carnotaurus-dinosaur-chase/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Nkz7t_0n1uw/maxresdefault.jpg" alt="LEGO Jurassic World 76941 Carnotaurus Dinosaur Chase building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Nkz7t_0n1uw/mqdefault.jpg" alt="LEGO Jurassic World 76941 Carnotaurus Dinosaur Chase building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76941</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76941</div>
     <div class="set-name">Carnotaurus Dinosaur Chase</div>
     <div class="set-meta">Jurassic World • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76942-jurassic-world-baryonyx-dinosaur-boat-escape/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/GKE2yD-hv70/maxresdefault.jpg" alt="LEGO Jurassic World 76942 Baryonyx Dinosaur Boat Escape building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/GKE2yD-hv70/mqdefault.jpg" alt="LEGO Jurassic World 76942 Baryonyx Dinosaur Boat Escape building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76942</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76942</div>
     <div class="set-name">Baryonyx Dinosaur Boat Escape</div>
     <div class="set-meta">Jurassic World • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76940-jurassic-world-t-rex-dinosaur-fossil-exhibition/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Ngx5dyJsSn4/maxresdefault.jpg" alt="LEGO Jurassic World 76940 T. rex Dinosaur Fossil Exhibition building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Ngx5dyJsSn4/mqdefault.jpg" alt="LEGO Jurassic World 76940 T. rex Dinosaur Fossil Exhibition building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76940</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76940</div>
     <div class="set-name">T. rex Dinosaur Fossil Exhibition</div>
     <div class="set-meta">Jurassic World • 2021</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO Jurassic World Instructions</h2><p>18 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/122507-jurassic-world-raptor-feeding/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122507 Raptor Feeding building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122507 Raptor Feeding building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122507</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122507</div>
     <div class="set-name">Raptor Feeding</div>
     <div class="set-meta">Jurassic World • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122503-jurassic-world-owen-with-quad-bike/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122503 Owen with Quad bike building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122503 Owen with Quad bike building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122503</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122503</div>
     <div class="set-name">Owen with Quad bike</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122504-jurassic-world-raptor-and-trap/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122504 Raptor and Trap building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122504 Raptor and Trap building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122504</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122504</div>
     <div class="set-name">Raptor and Trap</div>
     <div class="set-meta">Jurassic World • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122401-jurassic-world-laboratory-with-raptor/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122401 Laboratory with Raptor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122401 Laboratory with Raptor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122401</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122401</div>
     <div class="set-name">Laboratory with Raptor</div>
     <div class="set-meta">Jurassic World • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122402-jurassic-world-raptor-with-nest/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122402 Raptor with nest building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122402 Raptor with nest building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122402</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122402</div>
     <div class="set-name">Raptor with nest</div>
     <div class="set-meta">Jurassic World • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122403-jurassic-world-owen-with-helicopter/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122403 Owen with Helicopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122403 Owen with Helicopter building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122403</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122403</div>
     <div class="set-name">Owen with Helicopter</div>
     <div class="set-meta">Jurassic World • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122404-jurassic-world-raptor-and-laboratory/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122404 Raptor and Laboratory building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122404 Raptor and Laboratory building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122404</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122404</div>
     <div class="set-name">Raptor and Laboratory</div>
     <div class="set-meta">Jurassic World • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122406-jurassic-world-raptor-and-hideout/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122406 Raptor and Hideout building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122406 Raptor and Hideout building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122406</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122406</div>
     <div class="set-name">Raptor and Hideout</div>
     <div class="set-meta">Jurassic World • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122407-jurassic-world-mobile-incubator-with-egg/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122407 Mobile Incubator with Egg building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122407 Mobile Incubator with Egg building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122407</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122407</div>
     <div class="set-name">Mobile Incubator with Egg</div>
     <div class="set-meta">Jurassic World • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122408-jurassic-world-alan-grant-with-quad/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122408 Alan Grant with Quad building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122408 Alan Grant with Quad building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122408</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122408</div>
     <div class="set-name">Alan Grant with Quad</div>
     <div class="set-meta">Jurassic World • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66774-jurassic-world-dino-combo-pack/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 66774 Dino Combo Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 66774 Dino Combo Pack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">66774</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">66774</div>
     <div class="set-name">Dino Combo Pack</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122330-jurassic-world-raptor-with-trap/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122330 Raptor with Trap building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122330 Raptor with Trap building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122330</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122330</div>
     <div class="set-name">Raptor with Trap</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122333-jurassic-world-owen-with-motorcycle/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122333 Owen with Motorcycle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122333 Owen with Motorcycle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122333</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122333</div>
     <div class="set-name">Owen with Motorcycle</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122334-jurassic-world-alan-with-dino-skeleton/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122334 Alan with Dino Skeleton building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122334 Alan with Dino Skeleton building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122334</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122334</div>
     <div class="set-name">Alan with Dino Skeleton</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6476369-jurassic-world-tyrannosaurus/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 6476369 Tyrannosaurus building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 6476369 Tyrannosaurus building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">6476369</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">6476369</div>
     <div class="set-name">Tyrannosaurus</div>
     <div class="set-meta">Jurassic World • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122112-jurassic-world-dr-wu-s-laboratory/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122112 Dr. Wu&#x27;s Laboratory building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122112 Dr. Wu&#x27;s Laboratory building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122112</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122112</div>
     <div class="set-name">Dr. Wu&#x27;s Laboratory</div>
     <div class="set-meta">Jurassic World • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122113-jurassic-world-owen-with-helicopter/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122113 Owen with Helicopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122113 Owen with Helicopter building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122113</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122113</div>
     <div class="set-name">Owen with Helicopter</div>
     <div class="set-meta">Jurassic World • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/122114-jurassic-world-owen-and-red-motorbike/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122114 Owen and red motorbike building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Jurassic World 122114 Owen and red motorbike building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">122114</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">122114</div>
     <div class="set-name">Owen and red motorbike</div>
     <div class="set-meta">Jurassic World • 2021</div>
   </div>
 </a></div></main>
 <footer>
   <div class="footer-links"><a href="/about/">About</a><a href="https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/LEGOInstructionsForLEGOFans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/legoinstructionsforyou/" target="_blank" rel="noopener">Instagram</a></div>
-  <div>Brick Instructions For You is independently run by Paul.</div>
+  <div>Brick Instructions For You is independently run by Paul Critchlow.</div>
   <div style="margin-top:8px;opacity:.86;">LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorise or endorse this site.</div>
 </footer>
 <script>
 window.LEGO_SETS = [];
 let LEGO_SETS_LOADED = false;
-const LEGO_SETS_READY = fetch("/data/search-index.json", {cache:"no-store"})
- .then(response => response.ok ? response.json() : [])
- .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
- .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+let legoSetsPromise = null;
+function ensureSearchIndex() {
+ if (legoSetsPromise) return legoSetsPromise;
+ legoSetsPromise = fetch("/data/search-index.json", {cache:"default"})
+  .then(response => response.ok ? response.json() : [])
+  .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
+  .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+ return legoSetsPromise;
+}
 const input=document.getElementById("mainSearchInput");
 const typeSelect=document.getElementById("mainSearchType");
 const form=document.getElementById("mainSearchForm");
@@ -899,7 +989,7 @@ function setImageAlt(set){
  if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
  return parts.join(" ").replace(/\s+/g," ").trim();
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;
@@ -912,18 +1002,18 @@ function renderResults(query,type,pushState=true){
 function showSuggestions(){
  const q=input.value.trim();const t=typeSelect.value||"all"; if(q.length<1){hideSuggestions();return;}
  const matches=searchSets(q,t).slice(0,8); if(!matches.length){hideSuggestions();return;}
- suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
+ suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",showSuggestions);typeSelect.addEventListener("change",showSuggestions);
+input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
 suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
 document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();LEGO_SETS_READY.then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();renderResults(chip.dataset.search,chip.dataset.type||"all",true);}));
+form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
 window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))LEGO_SETS_READY.then(()=>renderResults(q,t,false));})();
+(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
 </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "99db6ec5719548b582f077bfc6bb2c7f"}'></script><!-- End Cloudflare Web Analytics -->
+
 </body>
 </html>

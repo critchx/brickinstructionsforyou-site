@@ -3,19 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW"></script>
+<!-- Google tag (gtag.js), deferred until interaction/idle -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-37MCSDDYEW');
+  (() => {
+    let loaded = false;
+    const loadAnalytics = () => {
+      if (loaded) return;
+      loaded = true;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW';
+      document.head.appendChild(script);
+    };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(eventName =>
+      addEventListener(eventName, loadAnalytics, {once:true, passive:true}));
+    addEventListener('load', () => setTimeout(loadAnalytics, 8000), {once:true});
+  })();
 </script>
 <title>LEGO Bricklink Instructions | Brick Instructions For You</title>
 <meta name="description" content="Browse 57 LEGO Bricklink building instruction pages with step-by-step video guides, set details, release information and upcoming Bricklink sets.">
 <link rel="canonical" href="https://www.brickinstructionsforyou.com/themes/bricklink/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul Critchlow"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
 
 <style>
 :root{--navy:#061b35;--yellow:#ffcc00;--text:#1d1d1f;--muted:#667085;--line:#e5e7eb;--bg:#f5f5f5}
@@ -66,23 +79,14 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .results-header h1,.results-header h2{font-size:32px;margin:0 0 14px;text-transform:uppercase}
 .results-header p{margin:0;color:var(--muted)}
 .btn-outline{display:inline-block;border:1px solid #cfd5df;background:#fff;border-radius:9px;padding:14px 18px;font-weight:900;white-space:nowrap}
-.about-page-card{margin-top:10px!important}
-.about-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 6px}
-.about-action{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;padding:13px 18px;color:#fff;font-weight:900;box-shadow:0 4px 10px rgba(6,27,53,.14);transition:transform .16s ease,box-shadow .16s ease}
-.about-action:hover{color:#fff;transform:translateY(-2px);box-shadow:0 8px 16px rgba(6,27,53,.2)}
-.about-youtube{background:#e60012}
-.about-facebook{background:#1877f2}
-.about-instagram{background:linear-gradient(135deg,#833ab4,#e1306c 55%,#f77737)}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
-.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
-.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
+.badge-new{position:absolute;top:16px;left:16px;background:#c7000b;color:#fff;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
+.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
-.set-number{color:#e60012;font-weight:900;font-size:13px}
-.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
+.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -98,8 +102,7 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
-.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
+.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -108,20 +111,16 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
-.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
-.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
-.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
-.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
 </style>
 </head>
 <body>
 <div class="topline"></div>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="site-nav-inner">
-    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo"></a>
+    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo" width="900" height="260" decoding="async"></a>
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/themes/">Themes</a>
@@ -159,472 +158,534 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><strong>Bricklink</strong></nav><div class="results-header"><div><h2>LEGO Bricklink Instructions</h2><p>57 LEGO instruction pages found in this theme.</p></div><a class="btn-outline" href="/themes/">ALL THEMES</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Bricklink by year</h3><nav aria-label="Browse LEGO Bricklink by year" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2026/bricklink/">LEGO Bricklink 2026</a><a class="btn-outline" href="/2025/bricklink/">LEGO Bricklink 2025</a><a class="btn-outline" href="/2024/bricklink/">LEGO Bricklink 2024</a><a class="btn-outline" href="/2023/bricklink/">LEGO Bricklink 2023</a><a class="btn-outline" href="/2022/bricklink/">LEGO Bricklink 2022</a><a class="btn-outline" href="/2021/bricklink/">LEGO Bricklink 2021</a></nav></section><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Bricklink subthemes</h3><nav aria-label="Browse LEGO Bricklink subthemes" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/bricklink/2021-designer-program/">LEGO 2021 Designer Program Instructions</a><a class="btn-outline" href="/themes/bricklink/designer-program-series-1/">LEGO Designer Program Series 1 Instructions</a><a class="btn-outline" href="/themes/bricklink/designer-program-series-2/">LEGO Designer Program Series 2 Instructions</a><a class="btn-outline" href="/themes/bricklink/designer-program-series-3/">LEGO Designer Program Series 3 Instructions</a><a class="btn-outline" href="/themes/bricklink/designer-program-series-4/">LEGO Designer Program Series 4 Instructions</a><a class="btn-outline" href="/themes/bricklink/designer-program-series-5/">LEGO Designer Program Series 5 Instructions</a><a class="btn-outline" href="/themes/bricklink/designer-program-series-6/">LEGO Designer Program Series 6 Instructions</a><a class="btn-outline" href="/themes/bricklink/designer-program-series-7/">LEGO Designer Program Series 7 Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/910059-bricklink-privateer-frigate-fortuna/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3p-sGzHRHXY/maxresdefault.jpg" alt="LEGO Bricklink 910059 Privateer Frigate Fortuna building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/3p-sGzHRHXY/mqdefault.jpg" alt="LEGO Bricklink 910059 Privateer Frigate Fortuna building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910059</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910059</div>
     <div class="set-name">Privateer Frigate Fortuna</div>
     <div class="set-meta">Bricklink • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910063-bricklink-w-a-l-t/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/czl5VOGwFII/maxresdefault.jpg" alt="LEGO Bricklink 910063 W.A.L.T. building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/czl5VOGwFII/mqdefault.jpg" alt="LEGO Bricklink 910063 W.A.L.T. building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910063</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910063</div>
     <div class="set-name">W.A.L.T.</div>
     <div class="set-meta">Bricklink • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910062-bricklink-alchemist-s-shop/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Njd6w912piY/maxresdefault.jpg" alt="LEGO Bricklink 910062 Alchemist&#x27;s Shop building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Njd6w912piY/mqdefault.jpg" alt="LEGO Bricklink 910062 Alchemist&#x27;s Shop building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910062</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910062</div>
     <div class="set-name">Alchemist&#x27;s Shop</div>
     <div class="set-meta">Bricklink • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910061-bricklink-antique-collection/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IbmArBjOKB0/maxresdefault.jpg" alt="LEGO Bricklink 910061 Antique Collection building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/IbmArBjOKB0/mqdefault.jpg" alt="LEGO Bricklink 910061 Antique Collection building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910061</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910061</div>
     <div class="set-name">Antique Collection</div>
     <div class="set-meta">Bricklink • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910060-bricklink-sushi-restaurant/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/sWM_3J1klAw/maxresdefault.jpg" alt="LEGO Bricklink 910060 Sushi Restaurant building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/sWM_3J1klAw/mqdefault.jpg" alt="LEGO Bricklink 910060 Sushi Restaurant building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910060</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910060</div>
     <div class="set-name">Sushi Restaurant</div>
     <div class="set-meta">Bricklink • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910023-bricklink-venetian-houses/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0NufYl8Shvg/maxresdefault.jpg" alt="LEGO Bricklink 910023 Venetian Houses building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/0NufYl8Shvg/mqdefault.jpg" alt="LEGO Bricklink 910023 Venetian Houses building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910023</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910023</div>
     <div class="set-name">Venetian Houses</div>
     <div class="set-meta">Bricklink • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910015-bricklink-clockwork-aquarium/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/wbZqGlweoe8/maxresdefault.jpg" alt="LEGO Bricklink 910015 Clockwork Aquarium building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/wbZqGlweoe8/mqdefault.jpg" alt="LEGO Bricklink 910015 Clockwork Aquarium building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910015</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910015</div>
     <div class="set-name">Clockwork Aquarium</div>
     <div class="set-meta">Bricklink • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910013-bricklink-retro-bowling-alley/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Gp2Truo2LuI/maxresdefault.jpg" alt="LEGO Bricklink 910013 Retro Bowling Alley building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Gp2Truo2LuI/mqdefault.jpg" alt="LEGO Bricklink 910013 Retro Bowling Alley building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910013</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910013</div>
     <div class="set-name">Retro Bowling Alley</div>
     <div class="set-meta">Bricklink • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910009-bricklink-modular-store/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/lX7EqfDJVwU/maxresdefault.jpg" alt="LEGO Bricklink 910009 Modular LEGO Store building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/lX7EqfDJVwU/mqdefault.jpg" alt="LEGO Bricklink 910009 Modular LEGO Store building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910009</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910009</div>
     <div class="set-name">Modular LEGO Store</div>
     <div class="set-meta">Bricklink • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910003-bricklink-mountain-windmill/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/octkYPdl46Y/maxresdefault.jpg" alt="LEGO Bricklink 910003 Mountain Windmill building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/octkYPdl46Y/mqdefault.jpg" alt="LEGO Bricklink 910003 Mountain Windmill building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910003</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910003</div>
     <div class="set-name">Mountain Windmill</div>
     <div class="set-meta">Bricklink • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910058-bricklink-sequoia-tree-trail/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yjiwgXpP7_g/maxresdefault.jpg" alt="LEGO Bricklink 910058 Sequoia Tree Trail building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/yjiwgXpP7_g/mqdefault.jpg" alt="LEGO Bricklink 910058 Sequoia Tree Trail building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910058</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910058</div>
     <div class="set-name">Sequoia Tree Trail</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910057-bricklink-outlaw-forest-den/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/I12pMTGf-Oo/maxresdefault.jpg" alt="LEGO Bricklink 910057 Outlaw Forest Den building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/I12pMTGf-Oo/mqdefault.jpg" alt="LEGO Bricklink 910057 Outlaw Forest Den building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910057</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910057</div>
     <div class="set-name">Outlaw Forest Den</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910056-bricklink-off-road-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/w39A-ongKGg/maxresdefault.jpg" alt="LEGO Bricklink 910056 Off-Road Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/w39A-ongKGg/mqdefault.jpg" alt="LEGO Bricklink 910056 Off-Road Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910056</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910056</div>
     <div class="set-name">Off-Road Adventure</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910055-bricklink-gold-mine-expedition/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HckVA7KqmTE/maxresdefault.jpg" alt="LEGO Bricklink 910055 Gold Mine Expedition building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/HckVA7KqmTE/mqdefault.jpg" alt="LEGO Bricklink 910055 Gold Mine Expedition building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910055</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910055</div>
     <div class="set-name">Gold Mine Expedition</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910054-bricklink-the-art-factory/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/M6dlnK_NtTY/maxresdefault.jpg" alt="LEGO Bricklink 910054 The Art Factory building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/M6dlnK_NtTY/mqdefault.jpg" alt="LEGO Bricklink 910054 The Art Factory building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910054</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910054</div>
     <div class="set-name">The Art Factory</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910049-bricklink-adventure-in-transylvania/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/h3Jn3vez0iQ/maxresdefault.jpg" alt="LEGO Bricklink 910049 Adventure in Transylvania building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/h3Jn3vez0iQ/mqdefault.jpg" alt="LEGO Bricklink 910049 Adventure in Transylvania building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910049</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910049</div>
     <div class="set-name">Adventure in Transylvania</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910053-bricklink-the-thieves-of-tortuga/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/uuWM0vhvv58/maxresdefault.jpg" alt="LEGO Bricklink 910053 The Thieves of Tortuga building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/uuWM0vhvv58/mqdefault.jpg" alt="LEGO Bricklink 910053 The Thieves of Tortuga building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910053</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910053</div>
     <div class="set-name">The Thieves of Tortuga</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910051-bricklink-mushroom-village/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HRv3ufSK6l4/maxresdefault.jpg" alt="LEGO Bricklink 910051 Mushroom Village building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/HRv3ufSK6l4/mqdefault.jpg" alt="LEGO Bricklink 910051 Mushroom Village building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910051</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910051</div>
     <div class="set-name">Mushroom Village</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910050-bricklink-antique-shop/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/82irjivJFR0/maxresdefault.jpg" alt="LEGO Bricklink 910050 Antique Shop building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/82irjivJFR0/mqdefault.jpg" alt="LEGO Bricklink 910050 Antique Shop building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910050</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910050</div>
     <div class="set-name">Antique Shop</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910052-bricklink-popcorn-wagon/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jKhM5evb0PE/maxresdefault.jpg" alt="LEGO Bricklink 910052 Popcorn Wagon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/jKhM5evb0PE/mqdefault.jpg" alt="LEGO Bricklink 910052 Popcorn Wagon building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910052</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910052</div>
     <div class="set-name">Popcorn Wagon</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/5009260-bricklink-25th-anniversary-giveaway/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/q5cwM5jjCXU/maxresdefault.jpg" alt="LEGO 5009260 Bricklink 25th Anniversary Giveaway building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/q5cwM5jjCXU/mqdefault.jpg" alt="LEGO 5009260 Bricklink 25th Anniversary Giveaway building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">5009260</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">5009260</div>
     <div class="set-name">Bricklink 25th Anniversary Giveaway</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910046-bricklink-merchant-boat/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-ep_3qMDDZ4/maxresdefault.jpg" alt="LEGO Bricklink 910046 Merchant Boat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/-ep_3qMDDZ4/mqdefault.jpg" alt="LEGO Bricklink 910046 Merchant Boat building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910046</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910046</div>
     <div class="set-name">Merchant Boat</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910047-bricklink-medieval-seaside-market/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/hBr5-3occtE/maxresdefault.jpg" alt="LEGO Bricklink 910047 Medieval Seaside Market building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/hBr5-3occtE/mqdefault.jpg" alt="LEGO Bricklink 910047 Medieval Seaside Market building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910047</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910047</div>
     <div class="set-name">Medieval Seaside Market</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910048-bricklink-riverside-scholars/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9XQiecYQxpo/maxresdefault.jpg" alt="LEGO Bricklink 910048 Riverside Scholars building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/9XQiecYQxpo/mqdefault.jpg" alt="LEGO Bricklink 910048 Riverside Scholars building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910048</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910048</div>
     <div class="set-name">Riverside Scholars</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910045-bricklink-siege-encampment/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/2-Krmy57PsI/maxresdefault.jpg" alt="LEGO Bricklink 910045 Siege Encampment building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/2-Krmy57PsI/mqdefault.jpg" alt="LEGO Bricklink 910045 Siege Encampment building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910045</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910045</div>
     <div class="set-name">Siege Encampment</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910044-bricklink-wild-west-train/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dFUInk9dtOU/maxresdefault.jpg" alt="LEGO Bricklink 910044 Wild West Train building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/dFUInk9dtOU/mqdefault.jpg" alt="LEGO Bricklink 910044 Wild West Train building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910044</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910044</div>
     <div class="set-name">Wild West Train</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910039-bricklink-the-art-of-chocolate/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/M15Rt6bEQzE/maxresdefault.jpg" alt="LEGO Bricklink 910039 The Art of Chocolate building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/M15Rt6bEQzE/mqdefault.jpg" alt="LEGO Bricklink 910039 The Art of Chocolate building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910039</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910039</div>
     <div class="set-name">The Art of Chocolate</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910040-bricklink-harbourmaster-s-office/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/FtJvG9CEFnA/maxresdefault.jpg" alt="LEGO Bricklink 910040 Harbourmaster&#x27;s Office building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/FtJvG9CEFnA/mqdefault.jpg" alt="LEGO Bricklink 910040 Harbourmaster&#x27;s Office building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910040</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910040</div>
     <div class="set-name">Harbourmaster&#x27;s Office</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910041-bricklink-camping-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Jmx4I8t6PuQ/maxresdefault.jpg" alt="LEGO Bricklink 910041 Camping Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Jmx4I8t6PuQ/mqdefault.jpg" alt="LEGO Bricklink 910041 Camping Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910041</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910041</div>
     <div class="set-name">Camping Adventure</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910042-bricklink-lost-city/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Wo_wXciJk5o/maxresdefault.jpg" alt="LEGO Bricklink 910042 Lost City building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Wo_wXciJk5o/mqdefault.jpg" alt="LEGO Bricklink 910042 Lost City building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910042</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910042</div>
     <div class="set-name">Lost City</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910043-bricklink-forest-stronghold/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/X395ZBWDzfI/maxresdefault.jpg" alt="LEGO Bricklink 910043 Forest Stronghold building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/X395ZBWDzfI/mqdefault.jpg" alt="LEGO Bricklink 910043 Forest Stronghold building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910043</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910043</div>
     <div class="set-name">Forest Stronghold</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910034-bricklink-brick-cross-train-station/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/6S0wGCbT8i8/maxresdefault.jpg" alt="LEGO Bricklink 910034 Brick Cross Train Station building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/6S0wGCbT8i8/mqdefault.jpg" alt="LEGO Bricklink 910034 Brick Cross Train Station building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910034</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910034</div>
     <div class="set-name">Brick Cross Train Station</div>
     <div class="set-meta">Bricklink • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910036-bricklink-ocean-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Gd1LH8S6NbM/maxresdefault.jpg" alt="LEGO Bricklink 910036 Ocean House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Gd1LH8S6NbM/mqdefault.jpg" alt="LEGO Bricklink 910036 Ocean House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910036</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910036</div>
     <div class="set-name">Ocean House</div>
     <div class="set-meta">Bricklink • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910038-bricklink-ominous-isle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QcfcS5vbNa4/maxresdefault.jpg" alt="LEGO Bricklink 910038 Ominous Isle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/QcfcS5vbNa4/mqdefault.jpg" alt="LEGO Bricklink 910038 Ominous Isle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910038</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910038</div>
     <div class="set-name">Ominous Isle</div>
     <div class="set-meta">Bricklink • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910037-bricklink-mushroom-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/TQ5Oqt-6YZA/maxresdefault.jpg" alt="LEGO Bricklink 910037 Mushroom House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/TQ5Oqt-6YZA/mqdefault.jpg" alt="LEGO Bricklink 910037 Mushroom House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910037</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910037</div>
     <div class="set-name">Mushroom House</div>
     <div class="set-meta">Bricklink • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910035-bricklink-logging-railway/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nNtYDfiq62c/maxresdefault.jpg" alt="LEGO Bricklink 910035 Logging Railway building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/nNtYDfiq62c/mqdefault.jpg" alt="LEGO Bricklink 910035 Logging Railway building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910035</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910035</div>
     <div class="set-name">Logging Railway</div>
     <div class="set-meta">Bricklink • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910030-bricklink-snack-shack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pI7QsG0LpPI/maxresdefault.jpg" alt="LEGO Bricklink 910030 Snack Shack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/pI7QsG0LpPI/mqdefault.jpg" alt="LEGO Bricklink 910030 Snack Shack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910030</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910030</div>
     <div class="set-name">Snack Shack</div>
     <div class="set-meta">Bricklink • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910032-bricklink-parisian-street/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/7FSRXIIHeQI/maxresdefault.jpg" alt="LEGO Bricklink 910032 Parisian Street building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/7FSRXIIHeQI/mqdefault.jpg" alt="LEGO Bricklink 910032 Parisian Street building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910032</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910032</div>
     <div class="set-name">Parisian Street</div>
     <div class="set-meta">Bricklink • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910033-bricklink-old-train-engine-shed/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/T7YDnJJdGY0/maxresdefault.jpg" alt="LEGO Bricklink 910033 Old Train Engine Shed building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/T7YDnJJdGY0/mqdefault.jpg" alt="LEGO Bricklink 910033 Old Train Engine Shed building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910033</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910033</div>
     <div class="set-name">Old Train Engine Shed</div>
     <div class="set-meta">Bricklink • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910031-bricklink-general-store/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/BYVDPKfCek0/maxresdefault.jpg" alt="LEGO Bricklink 910031 General Store building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/BYVDPKfCek0/mqdefault.jpg" alt="LEGO Bricklink 910031 General Store building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910031</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910031</div>
     <div class="set-name">General Store</div>
     <div class="set-meta">Bricklink • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910029-bricklink-mountain-fortress/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/o1KtyLz49go/maxresdefault.jpg" alt="LEGO Bricklink 910029 Mountain Fortress building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/o1KtyLz49go/mqdefault.jpg" alt="LEGO Bricklink 910029 Mountain Fortress building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910029</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910029</div>
     <div class="set-name">Mountain Fortress</div>
     <div class="set-meta">Bricklink • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910002-bricklink-studgate-train-station/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/7pBV_H3GlYs/maxresdefault.jpg" alt="LEGO Bricklink 910002 Studgate Train Station building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/7pBV_H3GlYs/mqdefault.jpg" alt="LEGO Bricklink 910002 Studgate Train Station building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910002</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910002</div>
     <div class="set-name">Studgate Train Station</div>
     <div class="set-meta">Bricklink • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910027-bricklink-mountain-view-observatory/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Rw4bhiXYEm8/maxresdefault.jpg" alt="LEGO Bricklink 910027 Mountain View Observatory building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Rw4bhiXYEm8/mqdefault.jpg" alt="LEGO Bricklink 910027 Mountain View Observatory building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910027</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910027</div>
     <div class="set-name">Mountain View Observatory</div>
     <div class="set-meta">Bricklink • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910008-bricklink-modular-construction-site/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8OumFFyCHbk/maxresdefault.jpg" alt="LEGO Bricklink 910008 Modular Construction Site building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/8OumFFyCHbk/mqdefault.jpg" alt="LEGO Bricklink 910008 Modular Construction Site building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910008</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910008</div>
     <div class="set-name">Modular Construction Site</div>
     <div class="set-meta">Bricklink • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910004-bricklink-winter-chalet/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DN_Kqq8ZtYQ/maxresdefault.jpg" alt="LEGO Bricklink 910004 Winter Chalet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/DN_Kqq8ZtYQ/mqdefault.jpg" alt="LEGO Bricklink 910004 Winter Chalet building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910004</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910004</div>
     <div class="set-name">Winter Chalet</div>
     <div class="set-meta">Bricklink • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910011-bricklink-1950s-diner/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/iOyWNB986Yk/maxresdefault.jpg" alt="LEGO Bricklink 910011 1950s Diner building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/iOyWNB986Yk/mqdefault.jpg" alt="LEGO Bricklink 910011 1950s Diner building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910011</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910011</div>
     <div class="set-name">1950s Diner</div>
     <div class="set-meta">Bricklink • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910016-bricklink-sheriff-s-safe/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HIGFxyKRiI8/maxresdefault.jpg" alt="LEGO Bricklink 910016 Sheriff&#x27;s Safe building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/HIGFxyKRiI8/mqdefault.jpg" alt="LEGO Bricklink 910016 Sheriff&#x27;s Safe building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910016</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910016</div>
     <div class="set-name">Sheriff&#x27;s Safe</div>
     <div class="set-meta">Bricklink • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910017-bricklink-kakapo/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_9SK3KjA7Ek/maxresdefault.jpg" alt="LEGO Bricklink 910017 Kakapo building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/_9SK3KjA7Ek/mqdefault.jpg" alt="LEGO Bricklink 910017 Kakapo building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910017</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910017</div>
     <div class="set-name">Kakapo</div>
     <div class="set-meta">Bricklink • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910010-bricklink-the-great-fishing-boat/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QF-HfpoA1Oc/maxresdefault.jpg" alt="LEGO Bricklink 910010 The Great Fishing Boat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/QF-HfpoA1Oc/mqdefault.jpg" alt="LEGO Bricklink 910010 The Great Fishing Boat building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910010</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910010</div>
     <div class="set-name">The Great Fishing Boat</div>
     <div class="set-meta">Bricklink • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910028-bricklink-pursuit-of-flight/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/o1rYo8Zuyj8/maxresdefault.jpg" alt="LEGO Bricklink 910028 Pursuit of Flight building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/o1rYo8Zuyj8/mqdefault.jpg" alt="LEGO Bricklink 910028 Pursuit of Flight building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910028</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910028</div>
     <div class="set-name">Pursuit of Flight</div>
     <div class="set-meta">Bricklink • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910001-bricklink-castle-in-the-forest/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/lzqJMlleIS4/maxresdefault.jpg" alt="LEGO Bricklink 910001 Castle in the Forest building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/lzqJMlleIS4/mqdefault.jpg" alt="LEGO Bricklink 910001 Castle in the Forest building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910001</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">910001</div>
     <div class="set-name">Castle in the Forest</div>
     <div class="set-meta">Bricklink • 2021</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO Bricklink Instructions</h2><p>6 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/910064-bricklink-dustmark-keep/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910064 Dustmark Keep building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910064 Dustmark Keep building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910064</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">910064</div>
     <div class="set-name">Dustmark Keep</div>
     <div class="set-meta">Bricklink • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910065-bricklink-coconut-cape/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910065 Coconut Cape building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910065 Coconut Cape building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910065</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">910065</div>
     <div class="set-name">Coconut Cape</div>
     <div class="set-meta">Bricklink • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910066-bricklink-brick-railroad-locomotive/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910066 Brick Railroad Locomotive building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910066 Brick Railroad Locomotive building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910066</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">910066</div>
     <div class="set-name">Brick Railroad Locomotive</div>
     <div class="set-meta">Bricklink • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910067-bricklink-hot-air-balloon/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910067 Hot Air Balloon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910067 Hot Air Balloon building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910067</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">910067</div>
     <div class="set-name">Hot Air Balloon</div>
     <div class="set-meta">Bricklink • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/910068-bricklink-university-of-science/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910068 University of Science building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Bricklink 910068 University of Science building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">910068</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">910068</div>
     <div class="set-name">University of Science</div>
     <div class="set-meta">Bricklink • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/5009551-bricklink-1x8-brick-bricklink25/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 5009551 1x8 Brick #BrickLink25 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO 5009551 1x8 Brick #BrickLink25 building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">5009551</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">5009551</div>
     <div class="set-name">1x8 Brick #BrickLink25</div>
     <div class="set-meta">Bricklink • 2025</div>
   </div>
 </a></div></main>
 <footer>
   <div class="footer-links"><a href="/about/">About</a><a href="https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/LEGOInstructionsForLEGOFans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/legoinstructionsforyou/" target="_blank" rel="noopener">Instagram</a></div>
-  <div>Brick Instructions For You is independently run by Paul.</div>
+  <div>Brick Instructions For You is independently run by Paul Critchlow.</div>
   <div style="margin-top:8px;opacity:.86;">LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorise or endorse this site.</div>
 </footer>
 <script>
 window.LEGO_SETS = [];
 let LEGO_SETS_LOADED = false;
-const LEGO_SETS_READY = fetch("/data/search-index.json", {cache:"no-store"})
- .then(response => response.ok ? response.json() : [])
- .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
- .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+let legoSetsPromise = null;
+function ensureSearchIndex() {
+ if (legoSetsPromise) return legoSetsPromise;
+ legoSetsPromise = fetch("/data/search-index.json", {cache:"default"})
+  .then(response => response.ok ? response.json() : [])
+  .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
+  .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+ return legoSetsPromise;
+}
 const input=document.getElementById("mainSearchInput");
 const typeSelect=document.getElementById("mainSearchType");
 const form=document.getElementById("mainSearchForm");
@@ -667,7 +728,7 @@ function setImageAlt(set){
  if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
  return parts.join(" ").replace(/\s+/g," ").trim();
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;
@@ -680,18 +741,18 @@ function renderResults(query,type,pushState=true){
 function showSuggestions(){
  const q=input.value.trim();const t=typeSelect.value||"all"; if(q.length<1){hideSuggestions();return;}
  const matches=searchSets(q,t).slice(0,8); if(!matches.length){hideSuggestions();return;}
- suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
+ suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",showSuggestions);typeSelect.addEventListener("change",showSuggestions);
+input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
 suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
 document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();LEGO_SETS_READY.then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();renderResults(chip.dataset.search,chip.dataset.type||"all",true);}));
+form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
 window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))LEGO_SETS_READY.then(()=>renderResults(q,t,false));})();
+(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
 </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "99db6ec5719548b582f077bfc6bb2c7f"}'></script><!-- End Cloudflare Web Analytics -->
+
 </body>
 </html>

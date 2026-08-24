@@ -3,19 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW"></script>
+<!-- Google tag (gtag.js), deferred until interaction/idle -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-37MCSDDYEW');
+  (() => {
+    let loaded = false;
+    const loadAnalytics = () => {
+      if (loaded) return;
+      loaded = true;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW';
+      document.head.appendChild(script);
+    };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(eventName =>
+      addEventListener(eventName, loadAnalytics, {once:true, passive:true}));
+    addEventListener('load', () => setTimeout(loadAnalytics, 8000), {once:true});
+  })();
 </script>
 <title>LEGO Minecraft Instructions | Brick Instructions For You</title>
 <meta name="description" content="Browse 145 LEGO Minecraft building instruction pages with step-by-step video guides, set details, release information and upcoming Minecraft sets.">
 <link rel="canonical" href="https://www.brickinstructionsforyou.com/themes/minecraft/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul Critchlow"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
 
 <style>
 :root{--navy:#061b35;--yellow:#ffcc00;--text:#1d1d1f;--muted:#667085;--line:#e5e7eb;--bg:#f5f5f5}
@@ -66,23 +79,14 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .results-header h1,.results-header h2{font-size:32px;margin:0 0 14px;text-transform:uppercase}
 .results-header p{margin:0;color:var(--muted)}
 .btn-outline{display:inline-block;border:1px solid #cfd5df;background:#fff;border-radius:9px;padding:14px 18px;font-weight:900;white-space:nowrap}
-.about-page-card{margin-top:10px!important}
-.about-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 6px}
-.about-action{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;padding:13px 18px;color:#fff;font-weight:900;box-shadow:0 4px 10px rgba(6,27,53,.14);transition:transform .16s ease,box-shadow .16s ease}
-.about-action:hover{color:#fff;transform:translateY(-2px);box-shadow:0 8px 16px rgba(6,27,53,.2)}
-.about-youtube{background:#e60012}
-.about-facebook{background:#1877f2}
-.about-instagram{background:linear-gradient(135deg,#833ab4,#e1306c 55%,#f77737)}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
-.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
-.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
+.badge-new{position:absolute;top:16px;left:16px;background:#c7000b;color:#fff;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
+.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
-.set-number{color:#e60012;font-weight:900;font-size:13px}
-.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
+.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -98,8 +102,7 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
-.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
+.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -108,20 +111,16 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
-.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
-.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
-.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
-.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
 </style>
 </head>
 <body>
 <div class="topline"></div>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="site-nav-inner">
-    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo"></a>
+    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo" width="900" height="260" decoding="async"></a>
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/themes/">Themes</a>
@@ -159,1176 +158,1326 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><strong>Minecraft</strong></nav><div class="results-header"><div><h2>LEGO Minecraft Instructions</h2><p>145 LEGO instruction pages found in this theme.</p></div><a class="btn-outline" href="/themes/">ALL THEMES</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Minecraft by year</h3><nav aria-label="Browse LEGO Minecraft by year" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2026/minecraft/">LEGO Minecraft 2026</a><a class="btn-outline" href="/2025/minecraft/">LEGO Minecraft 2025</a><a class="btn-outline" href="/2024/minecraft/">LEGO Minecraft 2024</a><a class="btn-outline" href="/2023/minecraft/">LEGO Minecraft 2023</a><a class="btn-outline" href="/2022/minecraft/">LEGO Minecraft 2022</a><a class="btn-outline" href="/2021/minecraft/">LEGO Minecraft 2021</a></nav></section><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Minecraft subthemes</h3><nav aria-label="Browse LEGO Minecraft subthemes" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/minecraft/buildable-figures/">LEGO Buildable Figures Instructions</a><a class="btn-outline" href="/themes/minecraft/magazine-gift/">LEGO Magazine Gift Instructions</a><a class="btn-outline" href="/themes/minecraft/minifig-scale/">LEGO Minifig-scale Instructions</a><a class="btn-outline" href="/themes/minecraft/product-collection/">LEGO Product Collection Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/21582-minecraft-chicken-jockey/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/K0tJ4zbCFMc/maxresdefault.jpg" alt="LEGO Minecraft 21582 Chicken Jockey building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/K0tJ4zbCFMc/mqdefault.jpg" alt="LEGO Minecraft 21582 Chicken Jockey building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21582</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21582</div>
     <div class="set-name">Chicken Jockey</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21591-minecraft-the-twisted-warden-battle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/P4G2Sty1i-8/maxresdefault.jpg" alt="LEGO Minecraft 21591 The Twisted Warden Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/P4G2Sty1i-8/mqdefault.jpg" alt="LEGO Minecraft 21591 The Twisted Warden Battle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21591</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21591</div>
     <div class="set-name">The Twisted Warden Battle</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002260-minecraft-magma-cube/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/sKmTLHIdcKo/maxresdefault.jpg" alt="LEGO Minecraft L0002260 Magma Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/sKmTLHIdcKo/mqdefault.jpg" alt="LEGO Minecraft L0002260 Magma Cube building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">L0002260</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">L0002260</div>
     <div class="set-name">Magma Cube</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662101-minecraft-steve-zombie-and-pig/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/LQGekdyKH5I/maxresdefault.jpg" alt="LEGO Minecraft 662101 Steve, Zombie and Pig building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/LQGekdyKH5I/mqdefault.jpg" alt="LEGO Minecraft 662101 Steve, Zombie and Pig building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662101</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">662101</div>
     <div class="set-name">Steve, Zombie and Pig</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21167-minecraft-the-trading-post/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/eOmahI6HdmA/maxresdefault.jpg" alt="LEGO Minecraft 21167 The Trading Post building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/eOmahI6HdmA/mqdefault.jpg" alt="LEGO Minecraft 21167 The Trading Post building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21167</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21167</div>
     <div class="set-name">The Trading Post</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21166-minecraft-the-abandoned-mine/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zjnNHM5zbYg/maxresdefault.jpg" alt="LEGO Minecraft 21166 The &#x27;Abandoned&#x27; Mine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/zjnNHM5zbYg/mqdefault.jpg" alt="LEGO Minecraft 21166 The &#x27;Abandoned&#x27; Mine building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21166</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21166</div>
     <div class="set-name">The &#x27;Abandoned&#x27; Mine</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21165-minecraft-the-bee-farm/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/RDwXQ8WL5Ys/maxresdefault.jpg" alt="LEGO Minecraft 21165 The Bee Farm building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/RDwXQ8WL5Ys/mqdefault.jpg" alt="LEGO Minecraft 21165 The Bee Farm building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21165</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21165</div>
     <div class="set-name">The Bee Farm</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002252-minecraft-space-sentinel-with-enderman-and-endermite/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3hRvaDQhlIo/maxresdefault.jpg" alt="LEGO Minecraft L0002252 Space Sentinel with Enderman and Endermite building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/3hRvaDQhlIo/mqdefault.jpg" alt="LEGO Minecraft L0002252 Space Sentinel with Enderman and Endermite building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">L0002252</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">L0002252</div>
     <div class="set-name">Space Sentinel with Enderman and Endermite</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21596-minecraft-evoker-village-attack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9mOFFyn7QIE/maxresdefault.jpg" alt="LEGO Minecraft 21596 Evoker Village Attack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/9mOFFyn7QIE/mqdefault.jpg" alt="LEGO Minecraft 21596 Evoker Village Attack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21596</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21596</div>
     <div class="set-name">Evoker Village Attack</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21592-minecraft-chicken-jockey-desert-attack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/oMlvn9rZ5cs/maxresdefault.jpg" alt="LEGO Minecraft 21592 Chicken Jockey Desert Attack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/oMlvn9rZ5cs/mqdefault.jpg" alt="LEGO Minecraft 21592 Chicken Jockey Desert Attack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21592</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21592</div>
     <div class="set-name">Chicken Jockey Desert Attack</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002251-minecraft-cactus-knight-with-breeze/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nxzwCo5LDwQ/maxresdefault.jpg" alt="LEGO Minecraft L0002251 Cactus Knight with Breeze building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/nxzwCo5LDwQ/mqdefault.jpg" alt="LEGO Minecraft L0002251 Cactus Knight with Breeze building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">L0002251</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">L0002251</div>
     <div class="set-name">Cactus Knight with Breeze</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30432-minecraft-the-turtle-beach/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ec67uiScoHw/maxresdefault.jpg" alt="LEGO 30432 Minecraft - The Turtle Beach building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ec67uiScoHw/mqdefault.jpg" alt="LEGO 30432 Minecraft - The Turtle Beach building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30432</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30432</div>
     <div class="set-name">Minecraft - The Turtle Beach</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21190-minecraft-the-abandoned-village/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/YplsAnqkC8U/maxresdefault.jpg" alt="LEGO Minecraft 21190 The Abandoned Village building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/YplsAnqkC8U/mqdefault.jpg" alt="LEGO Minecraft 21190 The Abandoned Village building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21190</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21190</div>
     <div class="set-name">The Abandoned Village</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21189-minecraft-the-skeleton-dungeon/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Y4XYG_HbRIk/maxresdefault.jpg" alt="LEGO Minecraft 21189 The Skeleton Dungeon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Y4XYG_HbRIk/mqdefault.jpg" alt="LEGO Minecraft 21189 The Skeleton Dungeon building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21189</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21189</div>
     <div class="set-name">The Skeleton Dungeon</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21188-minecraft-the-llama-village/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/YVhWjET610E/maxresdefault.jpg" alt="LEGO Minecraft 21188 The Llama Village building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/YVhWjET610E/mqdefault.jpg" alt="LEGO Minecraft 21188 The Llama Village building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21188</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21188</div>
     <div class="set-name">The Llama Village</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21187-minecraft-the-red-barn/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/k4Cz6aScAXk/maxresdefault.jpg" alt="LEGO Minecraft 21187 The Red Barn building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/k4Cz6aScAXk/mqdefault.jpg" alt="LEGO Minecraft 21187 The Red Barn building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21187</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21187</div>
     <div class="set-name">The Red Barn</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21186-minecraft-the-ice-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4qOv1DnRZe4/maxresdefault.jpg" alt="LEGO Minecraft 21186 The Ice Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/4qOv1DnRZe4/mqdefault.jpg" alt="LEGO Minecraft 21186 The Ice Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21186</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21186</div>
     <div class="set-name">The Ice Castle</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21185-minecraft-the-nether-bastion/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/z800aghprKg/maxresdefault.jpg" alt="LEGO Minecraft 21185 The Nether Bastion building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/z800aghprKg/mqdefault.jpg" alt="LEGO Minecraft 21185 The Nether Bastion building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21185</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21185</div>
     <div class="set-name">The Nether Bastion</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21184-minecraft-the-bakery/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/a0bO_kypTPc/maxresdefault.jpg" alt="LEGO Minecraft 21184 The Bakery building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/a0bO_kypTPc/mqdefault.jpg" alt="LEGO Minecraft 21184 The Bakery building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21184</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21184</div>
     <div class="set-name">The Bakery</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21183-minecraft-the-training-grounds/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nR8LytKB9ds/maxresdefault.jpg" alt="LEGO Minecraft 21183 The Training Grounds building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/nR8LytKB9ds/mqdefault.jpg" alt="LEGO Minecraft 21183 The Training Grounds building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21183</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21183</div>
     <div class="set-name">The Training Grounds</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21181-minecraft-the-rabbit-ranch/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Ydso2v0_Kyg/maxresdefault.jpg" alt="LEGO Minecraft 21181 The Rabbit Ranch building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Ydso2v0_Kyg/mqdefault.jpg" alt="LEGO Minecraft 21181 The Rabbit Ranch building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21181</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21181</div>
     <div class="set-name">The Rabbit Ranch</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21180-minecraft-the-guardian-battle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/wbWPLz1-5j4/maxresdefault.jpg" alt="LEGO Minecraft 21180 The Guardian Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/wbWPLz1-5j4/mqdefault.jpg" alt="LEGO Minecraft 21180 The Guardian Battle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21180</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21180</div>
     <div class="set-name">The Guardian Battle</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21179-minecraft-the-mushroom-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/NGcKz6h58VY/maxresdefault.jpg" alt="LEGO Minecraft 21179 The Mushroom House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/NGcKz6h58VY/mqdefault.jpg" alt="LEGO Minecraft 21179 The Mushroom House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21179</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21179</div>
     <div class="set-name">The Mushroom House</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21178-minecraft-the-fox-lodge/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/5IDNhN-rRt8/maxresdefault.jpg" alt="LEGO Minecraft 21178 The Fox Lodge building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/5IDNhN-rRt8/mqdefault.jpg" alt="LEGO Minecraft 21178 The Fox Lodge building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21178</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21178</div>
     <div class="set-name">The Fox Lodge</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21177-minecraft-the-creeper-ambush/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/wqyUeTVKnv8/maxresdefault.jpg" alt="LEGO Minecraft 21177 The Creeper Ambush building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/wqyUeTVKnv8/mqdefault.jpg" alt="LEGO Minecraft 21177 The Creeper Ambush building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21177</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21177</div>
     <div class="set-name">The Creeper Ambush</div>
     <div class="set-meta">Minecraft • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21598-minecraft-underwater-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/STBiRIKmJnw/maxresdefault.jpg" alt="LEGO Minecraft 21598 Underwater Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/STBiRIKmJnw/mqdefault.jpg" alt="LEGO Minecraft 21598 Underwater Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21598</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21598</div>
     <div class="set-name">Underwater Adventure</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21593-minecraft-first-night-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/SxjiqYuCssc/maxresdefault.jpg" alt="LEGO Minecraft 21593 First Night Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/SxjiqYuCssc/mqdefault.jpg" alt="LEGO Minecraft 21593 First Night Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21593</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21593</div>
     <div class="set-name">First Night Adventure</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21597-minecraft-ghast-station/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-5r2j-JO3dw/maxresdefault.jpg" alt="LEGO Minecraft 21597 Ghast Station building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/-5r2j-JO3dw/mqdefault.jpg" alt="LEGO Minecraft 21597 Ghast Station building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21597</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21597</div>
     <div class="set-name">Ghast Station</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21594-minecraft-the-skeleton/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/co-SbtAJrrE/maxresdefault.jpg" alt="LEGO Minecraft 21594 The Skeleton building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/co-SbtAJrrE/mqdefault.jpg" alt="LEGO Minecraft 21594 The Skeleton building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21594</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21594</div>
     <div class="set-name">The Skeleton</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21595-minecraft-the-ender-dragon/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/lBdUT6Mv7j8/maxresdefault.jpg" alt="LEGO Minecraft 21595 The Ender Dragon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/lBdUT6Mv7j8/mqdefault.jpg" alt="LEGO Minecraft 21595 The Ender Dragon building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21595</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21595</div>
     <div class="set-name">The Ender Dragon</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002249-minecraft-hero-with-illager/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/EfW1i8tXuNI/maxresdefault.jpg" alt="LEGO Minecraft L0002249 Hero with Illager building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/EfW1i8tXuNI/mqdefault.jpg" alt="LEGO Minecraft L0002249 Hero with Illager building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">L0002249</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">L0002249</div>
     <div class="set-name">Hero with Illager</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002247-minecraft-realm-raider-with-creeper-and-tnt-launcher/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/CJ3zIRZVJrI/maxresdefault.jpg" alt="LEGO Minecraft L0002247 Realm Raider with Creeper and TNT Launcher building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/CJ3zIRZVJrI/mqdefault.jpg" alt="LEGO Minecraft L0002247 Realm Raider with Creeper and TNT Launcher building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">L0002247</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">L0002247</div>
     <div class="set-name">Realm Raider with Creeper and TNT Launcher</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/951319-minecraft-smith-with-smithing-table-netherite-armour-and-armour-stand/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zmz8aeOlFgU/maxresdefault.jpg" alt="LEGO 951319 Minecraft - Smith with Smithing Table Netherite Armour and Armour Stand building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/zmz8aeOlFgU/mqdefault.jpg" alt="LEGO 951319 Minecraft - Smith with Smithing Table Netherite Armour and Armour Stand building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">951319</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">951319</div>
     <div class="set-name">Minecraft - Smith with Smithing Table Netherite Armour and Armour Stand</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662308-minecraft-alex-baby-llama-and-bee/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_JVNEkkjlao/maxresdefault.jpg" alt="LEGO Minecraft 662308 Alex, Baby Llama and Bee building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/_JVNEkkjlao/mqdefault.jpg" alt="LEGO Minecraft 662308 Alex, Baby Llama and Bee building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662308</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">662308</div>
     <div class="set-name">Alex, Baby Llama and Bee</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66805-minecraft-world-explorer-gift-set/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3BnTJ13gJMI/maxresdefault.jpg" alt="LEGO Minecraft 66805 World Explorer Gift Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/3BnTJ13gJMI/mqdefault.jpg" alt="LEGO Minecraft 66805 World Explorer Gift Set building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">66805</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">66805</div>
     <div class="set-name">World Explorer Gift Set</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30732-minecraft-alex-s-campfire-conflict/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IKE7OaJRkuo/maxresdefault.jpg" alt="LEGO Minecraft 30732 Alex&#x27;s Campfire Conflict building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/IKE7OaJRkuo/mqdefault.jpg" alt="LEGO Minecraft 30732 Alex&#x27;s Campfire Conflict building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30732</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30732</div>
     <div class="set-name">Alex&#x27;s Campfire Conflict</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21583-minecraft-steve-s-taiga-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/GxLWil4FplE/maxresdefault.jpg" alt="LEGO Minecraft 21583 Steve&#x27;s Taiga Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/GxLWil4FplE/mqdefault.jpg" alt="LEGO Minecraft 21583 Steve&#x27;s Taiga Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21583</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21583</div>
     <div class="set-name">Steve&#x27;s Taiga Adventure</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21589-minecraft-mini-biomes/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/MfG2YaY7Hlo/maxresdefault.jpg" alt="LEGO Minecraft 21589 Mini Biomes building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/MfG2YaY7Hlo/mqdefault.jpg" alt="LEGO Minecraft 21589 Mini Biomes building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21589</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21589</div>
     <div class="set-name">Mini Biomes</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21584-minecraft-nether-end-portal-journey/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/UyEYgWq13yw/maxresdefault.jpg" alt="LEGO Minecraft 21584 Nether &amp; End Portal Journey building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/UyEYgWq13yw/mqdefault.jpg" alt="LEGO Minecraft 21584 Nether &amp; End Portal Journey building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21584</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21584</div>
     <div class="set-name">Nether &amp; End Portal Journey</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21588-minecraft-the-fox/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/bhiSIl4nn2E/maxresdefault.jpg" alt="LEGO Minecraft 21588 The Fox building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/bhiSIl4nn2E/mqdefault.jpg" alt="LEGO Minecraft 21588 The Fox building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21588</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21588</div>
     <div class="set-name">The Fox</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21587-minecraft-zombie-dungeon/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OMpVf3pt0JU/maxresdefault.jpg" alt="LEGO Minecraft 21587 Zombie Dungeon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/OMpVf3pt0JU/mqdefault.jpg" alt="LEGO Minecraft 21587 Zombie Dungeon building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21587</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21587</div>
     <div class="set-name">Zombie Dungeon</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21590-minecraft-wither-battle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xv1P4A1zJyo/maxresdefault.jpg" alt="LEGO Minecraft 21590 Wither Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/xv1P4A1zJyo/mqdefault.jpg" alt="LEGO Minecraft 21590 Wither Battle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21590</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21590</div>
     <div class="set-name">Wither Battle</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21586-minecraft-the-pale-garden/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PQFp-gboUIA/maxresdefault.jpg" alt="LEGO Minecraft 21586 The Pale Garden building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/PQFp-gboUIA/mqdefault.jpg" alt="LEGO Minecraft 21586 The Pale Garden building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21586</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21586</div>
     <div class="set-name">The Pale Garden</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21585-minecraft-chicken-farm/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PdfeQCzo9y4/maxresdefault.jpg" alt="LEGO Minecraft 21585 Chicken Farm building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/PdfeQCzo9y4/mqdefault.jpg" alt="LEGO Minecraft 21585 Chicken Farm building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21585</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21585</div>
     <div class="set-name">Chicken Farm</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66779-minecraft-overworld-adventures-pack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/UikZtGzINVg/maxresdefault.jpg" alt="LEGO Minecraft 66779 Overworld Adventures Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/UikZtGzINVg/mqdefault.jpg" alt="LEGO Minecraft 66779 Overworld Adventures Pack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">66779</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">66779</div>
     <div class="set-name">Overworld Adventures Pack</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66786-minecraft-adventure-gamer-gift-set/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/miP4CHz-sSU/maxresdefault.jpg" alt="LEGO Minecraft 66786 Adventure Gamer Gift Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/miP4CHz-sSU/mqdefault.jpg" alt="LEGO Minecraft 66786 Adventure Gamer Gift Set building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">66786</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">66786</div>
     <div class="set-name">Adventure Gamer Gift Set</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662513-minecraft-pirate-with-frog-slime-and-cartography-table/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pDX7my3OkKI/maxresdefault.jpg" alt="LEGO Minecraft 662513 Pirate with Frog, Slime and Cartography Table building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/pDX7my3OkKI/mqdefault.jpg" alt="LEGO Minecraft 662513 Pirate with Frog, Slime and Cartography Table building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662513</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">662513</div>
     <div class="set-name">Pirate with Frog, Slime and Cartography Table</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662512-minecraft-ender-knight-with-shulker/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/748q_oBiSXM/maxresdefault.jpg" alt="LEGO Minecraft 662512 Ender Knight with Shulker building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/748q_oBiSXM/mqdefault.jpg" alt="LEGO Minecraft 662512 Ender Knight with Shulker building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662512</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">662512</div>
     <div class="set-name">Ender Knight with Shulker</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662510-minecraft-hero-with-zombie-and-tnt-launcher/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/EOFH1GoyC-U/sddefault.jpg" alt="LEGO Minecraft 662510 Hero with Zombie and TNT Launcher building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/EOFH1GoyC-U/mqdefault.jpg" alt="LEGO Minecraft 662510 Hero with Zombie and TNT Launcher building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662510</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">662510</div>
     <div class="set-name">Hero with Zombie and TNT Launcher</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662511-minecraft-hero-with-husk/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HyPpc4heoZQ/maxresdefault.jpg" alt="LEGO Minecraft 662511 Hero with Husk building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/HyPpc4heoZQ/mqdefault.jpg" alt="LEGO Minecraft 662511 Hero with Husk building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662511</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">662511</div>
     <div class="set-name">Hero with Husk</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21280-minecraft-advent-calendar-2025/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/gdA6hwDsmMw/maxresdefault.jpg" alt="LEGO 21280 LEGO Minecraft Advent Calendar 2025 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/gdA6hwDsmMw/mqdefault.jpg" alt="LEGO 21280 LEGO Minecraft Advent Calendar 2025 building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21280</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21280</div>
     <div class="set-name">LEGO Minecraft Advent Calendar 2025</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66807-minecraft-infinite-worlds-gift-set/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3etExtpIjtg/maxresdefault.jpg" alt="LEGO Minecraft 66807 Infinite Worlds Gift Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/3etExtpIjtg/mqdefault.jpg" alt="LEGO Minecraft 66807 Infinite Worlds Gift Set building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">66807</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">66807</div>
     <div class="set-name">Infinite Worlds Gift Set</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662509-minecraft-hero-with-skeleton-horseman/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ZRmQeMccWTk/maxresdefault.jpg" alt="LEGO Minecraft 662509 Hero with Skeleton Horseman building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ZRmQeMccWTk/mqdefault.jpg" alt="LEGO Minecraft 662509 Hero with Skeleton Horseman building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662509</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">662509</div>
     <div class="set-name">Hero with Skeleton Horseman</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21278-minecraft-the-pillager-outpost-and-ravager/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/LNYcGPp6fxw/maxresdefault.jpg" alt="LEGO Minecraft 21278 The Pillager Outpost and Ravager building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/LNYcGPp6fxw/mqdefault.jpg" alt="LEGO Minecraft 21278 The Pillager Outpost and Ravager building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21278</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21278</div>
     <div class="set-name">The Pillager Outpost and Ravager</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21274-minecraft-the-warden-encounter/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/rtPZ9SKh-Zo/maxresdefault.jpg" alt="LEGO Minecraft 21274 The Warden Encounter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/rtPZ9SKh-Zo/mqdefault.jpg" alt="LEGO Minecraft 21274 The Warden Encounter building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21274</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21274</div>
     <div class="set-name">The Warden Encounter</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21279-minecraft-the-enderman-tower/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/K_bUoJWHPyg/maxresdefault.jpg" alt="LEGO Minecraft 21279 The Enderman Tower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/K_bUoJWHPyg/mqdefault.jpg" alt="LEGO Minecraft 21279 The Enderman Tower building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21279</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21279</div>
     <div class="set-name">The Enderman Tower</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21276-minecraft-the-creeper/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/e4y_OlwvpJM/maxresdefault.jpg" alt="LEGO Minecraft 21276 The Creeper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/e4y_OlwvpJM/mqdefault.jpg" alt="LEGO Minecraft 21276 The Creeper building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21276</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21276</div>
     <div class="set-name">The Creeper</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21275-minecraft-the-tnt-jungle-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/LiFNEOfwHiM/maxresdefault.jpg" alt="LEGO Minecraft 21275 The TNT Jungle House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/LiFNEOfwHiM/mqdefault.jpg" alt="LEGO Minecraft 21275 The TNT Jungle House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21275</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21275</div>
     <div class="set-name">The TNT Jungle House</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21277-minecraft-the-pickaxe-mine/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HUB939iouMc/maxresdefault.jpg" alt="LEGO Minecraft 21277 The Pickaxe Mine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/HUB939iouMc/mqdefault.jpg" alt="LEGO Minecraft 21277 The Pickaxe Mine building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21277</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21277</div>
     <div class="set-name">The Pickaxe Mine</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662504-minecraft-ghast/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/SCnesaJ37bo/maxresdefault.jpg" alt="LEGO Minecraft 662504 Ghast building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/SCnesaJ37bo/mqdefault.jpg" alt="LEGO Minecraft 662504 Ghast building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662504</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">662504</div>
     <div class="set-name">Ghast</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662501-minecraft-hero-with-elytra-and-phantom/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ehjReu0odHg/maxresdefault.jpg" alt="LEGO Minecraft 662501 Hero with Elytra and Phantom building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ehjReu0odHg/mqdefault.jpg" alt="LEGO Minecraft 662501 Hero with Elytra and Phantom building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662501</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">662501</div>
     <div class="set-name">Hero with Elytra and Phantom</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662502-minecraft-steve-with-creeper-and-tnt/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/n9fxnIAgK0U/maxresdefault.jpg" alt="LEGO Minecraft 662502 Steve with Creeper and TNT building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/n9fxnIAgK0U/mqdefault.jpg" alt="LEGO Minecraft 662502 Steve with Creeper and TNT building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662502</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">662502</div>
     <div class="set-name">Steve with Creeper and TNT</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21282-minecraft-the-parrot-houses/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xgnXDMU8QBE/maxresdefault.jpg" alt="LEGO Minecraft 21282 The Parrot Houses building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/xgnXDMU8QBE/mqdefault.jpg" alt="LEGO Minecraft 21282 The Parrot Houses building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21282</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21282</div>
     <div class="set-name">The Parrot Houses</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21256-minecraft-the-frog-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/WzXbtX4RsKo/maxresdefault.jpg" alt="LEGO Minecraft 21256 The Frog House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/WzXbtX4RsKo/mqdefault.jpg" alt="LEGO Minecraft 21256 The Frog House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21256</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21256</div>
     <div class="set-name">The Frog House</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21273-minecraft-the-ghast-balloon-village-attack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/XGHl_42A3RI/maxresdefault.jpg" alt="LEGO Minecraft 21273 The Ghast Balloon Village Attack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/XGHl_42A3RI/mqdefault.jpg" alt="LEGO Minecraft 21273 The Ghast Balloon Village Attack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21273</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21273</div>
     <div class="set-name">The Ghast Balloon Village Attack</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21272-minecraft-woodland-mansion-fighting-ring/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/SDvGcSZBlQU/maxresdefault.jpg" alt="LEGO Minecraft 21272 Woodland Mansion Fighting Ring building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/SDvGcSZBlQU/mqdefault.jpg" alt="LEGO Minecraft 21272 Woodland Mansion Fighting Ring building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21272</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21272</div>
     <div class="set-name">Woodland Mansion Fighting Ring</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21271-minecraft-the-trial-chamber/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/SBhKYy-EX2w/maxresdefault.jpg" alt="LEGO Minecraft 21271 The Trial Chamber building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/SBhKYy-EX2w/mqdefault.jpg" alt="LEGO Minecraft 21271 The Trial Chamber building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21271</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21271</div>
     <div class="set-name">The Trial Chamber</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30705-minecraft-the-lush-cave-fight/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8h4bQm6U5cU/maxresdefault.jpg" alt="LEGO Minecraft 30705 The Lush Cave Fight building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/8h4bQm6U5cU/mqdefault.jpg" alt="LEGO Minecraft 30705 The Lush Cave Fight building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30705</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30705</div>
     <div class="set-name">The Lush Cave Fight</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21268-minecraft-the-baby-pig-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jJ011GMlL2Q/maxresdefault.jpg" alt="LEGO Minecraft 21268 The Baby Pig House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/jJ011GMlL2Q/mqdefault.jpg" alt="LEGO Minecraft 21268 The Baby Pig House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21268</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21268</div>
     <div class="set-name">The Baby Pig House</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21270-minecraft-the-mooshroom-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pHzsosrKOlQ/maxresdefault.jpg" alt="LEGO Minecraft 21270 The Mooshroom House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/pHzsosrKOlQ/mqdefault.jpg" alt="LEGO Minecraft 21270 The Mooshroom House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21270</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21270</div>
     <div class="set-name">The Mooshroom House</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21267-minecraft-the-illager-desert-patrol/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/UIDXoKoCuL4/maxresdefault.jpg" alt="LEGO Minecraft 21267 The Illager Desert Patrol building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/UIDXoKoCuL4/mqdefault.jpg" alt="LEGO Minecraft 21267 The Illager Desert Patrol building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21267</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21267</div>
     <div class="set-name">The Illager Desert Patrol</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21266-minecraft-the-nether-lava-battle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Y-dmN7-Z4pw/maxresdefault.jpg" alt="LEGO Minecraft 21266 The Nether Lava Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Y-dmN7-Z4pw/mqdefault.jpg" alt="LEGO Minecraft 21266 The Nether Lava Battle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21266</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21266</div>
     <div class="set-name">The Nether Lava Battle</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21269-minecraft-the-armadillo-mine-expedition/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HbnP-xlXZQw/maxresdefault.jpg" alt="LEGO Minecraft 21269 The Armadillo Mine Expedition building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/HbnP-xlXZQw/mqdefault.jpg" alt="LEGO Minecraft 21269 The Armadillo Mine Expedition building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21269</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21269</div>
     <div class="set-name">The Armadillo Mine Expedition</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21281-minecraft-baby-pig-s-birthday-celebration/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-56G_lK3Pk8/maxresdefault.jpg" alt="LEGO Minecraft 21281 Baby Pig&#x27;s Birthday Celebration building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/-56G_lK3Pk8/mqdefault.jpg" alt="LEGO Minecraft 21281 Baby Pig&#x27;s Birthday Celebration building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21281</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21281</div>
     <div class="set-name">Baby Pig&#x27;s Birthday Celebration</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21265-minecraft-the-crafting-table/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/VZ5z6GzAP1c/maxresdefault.jpg" alt="LEGO Minecraft 21265 The Crafting Table building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/VZ5z6GzAP1c/mqdefault.jpg" alt="LEGO Minecraft 21265 The Crafting Table building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21265</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21265</div>
     <div class="set-name">The Crafting Table</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662407-minecraft-steve-and-mooshroom/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/oReSOoUTyZA/maxresdefault.jpg" alt="LEGO Minecraft 662407 Steve and Mooshroom building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/oReSOoUTyZA/mqdefault.jpg" alt="LEGO Minecraft 662407 Steve and Mooshroom building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662407</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">662407</div>
     <div class="set-name">Steve and Mooshroom</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21259-minecraft-the-pirate-ship-voyage/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/s2tNxUUkJA8/maxresdefault.jpg" alt="LEGO Minecraft 21259 The Pirate Ship Voyage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/s2tNxUUkJA8/mqdefault.jpg" alt="LEGO Minecraft 21259 The Pirate Ship Voyage building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21259</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21259</div>
     <div class="set-name">The Pirate Ship Voyage</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21264-minecraft-the-ender-dragon-and-end-ship/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3kVXCAMlYPo/maxresdefault.jpg" alt="LEGO Minecraft 21264 The Ender Dragon and End Ship building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/3kVXCAMlYPo/mqdefault.jpg" alt="LEGO Minecraft 21264 The Ender Dragon and End Ship building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21264</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21264</div>
     <div class="set-name">The Ender Dragon and End Ship</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21262-minecraft-the-windmill-farm/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ezm7IAcHnYw/maxresdefault.jpg" alt="LEGO Minecraft 21262 The Windmill Farm building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ezm7IAcHnYw/mqdefault.jpg" alt="LEGO Minecraft 21262 The Windmill Farm building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21262</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21262</div>
     <div class="set-name">The Windmill Farm</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21263-minecraft-the-badlands-mineshaft/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/v7rTdZZO1qY/maxresdefault.jpg" alt="LEGO Minecraft 21263 The Badlands Mineshaft building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/v7rTdZZO1qY/mqdefault.jpg" alt="LEGO Minecraft 21263 The Badlands Mineshaft building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21263</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21263</div>
     <div class="set-name">The Badlands Mineshaft</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21261-minecraft-the-wolf-stronghold/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/POzqrU2SD48/maxresdefault.jpg" alt="LEGO Minecraft 21261 The Wolf Stronghold building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/POzqrU2SD48/mqdefault.jpg" alt="LEGO Minecraft 21261 The Wolf Stronghold building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21261</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21261</div>
     <div class="set-name">The Wolf Stronghold</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21260-minecraft-the-cherry-blossom-garden/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/wTig60RQjac/maxresdefault.jpg" alt="LEGO Minecraft 21260 The Cherry Blossom Garden building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/wTig60RQjac/mqdefault.jpg" alt="LEGO Minecraft 21260 The Cherry Blossom Garden building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21260</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21260</div>
     <div class="set-name">The Cherry Blossom Garden</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21254-minecraft-the-turtle-beach-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Y0qdueXIijM/maxresdefault.jpg" alt="LEGO Minecraft 21254 The Turtle Beach House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Y0qdueXIijM/mqdefault.jpg" alt="LEGO Minecraft 21254 The Turtle Beach House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21254</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21254</div>
     <div class="set-name">The Turtle Beach House</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21255-minecraft-the-nether-portal-ambush/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/7TfxPQ9Syqk/maxresdefault.jpg" alt="LEGO Minecraft 21255 The Nether Portal Ambush building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/7TfxPQ9Syqk/mqdefault.jpg" alt="LEGO Minecraft 21255 The Nether Portal Ambush building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21255</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21255</div>
     <div class="set-name">The Nether Portal Ambush</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21251-minecraft-steve-s-desert-expedition/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4AH4Ko3Faoo/maxresdefault.jpg" alt="LEGO Minecraft 21251 Steve&#x27;s Desert Expedition building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/4AH4Ko3Faoo/mqdefault.jpg" alt="LEGO Minecraft 21251 Steve&#x27;s Desert Expedition building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21251</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21251</div>
     <div class="set-name">Steve&#x27;s Desert Expedition</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21257-minecraft-the-devourer-showdown/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/q-MtzcKL7B0/maxresdefault.jpg" alt="LEGO Minecraft 21257 The Devourer Showdown building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/q-MtzcKL7B0/mqdefault.jpg" alt="LEGO Minecraft 21257 The Devourer Showdown building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21257</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21257</div>
     <div class="set-name">The Devourer Showdown</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30672-minecraft-steve-and-baby-panda/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/axUxQY8nXMg/maxresdefault.jpg" alt="LEGO Minecraft 30672 Steve and Baby Panda building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/axUxQY8nXMg/mqdefault.jpg" alt="LEGO Minecraft 30672 Steve and Baby Panda building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30672</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30672</div>
     <div class="set-name">Steve and Baby Panda</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21250-minecraft-the-iron-golem-fortress/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/r3S37w2-OQc/maxresdefault.jpg" alt="LEGO Minecraft 21250 The Iron Golem Fortress building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/r3S37w2-OQc/mqdefault.jpg" alt="LEGO Minecraft 21250 The Iron Golem Fortress building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21250</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21250</div>
     <div class="set-name">The Iron Golem Fortress</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21249-minecraft-the-crafting-box-4-0/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OtyFlHeES08/maxresdefault.jpg" alt="LEGO Minecraft 21249 The Crafting Box 4.0 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/OtyFlHeES08/mqdefault.jpg" alt="LEGO Minecraft 21249 The Crafting Box 4.0 building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21249</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21249</div>
     <div class="set-name">The Crafting Box 4.0</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21248-minecraft-the-pumpkin-farm/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/s434u7BpuZc/maxresdefault.jpg" alt="LEGO Minecraft 21248 The Pumpkin Farm building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/s434u7BpuZc/mqdefault.jpg" alt="LEGO Minecraft 21248 The Pumpkin Farm building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21248</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21248</div>
     <div class="set-name">The Pumpkin Farm</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21247-minecraft-the-axolotl-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/UpO8cgBlUSA/maxresdefault.jpg" alt="LEGO Minecraft 21247 The Axolotl House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/UpO8cgBlUSA/mqdefault.jpg" alt="LEGO Minecraft 21247 The Axolotl House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21247</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21247</div>
     <div class="set-name">The Axolotl House</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21245-minecraft-the-panda-haven/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-XNbVKinJ1Y/maxresdefault.jpg" alt="LEGO Minecraft 21245 The Panda Haven building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/-XNbVKinJ1Y/mqdefault.jpg" alt="LEGO Minecraft 21245 The Panda Haven building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21245</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21245</div>
     <div class="set-name">The Panda Haven</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21241-minecraft-the-bee-cottage/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/EY138CwaGYk/maxresdefault.jpg" alt="LEGO Minecraft 21241 The Bee Cottage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/EY138CwaGYk/mqdefault.jpg" alt="LEGO Minecraft 21241 The Bee Cottage building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21241</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21241</div>
     <div class="set-name">The Bee Cottage</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21243-minecraft-the-frozen-peaks/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/FKg8qzoqIKo/maxresdefault.jpg" alt="LEGO Minecraft 21243 The Frozen Peaks building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/FKg8qzoqIKo/mqdefault.jpg" alt="LEGO Minecraft 21243 The Frozen Peaks building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21243</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21243</div>
     <div class="set-name">The Frozen Peaks</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21246-minecraft-the-deep-dark-battle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/VuLbt0qLO9M/maxresdefault.jpg" alt="LEGO Minecraft 21246 The Deep Dark Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/VuLbt0qLO9M/mqdefault.jpg" alt="LEGO Minecraft 21246 The Deep Dark Battle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21246</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21246</div>
     <div class="set-name">The Deep Dark Battle</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21244-minecraft-the-sword-outpost/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jxjBPonQ9CI/maxresdefault.jpg" alt="LEGO Minecraft 21244 The Sword Outpost building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/jxjBPonQ9CI/mqdefault.jpg" alt="LEGO Minecraft 21244 The Sword Outpost building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21244</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21244</div>
     <div class="set-name">The Sword Outpost</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30647-minecraft-the-dripstone-cavern/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/phEtD9THF-U/maxresdefault.jpg" alt="LEGO Minecraft 30647 The Dripstone Cavern building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/phEtD9THF-U/mqdefault.jpg" alt="LEGO Minecraft 30647 The Dripstone Cavern building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30647</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30647</div>
     <div class="set-name">The Dripstone Cavern</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21240-minecraft-the-swamp-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/tpW2GvwiNJc/maxresdefault.jpg" alt="LEGO Minecraft 21240 The Swamp Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/tpW2GvwiNJc/mqdefault.jpg" alt="LEGO Minecraft 21240 The Swamp Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21240</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21240</div>
     <div class="set-name">The Swamp Adventure</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21242-minecraft-the-end-arena/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/uVeu9z-seuk/maxresdefault.jpg" alt="LEGO Minecraft 21242 The End Arena building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/uVeu9z-seuk/mqdefault.jpg" alt="LEGO Minecraft 21242 The End Arena building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21242</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21242</div>
     <div class="set-name">The End Arena</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21173-minecraft-the-sky-tower/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-MtouJEYF2Y/maxresdefault.jpg" alt="LEGO Minecraft 21173 The Sky Tower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/-MtouJEYF2Y/mqdefault.jpg" alt="LEGO Minecraft 21173 The Sky Tower building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21173</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21173</div>
     <div class="set-name">The Sky Tower</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21171-minecraft-the-horse-stable/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3CrKNzY5mP0/maxresdefault.jpg" alt="LEGO Minecraft 21171 The Horse Stable building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/3CrKNzY5mP0/mqdefault.jpg" alt="LEGO Minecraft 21171 The Horse Stable building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21171</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21171</div>
     <div class="set-name">The Horse Stable</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21174-minecraft-the-modern-treehouse/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/EnAitDwIF14/maxresdefault.jpg" alt="LEGO Minecraft 21174 The Modern Treehouse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/EnAitDwIF14/mqdefault.jpg" alt="LEGO Minecraft 21174 The Modern Treehouse building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21174</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21174</div>
     <div class="set-name">The Modern Treehouse</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21172-minecraft-the-ruined-portal/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/L1mKWsqJR28/maxresdefault.jpg" alt="LEGO Minecraft 21172 The Ruined Portal building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/L1mKWsqJR28/mqdefault.jpg" alt="LEGO Minecraft 21172 The Ruined Portal building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21172</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21172</div>
     <div class="set-name">The Ruined Portal</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21176-minecraft-the-jungle-abomination/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nwjK1Je9qmk/maxresdefault.jpg" alt="LEGO Minecraft 21176 The Jungle Abomination building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/nwjK1Je9qmk/mqdefault.jpg" alt="LEGO Minecraft 21176 The Jungle Abomination building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21176</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21176</div>
     <div class="set-name">The Jungle Abomination</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21169-minecraft-the-first-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Q8QVU7qwx6Y/maxresdefault.jpg" alt="LEGO Minecraft 21169 The First Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Q8QVU7qwx6Y/mqdefault.jpg" alt="LEGO Minecraft 21169 The First Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21169</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21169</div>
     <div class="set-name">The First Adventure</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21168-minecraft-the-warped-forest/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/aKbgaUKwqVA/maxresdefault.jpg" alt="LEGO Minecraft 21168 The Warped Forest building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/aKbgaUKwqVA/mqdefault.jpg" alt="LEGO Minecraft 21168 The Warped Forest building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21168</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21168</div>
     <div class="set-name">The Warped Forest</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30331-minecraft-the-nether-duel/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zCr4P4wD9HU/maxresdefault.jpg" alt="LEGO Minecraft 30331 The Nether Duel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/zCr4P4wD9HU/mqdefault.jpg" alt="LEGO Minecraft 30331 The Nether Duel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30331</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30331</div>
     <div class="set-name">The Nether Duel</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21164-minecraft-the-coral-reef/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/YrVRb0wIpmY/maxresdefault.jpg" alt="LEGO Minecraft 21164 The Coral Reef building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/YrVRb0wIpmY/mqdefault.jpg" alt="LEGO Minecraft 21164 The Coral Reef building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21164</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21164</div>
     <div class="set-name">The Coral Reef</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21170-minecraft-the-pig-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Rt3Jk9dJsn0/maxresdefault.jpg" alt="LEGO Minecraft 21170 The Pig House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Rt3Jk9dJsn0/mqdefault.jpg" alt="LEGO Minecraft 21170 The Pig House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21170</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">21170</div>
     <div class="set-name">The Pig House</div>
     <div class="set-meta">Minecraft • 2021</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO Minecraft Instructions</h2><p>36 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/66833-minecraft-adventure-worlds-gift-set/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 66833 Adventure Worlds Gift Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 66833 Adventure Worlds Gift Set building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">66833</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">66833</div>
     <div class="set-name">Adventure Worlds Gift Set</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002246-minecraft-hero-stray-and-snowbiome/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft L0002246 Hero, Stray and Snowbiome building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft L0002246 Hero, Stray and Snowbiome building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">L0002246</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">L0002246</div>
     <div class="set-name">Hero, Stray and Snowbiome</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002248-minecraft-hero-and-blaze/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft L0002248 Hero and Blaze building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft L0002248 Hero and Blaze building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">L0002248</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">L0002248</div>
     <div class="set-name">Hero and Blaze</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/l0002250-minecraft-blacksmith-with-armour-and-smithing-table/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft L0002250 Blacksmith with Armour and Smithing Table building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft L0002250 Blacksmith with Armour and Smithing Table building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">L0002250</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">L0002250</div>
     <div class="set-name">Blacksmith with Armour and Smithing Table</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/mcpig-minecraft-m-t-pig/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO MCPIG Minecraft M&amp;T - Pig building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO MCPIG Minecraft M&amp;T - Pig building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">MCPIG</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">MCPIG</div>
     <div class="set-name">Minecraft M&amp;T - Pig</div>
     <div class="set-meta">Minecraft • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/12001-minecraft-games-book-parts/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 12001 Minecraft Games Book parts building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO 12001 Minecraft Games Book parts building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">12001</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">12001</div>
     <div class="set-name">Minecraft Games Book parts</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/472506-minecraft-hero-with-crafting-table-furnace-and-anvil/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 472506 Hero with Crafting Table, Furnace and Anvil building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 472506 Hero with Crafting Table, Furnace and Anvil building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">472506</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">472506</div>
     <div class="set-name">Hero with Crafting Table, Furnace and Anvil</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662503-minecraft-orc-warrior-with-baby-hoglin-and-magma-cube/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662503 Orc Warrior with Baby Hoglin and Magma Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662503 Orc Warrior with Baby Hoglin and Magma Cube building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662503</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662503</div>
     <div class="set-name">Orc Warrior with Baby Hoglin and Magma Cube</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662505-minecraft-diver-and-turtle/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662505 Diver and Turtle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662505 Diver and Turtle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662505</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662505</div>
     <div class="set-name">Diver and Turtle</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662506-minecraft-wither-skeleton-and-ender-explorer-with-tnt/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662506 Wither Skeleton and Ender Explorer with TNT building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662506 Wither Skeleton and Ender Explorer with TNT building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662506</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662506</div>
     <div class="set-name">Wither Skeleton and Ender Explorer with TNT</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662507-minecraft-enderman-duel/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662507 Enderman Duel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662507 Enderman Duel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662507</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662507</div>
     <div class="set-name">Enderman Duel</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662508-minecraft-diamond-hero-creeper-and-slime/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662508 Diamond Hero, Creeper and Slime building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662508 Diamond Hero, Creeper and Slime building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662508</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662508</div>
     <div class="set-name">Diamond Hero, Creeper and Slime</div>
     <div class="set-meta">Minecraft • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/11988-minecraft-ideas-parts/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 11988 Minecraft Ideas parts building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO 11988 Minecraft Ideas parts building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">11988</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">11988</div>
     <div class="set-name">Minecraft Ideas parts</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21252-minecraft-the-armory/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 21252 The Armory building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 21252 The Armory building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21252</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">21252</div>
     <div class="set-name">The Armory</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/21253-minecraft-the-animal-sanctuary/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 21253 The Animal Sanctuary building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 21253 The Animal Sanctuary building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">21253</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">21253</div>
     <div class="set-name">The Animal Sanctuary</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662401-minecraft-stray-crystal-knight-and-shooter/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662401 Stray, Crystal Knight and Shooter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662401 Stray, Crystal Knight and Shooter building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662401</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662401</div>
     <div class="set-name">Stray, Crystal Knight and Shooter</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662402-minecraft-nether-hero-and-strider/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662402 Nether Hero and Strider building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662402 Nether Hero and Strider building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662402</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662402</div>
     <div class="set-name">Nether Hero and Strider</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662403-minecraft-zombie-with-burning-baby-zombie-and-tnt/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662403 Zombie with Burning Baby Zombie and TNT building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662403 Zombie with Burning Baby Zombie and TNT building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662403</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662403</div>
     <div class="set-name">Zombie with Burning Baby Zombie and TNT</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662404-minecraft-alex-and-wolf/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662404 Alex and Wolf building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662404 Alex and Wolf building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662404</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662404</div>
     <div class="set-name">Alex and Wolf</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662405-minecraft-drowned-and-hero/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662405 Drowned and Hero building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662405 Drowned and Hero building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662405</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662405</div>
     <div class="set-name">Drowned and Hero</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662406-minecraft-golden-knight-and-charged-creeper/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662406 Golden Knight and Charged Creeper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662406 Golden Knight and Charged Creeper building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662406</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662406</div>
     <div class="set-name">Golden Knight and Charged Creeper</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662408-minecraft-witch-with-black-cat-and-potion/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662408 Witch with Black Cat and Potion building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662408 Witch with Black Cat and Potion building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662408</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662408</div>
     <div class="set-name">Witch with Black Cat and Potion</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662409-minecraft-hero-with-skeleton/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662409 Hero with Skeleton building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662409 Hero with Skeleton building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662409</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662409</div>
     <div class="set-name">Hero with Skeleton</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662410-minecraft-cave-explorer-with-spider/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662410 Cave Explorer with Spider building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662410 Cave Explorer with Spider building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662410</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662410</div>
     <div class="set-name">Cave Explorer with Spider</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662411-minecraft-hero-with-bat-and-tnt/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662411 Hero with Bat and TNT building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662411 Hero with Bat and TNT building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662411</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662411</div>
     <div class="set-name">Hero with Bat and TNT</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662412-minecraft-arbalest-knight-with-frog-and-slime/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662412 Arbalest Knight with Frog and Slime building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662412 Arbalest Knight with Frog and Slime building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662412</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662412</div>
     <div class="set-name">Arbalest Knight with Frog and Slime</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662413-minecraft-end-warrior-with-shulker-and-chorus-plant/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662413 End Warrior with Shulker and Chorus Plant building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662413 End Warrior with Shulker and Chorus Plant building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662413</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662413</div>
     <div class="set-name">End Warrior with Shulker and Chorus Plant</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6527190-minecraft-panda/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 6527190 Panda building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 6527190 Panda building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">6527190</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">6527190</div>
     <div class="set-name">Panda</div>
     <div class="set-meta">Minecraft • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662302-minecraft-cave-explorer-creeper-and-slime/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662302 Cave Explorer, Creeper and Slime building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662302 Cave Explorer, Creeper and Slime building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662302</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662302</div>
     <div class="set-name">Cave Explorer, Creeper and Slime</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662303-minecraft-adventurer-with-drowned-and-axolotl/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662303 Adventurer with Drowned and Axolotl building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662303 Adventurer with Drowned and Axolotl building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662303</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662303</div>
     <div class="set-name">Adventurer with Drowned and Axolotl</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662304-minecraft-ninja-zombie-and-tnt-launcher/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662304 Ninja, Zombie and TNT Launcher building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662304 Ninja, Zombie and TNT Launcher building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662304</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662304</div>
     <div class="set-name">Ninja, Zombie and TNT Launcher</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662305-minecraft-nether-hero-and-enderman/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662305 Nether Hero and Enderman building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662305 Nether Hero and Enderman building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662305</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662305</div>
     <div class="set-name">Nether Hero and Enderman</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662306-minecraft-pillager-with-training-dummy/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662306 Pillager with Training Dummy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662306 Pillager with Training Dummy building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662306</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662306</div>
     <div class="set-name">Pillager with Training Dummy</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662307-minecraft-spider-and-skeleton/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662307 Spider and Skeleton building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662307 Spider and Skeleton building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662307</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662307</div>
     <div class="set-name">Spider and Skeleton</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662309-minecraft-knight-with-chest-and-anvil/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662309 Knight with Chest and Anvil building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662309 Knight with Chest and Anvil building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662309</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662309</div>
     <div class="set-name">Knight with Chest and Anvil</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/662317-minecraft-steve-with-diamond-armour/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662317 Steve with Diamond Armour building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Minecraft 662317 Steve with Diamond Armour building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">662317</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">662317</div>
     <div class="set-name">Steve with Diamond Armour</div>
     <div class="set-meta">Minecraft • 2023</div>
   </div>
 </a></div></main>
 <footer>
   <div class="footer-links"><a href="/about/">About</a><a href="https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/LEGOInstructionsForLEGOFans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/legoinstructionsforyou/" target="_blank" rel="noopener">Instagram</a></div>
-  <div>Brick Instructions For You is independently run by Paul.</div>
+  <div>Brick Instructions For You is independently run by Paul Critchlow.</div>
   <div style="margin-top:8px;opacity:.86;">LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorise or endorse this site.</div>
 </footer>
 <script>
 window.LEGO_SETS = [];
 let LEGO_SETS_LOADED = false;
-const LEGO_SETS_READY = fetch("/data/search-index.json", {cache:"no-store"})
- .then(response => response.ok ? response.json() : [])
- .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
- .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+let legoSetsPromise = null;
+function ensureSearchIndex() {
+ if (legoSetsPromise) return legoSetsPromise;
+ legoSetsPromise = fetch("/data/search-index.json", {cache:"default"})
+  .then(response => response.ok ? response.json() : [])
+  .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
+  .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+ return legoSetsPromise;
+}
 const input=document.getElementById("mainSearchInput");
 const typeSelect=document.getElementById("mainSearchType");
 const form=document.getElementById("mainSearchForm");
@@ -1371,7 +1520,7 @@ function setImageAlt(set){
  if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
  return parts.join(" ").replace(/\s+/g," ").trim();
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;
@@ -1384,18 +1533,18 @@ function renderResults(query,type,pushState=true){
 function showSuggestions(){
  const q=input.value.trim();const t=typeSelect.value||"all"; if(q.length<1){hideSuggestions();return;}
  const matches=searchSets(q,t).slice(0,8); if(!matches.length){hideSuggestions();return;}
- suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
+ suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",showSuggestions);typeSelect.addEventListener("change",showSuggestions);
+input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
 suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
 document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();LEGO_SETS_READY.then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();renderResults(chip.dataset.search,chip.dataset.type||"all",true);}));
+form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
 window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))LEGO_SETS_READY.then(()=>renderResults(q,t,false));})();
+(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
 </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "99db6ec5719548b582f077bfc6bb2c7f"}'></script><!-- End Cloudflare Web Analytics -->
+
 </body>
 </html>

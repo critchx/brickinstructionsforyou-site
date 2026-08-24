@@ -3,19 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW"></script>
+<!-- Google tag (gtag.js), deferred until interaction/idle -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-37MCSDDYEW');
+  (() => {
+    let loaded = false;
+    const loadAnalytics = () => {
+      if (loaded) return;
+      loaded = true;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW';
+      document.head.appendChild(script);
+    };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(eventName =>
+      addEventListener(eventName, loadAnalytics, {once:true, passive:true}));
+    addEventListener('load', () => setTimeout(loadAnalytics, 8000), {once:true});
+  })();
 </script>
 <title>LEGO 2022 City Instructions | Brick Instructions For You</title>
 <meta name="description" content="Browse 50 LEGO City sets from 2022, with building instruction videos, set details, release information and newly added or upcoming guides.">
 <link rel="canonical" href="https://www.brickinstructionsforyou.com/2022/city/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul Critchlow"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
 
 <style>
 :root{--navy:#061b35;--yellow:#ffcc00;--text:#1d1d1f;--muted:#667085;--line:#e5e7eb;--bg:#f5f5f5}
@@ -66,23 +79,14 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .results-header h1,.results-header h2{font-size:32px;margin:0 0 14px;text-transform:uppercase}
 .results-header p{margin:0;color:var(--muted)}
 .btn-outline{display:inline-block;border:1px solid #cfd5df;background:#fff;border-radius:9px;padding:14px 18px;font-weight:900;white-space:nowrap}
-.about-page-card{margin-top:10px!important}
-.about-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 6px}
-.about-action{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;padding:13px 18px;color:#fff;font-weight:900;box-shadow:0 4px 10px rgba(6,27,53,.14);transition:transform .16s ease,box-shadow .16s ease}
-.about-action:hover{color:#fff;transform:translateY(-2px);box-shadow:0 8px 16px rgba(6,27,53,.2)}
-.about-youtube{background:#e60012}
-.about-facebook{background:#1877f2}
-.about-instagram{background:linear-gradient(135deg,#833ab4,#e1306c 55%,#f77737)}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
-.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
-.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
+.badge-new{position:absolute;top:16px;left:16px;background:#c7000b;color:#fff;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
+.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
-.set-number{color:#e60012;font-weight:900;font-size:13px}
-.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
+.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -98,8 +102,7 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
-.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
+.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -108,20 +111,16 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
-.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
-.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
-.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
-.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
 </style>
 </head>
 <body>
 <div class="topline"></div>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="site-nav-inner">
-    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo"></a>
+    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo" width="900" height="260" decoding="async"></a>
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/themes/">Themes</a>
@@ -159,416 +158,471 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/city/">City</a><span>›</span><strong>2022 City</strong></nav><div class="results-header"><div><h2>LEGO 2022 City Instructions</h2><p>50 LEGO instruction pages found for this year and theme.</p></div><a class="btn-outline" href="/2022/">BACK TO 2022</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2022/">All LEGO 2022 Instructions</a><a class="btn-outline" href="/themes/city/">All LEGO City Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/60352-city-advent-calendar/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/oQq6u9Paphg/maxresdefault.jpg" alt="LEGO 60352 LEGO City Advent Calendar building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/oQq6u9Paphg/mqdefault.jpg" alt="LEGO 60352 LEGO City Advent Calendar building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60352</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60352</div>
     <div class="set-name">LEGO City Advent Calendar</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60351-city-rocket-launch-centre/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AdjyaPXqxBw/maxresdefault.jpg" alt="LEGO City 60351 Rocket Launch Centre building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/AdjyaPXqxBw/mqdefault.jpg" alt="LEGO City 60351 Rocket Launch Centre building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60351</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60351</div>
     <div class="set-name">Rocket Launch Centre</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60350-city-lunar-research-base/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/MLznlrxFZTM/maxresdefault.jpg" alt="LEGO City 60350 Lunar Research Base building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/MLznlrxFZTM/mqdefault.jpg" alt="LEGO City 60350 Lunar Research Base building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60350</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60350</div>
     <div class="set-name">Lunar Research Base</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60349-city-lunar-space-station/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/JKGZG6NZrus/maxresdefault.jpg" alt="LEGO City 60349 Lunar Space Station building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/JKGZG6NZrus/mqdefault.jpg" alt="LEGO City 60349 Lunar Space Station building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60349</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60349</div>
     <div class="set-name">Lunar Space Station</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60348-city-lunar-roving-vehicle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/RvJXA022MvA/maxresdefault.jpg" alt="LEGO City 60348 Lunar Roving Vehicle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/RvJXA022MvA/mqdefault.jpg" alt="LEGO City 60348 Lunar Roving Vehicle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60348</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60348</div>
     <div class="set-name">Lunar Roving Vehicle</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60347-city-grocery-store/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ekSmyeiFxrs/maxresdefault.jpg" alt="LEGO City 60347 Grocery Store building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ekSmyeiFxrs/mqdefault.jpg" alt="LEGO City 60347 Grocery Store building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60347</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60347</div>
     <div class="set-name">Grocery Store</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60346-city-barn-farm-animals/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/6md1awAoIpM/maxresdefault.jpg" alt="LEGO City 60346 Barn &amp; Farm Animals building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/6md1awAoIpM/mqdefault.jpg" alt="LEGO City 60346 Barn &amp; Farm Animals building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60346</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60346</div>
     <div class="set-name">Barn &amp; Farm Animals</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60345-city-farmers-market-van/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/i1a2I_vWd5k/maxresdefault.jpg" alt="LEGO City 60345 Farmers Market Van building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/i1a2I_vWd5k/mqdefault.jpg" alt="LEGO City 60345 Farmers Market Van building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60345</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60345</div>
     <div class="set-name">Farmers Market Van</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60344-city-chicken-henhouse/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Fi51e7mMg9Y/maxresdefault.jpg" alt="LEGO City 60344 Chicken Henhouse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Fi51e7mMg9Y/mqdefault.jpg" alt="LEGO City 60344 Chicken Henhouse building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60344</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60344</div>
     <div class="set-name">Chicken Henhouse</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60343-city-rescue-helicopter-transporter/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AuHu8x35zYI/maxresdefault.jpg" alt="LEGO City 60343 Rescue Helicopter Transporter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/AuHu8x35zYI/mqdefault.jpg" alt="LEGO City 60343 Rescue Helicopter Transporter building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60343</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60343</div>
     <div class="set-name">Rescue Helicopter Transporter</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60342-city-the-shark-attack-stunt-challenge/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QWfhl8BxzS0/maxresdefault.jpg" alt="LEGO City 60342 The Shark Attack Stunt Challenge building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/QWfhl8BxzS0/mqdefault.jpg" alt="LEGO City 60342 The Shark Attack Stunt Challenge building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60342</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60342</div>
     <div class="set-name">The Shark Attack Stunt Challenge</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60341-city-the-knockdown-stunt-challenge/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9Zy-JXnxkzo/maxresdefault.jpg" alt="LEGO City 60341 The Knockdown Stunt Challenge building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/9Zy-JXnxkzo/mqdefault.jpg" alt="LEGO City 60341 The Knockdown Stunt Challenge building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60341</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60341</div>
     <div class="set-name">The Knockdown Stunt Challenge</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60340-city-the-blade-stunt-challenge/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Njpo9iEcEdE/maxresdefault.jpg" alt="LEGO City 60340 The Blade Stunt Challenge building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Njpo9iEcEdE/mqdefault.jpg" alt="LEGO City 60340 The Blade Stunt Challenge building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60340</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60340</div>
     <div class="set-name">The Blade Stunt Challenge</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60339-city-double-loop-stunt-arena/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/JasabIzdsr4/maxresdefault.jpg" alt="LEGO City 60339 Double Loop Stunt Arena building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/JasabIzdsr4/mqdefault.jpg" alt="LEGO City 60339 Double Loop Stunt Arena building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60339</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60339</div>
     <div class="set-name">Double Loop Stunt Arena</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60338-city-chimpanzee-smash-stunt-loop/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/5JEkt2z4eaU/maxresdefault.jpg" alt="LEGO City 60338 Chimpanzee Smash Stunt Loop building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/5JEkt2z4eaU/mqdefault.jpg" alt="LEGO City 60338 Chimpanzee Smash Stunt Loop building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60338</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60338</div>
     <div class="set-name">Chimpanzee Smash Stunt Loop</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60337-city-express-passenger-train/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/RA7G2PsUVeg/maxresdefault.jpg" alt="LEGO City 60337 Express Passenger Train building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/RA7G2PsUVeg/mqdefault.jpg" alt="LEGO City 60337 Express Passenger Train building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60337</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60337</div>
     <div class="set-name">Express Passenger Train</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60336-city-freight-train/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QlKpeN9umGQ/maxresdefault.jpg" alt="LEGO City 60336 Freight Train building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/QlKpeN9umGQ/mqdefault.jpg" alt="LEGO City 60336 Freight Train building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60336</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60336</div>
     <div class="set-name">Freight Train</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60335-city-train-station/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DnxMSrI4ASA/maxresdefault.jpg" alt="LEGO City 60335 Train Station building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/DnxMSrI4ASA/mqdefault.jpg" alt="LEGO City 60335 Train Station building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60335</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60335</div>
     <div class="set-name">Train Station</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60333-city-bathtub-stunt-bike/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/g1PWYD61BMI/maxresdefault.jpg" alt="LEGO City 60333 Bathtub Stunt Bike building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/g1PWYD61BMI/mqdefault.jpg" alt="LEGO City 60333 Bathtub Stunt Bike building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60333</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60333</div>
     <div class="set-name">Bathtub Stunt Bike</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60332-city-reckless-scorpion-stunt-bike/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kmPcNN9ql9Q/maxresdefault.jpg" alt="LEGO City 60332 Reckless Scorpion Stunt Bike building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/kmPcNN9ql9Q/mqdefault.jpg" alt="LEGO City 60332 Reckless Scorpion Stunt Bike building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60332</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60332</div>
     <div class="set-name">Reckless Scorpion Stunt Bike</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60331-city-touring-stunt-bike/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/iLTQorb-308/maxresdefault.jpg" alt="LEGO City 60331 Touring Stunt Bike building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/iLTQorb-308/mqdefault.jpg" alt="LEGO City 60331 Touring Stunt Bike building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60331</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60331</div>
     <div class="set-name">Touring Stunt Bike</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60330-city-hospital/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AD9W-LM0y0g/maxresdefault.jpg" alt="LEGO City 60330 Hospital building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/AD9W-LM0y0g/mqdefault.jpg" alt="LEGO City 60330 Hospital building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60330</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60330</div>
     <div class="set-name">Hospital</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60329-city-school-day/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/CA9Qedu-MyM/maxresdefault.jpg" alt="LEGO City 60329 School Day building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/CA9Qedu-MyM/mqdefault.jpg" alt="LEGO City 60329 School Day building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60329</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60329</div>
     <div class="set-name">School Day</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60328-city-beach-lifeguard-station/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/guWcZDaji5U/maxresdefault.jpg" alt="LEGO City 60328 Beach Lifeguard Station building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/guWcZDaji5U/mqdefault.jpg" alt="LEGO City 60328 Beach Lifeguard Station building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60328</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60328</div>
     <div class="set-name">Beach Lifeguard Station</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60327-city-horse-transporter/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Xq54uMGBYsc/maxresdefault.jpg" alt="LEGO City 60327 Horse Transporter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Xq54uMGBYsc/mqdefault.jpg" alt="LEGO City 60327 Horse Transporter building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60327</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60327</div>
     <div class="set-name">Horse Transporter</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60326-city-picnic-in-the-park/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/42vp_7L4JTI/maxresdefault.jpg" alt="LEGO City 60326 Picnic in the Park building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/42vp_7L4JTI/mqdefault.jpg" alt="LEGO City 60326 Picnic in the Park building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60326</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60326</div>
     <div class="set-name">Picnic in the Park</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60325-city-cement-mixer-truck/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/FoCKzFFGNoI/maxresdefault.jpg" alt="LEGO City 60325 Cement Mixer Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/FoCKzFFGNoI/mqdefault.jpg" alt="LEGO City 60325 Cement Mixer Truck building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60325</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60325</div>
     <div class="set-name">Cement Mixer Truck</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60324-city-mobile-crane/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/goZbycrYBog/maxresdefault.jpg" alt="LEGO City 60324 Mobile Crane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/goZbycrYBog/mqdefault.jpg" alt="LEGO City 60324 Mobile Crane building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60324</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60324</div>
     <div class="set-name">Mobile Crane</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60323-city-stunt-plane/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PlKGGlboPjw/maxresdefault.jpg" alt="LEGO City 60323 Stunt Plane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/PlKGGlboPjw/mqdefault.jpg" alt="LEGO City 60323 Stunt Plane building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60323</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60323</div>
     <div class="set-name">Stunt Plane</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60322-city-race-car/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PpSX8MXlT_E/maxresdefault.jpg" alt="LEGO City 60322 Race Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/PpSX8MXlT_E/mqdefault.jpg" alt="LEGO City 60322 Race Car building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60322</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60322</div>
     <div class="set-name">Race Car</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60321-city-fire-brigade/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dQtgfIBgDtE/maxresdefault.jpg" alt="LEGO City 60321 Fire Brigade building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/dQtgfIBgDtE/mqdefault.jpg" alt="LEGO City 60321 Fire Brigade building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60321</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60321</div>
     <div class="set-name">Fire Brigade</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60320-city-fire-station/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/6FTh3unIwC0/maxresdefault.jpg" alt="LEGO City 60320 Fire Station building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/6FTh3unIwC0/mqdefault.jpg" alt="LEGO City 60320 Fire Station building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60320</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60320</div>
     <div class="set-name">Fire Station</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60319-city-fire-rescue-police-chase/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/oG34HJx2Zu8/maxresdefault.jpg" alt="LEGO City 60319 Fire Rescue &amp; Police Chase building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/oG34HJx2Zu8/mqdefault.jpg" alt="LEGO City 60319 Fire Rescue &amp; Police Chase building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60319</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60319</div>
     <div class="set-name">Fire Rescue &amp; Police Chase</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60318-city-fire-helicopter/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zmwPQBRtQVo/maxresdefault.jpg" alt="LEGO City 60318 Fire Helicopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/zmwPQBRtQVo/mqdefault.jpg" alt="LEGO City 60318 Fire Helicopter building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60318</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60318</div>
     <div class="set-name">Fire Helicopter</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60317-city-police-chase-at-the-bank/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/gkG0hL2jwo4/maxresdefault.jpg" alt="LEGO City 60317 Police Chase at the Bank building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/gkG0hL2jwo4/mqdefault.jpg" alt="LEGO City 60317 Police Chase at the Bank building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60317</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60317</div>
     <div class="set-name">Police Chase at the Bank</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60316-city-police-station/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AOuB4QfA3sc/maxresdefault.jpg" alt="LEGO City 60316 Police Station building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/AOuB4QfA3sc/mqdefault.jpg" alt="LEGO City 60316 Police Station building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60316</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60316</div>
     <div class="set-name">Police Station</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60315-city-police-mobile-command-truck/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vR750JkeXAE/maxresdefault.jpg" alt="LEGO City 60315 Police Mobile Command Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/vR750JkeXAE/mqdefault.jpg" alt="LEGO City 60315 Police Mobile Command Truck building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60315</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60315</div>
     <div class="set-name">Police Mobile Command Truck</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60314-city-ice-cream-truck-police-chase/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/GuUPrk9xtRA/maxresdefault.jpg" alt="LEGO City 60314 Ice Cream Truck Police Chase building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/GuUPrk9xtRA/mqdefault.jpg" alt="LEGO City 60314 Ice Cream Truck Police Chase building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60314</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60314</div>
     <div class="set-name">Ice Cream Truck Police Chase</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60313-city-space-ride-amusement-truck/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/EXi8qSfMRRQ/maxresdefault.jpg" alt="LEGO City 60313 Space Ride Amusement Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/EXi8qSfMRRQ/mqdefault.jpg" alt="LEGO City 60313 Space Ride Amusement Truck building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60313</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60313</div>
     <div class="set-name">Space Ride Amusement Truck</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/60312-city-police-car/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PA6HLjD3h0Y/maxresdefault.jpg" alt="LEGO City 60312 Police Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/PA6HLjD3h0Y/mqdefault.jpg" alt="LEGO City 60312 Police Car building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">60312</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">60312</div>
     <div class="set-name">Police Car</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40578-city-sandwich-shop/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/biQwzeuvyYM/maxresdefault.jpg" alt="LEGO City 40578 Sandwich Shop building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/biQwzeuvyYM/mqdefault.jpg" alt="LEGO City 40578 Sandwich Shop building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40578</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40578</div>
     <div class="set-name">Sandwich Shop</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40526-city-electric-scooters-charging-dock/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vQYOrPhoGTU/maxresdefault.jpg" alt="LEGO City 40526 Electric Scooters &amp; Charging Dock building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/vQYOrPhoGTU/mqdefault.jpg" alt="LEGO City 40526 Electric Scooters &amp; Charging Dock building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40526</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40526</div>
     <div class="set-name">Electric Scooters &amp; Charging Dock</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30590-city-farm-garden-scarecrow/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/BuJZKJY2EM0/maxresdefault.jpg" alt="LEGO City 30590 Farm Garden &amp; Scarecrow building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/BuJZKJY2EM0/mqdefault.jpg" alt="LEGO City 30590 Farm Garden &amp; Scarecrow building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30590</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30590</div>
     <div class="set-name">Farm Garden &amp; Scarecrow</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30589-city-go-kart-racer/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3zu3HTXoWqo/maxresdefault.jpg" alt="LEGO City 30589 Go-Kart Racer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/3zu3HTXoWqo/mqdefault.jpg" alt="LEGO City 30589 Go-Kart Racer building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30589</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30589</div>
     <div class="set-name">Go-Kart Racer</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30588-city-kids-playground/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-g-nWIP4FaE/maxresdefault.jpg" alt="LEGO City 30588 Kids&#x27; Playground building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/-g-nWIP4FaE/mqdefault.jpg" alt="LEGO City 30588 Kids&#x27; Playground building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30588</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30588</div>
     <div class="set-name">Kids&#x27; Playground</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30585-city-fire-patrol-vehicle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/TkWX1438rAQ/maxresdefault.jpg" alt="LEGO City 30585 Fire Patrol Vehicle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/TkWX1438rAQ/mqdefault.jpg" alt="LEGO City 30585 Fire Patrol Vehicle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30585</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30585</div>
     <div class="set-name">Fire Patrol Vehicle</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952301-city-fire-helicopter/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DBhVwLrLbpI/maxresdefault.jpg" alt="LEGO City 952301 Fire Helicopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/DBhVwLrLbpI/mqdefault.jpg" alt="LEGO City 952301 Fire Helicopter building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">952301</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">952301</div>
     <div class="set-name">Fire Helicopter</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952205-city-sally-stardust-s-satellite/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QRpD7Cs33K0/maxresdefault.jpg" alt="LEGO City 952205 Sally Stardust&#x27;s Satellite building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/QRpD7Cs33K0/mqdefault.jpg" alt="LEGO City 952205 Sally Stardust&#x27;s Satellite building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">952205</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">952205</div>
     <div class="set-name">Sally Stardust&#x27;s Satellite</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/952201-city-justin-justice-s-police-car/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Cjz9y28UoHo/maxresdefault.jpg" alt="LEGO City 952201 Justin Justice&#x27;s Police Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Cjz9y28UoHo/mqdefault.jpg" alt="LEGO City 952201 Justin Justice&#x27;s Police Car building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">952201</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">952201</div>
     <div class="set-name">Justin Justice&#x27;s Police Car</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO 2022 City Instructions</h2><p>1 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/30587-city-police-robot-unit/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO City 30587 Police Robot Unit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO City 30587 Police Robot Unit building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30587</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">30587</div>
     <div class="set-name">Police Robot Unit</div>
     <div class="set-meta">City • 2022</div>
   </div>
 </a></div></main>
 <footer>
   <div class="footer-links"><a href="/about/">About</a><a href="https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/LEGOInstructionsForLEGOFans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/legoinstructionsforyou/" target="_blank" rel="noopener">Instagram</a></div>
-  <div>Brick Instructions For You is independently run by Paul.</div>
+  <div>Brick Instructions For You is independently run by Paul Critchlow.</div>
   <div style="margin-top:8px;opacity:.86;">LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorise or endorse this site.</div>
 </footer>
 <script>
 window.LEGO_SETS = [];
 let LEGO_SETS_LOADED = false;
-const LEGO_SETS_READY = fetch("/data/search-index.json", {cache:"no-store"})
- .then(response => response.ok ? response.json() : [])
- .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
- .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+let legoSetsPromise = null;
+function ensureSearchIndex() {
+ if (legoSetsPromise) return legoSetsPromise;
+ legoSetsPromise = fetch("/data/search-index.json", {cache:"default"})
+  .then(response => response.ok ? response.json() : [])
+  .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
+  .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+ return legoSetsPromise;
+}
 const input=document.getElementById("mainSearchInput");
 const typeSelect=document.getElementById("mainSearchType");
 const form=document.getElementById("mainSearchForm");
@@ -611,7 +665,7 @@ function setImageAlt(set){
  if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
  return parts.join(" ").replace(/\s+/g," ").trim();
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;
@@ -624,18 +678,18 @@ function renderResults(query,type,pushState=true){
 function showSuggestions(){
  const q=input.value.trim();const t=typeSelect.value||"all"; if(q.length<1){hideSuggestions();return;}
  const matches=searchSets(q,t).slice(0,8); if(!matches.length){hideSuggestions();return;}
- suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
+ suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",showSuggestions);typeSelect.addEventListener("change",showSuggestions);
+input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
 suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
 document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();LEGO_SETS_READY.then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();renderResults(chip.dataset.search,chip.dataset.type||"all",true);}));
+form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
 window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))LEGO_SETS_READY.then(()=>renderResults(q,t,false));})();
+(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
 </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "99db6ec5719548b582f077bfc6bb2c7f"}'></script><!-- End Cloudflare Web Analytics -->
+
 </body>
 </html>

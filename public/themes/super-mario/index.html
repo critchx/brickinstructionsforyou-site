@@ -3,19 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW"></script>
+<!-- Google tag (gtag.js), deferred until interaction/idle -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-37MCSDDYEW');
+  (() => {
+    let loaded = false;
+    const loadAnalytics = () => {
+      if (loaded) return;
+      loaded = true;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW';
+      document.head.appendChild(script);
+    };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(eventName =>
+      addEventListener(eventName, loadAnalytics, {once:true, passive:true}));
+    addEventListener('load', () => setTimeout(loadAnalytics, 8000), {once:true});
+  })();
 </script>
 <title>LEGO Super Mario Instructions | Brick Instructions For You</title>
 <meta name="description" content="Browse 91 LEGO Super Mario building instruction pages with step-by-step video guides, set details, release information and upcoming Super Mario sets.">
 <link rel="canonical" href="https://www.brickinstructionsforyou.com/themes/super-mario/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul Critchlow"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
 
 <style>
 :root{--navy:#061b35;--yellow:#ffcc00;--text:#1d1d1f;--muted:#667085;--line:#e5e7eb;--bg:#f5f5f5}
@@ -66,23 +79,14 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .results-header h1,.results-header h2{font-size:32px;margin:0 0 14px;text-transform:uppercase}
 .results-header p{margin:0;color:var(--muted)}
 .btn-outline{display:inline-block;border:1px solid #cfd5df;background:#fff;border-radius:9px;padding:14px 18px;font-weight:900;white-space:nowrap}
-.about-page-card{margin-top:10px!important}
-.about-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 6px}
-.about-action{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;padding:13px 18px;color:#fff;font-weight:900;box-shadow:0 4px 10px rgba(6,27,53,.14);transition:transform .16s ease,box-shadow .16s ease}
-.about-action:hover{color:#fff;transform:translateY(-2px);box-shadow:0 8px 16px rgba(6,27,53,.2)}
-.about-youtube{background:#e60012}
-.about-facebook{background:#1877f2}
-.about-instagram{background:linear-gradient(135deg,#833ab4,#e1306c 55%,#f77737)}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
-.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
-.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
+.badge-new{position:absolute;top:16px;left:16px;background:#c7000b;color:#fff;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
+.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
-.set-number{color:#e60012;font-weight:900;font-size:13px}
-.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
+.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -98,8 +102,7 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
-.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
+.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -108,20 +111,16 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
-.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
-.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
-.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
-.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
 </style>
 </head>
 <body>
 <div class="topline"></div>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="site-nav-inner">
-    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo"></a>
+    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo" width="900" height="260" decoding="async"></a>
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/themes/">Themes</a>
@@ -159,744 +158,840 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><strong>Super Mario</strong></nav><div class="results-header"><div><h2>LEGO Super Mario Instructions</h2><p>91 LEGO instruction pages found in this theme.</p></div><a class="btn-outline" href="/themes/">ALL THEMES</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Super Mario by year</h3><nav aria-label="Browse LEGO Super Mario by year" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2026/super-mario/">LEGO Super Mario 2026</a><a class="btn-outline" href="/2025/super-mario/">LEGO Super Mario 2025</a><a class="btn-outline" href="/2024/super-mario/">LEGO Super Mario 2024</a><a class="btn-outline" href="/2023/super-mario/">LEGO Super Mario 2023</a><a class="btn-outline" href="/2022/super-mario/">LEGO Super Mario 2022</a><a class="btn-outline" href="/2021/super-mario/">LEGO Super Mario 2021</a></nav></section><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Super Mario subthemes</h3><nav aria-label="Browse LEGO Super Mario subthemes" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/super-mario/expansion-set/">LEGO Expansion Set Instructions</a><a class="btn-outline" href="/themes/super-mario/maker-set/">LEGO Maker Set Instructions</a><a class="btn-outline" href="/themes/super-mario/mario-kart/">LEGO Mario Kart Instructions</a><a class="btn-outline" href="/themes/super-mario/miscellaneous/">LEGO Miscellaneous Instructions</a><a class="btn-outline" href="/themes/super-mario/power-up-pack/">LEGO Power-Up Pack Instructions</a><a class="btn-outline" href="/themes/super-mario/starter-course/">LEGO Starter Course Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/72051-super-mario-donkey-kong-arcade/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/TLymWhOyuOI/maxresdefault.jpg" alt="LEGO Super Mario 72051 Donkey Kong Arcade building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/TLymWhOyuOI/mqdefault.jpg" alt="LEGO Super Mario 72051 Donkey Kong Arcade building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72051</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72051</div>
     <div class="set-name">Donkey Kong Arcade</div>
     <div class="set-meta">Super Mario • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71412-super-mario-big-bad-island/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nQ8xUhB8vns/maxresdefault.jpg" alt="LEGO Super Mario 71412 Big Bad Island building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/nQ8xUhB8vns/mqdefault.jpg" alt="LEGO Super Mario 71412 Big Bad Island building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71412</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71412</div>
     <div class="set-name">Big Bad Island</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71411-super-mario-the-mighty-bowser/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mohKRCoLC-E/maxresdefault.jpg" alt="LEGO Super Mario 71411 The Mighty Bowser building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/mohKRCoLC-E/mqdefault.jpg" alt="LEGO Super Mario 71411 The Mighty Bowser building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71411</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71411</div>
     <div class="set-name">The Mighty Bowser</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71410-super-mario-character-pack-series-5-random-box/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QLwIlfPPBKo/maxresdefault.jpg" alt="LEGO Super Mario 71410 Character Pack Series 5 Random box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/QLwIlfPPBKo/mqdefault.jpg" alt="LEGO Super Mario 71410 Character Pack Series 5 Random box building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71410</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71410</div>
     <div class="set-name">Character Pack Series 5 Random box</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71409-super-mario-big-spike-s-cloudtop-challenge/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/oDBQmXVftzk/maxresdefault.jpg" alt="LEGO Super Mario 71409 Big Spike&#x27;s Cloudtop Challenge building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/oDBQmXVftzk/mqdefault.jpg" alt="LEGO Super Mario 71409 Big Spike&#x27;s Cloudtop Challenge building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71409</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71409</div>
     <div class="set-name">Big Spike&#x27;s Cloudtop Challenge</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71407-super-mario-cat-peach-suit-and-frozen-tower/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_GNFgQ9WqD4/maxresdefault.jpg" alt="LEGO Super Mario 71407 Cat Peach Suit and Frozen Tower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/_GNFgQ9WqD4/mqdefault.jpg" alt="LEGO Super Mario 71407 Cat Peach Suit and Frozen Tower building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71407</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71407</div>
     <div class="set-name">Cat Peach Suit and Frozen Tower</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71406-super-mario-yoshi-s-gift-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/NTl05woDGtY/maxresdefault.jpg" alt="LEGO Super Mario 71406 Yoshi&#x27;s Gift House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/NTl05woDGtY/mqdefault.jpg" alt="LEGO Super Mario 71406 Yoshi&#x27;s Gift House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71406</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71406</div>
     <div class="set-name">Yoshi&#x27;s Gift House</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71405-super-mario-fuzzy-flippers/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/LZE-J_2wvnw/maxresdefault.jpg" alt="LEGO Super Mario 71405 Fuzzy Flippers building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/LZE-J_2wvnw/mqdefault.jpg" alt="LEGO Super Mario 71405 Fuzzy Flippers building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71405</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71405</div>
     <div class="set-name">Fuzzy Flippers</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71404-super-mario-goomba-s-shoe/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/1uzacw7pxG0/maxresdefault.jpg" alt="LEGO Super Mario 71404 Goomba&#x27;s Shoe building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/1uzacw7pxG0/mqdefault.jpg" alt="LEGO Super Mario 71404 Goomba&#x27;s Shoe building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71404</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71404</div>
     <div class="set-name">Goomba&#x27;s Shoe</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71403-super-mario-adventures-with-peach/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/asb28_bOgqw/maxresdefault.jpg" alt="LEGO Super Mario 71403 Adventures with Peach building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/asb28_bOgqw/mqdefault.jpg" alt="LEGO Super Mario 71403 Adventures with Peach building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71403</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71403</div>
     <div class="set-name">Adventures with Peach</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71402-super-mario-character-pack-series-4-random-bag/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0fuZ9sSLQSk/maxresdefault.jpg" alt="LEGO Super Mario 71402 Character Pack Series 4 Random bag building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/0fuZ9sSLQSk/mqdefault.jpg" alt="LEGO Super Mario 71402 Character Pack Series 4 Random bag building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71402</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71402</div>
     <div class="set-name">Character Pack Series 4 Random bag</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71401-super-mario-luigi-s-mansion-haunt-and-seek/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/FGh5tZ5X3XY/maxresdefault.jpg" alt="LEGO Super Mario 71401 Luigi&#x27;s Mansion Haunt-and-Seek building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/FGh5tZ5X3XY/mqdefault.jpg" alt="LEGO Super Mario 71401 Luigi&#x27;s Mansion Haunt-and-Seek building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71401</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71401</div>
     <div class="set-name">Luigi&#x27;s Mansion Haunt-and-Seek</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71400-super-mario-big-urchin-beach-ride/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/uiMSHTu8sZY/maxresdefault.jpg" alt="LEGO Super Mario 71400 Big Urchin Beach Ride building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/uiMSHTu8sZY/mqdefault.jpg" alt="LEGO Super Mario 71400 Big Urchin Beach Ride building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71400</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71400</div>
     <div class="set-name">Big Urchin Beach Ride</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71399-super-mario-luigi-s-mansion-entryway/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/79Hl09XL32k/maxresdefault.jpg" alt="LEGO Super Mario 71399 Luigi&#x27;s Mansion Entryway building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/79Hl09XL32k/mqdefault.jpg" alt="LEGO Super Mario 71399 Luigi&#x27;s Mansion Entryway building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71399</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71399</div>
     <div class="set-name">Luigi&#x27;s Mansion Entryway</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71398-super-mario-dorrie-s-beachfront/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ppmeM3LkJOA/maxresdefault.jpg" alt="LEGO Super Mario 71398 Dorrie&#x27;s Beachfront building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ppmeM3LkJOA/mqdefault.jpg" alt="LEGO Super Mario 71398 Dorrie&#x27;s Beachfront building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71398</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71398</div>
     <div class="set-name">Dorrie&#x27;s Beachfront</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71397-super-mario-luigi-s-mansion-lab-and-poltergust/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xNV_NlMya5s/maxresdefault.jpg" alt="LEGO Super Mario 71397 Luigi&#x27;s Mansion Lab and Poltergust building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/xNV_NlMya5s/mqdefault.jpg" alt="LEGO Super Mario 71397 Luigi&#x27;s Mansion Lab and Poltergust building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71397</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71397</div>
     <div class="set-name">Luigi&#x27;s Mansion Lab and Poltergust</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71396-super-mario-bowser-jr-s-clown-car/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9rRtkfFrktI/maxresdefault.jpg" alt="LEGO Super Mario 71396 Bowser Jr.&#x27;s Clown Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/9rRtkfFrktI/mqdefault.jpg" alt="LEGO Super Mario 71396 Bowser Jr.&#x27;s Clown Car building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71396</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71396</div>
     <div class="set-name">Bowser Jr.&#x27;s Clown Car</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30509-super-mario-yellow-yoshi-s-fruit-tree/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/T9Y97ECbXJI/maxresdefault.jpg" alt="LEGO Super Mario 30509 Yellow Yoshi&#x27;s Fruit Tree building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/T9Y97ECbXJI/mqdefault.jpg" alt="LEGO Super Mario 30509 Yellow Yoshi&#x27;s Fruit Tree building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30509</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30509</div>
     <div class="set-name">Yellow Yoshi&#x27;s Fruit Tree</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72046-super-mario-game-boy/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/TI8zuluPYNg/maxresdefault.jpg" alt="LEGO Super Mario 72046 Game Boy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/TI8zuluPYNg/mqdefault.jpg" alt="LEGO Super Mario 72046 Game Boy building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72046</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72046</div>
     <div class="set-name">Game Boy</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72045-super-mario-shy-guy-p-wing/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/v05_5BLygiY/maxresdefault.jpg" alt="LEGO Super Mario 72045 Shy Guy &amp; P-Wing building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/v05_5BLygiY/mqdefault.jpg" alt="LEGO Super Mario 72045 Shy Guy &amp; P-Wing building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72045</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72045</div>
     <div class="set-name">Shy Guy &amp; P-Wing</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72040-super-mario-captain-toad-s-camp/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yWOHETrvY0M/maxresdefault.jpg" alt="LEGO Super Mario 72040 Captain Toad&#x27;s Camp building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/yWOHETrvY0M/mqdefault.jpg" alt="LEGO Super Mario 72040 Captain Toad&#x27;s Camp building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72040</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72040</div>
     <div class="set-name">Captain Toad&#x27;s Camp</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72050-super-mario-mario-kart-luigi-mach-8/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/R0OUPiIhrCk/maxresdefault.jpg" alt="LEGO Super Mario 72050 Mario Kart - Luigi &amp; Mach 8 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/R0OUPiIhrCk/mqdefault.jpg" alt="LEGO Super Mario 72050 Mario Kart - Luigi &amp; Mach 8 building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72050</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72050</div>
     <div class="set-name">Mario Kart - Luigi &amp; Mach 8</div>
     <div class="set-meta">Super Mario • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72044-super-mario-piranha-plant-power-up-pursuit/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nOediJJgHdA/maxresdefault.jpg" alt="LEGO Super Mario 72044 Piranha Plant Power-Up Pursuit building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/nOediJJgHdA/mqdefault.jpg" alt="LEGO Super Mario 72044 Piranha Plant Power-Up Pursuit building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72044</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72044</div>
     <div class="set-name">Piranha Plant Power-Up Pursuit</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72039-super-mario-bowser-s-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Oh83-ODwyxs/maxresdefault.jpg" alt="LEGO Super Mario 72039 Bowser&#x27;s Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Oh83-ODwyxs/mqdefault.jpg" alt="LEGO Super Mario 72039 Bowser&#x27;s Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72039</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72039</div>
     <div class="set-name">Bowser&#x27;s Castle</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72041-super-mario-party-at-toad-s-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9LRN2u3kXKE/maxresdefault.jpg" alt="LEGO Super Mario 72041 Party at Toad&#x27;s House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/9LRN2u3kXKE/mqdefault.jpg" alt="LEGO Super Mario 72041 Party at Toad&#x27;s House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72041</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72041</div>
     <div class="set-name">Party at Toad&#x27;s House</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72038-super-mario-wario-king-boo/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/36G3940Hj1g/maxresdefault.jpg" alt="LEGO Super Mario 72038 Wario &amp; King Boo building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/36G3940Hj1g/mqdefault.jpg" alt="LEGO Super Mario 72038 Wario &amp; King Boo building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72038</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72038</div>
     <div class="set-name">Wario &amp; King Boo</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72043-super-mario-interactive-mario-standard-kart/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Mz0A-TyN7kU/maxresdefault.jpg" alt="LEGO Super Mario 72043 Interactive LEGO Mario &amp; Standard Kart building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Mz0A-TyN7kU/mqdefault.jpg" alt="LEGO Super Mario 72043 Interactive LEGO Mario &amp; Standard Kart building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72043</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72043</div>
     <div class="set-name">Interactive LEGO Mario &amp; Standard Kart</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72042-super-mario-prince-florian-castle-bowser/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Fbrjagf4wOI/maxresdefault.jpg" alt="LEGO Super Mario 72042 Prince Florian &amp; Castle Bowser building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Fbrjagf4wOI/mqdefault.jpg" alt="LEGO Super Mario 72042 Prince Florian &amp; Castle Bowser building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72042</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72042</div>
     <div class="set-name">Prince Florian &amp; Castle Bowser</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40787-super-mario-mario-kart-spiny-shell/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/iBRAI3vuR2Y/maxresdefault.jpg" alt="LEGO Super Mario 40787 Mario Kart - Spiny Shell building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/iBRAI3vuR2Y/mqdefault.jpg" alt="LEGO Super Mario 40787 Mario Kart - Spiny Shell building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40787</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40787</div>
     <div class="set-name">Mario Kart - Spiny Shell</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72037-super-mario-mario-kart-mario-standard-kart/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/h64BV9CSGR0/maxresdefault.jpg" alt="LEGO Super Mario 72037 Mario Kart - Mario &amp; Standard Kart building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/h64BV9CSGR0/mqdefault.jpg" alt="LEGO Super Mario 72037 Mario Kart - Mario &amp; Standard Kart building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72037</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72037</div>
     <div class="set-name">Mario Kart - Mario &amp; Standard Kart</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72034-super-mario-baby-mario-vs-baby-luigi/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ud-YcLa6smA/maxresdefault.jpg" alt="LEGO Super Mario 72034 Baby Mario vs. Baby Luigi building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ud-YcLa6smA/mqdefault.jpg" alt="LEGO Super Mario 72034 Baby Mario vs. Baby Luigi building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72034</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72034</div>
     <div class="set-name">Baby Mario vs. Baby Luigi</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72035-super-mario-toad-s-garage/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-RnocW4OiZA/maxresdefault.jpg" alt="LEGO Super Mario 72035 Toad&#x27;s Garage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/-RnocW4OiZA/mqdefault.jpg" alt="LEGO Super Mario 72035 Toad&#x27;s Garage building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72035</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72035</div>
     <div class="set-name">Toad&#x27;s Garage</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72036-super-mario-baby-peach-grand-prix-set/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AIhptLH5EEw/maxresdefault.jpg" alt="LEGO Super Mario 72036 Baby Peach &amp; Grand Prix Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/AIhptLH5EEw/mqdefault.jpg" alt="LEGO Super Mario 72036 Baby Peach &amp; Grand Prix Set building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72036</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">72036</div>
     <div class="set-name">Baby Peach &amp; Grand Prix Set</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71438-super-mario-world-mario-yoshi/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/fXwjyKuBUA4/maxresdefault.jpg" alt="LEGO 71438 Super Mario World: Mario &amp; Yoshi building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/fXwjyKuBUA4/mqdefault.jpg" alt="LEGO 71438 Super Mario World: Mario &amp; Yoshi building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71438</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71438</div>
     <div class="set-name">Super Mario World: Mario &amp; Yoshi</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71441-super-mario-adventures-with-interactive-peach/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/qanVCvUUzCo/maxresdefault.jpg" alt="LEGO Super Mario 71441 Adventures with Interactive LEGO Peach building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/qanVCvUUzCo/mqdefault.jpg" alt="LEGO Super Mario 71441 Adventures with Interactive LEGO Peach building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71441</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71441</div>
     <div class="set-name">Adventures with Interactive LEGO Peach</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71440-super-mario-adventures-with-interactive-luigi/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/US6tQMSpxmQ/maxresdefault.jpg" alt="LEGO Super Mario 71440 Adventures with Interactive LEGO Luigi building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/US6tQMSpxmQ/mqdefault.jpg" alt="LEGO Super Mario 71440 Adventures with Interactive LEGO Luigi building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71440</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71440</div>
     <div class="set-name">Adventures with Interactive LEGO Luigi</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71439-super-mario-adventures-with-interactive-mario/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HVxYlGFEMm0/maxresdefault.jpg" alt="LEGO Super Mario 71439 Adventures with Interactive LEGO Mario building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/HVxYlGFEMm0/mqdefault.jpg" alt="LEGO Super Mario 71439 Adventures with Interactive LEGO Mario building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71439</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71439</div>
     <div class="set-name">Adventures with Interactive LEGO Mario</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71437-super-mario-the-bowser-express-train/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/v2roJGAP3ZI/maxresdefault.jpg" alt="LEGO Super Mario 71437 The Bowser Express Train building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/v2roJGAP3ZI/mqdefault.jpg" alt="LEGO Super Mario 71437 The Bowser Express Train building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71437</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71437</div>
     <div class="set-name">The Bowser Express Train</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71436-super-mario-king-boo-s-haunted-mansion/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dr4h47ua-uY/maxresdefault.jpg" alt="LEGO Super Mario 71436 King Boo&#x27;s Haunted Mansion building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/dr4h47ua-uY/mqdefault.jpg" alt="LEGO Super Mario 71436 King Boo&#x27;s Haunted Mansion building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71436</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71436</div>
     <div class="set-name">King Boo&#x27;s Haunted Mansion</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71435-super-mario-battle-with-roy-at-peach-s-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PDENFespQUo/maxresdefault.jpg" alt="LEGO Super Mario 71435 Battle with Roy at Peach&#x27;s Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/PDENFespQUo/mqdefault.jpg" alt="LEGO Super Mario 71435 Battle with Roy at Peach&#x27;s Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71435</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71435</div>
     <div class="set-name">Battle with Roy at Peach&#x27;s Castle</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71433-super-mario-goombas-playground/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3KnwcIe726k/maxresdefault.jpg" alt="LEGO Super Mario 71433 Goombas&#x27; Playground building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/3KnwcIe726k/mqdefault.jpg" alt="LEGO Super Mario 71433 Goombas&#x27; Playground building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71433</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71433</div>
     <div class="set-name">Goombas&#x27; Playground</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71434-super-mario-soda-jungle-maker-set/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/2YKJfLES4Ho/maxresdefault.jpg" alt="LEGO Super Mario 71434 Soda Jungle Maker Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/2YKJfLES4Ho/mqdefault.jpg" alt="LEGO Super Mario 71434 Soda Jungle Maker Set building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71434</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71434</div>
     <div class="set-name">Soda Jungle Maker Set</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71428-super-mario-yoshis-egg-cellent-forest/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Nkbr-hbqnsM/maxresdefault.jpg" alt="LEGO Super Mario 71428 Yoshis&#x27; Egg-cellent Forest building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Nkbr-hbqnsM/mqdefault.jpg" alt="LEGO Super Mario 71428 Yoshis&#x27; Egg-cellent Forest building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71428</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71428</div>
     <div class="set-name">Yoshis&#x27; Egg-cellent Forest</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71432-super-mario-dorrie-s-sunken-shipwreck-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/GV7Xfy4soBs/maxresdefault.jpg" alt="LEGO Super Mario 71432 Dorrie&#x27;s Sunken Shipwreck Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/GV7Xfy4soBs/mqdefault.jpg" alt="LEGO Super Mario 71432 Dorrie&#x27;s Sunken Shipwreck Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71432</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71432</div>
     <div class="set-name">Dorrie&#x27;s Sunken Shipwreck Adventure</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71426-super-mario-piranha-plant/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/5MMW5ctrEdY/maxresdefault.jpg" alt="LEGO Super Mario 71426 Piranha Plant building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/5MMW5ctrEdY/mqdefault.jpg" alt="LEGO Super Mario 71426 Piranha Plant building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71426</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71426</div>
     <div class="set-name">Piranha Plant</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71427-super-mario-larry-s-and-morton-s-airships/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IFQikb5LWls/maxresdefault.jpg" alt="LEGO Super Mario 71427 Larry&#x27;s and Morton&#x27;s Airships building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/IFQikb5LWls/mqdefault.jpg" alt="LEGO Super Mario 71427 Larry&#x27;s and Morton&#x27;s Airships building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71427</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71427</div>
     <div class="set-name">Larry&#x27;s and Morton&#x27;s Airships</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71425-super-mario-diddy-kong-s-mine-cart-ride/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mqFcgle6gu8/maxresdefault.jpg" alt="LEGO Super Mario 71425 Diddy Kong&#x27;s Mine Cart Ride building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/mqFcgle6gu8/mqdefault.jpg" alt="LEGO Super Mario 71425 Diddy Kong&#x27;s Mine Cart Ride building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71425</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71425</div>
     <div class="set-name">Diddy Kong&#x27;s Mine Cart Ride</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71424-super-mario-donkey-kong-s-tree-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/jBRHGTBEbLU/maxresdefault.jpg" alt="LEGO Super Mario 71424 Donkey Kong&#x27;s Tree House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/jBRHGTBEbLU/mqdefault.jpg" alt="LEGO Super Mario 71424 Donkey Kong&#x27;s Tree House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71424</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71424</div>
     <div class="set-name">Donkey Kong&#x27;s Tree House</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71423-super-mario-dry-bowser-castle-battle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/JPin1xoGmDQ/maxresdefault.jpg" alt="LEGO Super Mario 71423 Dry Bowser Castle Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/JPin1xoGmDQ/mqdefault.jpg" alt="LEGO Super Mario 71423 Dry Bowser Castle Battle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71423</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71423</div>
     <div class="set-name">Dry Bowser Castle Battle</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71422-super-mario-picnic-at-mario-s-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/WQaRkRyd5eI/maxresdefault.jpg" alt="LEGO Super Mario 71422 Picnic at Mario&#x27;s House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/WQaRkRyd5eI/mqdefault.jpg" alt="LEGO Super Mario 71422 Picnic at Mario&#x27;s House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71422</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71422</div>
     <div class="set-name">Picnic at Mario&#x27;s House</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71421-super-mario-dixie-kong-s-jungle-jam/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/oVN6ptoss5o/maxresdefault.jpg" alt="LEGO Super Mario 71421 Dixie Kong&#x27;s Jungle Jam building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/oVN6ptoss5o/mqdefault.jpg" alt="LEGO Super Mario 71421 Dixie Kong&#x27;s Jungle Jam building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71421</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71421</div>
     <div class="set-name">Dixie Kong&#x27;s Jungle Jam</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71420-super-mario-rambi-the-rhino/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/p0kf4mNzTO4/maxresdefault.jpg" alt="LEGO Super Mario 71420 Rambi the Rhino building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/p0kf4mNzTO4/mqdefault.jpg" alt="LEGO Super Mario 71420 Rambi the Rhino building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71420</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71420</div>
     <div class="set-name">Rambi the Rhino</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71415-super-mario-ice-mario-suit-and-frozen-world/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/JBfCddLboDo/maxresdefault.jpg" alt="LEGO Super Mario 71415 Ice Mario Suit and Frozen World building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/JBfCddLboDo/mqdefault.jpg" alt="LEGO Super Mario 71415 Ice Mario Suit and Frozen World building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71415</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71415</div>
     <div class="set-name">Ice Mario Suit and Frozen World</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71416-super-mario-lava-wave-ride/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ibgHWg5E7jg/maxresdefault.jpg" alt="LEGO Super Mario 71416 Lava Wave Ride building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ibgHWg5E7jg/mqdefault.jpg" alt="LEGO Super Mario 71416 Lava Wave Ride building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71416</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71416</div>
     <div class="set-name">Lava Wave Ride</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71419-super-mario-peach-s-garden-balloon-ride/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Ki1AjmzBIVk/maxresdefault.jpg" alt="LEGO Super Mario 71419 Peach&#x27;s Garden Balloon Ride building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Ki1AjmzBIVk/mqdefault.jpg" alt="LEGO Super Mario 71419 Peach&#x27;s Garden Balloon Ride building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71419</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71419</div>
     <div class="set-name">Peach&#x27;s Garden Balloon Ride</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71413-super-mario-character-pack-series-6-random-box/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/z71YdwZPvak/maxresdefault.jpg" alt="LEGO Super Mario 71413 Character Pack Series 6 Random box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/z71YdwZPvak/mqdefault.jpg" alt="LEGO Super Mario 71413 Character Pack Series 6 Random box building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71413</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71413</div>
     <div class="set-name">Character Pack Series 6 Random box</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71417-super-mario-fliprus-snow-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/S31hThnY7o8/maxresdefault.jpg" alt="LEGO Super Mario 71417 Fliprus Snow Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/S31hThnY7o8/mqdefault.jpg" alt="LEGO Super Mario 71417 Fliprus Snow Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71417</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71417</div>
     <div class="set-name">Fliprus Snow Adventure</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71418-super-mario-creativity-toolbox/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vmCOdMXBIRs/maxresdefault.jpg" alt="LEGO Super Mario 71418 Creativity Toolbox building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/vmCOdMXBIRs/mqdefault.jpg" alt="LEGO Super Mario 71418 Creativity Toolbox building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71418</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71418</div>
     <div class="set-name">Creativity Toolbox</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71414-super-mario-conkdor-s-noggin-bopper/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/x_a_QQuQ-E4/maxresdefault.jpg" alt="LEGO Super Mario 71414 Conkdor&#x27;s Noggin Bopper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/x_a_QQuQ-E4/mqdefault.jpg" alt="LEGO Super Mario 71414 Conkdor&#x27;s Noggin Bopper building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71414</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71414</div>
     <div class="set-name">Conkdor&#x27;s Noggin Bopper</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71408-super-mario-peach-s-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mPKxESK9JYc/maxresdefault.jpg" alt="LEGO Super Mario 71408 Peach&#x27;s Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/mPKxESK9JYc/mqdefault.jpg" alt="LEGO Super Mario 71408 Peach&#x27;s Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71408</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71408</div>
     <div class="set-name">Peach&#x27;s Castle</div>
     <div class="set-meta">Super Mario • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71395-super-mario-64-question-mark-block/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/I-qM1fZ_cnM/maxresdefault.jpg" alt="LEGO 71395 Super Mario 64 Question Mark Block building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/I-qM1fZ_cnM/mqdefault.jpg" alt="LEGO 71395 Super Mario 64 Question Mark Block building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71395</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71395</div>
     <div class="set-name">Super Mario 64 Question Mark Block</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71393-super-mario-bee-mario-power-up-pack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/NPyn0itkLJk/maxresdefault.jpg" alt="LEGO Super Mario 71393 Bee Mario Power-Up Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/NPyn0itkLJk/mqdefault.jpg" alt="LEGO Super Mario 71393 Bee Mario Power-Up Pack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71393</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71393</div>
     <div class="set-name">Bee Mario Power-Up Pack</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71392-super-mario-frog-mario-power-up-pack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zSofv7AthY8/maxresdefault.jpg" alt="LEGO Super Mario 71392 Frog Mario Power-Up Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/zSofv7AthY8/mqdefault.jpg" alt="LEGO Super Mario 71392 Frog Mario Power-Up Pack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71392</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71392</div>
     <div class="set-name">Frog Mario Power-Up Pack</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30389-super-mario-fuzzy-mushroom-platform/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/1UcK_w3kAw0/maxresdefault.jpg" alt="LEGO Super Mario 30389 Fuzzy &amp; Mushroom Platform building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/1UcK_w3kAw0/mqdefault.jpg" alt="LEGO Super Mario 30389 Fuzzy &amp; Mushroom Platform building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30389</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30389</div>
     <div class="set-name">Fuzzy &amp; Mushroom Platform</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71394-super-mario-character-pack-series-3-random-bag/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/XBYlib268w4/maxresdefault.jpg" alt="LEGO Super Mario 71394 Character Pack Series 3 Random bag building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/XBYlib268w4/mqdefault.jpg" alt="LEGO Super Mario 71394 Character Pack Series 3 Random bag building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71394</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71394</div>
     <div class="set-name">Character Pack Series 3 Random bag</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71388-super-mario-boss-sumo-bro-topple/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/B4L37yPBw8U/maxresdefault.jpg" alt="LEGO Super Mario 71388 Boss Sumo Bro Topple building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/B4L37yPBw8U/mqdefault.jpg" alt="LEGO Super Mario 71388 Boss Sumo Bro Topple building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71388</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71388</div>
     <div class="set-name">Boss Sumo Bro Topple</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71390-super-mario-reznor-knockdown/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/pLpFPqIMgbU/maxresdefault.jpg" alt="LEGO Super Mario 71390 Reznor Knockdown building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/pLpFPqIMgbU/mqdefault.jpg" alt="LEGO Super Mario 71390 Reznor Knockdown building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71390</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71390</div>
     <div class="set-name">Reznor Knockdown</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71389-super-mario-lakitu-sky-world/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/x7rmy0s8RGg/maxresdefault.jpg" alt="LEGO Super Mario 71389 Lakitu Sky World building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/x7rmy0s8RGg/mqdefault.jpg" alt="LEGO Super Mario 71389 Lakitu Sky World building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71389</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71389</div>
     <div class="set-name">Lakitu Sky World</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71391-super-mario-bowser-s-airship/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/enY8Xsh0PcM/maxresdefault.jpg" alt="LEGO Super Mario 71391 Bowser&#x27;s Airship building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/enY8Xsh0PcM/mqdefault.jpg" alt="LEGO Super Mario 71391 Bowser&#x27;s Airship building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71391</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71391</div>
     <div class="set-name">Bowser&#x27;s Airship</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71387-super-mario-adventures-with-luigi/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/96A5UNTV7d0/maxresdefault.jpg" alt="LEGO Super Mario 71387 Adventures with Luigi building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/96A5UNTV7d0/mqdefault.jpg" alt="LEGO Super Mario 71387 Adventures with Luigi building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71387</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71387</div>
     <div class="set-name">Adventures with Luigi</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71384-super-mario-penguin-mario-power-up-pack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/sV2rSxybwK0/maxresdefault.jpg" alt="LEGO Super Mario 71384 Penguin Mario Power-Up Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/sV2rSxybwK0/mqdefault.jpg" alt="LEGO Super Mario 71384 Penguin Mario Power-Up Pack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71384</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71384</div>
     <div class="set-name">Penguin Mario Power-Up Pack</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71385-super-mario-tanooki-mario-power-up-pack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mF0B-4JNGuA/maxresdefault.jpg" alt="LEGO Super Mario 71385 Tanooki Mario Power-Up Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/mF0B-4JNGuA/mqdefault.jpg" alt="LEGO Super Mario 71385 Tanooki Mario Power-Up Pack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71385</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71385</div>
     <div class="set-name">Tanooki Mario Power-Up Pack</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71386-super-mario-character-pack-series-2-random-bag/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/McNhWLnst-M/maxresdefault.jpg" alt="LEGO Super Mario 71386 Character Pack Series 2 Random bag building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/McNhWLnst-M/mqdefault.jpg" alt="LEGO Super Mario 71386 Character Pack Series 2 Random bag building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71386</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71386</div>
     <div class="set-name">Character Pack Series 2 Random bag</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71383-super-mario-wiggler-s-poison-swamp/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/eePWY6mu_qM/maxresdefault.jpg" alt="LEGO Super Mario 71383 Wiggler&#x27;s Poison Swamp building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/eePWY6mu_qM/mqdefault.jpg" alt="LEGO Super Mario 71383 Wiggler&#x27;s Poison Swamp building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71383</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71383</div>
     <div class="set-name">Wiggler&#x27;s Poison Swamp</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71382-super-mario-piranha-plant-puzzling-challenge/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_kTc9UBWy04/maxresdefault.jpg" alt="LEGO Super Mario 71382 Piranha Plant Puzzling Challenge building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/_kTc9UBWy04/mqdefault.jpg" alt="LEGO Super Mario 71382 Piranha Plant Puzzling Challenge building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71382</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71382</div>
     <div class="set-name">Piranha Plant Puzzling Challenge</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71381-super-mario-chain-chomp-jungle-encounter/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/TFrfkygKveU/maxresdefault.jpg" alt="LEGO Super Mario 71381 Chain Chomp Jungle Encounter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/TFrfkygKveU/mqdefault.jpg" alt="LEGO Super Mario 71381 Chain Chomp Jungle Encounter building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71381</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71381</div>
     <div class="set-name">Chain Chomp Jungle Encounter</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71380-super-mario-master-your-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PVVVruCUcNs/maxresdefault.jpg" alt="LEGO Super Mario 71380 Master Your Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/PVVVruCUcNs/mqdefault.jpg" alt="LEGO Super Mario 71380 Master Your Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71380</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">71380</div>
     <div class="set-name">Master Your Adventure</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO Super Mario Instructions</h2><p>14 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/30702-super-mario-toad-pit-crew/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 30702 Toad (Pit Crew) building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 30702 Toad (Pit Crew) building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30702</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">30702</div>
     <div class="set-name">Toad (Pit Crew)</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72031-super-mario-yoshi-bike/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 72031 Yoshi Bike building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 72031 Yoshi Bike building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72031</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">72031</div>
     <div class="set-name">Yoshi Bike</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72032-super-mario-standard-kart/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 72032 Standard Kart building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 72032 Standard Kart building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72032</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">72032</div>
     <div class="set-name">Standard Kart</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/72033-super-mario-donkey-kong-dk-jumbo/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 72033 Donkey Kong &amp; DK Jumbo building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 72033 Donkey Kong &amp; DK Jumbo building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">72033</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">72033</div>
     <div class="set-name">Donkey Kong &amp; DK Jumbo</div>
     <div class="set-meta">Super Mario • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71429-super-mario-nabbit-at-toad-s-shop/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 71429 Nabbit at Toad&#x27;s Shop building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 71429 Nabbit at Toad&#x27;s Shop building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71429</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">71429</div>
     <div class="set-name">Nabbit at Toad&#x27;s Shop</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71430-super-mario-penguin-family-snow-adventure/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 71430 Penguin Family Snow Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 71430 Penguin Family Snow Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71430</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">71430</div>
     <div class="set-name">Penguin Family Snow Adventure</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/71431-super-mario-bowser-s-muscle-car/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 71431 Bowser&#x27;s Muscle Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 71431 Bowser&#x27;s Muscle Car building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">71431</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">71431</div>
     <div class="set-name">Bowser&#x27;s Muscle Car</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6527192-super-mario-yoshi/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 6527192 Yoshi building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 6527192 Yoshi building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">6527192</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">6527192</div>
     <div class="set-name">Yoshi</div>
     <div class="set-meta">Super Mario • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66749-super-mario-character-packs-series-6-bundle/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 66749 Character Packs - Series 6 Bundle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 66749 Character Packs - Series 6 Bundle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">66749</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">66749</div>
     <div class="set-name">Character Packs - Series 6 Bundle</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/nl2023-super-mario-green-yoshi/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario NL2023 Green Yoshi building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario NL2023 Green Yoshi building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">NL2023</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">NL2023</div>
     <div class="set-name">Green Yoshi</div>
     <div class="set-meta">Super Mario • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/66677-super-mario-super-pack/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 66677 Super Pack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 66677 Super Pack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">66677</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">66677</div>
     <div class="set-name">Super Pack</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/5007060-super-mario-the-team-up-bundle/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 5007060 The Team-Up Bundle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 5007060 The Team-Up Bundle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">5007060</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">5007060</div>
     <div class="set-name">The Team-Up Bundle</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/5007061-super-mario-the-creative-bundle/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 5007061 The Creative Bundle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 5007061 The Creative Bundle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">5007061</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">5007061</div>
     <div class="set-name">The Creative Bundle</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/5007062-super-mario-the-ultimate-bundle/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 5007062 The Ultimate Bundle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Super Mario 5007062 The Ultimate Bundle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">5007062</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">5007062</div>
     <div class="set-name">The Ultimate Bundle</div>
     <div class="set-meta">Super Mario • 2021</div>
   </div>
 </a></div></main>
 <footer>
   <div class="footer-links"><a href="/about/">About</a><a href="https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/LEGOInstructionsForLEGOFans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/legoinstructionsforyou/" target="_blank" rel="noopener">Instagram</a></div>
-  <div>Brick Instructions For You is independently run by Paul.</div>
+  <div>Brick Instructions For You is independently run by Paul Critchlow.</div>
   <div style="margin-top:8px;opacity:.86;">LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorise or endorse this site.</div>
 </footer>
 <script>
 window.LEGO_SETS = [];
 let LEGO_SETS_LOADED = false;
-const LEGO_SETS_READY = fetch("/data/search-index.json", {cache:"no-store"})
- .then(response => response.ok ? response.json() : [])
- .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
- .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+let legoSetsPromise = null;
+function ensureSearchIndex() {
+ if (legoSetsPromise) return legoSetsPromise;
+ legoSetsPromise = fetch("/data/search-index.json", {cache:"default"})
+  .then(response => response.ok ? response.json() : [])
+  .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
+  .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+ return legoSetsPromise;
+}
 const input=document.getElementById("mainSearchInput");
 const typeSelect=document.getElementById("mainSearchType");
 const form=document.getElementById("mainSearchForm");
@@ -939,7 +1034,7 @@ function setImageAlt(set){
  if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
  return parts.join(" ").replace(/\s+/g," ").trim();
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;
@@ -952,18 +1047,18 @@ function renderResults(query,type,pushState=true){
 function showSuggestions(){
  const q=input.value.trim();const t=typeSelect.value||"all"; if(q.length<1){hideSuggestions();return;}
  const matches=searchSets(q,t).slice(0,8); if(!matches.length){hideSuggestions();return;}
- suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
+ suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",showSuggestions);typeSelect.addEventListener("change",showSuggestions);
+input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
 suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
 document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();LEGO_SETS_READY.then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();renderResults(chip.dataset.search,chip.dataset.type||"all",true);}));
+form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
 window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))LEGO_SETS_READY.then(()=>renderResults(q,t,false));})();
+(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
 </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "99db6ec5719548b582f077bfc6bb2c7f"}'></script><!-- End Cloudflare Web Analytics -->
+
 </body>
 </html>

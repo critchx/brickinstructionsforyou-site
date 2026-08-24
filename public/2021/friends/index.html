@@ -3,19 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW"></script>
+<!-- Google tag (gtag.js), deferred until interaction/idle -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-37MCSDDYEW');
+  (() => {
+    let loaded = false;
+    const loadAnalytics = () => {
+      if (loaded) return;
+      loaded = true;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW';
+      document.head.appendChild(script);
+    };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(eventName =>
+      addEventListener(eventName, loadAnalytics, {once:true, passive:true}));
+    addEventListener('load', () => setTimeout(loadAnalytics, 8000), {once:true});
+  })();
 </script>
 <title>LEGO 2021 Friends Instructions | Brick Instructions For You</title>
 <meta name="description" content="Browse 47 LEGO Friends sets from 2021, with building instruction videos, set details, release information and newly added or upcoming guides.">
 <link rel="canonical" href="https://www.brickinstructionsforyou.com/2021/friends/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul Critchlow"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
 
 <style>
 :root{--navy:#061b35;--yellow:#ffcc00;--text:#1d1d1f;--muted:#667085;--line:#e5e7eb;--bg:#f5f5f5}
@@ -66,23 +79,14 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .results-header h1,.results-header h2{font-size:32px;margin:0 0 14px;text-transform:uppercase}
 .results-header p{margin:0;color:var(--muted)}
 .btn-outline{display:inline-block;border:1px solid #cfd5df;background:#fff;border-radius:9px;padding:14px 18px;font-weight:900;white-space:nowrap}
-.about-page-card{margin-top:10px!important}
-.about-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 6px}
-.about-action{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;padding:13px 18px;color:#fff;font-weight:900;box-shadow:0 4px 10px rgba(6,27,53,.14);transition:transform .16s ease,box-shadow .16s ease}
-.about-action:hover{color:#fff;transform:translateY(-2px);box-shadow:0 8px 16px rgba(6,27,53,.2)}
-.about-youtube{background:#e60012}
-.about-facebook{background:#1877f2}
-.about-instagram{background:linear-gradient(135deg,#833ab4,#e1306c 55%,#f77737)}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
-.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
-.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
+.badge-new{position:absolute;top:16px;left:16px;background:#c7000b;color:#fff;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
+.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
-.set-number{color:#e60012;font-weight:900;font-size:13px}
-.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
+.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -98,8 +102,7 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
-.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
+.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -108,20 +111,16 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
-.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
-.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
-.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
-.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
 </style>
 </head>
 <body>
 <div class="topline"></div>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="site-nav-inner">
-    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo"></a>
+    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo" width="900" height="260" decoding="async"></a>
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/themes/">Themes</a>
@@ -159,392 +158,444 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/friends/">Friends</a><span>›</span><strong>2021 Friends</strong></nav><div class="results-header"><div><h2>LEGO 2021 Friends Instructions</h2><p>47 LEGO instruction pages found for this year and theme.</p></div><a class="btn-outline" href="/2021/">BACK TO 2021</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2021/">All LEGO 2021 Instructions</a><a class="btn-outline" href="/themes/friends/">All LEGO Friends Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/562104-friends-ice-cream-shop/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IH_CYraV8gs/maxresdefault.jpg" alt="LEGO Friends 562104 Ice Cream Shop building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/IH_CYraV8gs/mqdefault.jpg" alt="LEGO Friends 562104 Ice Cream Shop building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">562104</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">562104</div>
     <div class="set-name">Ice Cream Shop</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41690-friends-advent-calendar/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/5BbWZQYNgn0/maxresdefault.jpg" alt="LEGO 41690 LEGO Friends Advent Calendar building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/5BbWZQYNgn0/mqdefault.jpg" alt="LEGO 41690 LEGO Friends Advent Calendar building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41690</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41690</div>
     <div class="set-name">LEGO Friends Advent Calendar</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41686-friends-magical-acrobatics/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kifhycoWof8/maxresdefault.jpg" alt="LEGO Friends 41686 Magical Acrobatics building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/kifhycoWof8/mqdefault.jpg" alt="LEGO Friends 41686 Magical Acrobatics building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41686</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41686</div>
     <div class="set-name">Magical Acrobatics</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41679-friends-forest-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DanriPnmQoI/maxresdefault.jpg" alt="LEGO Friends 41679 Forest House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/DanriPnmQoI/mqdefault.jpg" alt="LEGO Friends 41679 Forest House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41679</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41679</div>
     <div class="set-name">Forest House</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41683-friends-forest-horseback-riding-centre/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8QX5ULH4DoQ/maxresdefault.jpg" alt="LEGO Friends 41683 Forest Horseback Riding Centre building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/8QX5ULH4DoQ/mqdefault.jpg" alt="LEGO Friends 41683 Forest Horseback Riding Centre building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41683</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41683</div>
     <div class="set-name">Forest Horseback Riding Centre</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41688-friends-magical-caravan/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/lPCL7ikr8t8/maxresdefault.jpg" alt="LEGO Friends 41688 Magical Caravan building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/lPCL7ikr8t8/mqdefault.jpg" alt="LEGO Friends 41688 Magical Caravan building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41688</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41688</div>
     <div class="set-name">Magical Caravan</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41677-friends-forest-waterfall/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kJWGyAct4G0/maxresdefault.jpg" alt="LEGO Friends 41677 Forest Waterfall building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/kJWGyAct4G0/mqdefault.jpg" alt="LEGO Friends 41677 Forest Waterfall building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41677</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41677</div>
     <div class="set-name">Forest Waterfall</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41667-friends-olivia-s-gaming-cube/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/v-tVfMbWB08/maxresdefault.jpg" alt="LEGO Friends 41667 Olivia&#x27;s Gaming Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/v-tVfMbWB08/mqdefault.jpg" alt="LEGO Friends 41667 Olivia&#x27;s Gaming Cube building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41667</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41667</div>
     <div class="set-name">Olivia&#x27;s Gaming Cube</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41671-friends-andrea-s-swimming-cube/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/klR561R6zFM/maxresdefault.jpg" alt="LEGO Friends 41671 Andrea&#x27;s Swimming Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/klR561R6zFM/mqdefault.jpg" alt="LEGO Friends 41671 Andrea&#x27;s Swimming Cube building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41671</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41671</div>
     <div class="set-name">Andrea&#x27;s Swimming Cube</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41670-friends-stephanie-s-ballet-cube/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3jQSvtbvlMc/maxresdefault.jpg" alt="LEGO Friends 41670 Stephanie&#x27;s Ballet Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/3jQSvtbvlMc/mqdefault.jpg" alt="LEGO Friends 41670 Stephanie&#x27;s Ballet Cube building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41670</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41670</div>
     <div class="set-name">Stephanie&#x27;s Ballet Cube</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41669-friends-mia-s-soccer-cube/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/GB-Qyoxzf_0/maxresdefault.jpg" alt="LEGO Friends 41669 Mia&#x27;s Soccer Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/GB-Qyoxzf_0/mqdefault.jpg" alt="LEGO Friends 41669 Mia&#x27;s Soccer Cube building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41669</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41669</div>
     <div class="set-name">Mia&#x27;s Soccer Cube</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41681-friends-forest-camper-van-and-sailboat/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/6geiM9XcP2U/maxresdefault.jpg" alt="LEGO Friends 41681 Forest Camper Van and Sailboat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/6geiM9XcP2U/mqdefault.jpg" alt="LEGO Friends 41681 Forest Camper Van and Sailboat building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41681</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41681</div>
     <div class="set-name">Forest Camper Van and Sailboat</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41687-friends-magical-funfair-stalls/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ulBXEiLtadk/maxresdefault.jpg" alt="LEGO Friends 41687 Magical Funfair Stalls building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ulBXEiLtadk/mqdefault.jpg" alt="LEGO Friends 41687 Magical Funfair Stalls building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41687</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41687</div>
     <div class="set-name">Magical Funfair Stalls</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41684-friends-heartlake-city-grand-hotel/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/L4Pko4fEJLM/maxresdefault.jpg" alt="LEGO Friends 41684 Heartlake City Grand Hotel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/L4Pko4fEJLM/mqdefault.jpg" alt="LEGO Friends 41684 Heartlake City Grand Hotel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41684</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41684</div>
     <div class="set-name">Heartlake City Grand Hotel</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41689-friends-magical-ferris-wheel-and-slide/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/a9Z5qVUbmaQ/maxresdefault.jpg" alt="LEGO Friends 41689 Magical Ferris Wheel and Slide building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/a9Z5qVUbmaQ/mqdefault.jpg" alt="LEGO Friends 41689 Magical Ferris Wheel and Slide building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41689</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41689</div>
     <div class="set-name">Magical Ferris Wheel and Slide</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41685-friends-magical-funfair-roller-coaster/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DE3N8i8woNg/maxresdefault.jpg" alt="LEGO Friends 41685 Magical Funfair Roller Coaster building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/DE3N8i8woNg/mqdefault.jpg" alt="LEGO Friends 41685 Magical Funfair Roller Coaster building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41685</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41685</div>
     <div class="set-name">Magical Funfair Roller Coaster</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30414-friends-emma-s-magical-box/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OEiC3bB5CjU/maxresdefault.jpg" alt="LEGO Friends 30414 Emma&#x27;s Magical Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/OEiC3bB5CjU/mqdefault.jpg" alt="LEGO Friends 30414 Emma&#x27;s Magical Box building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30414</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30414</div>
     <div class="set-name">Emma&#x27;s Magical Box</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41668-friends-emma-s-fashion-cube/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Q3DkjO9M7ys/maxresdefault.jpg" alt="LEGO Friends 41668 Emma&#x27;s Fashion Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Q3DkjO9M7ys/mqdefault.jpg" alt="LEGO Friends 41668 Emma&#x27;s Fashion Cube building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41668</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41668</div>
     <div class="set-name">Emma&#x27;s Fashion Cube</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41693-friends-surfer-beachfront/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/lbdfAM1UquQ/maxresdefault.jpg" alt="LEGO Friends 41693 Surfer Beachfront building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/lbdfAM1UquQ/mqdefault.jpg" alt="LEGO Friends 41693 Surfer Beachfront building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41693</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41693</div>
     <div class="set-name">Surfer Beachfront</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41441-friends-horse-training-and-trailer/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/GTBMfoLDQC4/maxresdefault.jpg" alt="LEGO Friends 41441 Horse Training and Trailer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/GTBMfoLDQC4/mqdefault.jpg" alt="LEGO Friends 41441 Horse Training and Trailer building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41441</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41441</div>
     <div class="set-name">Horse Training and Trailer</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41682-friends-heartlake-city-school/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/iw_Gis5KAS8/maxresdefault.jpg" alt="LEGO Friends 41682 Heartlake City School building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/iw_Gis5KAS8/mqdefault.jpg" alt="LEGO Friends 41682 Heartlake City School building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41682</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41682</div>
     <div class="set-name">Heartlake City School</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41442-friends-vet-clinic-rescue-buggy/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AEoNaKvqz9k/maxresdefault.jpg" alt="LEGO Friends 41442 Vet Clinic Rescue Buggy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/AEoNaKvqz9k/mqdefault.jpg" alt="LEGO Friends 41442 Vet Clinic Rescue Buggy building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41442</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41442</div>
     <div class="set-name">Vet Clinic Rescue Buggy</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41446-friends-heartlake-city-vet-clinic/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/GJ2RENV3XJY/maxresdefault.jpg" alt="LEGO Friends 41446 Heartlake City Vet Clinic building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/GJ2RENV3XJY/mqdefault.jpg" alt="LEGO Friends 41446 Heartlake City Vet Clinic building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41446</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41446</div>
     <div class="set-name">Heartlake City Vet Clinic</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41445-friends-vet-clinic-ambulance/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/70VlD2uroec/maxresdefault.jpg" alt="LEGO Friends 41445 Vet Clinic Ambulance building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/70VlD2uroec/mqdefault.jpg" alt="LEGO Friends 41445 Vet Clinic Ambulance building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41445</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41445</div>
     <div class="set-name">Vet Clinic Ambulance</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41440-friends-heartlake-city-bakery/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ZWF6l8owrzY/maxresdefault.jpg" alt="LEGO Friends 41440 Heartlake City Bakery building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ZWF6l8owrzY/mqdefault.jpg" alt="LEGO Friends 41440 Heartlake City Bakery building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41440</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41440</div>
     <div class="set-name">Heartlake City Bakery</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41450-friends-heartlake-city-shopping-mall/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mEYMVEGqPlY/maxresdefault.jpg" alt="LEGO Friends 41450 Heartlake City Shopping Mall building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/mEYMVEGqPlY/mqdefault.jpg" alt="LEGO Friends 41450 Heartlake City Shopping Mall building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41450</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41450</div>
     <div class="set-name">Heartlake City Shopping Mall</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30413-friends-flower-cart/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_gu6r_ffGXQ/maxresdefault.jpg" alt="LEGO Friends 30413 Flower Cart building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/_gu6r_ffGXQ/mqdefault.jpg" alt="LEGO Friends 30413 Flower Cart building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30413</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30413</div>
     <div class="set-name">Flower Cart</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41666-friends-andrea-s-bunny-cube/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/24skdAMuGHo/maxresdefault.jpg" alt="LEGO Friends 41666 Andrea&#x27;s Bunny Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/24skdAMuGHo/mqdefault.jpg" alt="LEGO Friends 41666 Andrea&#x27;s Bunny Cube building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41666</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41666</div>
     <div class="set-name">Andrea&#x27;s Bunny Cube</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41691-friends-doggy-day-care/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/iDfMTfw4TMU/maxresdefault.jpg" alt="LEGO Friends 41691 Doggy Day Care building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/iDfMTfw4TMU/mqdefault.jpg" alt="LEGO Friends 41691 Doggy Day Care building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41691</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41691</div>
     <div class="set-name">Doggy Day Care</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41692-friends-vet-clinic-rescue-helicopter/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ohdHKLfoOoE/maxresdefault.jpg" alt="LEGO Friends 41692 Vet Clinic Rescue Helicopter building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ohdHKLfoOoE/mqdefault.jpg" alt="LEGO Friends 41692 Vet Clinic Rescue Helicopter building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41692</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41692</div>
     <div class="set-name">Vet Clinic Rescue Helicopter</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41444-friends-heartlake-city-organic-cafe/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0FrAKRltSQY/maxresdefault.jpg" alt="LEGO Friends 41444 Heartlake City Organic Cafe building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/0FrAKRltSQY/mqdefault.jpg" alt="LEGO Friends 41444 Heartlake City Organic Cafe building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41444</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41444</div>
     <div class="set-name">Heartlake City Organic Cafe</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41662-friends-olivia-s-flamingo-cube/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/p8kYFXcRXvg/maxresdefault.jpg" alt="LEGO Friends 41662 Olivia&#x27;s Flamingo Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/p8kYFXcRXvg/mqdefault.jpg" alt="LEGO Friends 41662 Olivia&#x27;s Flamingo Cube building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41662</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41662</div>
     <div class="set-name">Olivia&#x27;s Flamingo Cube</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41663-friends-emma-s-dalmatian-cube/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vLObqyeJiLU/maxresdefault.jpg" alt="LEGO Friends 41663 Emma&#x27;s Dalmatian Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/vLObqyeJiLU/mqdefault.jpg" alt="LEGO Friends 41663 Emma&#x27;s Dalmatian Cube building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41663</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41663</div>
     <div class="set-name">Emma&#x27;s Dalmatian Cube</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41664-friends-mia-s-pug-cube/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/CGoqP2ISvTo/maxresdefault.jpg" alt="LEGO Friends 41664 Mia&#x27;s Pug Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/CGoqP2ISvTo/mqdefault.jpg" alt="LEGO Friends 41664 Mia&#x27;s Pug Cube building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41664</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41664</div>
     <div class="set-name">Mia&#x27;s Pug Cube</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41665-friends-stephanie-s-cat-cube/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/qnDpo1bWX0Q/maxresdefault.jpg" alt="LEGO Friends 41665 Stephanie&#x27;s Cat Cube building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/qnDpo1bWX0Q/mqdefault.jpg" alt="LEGO Friends 41665 Stephanie&#x27;s Cat Cube building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41665</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41665</div>
     <div class="set-name">Stephanie&#x27;s Cat Cube</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41439-friends-cat-grooming-car/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/suUcqgLZCTU/maxresdefault.jpg" alt="LEGO Friends 41439 Cat Grooming Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/suUcqgLZCTU/mqdefault.jpg" alt="LEGO Friends 41439 Cat Grooming Car building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41439</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41439</div>
     <div class="set-name">Cat Grooming Car</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41443-friends-olivia-s-electric-car/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/2JNZgUCG1Y4/maxresdefault.jpg" alt="LEGO Friends 41443 Olivia&#x27;s Electric Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/2JNZgUCG1Y4/mqdefault.jpg" alt="LEGO Friends 41443 Olivia&#x27;s Electric Car building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41443</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41443</div>
     <div class="set-name">Olivia&#x27;s Electric Car</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41447-friends-heartlake-city-park/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OtKlYvymZj8/maxresdefault.jpg" alt="LEGO Friends 41447 Heartlake City Park building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/OtKlYvymZj8/mqdefault.jpg" alt="LEGO Friends 41447 Heartlake City Park building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41447</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41447</div>
     <div class="set-name">Heartlake City Park</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41448-friends-heartlake-city-movie-theatre/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/smoDf9q9_1k/maxresdefault.jpg" alt="LEGO Friends 41448 Heartlake City Movie Theatre building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/smoDf9q9_1k/mqdefault.jpg" alt="LEGO Friends 41448 Heartlake City Movie Theatre building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41448</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41448</div>
     <div class="set-name">Heartlake City Movie Theatre</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/41449-friends-andrea-s-family-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vvgyh18sQTU/maxresdefault.jpg" alt="LEGO Friends 41449 Andrea&#x27;s Family House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/vvgyh18sQTU/mqdefault.jpg" alt="LEGO Friends 41449 Andrea&#x27;s Family House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">41449</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">41449</div>
     <div class="set-name">Andrea&#x27;s Family House</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO 2021 Friends Instructions</h2><p>7 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/66673-friends-animal-gift-set/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 66673 Animal Gift Set building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 66673 Animal Gift Set building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">66673</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">66673</div>
     <div class="set-name">Animal Gift Set</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/472102-friends-emma-and-panda/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 472102 Emma and Panda building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 472102 Emma and Panda building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">472102</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">472102</div>
     <div class="set-name">Emma and Panda</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/562101-friends-performing-dog/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 562101 Performing dog building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 562101 Performing dog building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">562101</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">562101</div>
     <div class="set-name">Performing dog</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/562102-friends-dressing-room/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 562102 Dressing Room building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 562102 Dressing Room building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">562102</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">562102</div>
     <div class="set-name">Dressing Room</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/562103-friends-cat-grooming-salon/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 562103 Cat Grooming Salon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 562103 Cat Grooming Salon building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">562103</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">562103</div>
     <div class="set-name">Cat Grooming Salon</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/562105-friends-squirrel-s-tree-house/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 562105 Squirrel&#x27;s Tree House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 562105 Squirrel&#x27;s Tree House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">562105</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">562105</div>
     <div class="set-name">Squirrel&#x27;s Tree House</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/562106-friends-stephanie-s-cookie-kitchen/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 562106 Stephanie&#x27;s Cookie Kitchen building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 562106 Stephanie&#x27;s Cookie Kitchen building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">562106</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">562106</div>
     <div class="set-name">Stephanie&#x27;s Cookie Kitchen</div>
     <div class="set-meta">Friends • 2021</div>
   </div>
 </a></div></main>
 <footer>
   <div class="footer-links"><a href="/about/">About</a><a href="https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/LEGOInstructionsForLEGOFans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/legoinstructionsforyou/" target="_blank" rel="noopener">Instagram</a></div>
-  <div>Brick Instructions For You is independently run by Paul.</div>
+  <div>Brick Instructions For You is independently run by Paul Critchlow.</div>
   <div style="margin-top:8px;opacity:.86;">LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorise or endorse this site.</div>
 </footer>
 <script>
 window.LEGO_SETS = [];
 let LEGO_SETS_LOADED = false;
-const LEGO_SETS_READY = fetch("/data/search-index.json", {cache:"no-store"})
- .then(response => response.ok ? response.json() : [])
- .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
- .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+let legoSetsPromise = null;
+function ensureSearchIndex() {
+ if (legoSetsPromise) return legoSetsPromise;
+ legoSetsPromise = fetch("/data/search-index.json", {cache:"default"})
+  .then(response => response.ok ? response.json() : [])
+  .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
+  .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+ return legoSetsPromise;
+}
 const input=document.getElementById("mainSearchInput");
 const typeSelect=document.getElementById("mainSearchType");
 const form=document.getElementById("mainSearchForm");
@@ -587,7 +638,7 @@ function setImageAlt(set){
  if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
  return parts.join(" ").replace(/\s+/g," ").trim();
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;
@@ -600,18 +651,18 @@ function renderResults(query,type,pushState=true){
 function showSuggestions(){
  const q=input.value.trim();const t=typeSelect.value||"all"; if(q.length<1){hideSuggestions();return;}
  const matches=searchSets(q,t).slice(0,8); if(!matches.length){hideSuggestions();return;}
- suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
+ suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",showSuggestions);typeSelect.addEventListener("change",showSuggestions);
+input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
 suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
 document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();LEGO_SETS_READY.then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();renderResults(chip.dataset.search,chip.dataset.type||"all",true);}));
+form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
 window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))LEGO_SETS_READY.then(()=>renderResults(q,t,false));})();
+(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
 </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "99db6ec5719548b582f077bfc6bb2c7f"}'></script><!-- End Cloudflare Web Analytics -->
+
 </body>
 </html>

@@ -3,19 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW"></script>
+<!-- Google tag (gtag.js), deferred until interaction/idle -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-37MCSDDYEW');
+  (() => {
+    let loaded = false;
+    const loadAnalytics = () => {
+      if (loaded) return;
+      loaded = true;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW';
+      document.head.appendChild(script);
+    };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(eventName =>
+      addEventListener(eventName, loadAnalytics, {once:true, passive:true}));
+    addEventListener('load', () => setTimeout(loadAnalytics, 8000), {once:true});
+  })();
 </script>
 <title>LEGO 2021 Marvel Instructions | Brick Instructions For You</title>
 <meta name="description" content="Browse 41 LEGO Marvel sets from 2021, with building instruction videos, set details, release information and newly added or upcoming guides.">
 <link rel="canonical" href="https://www.brickinstructionsforyou.com/2021/marvel/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul Critchlow"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
 
 <style>
 :root{--navy:#061b35;--yellow:#ffcc00;--text:#1d1d1f;--muted:#667085;--line:#e5e7eb;--bg:#f5f5f5}
@@ -66,23 +79,14 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .results-header h1,.results-header h2{font-size:32px;margin:0 0 14px;text-transform:uppercase}
 .results-header p{margin:0;color:var(--muted)}
 .btn-outline{display:inline-block;border:1px solid #cfd5df;background:#fff;border-radius:9px;padding:14px 18px;font-weight:900;white-space:nowrap}
-.about-page-card{margin-top:10px!important}
-.about-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 6px}
-.about-action{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;padding:13px 18px;color:#fff;font-weight:900;box-shadow:0 4px 10px rgba(6,27,53,.14);transition:transform .16s ease,box-shadow .16s ease}
-.about-action:hover{color:#fff;transform:translateY(-2px);box-shadow:0 8px 16px rgba(6,27,53,.2)}
-.about-youtube{background:#e60012}
-.about-facebook{background:#1877f2}
-.about-instagram{background:linear-gradient(135deg,#833ab4,#e1306c 55%,#f77737)}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
-.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
-.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
+.badge-new{position:absolute;top:16px;left:16px;background:#c7000b;color:#fff;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
+.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
-.set-number{color:#e60012;font-weight:900;font-size:13px}
-.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
+.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -98,8 +102,7 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
-.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
+.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -108,20 +111,16 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
-.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
-.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
-.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
-.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
 </style>
 </head>
 <body>
 <div class="topline"></div>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="site-nav-inner">
-    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo"></a>
+    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo" width="900" height="260" decoding="async"></a>
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/themes/">Themes</a>
@@ -159,344 +158,390 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/marvel/">Marvel</a><span>›</span><strong>2021 Marvel</strong></nav><div class="results-header"><div><h2>LEGO 2021 Marvel Instructions</h2><p>41 LEGO instruction pages found for this year and theme.</p></div><a class="btn-outline" href="/2021/">BACK TO 2021</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse related LEGO instructions</h3><nav aria-label="Browse related LEGO instructions" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2021/">All LEGO 2021 Instructions</a><a class="btn-outline" href="/themes/marvel/">All LEGO Marvel Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/76174-marvel-spider-man-s-monster-truck-vs-mysterio/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/VoQ8y4KHwJc/maxresdefault.jpg" alt="LEGO Marvel 76174 Spider-Man&#x27;s Monster Truck vs. Mysterio building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/VoQ8y4KHwJc/mqdefault.jpg" alt="LEGO Marvel 76174 Spider-Man&#x27;s Monster Truck vs. Mysterio building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76174</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76174</div>
     <div class="set-name">Spider-Man&#x27;s Monster Truck vs. Mysterio</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76195-marvel-spider-man-s-drone-duel/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/oy6mPXdejsw/maxresdefault.jpg" alt="LEGO Marvel 76195 Spider-Man&#x27;s Drone Duel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/oy6mPXdejsw/mqdefault.jpg" alt="LEGO Marvel 76195 Spider-Man&#x27;s Drone Duel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76195</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76195</div>
     <div class="set-name">Spider-Man&#x27;s Drone Duel</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76185-marvel-spider-man-at-the-sanctum-workshop/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/voEnDQtgOpY/maxresdefault.jpg" alt="LEGO Marvel 76185 Spider-Man at the Sanctum Workshop building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/voEnDQtgOpY/mqdefault.jpg" alt="LEGO Marvel 76185 Spider-Man at the Sanctum Workshop building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76185</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76185</div>
     <div class="set-name">Spider-Man at the Sanctum Workshop</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76184-marvel-spider-man-vs-mysterio-s-drone-attack/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/CXYlluj-qaw/maxresdefault.jpg" alt="LEGO Marvel 76184 Spider-Man vs. Mysterio&#x27;s Drone Attack building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/CXYlluj-qaw/mqdefault.jpg" alt="LEGO Marvel 76184 Spider-Man vs. Mysterio&#x27;s Drone Attack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76184</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76184</div>
     <div class="set-name">Spider-Man vs. Mysterio&#x27;s Drone Attack</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76156-marvel-rise-of-the-domo/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/CbfSbsl7Xjw/maxresdefault.jpg" alt="LEGO Marvel 76156 Rise of the Domo building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/CbfSbsl7Xjw/mqdefault.jpg" alt="LEGO Marvel 76156 Rise of the Domo building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76156</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76156</div>
     <div class="set-name">Rise of the Domo</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76155-marvel-in-arishem-s-shadow/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ikNCCpOEd1Q/maxresdefault.jpg" alt="LEGO Marvel 76155 In Arishem&#x27;s Shadow building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ikNCCpOEd1Q/mqdefault.jpg" alt="LEGO Marvel 76155 In Arishem&#x27;s Shadow building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76155</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76155</div>
     <div class="set-name">In Arishem&#x27;s Shadow</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76154-marvel-deviant-ambush/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9yM-1L0I5es/maxresdefault.jpg" alt="LEGO Marvel 76154 Deviant Ambush! building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/9yM-1L0I5es/mqdefault.jpg" alt="LEGO Marvel 76154 Deviant Ambush! building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76154</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76154</div>
     <div class="set-name">Deviant Ambush!</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76145-marvel-eternals-aerial-assault/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/TkdnVl01byM/maxresdefault.jpg" alt="LEGO Marvel 76145 Eternals&#x27; Aerial Assault building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/TkdnVl01byM/mqdefault.jpg" alt="LEGO Marvel 76145 Eternals&#x27; Aerial Assault building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76145</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76145</div>
     <div class="set-name">Eternals&#x27; Aerial Assault</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76237-marvel-sanctuary-ii-endgame-battle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/R2UlKBMLL38/maxresdefault.jpg" alt="LEGO Marvel 76237 Sanctuary II: Endgame Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/R2UlKBMLL38/mqdefault.jpg" alt="LEGO Marvel 76237 Sanctuary II: Endgame Battle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76237</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76237</div>
     <div class="set-name">Sanctuary II: Endgame Battle</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76196-marvel-the-avengers-advent-calendar/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/WESgW9wegCc/maxresdefault.jpg" alt="LEGO Marvel 76196 The Avengers Advent Calendar building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/WESgW9wegCc/mqdefault.jpg" alt="LEGO Marvel 76196 The Avengers Advent Calendar building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76196</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76196</div>
     <div class="set-name">The Avengers Advent Calendar</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76194-marvel-tony-stark-s-sakaarian-iron-man/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mlJ_tQXHizk/maxresdefault.jpg" alt="LEGO Marvel 76194 Tony Stark&#x27;s Sakaarian Iron Man building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/mlJ_tQXHizk/mqdefault.jpg" alt="LEGO Marvel 76194 Tony Stark&#x27;s Sakaarian Iron Man building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76194</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76194</div>
     <div class="set-name">Tony Stark&#x27;s Sakaarian Iron Man</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76201-marvel-captain-carter-the-hydra-stomper/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AsNvSW_SRI4/maxresdefault.jpg" alt="LEGO Marvel 76201 Captain Carter &amp; The Hydra Stomper building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/AsNvSW_SRI4/mqdefault.jpg" alt="LEGO Marvel 76201 Captain Carter &amp; The Hydra Stomper building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76201</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76201</div>
     <div class="set-name">Captain Carter &amp; The Hydra Stomper</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76200-marvel-bro-thor-s-new-asgard/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Z3qqEHtIlb4/maxresdefault.jpg" alt="LEGO Marvel 76200 Bro Thor&#x27;s New Asgard building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Z3qqEHtIlb4/mqdefault.jpg" alt="LEGO Marvel 76200 Bro Thor&#x27;s New Asgard building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76200</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76200</div>
     <div class="set-name">Bro Thor&#x27;s New Asgard</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76186-marvel-black-panther-dragon-flyer/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/cPlyL20v13k/maxresdefault.jpg" alt="LEGO Marvel 76186 Black Panther Dragon Flyer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/cPlyL20v13k/mqdefault.jpg" alt="LEGO Marvel 76186 Black Panther Dragon Flyer building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76186</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76186</div>
     <div class="set-name">Black Panther Dragon Flyer</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76190-marvel-iron-man-iron-monger-mayhem/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/w1WZqu0M924/maxresdefault.jpg" alt="LEGO Marvel 76190 Iron Man: Iron Monger Mayhem building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/w1WZqu0M924/mqdefault.jpg" alt="LEGO Marvel 76190 Iron Man: Iron Monger Mayhem building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76190</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76190</div>
     <div class="set-name">Iron Man: Iron Monger Mayhem</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76191-marvel-infinity-gauntlet/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/j0o3hxm4_Mg/maxresdefault.jpg" alt="LEGO Marvel 76191 Infinity Gauntlet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/j0o3hxm4_Mg/mqdefault.jpg" alt="LEGO Marvel 76191 Infinity Gauntlet building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76191</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76191</div>
     <div class="set-name">Infinity Gauntlet</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76178-marvel-daily-bugle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/hVuFVBz1YDo/maxresdefault.jpg" alt="LEGO Marvel 76178 Daily Bugle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/hVuFVBz1YDo/mqdefault.jpg" alt="LEGO Marvel 76178 Daily Bugle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76178</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76178</div>
     <div class="set-name">Daily Bugle</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76189-marvel-captain-america-and-hydra-face-off/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/cckBZNLOTbI/maxresdefault.jpg" alt="LEGO Marvel 76189 Captain America and Hydra Face-Off building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/cckBZNLOTbI/mqdefault.jpg" alt="LEGO Marvel 76189 Captain America and Hydra Face-Off building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76189</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76189</div>
     <div class="set-name">Captain America and Hydra Face-Off</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76192-marvel-avengers-endgame-final-battle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/YrwDG3wcndM/maxresdefault.jpg" alt="LEGO Marvel 76192 Avengers: Endgame Final Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/YrwDG3wcndM/mqdefault.jpg" alt="LEGO Marvel 76192 Avengers: Endgame Final Battle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76192</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76192</div>
     <div class="set-name">Avengers: Endgame Final Battle</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76193-marvel-the-guardians-ship/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8M91yrmz_KY/maxresdefault.jpg" alt="LEGO Marvel 76193 The Guardians&#x27; Ship building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/8M91yrmz_KY/mqdefault.jpg" alt="LEGO Marvel 76193 The Guardians&#x27; Ship building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76193</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76193</div>
     <div class="set-name">The Guardians&#x27; Ship</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76198-marvel-spider-man-doctor-octopus-mech-battle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DCZmTccCSow/maxresdefault.jpg" alt="LEGO Marvel 76198 Spider-Man &amp; Doctor Octopus Mech Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/DCZmTccCSow/mqdefault.jpg" alt="LEGO Marvel 76198 Spider-Man &amp; Doctor Octopus Mech Battle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76198</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76198</div>
     <div class="set-name">Spider-Man &amp; Doctor Octopus Mech Battle</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76187-marvel-venom/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/O8aPplNr0Ls/maxresdefault.jpg" alt="LEGO Marvel 76187 Venom building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/O8aPplNr0Ls/mqdefault.jpg" alt="LEGO Marvel 76187 Venom building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76187</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76187</div>
     <div class="set-name">Venom</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30454-marvel-shang-chi-and-the-great-protector/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Q4J9Ro4LGkY/maxresdefault.jpg" alt="LEGO Marvel 30454 Shang-Chi and The Great Protector building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Q4J9Ro4LGkY/mqdefault.jpg" alt="LEGO Marvel 30454 Shang-Chi and The Great Protector building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30454</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30454</div>
     <div class="set-name">Shang-Chi and The Great Protector</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76176-marvel-escape-from-the-ten-rings/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/CShQV07X7Wg/maxresdefault.jpg" alt="LEGO Marvel 76176 Escape from The Ten Rings building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/CShQV07X7Wg/mqdefault.jpg" alt="LEGO Marvel 76176 Escape from The Ten Rings building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76176</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76176</div>
     <div class="set-name">Escape from The Ten Rings</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76177-marvel-battle-at-the-ancient-village/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0i0Wj7SN8Nw/maxresdefault.jpg" alt="LEGO Marvel 76177 Battle at the Ancient Village building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/0i0Wj7SN8Nw/mqdefault.jpg" alt="LEGO Marvel 76177 Battle at the Ancient Village building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76177</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76177</div>
     <div class="set-name">Battle at the Ancient Village</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76199-marvel-carnage/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/1C3VyRneZSQ/maxresdefault.jpg" alt="LEGO Marvel 76199 Carnage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/1C3VyRneZSQ/mqdefault.jpg" alt="LEGO Marvel 76199 Carnage building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76199</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76199</div>
     <div class="set-name">Carnage</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40454-marvel-spider-man-versus-venom-and-iron-venom/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Dmwo4ruMjU4/maxresdefault.jpg" alt="LEGO Marvel 40454 Spider-Man versus Venom and Iron Venom building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Dmwo4ruMjU4/mqdefault.jpg" alt="LEGO Marvel 40454 Spider-Man versus Venom and Iron Venom building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40454</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40454</div>
     <div class="set-name">Spider-Man versus Venom and Iron Venom</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76170-marvel-iron-man-vs-thanos/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QadmqdyRZGs/maxresdefault.jpg" alt="LEGO Marvel 76170 Iron Man vs. Thanos building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/QadmqdyRZGs/mqdefault.jpg" alt="LEGO Marvel 76170 Iron Man vs. Thanos building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76170</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76170</div>
     <div class="set-name">Iron Man vs. Thanos</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76175-marvel-attack-on-the-spider-lair/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DKBUkLFgJSU/maxresdefault.jpg" alt="LEGO Marvel 76175 Attack on the Spider Lair building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/DKBUkLFgJSU/mqdefault.jpg" alt="LEGO Marvel 76175 Attack on the Spider Lair building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76175</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76175</div>
     <div class="set-name">Attack on the Spider Lair</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76173-marvel-spider-man-and-ghost-rider-vs-carnage/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_QH94J85JfU/maxresdefault.jpg" alt="LEGO Marvel 76173 Spider-Man and Ghost Rider vs. Carnage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/_QH94J85JfU/mqdefault.jpg" alt="LEGO Marvel 76173 Spider-Man and Ghost Rider vs. Carnage building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76173</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76173</div>
     <div class="set-name">Spider-Man and Ghost Rider vs. Carnage</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76169-marvel-thor-mech-armor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/L5hjQ9ZNmw0/maxresdefault.jpg" alt="LEGO Marvel 76169 Thor Mech Armor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/L5hjQ9ZNmw0/mqdefault.jpg" alt="LEGO Marvel 76169 Thor Mech Armor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76169</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76169</div>
     <div class="set-name">Thor Mech Armor</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76172-marvel-spider-man-and-sandman-showdown/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ZflKobJIipw/maxresdefault.jpg" alt="LEGO Marvel 76172 Spider-Man and Sandman Showdown building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ZflKobJIipw/mqdefault.jpg" alt="LEGO Marvel 76172 Spider-Man and Sandman Showdown building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76172</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76172</div>
     <div class="set-name">Spider-Man and Sandman Showdown</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76168-marvel-captain-america-mech-armor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Eco9SRu7wB8/maxresdefault.jpg" alt="LEGO Marvel 76168 Captain America Mech Armor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Eco9SRu7wB8/mqdefault.jpg" alt="LEGO Marvel 76168 Captain America Mech Armor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76168</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76168</div>
     <div class="set-name">Captain America Mech Armor</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76171-marvel-miles-morales-mech-armor/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Yf3Q0P5gRac/maxresdefault.jpg" alt="LEGO Marvel 76171 Miles Morales Mech Armor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Yf3Q0P5gRac/mqdefault.jpg" alt="LEGO Marvel 76171 Miles Morales Mech Armor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76171</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76171</div>
     <div class="set-name">Miles Morales Mech Armor</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO 2021 Marvel Instructions</h2><p>7 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/66671-marvel-mech-armor-collection/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 66671 Mech Armor Collection building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 66671 Mech Armor Collection building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">66671</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">66671</div>
     <div class="set-name">Mech Armor Collection</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/242104-marvel-venom/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 242104 Venom building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 242104 Venom building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">242104</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">242104</div>
     <div class="set-name">Venom</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/242105-marvel-thor/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 242105 Thor building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 242105 Thor building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">242105</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">242105</div>
     <div class="set-name">Thor</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/242106-marvel-captain-america/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 242106 Captain America building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 242106 Captain America building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">242106</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">242106</div>
     <div class="set-name">Captain America</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/242107-marvel-war-machine/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 242107 War Machine building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 242107 War Machine building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">242107</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">242107</div>
     <div class="set-name">War Machine</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/242108-marvel-iron-spider/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 242108 Iron Spider building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 242108 Iron Spider building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">242108</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">242108</div>
     <div class="set-name">Iron Spider</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/242109-marvel-black-widow/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 242109 Black Widow building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Marvel 242109 Black Widow building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">242109</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">242109</div>
     <div class="set-name">Black Widow</div>
     <div class="set-meta">Marvel • 2021</div>
   </div>
 </a></div></main>
 <footer>
   <div class="footer-links"><a href="/about/">About</a><a href="https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/LEGOInstructionsForLEGOFans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/legoinstructionsforyou/" target="_blank" rel="noopener">Instagram</a></div>
-  <div>Brick Instructions For You is independently run by Paul.</div>
+  <div>Brick Instructions For You is independently run by Paul Critchlow.</div>
   <div style="margin-top:8px;opacity:.86;">LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorise or endorse this site.</div>
 </footer>
 <script>
 window.LEGO_SETS = [];
 let LEGO_SETS_LOADED = false;
-const LEGO_SETS_READY = fetch("/data/search-index.json", {cache:"no-store"})
- .then(response => response.ok ? response.json() : [])
- .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
- .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+let legoSetsPromise = null;
+function ensureSearchIndex() {
+ if (legoSetsPromise) return legoSetsPromise;
+ legoSetsPromise = fetch("/data/search-index.json", {cache:"default"})
+  .then(response => response.ok ? response.json() : [])
+  .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
+  .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+ return legoSetsPromise;
+}
 const input=document.getElementById("mainSearchInput");
 const typeSelect=document.getElementById("mainSearchType");
 const form=document.getElementById("mainSearchForm");
@@ -539,7 +584,7 @@ function setImageAlt(set){
  if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
  return parts.join(" ").replace(/\s+/g," ").trim();
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;
@@ -552,18 +597,18 @@ function renderResults(query,type,pushState=true){
 function showSuggestions(){
  const q=input.value.trim();const t=typeSelect.value||"all"; if(q.length<1){hideSuggestions();return;}
  const matches=searchSets(q,t).slice(0,8); if(!matches.length){hideSuggestions();return;}
- suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
+ suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",showSuggestions);typeSelect.addEventListener("change",showSuggestions);
+input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
 suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
 document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();LEGO_SETS_READY.then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();renderResults(chip.dataset.search,chip.dataset.type||"all",true);}));
+form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
 window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))LEGO_SETS_READY.then(()=>renderResults(q,t,false));})();
+(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
 </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "99db6ec5719548b582f077bfc6bb2c7f"}'></script><!-- End Cloudflare Web Analytics -->
+
 </body>
 </html>

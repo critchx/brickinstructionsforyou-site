@@ -3,19 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW"></script>
+<!-- Google tag (gtag.js), deferred until interaction/idle -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-37MCSDDYEW');
+  (() => {
+    let loaded = false;
+    const loadAnalytics = () => {
+      if (loaded) return;
+      loaded = true;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW';
+      document.head.appendChild(script);
+    };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(eventName =>
+      addEventListener(eventName, loadAnalytics, {once:true, passive:true}));
+    addEventListener('load', () => setTimeout(loadAnalytics, 8000), {once:true});
+  })();
 </script>
 <title>LEGO Disney Instructions | Brick Instructions For You</title>
 <meta name="description" content="Browse 155 LEGO Disney building instruction pages with step-by-step video guides, set details, release information and upcoming Disney sets.">
 <link rel="canonical" href="https://www.brickinstructionsforyou.com/themes/disney/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul Critchlow"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
 
 <style>
 :root{--navy:#061b35;--yellow:#ffcc00;--text:#1d1d1f;--muted:#667085;--line:#e5e7eb;--bg:#f5f5f5}
@@ -66,23 +79,14 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .results-header h1,.results-header h2{font-size:32px;margin:0 0 14px;text-transform:uppercase}
 .results-header p{margin:0;color:var(--muted)}
 .btn-outline{display:inline-block;border:1px solid #cfd5df;background:#fff;border-radius:9px;padding:14px 18px;font-weight:900;white-space:nowrap}
-.about-page-card{margin-top:10px!important}
-.about-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 6px}
-.about-action{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;padding:13px 18px;color:#fff;font-weight:900;box-shadow:0 4px 10px rgba(6,27,53,.14);transition:transform .16s ease,box-shadow .16s ease}
-.about-action:hover{color:#fff;transform:translateY(-2px);box-shadow:0 8px 16px rgba(6,27,53,.2)}
-.about-youtube{background:#e60012}
-.about-facebook{background:#1877f2}
-.about-instagram{background:linear-gradient(135deg,#833ab4,#e1306c 55%,#f77737)}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
-.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
-.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
+.badge-new{position:absolute;top:16px;left:16px;background:#c7000b;color:#fff;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
+.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
-.set-number{color:#e60012;font-weight:900;font-size:13px}
-.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
+.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -98,8 +102,7 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
-.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
+.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
@@ -108,20 +111,16 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
-.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
-.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
-.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
-.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
 </style>
 </head>
 <body>
 <div class="topline"></div>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="site-nav-inner">
-    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo"></a>
+    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo" width="900" height="260" decoding="async"></a>
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/themes/">Themes</a>
@@ -159,1256 +158,1416 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 </header>
 
 <main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/themes/">Themes</a><span>›</span><strong>Disney</strong></nav><div class="results-header"><div><h2>LEGO Disney Instructions</h2><p>155 LEGO instruction pages found in this theme.</p></div><a class="btn-outline" href="/themes/">ALL THEMES</a></div><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Disney by year</h3><nav aria-label="Browse LEGO Disney by year" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/2026/disney/">LEGO Disney 2026</a><a class="btn-outline" href="/2025/disney/">LEGO Disney 2025</a><a class="btn-outline" href="/2024/disney/">LEGO Disney 2024</a><a class="btn-outline" href="/2023/disney/">LEGO Disney 2023</a><a class="btn-outline" href="/2022/disney/">LEGO Disney 2022</a><a class="btn-outline" href="/2021/disney/">LEGO Disney 2021</a></nav></section><section class="internal-hub-links" style="margin:22px 0 28px;"><h3 style="font-size:20px;margin:0 0 12px;text-align:left;">Browse LEGO Disney subthemes</h3><nav aria-label="Browse LEGO Disney subthemes" style="display:flex;flex-wrap:wrap;gap:10px;"><a class="btn-outline" href="/themes/disney/beauty-and-the-beast/">LEGO Beauty and the Beast Instructions</a><a class="btn-outline" href="/themes/disney/cinderella/">LEGO Cinderella Instructions</a><a class="btn-outline" href="/themes/disney/disney-100/">LEGO Disney 100 Instructions</a><a class="btn-outline" href="/themes/disney/disney-parks/">LEGO Disney Parks Instructions</a><a class="btn-outline" href="/themes/disney/disney-princess/">LEGO Disney Princess Instructions</a><a class="btn-outline" href="/themes/disney/encanto/">LEGO Encanto Instructions</a><a class="btn-outline" href="/themes/disney/frozen/">LEGO Frozen Instructions</a><a class="btn-outline" href="/themes/disney/frozen-ii/">LEGO Frozen II Instructions</a><a class="btn-outline" href="/themes/disney/lightyear/">LEGO Lightyear Instructions</a><a class="btn-outline" href="/themes/disney/lilo-stitch/">LEGO Lilo &amp; Stitch Instructions</a><a class="btn-outline" href="/themes/disney/mickey-and-friends/">LEGO Mickey and Friends Instructions</a><a class="btn-outline" href="/themes/disney/mini-disney-princess/">LEGO Mini Disney Princess Instructions</a><a class="btn-outline" href="/themes/disney/moana/">LEGO Moana Instructions</a><a class="btn-outline" href="/themes/disney/moana-2/">LEGO Moana 2 Instructions</a><a class="btn-outline" href="/themes/disney/one-hundred-and-one-dalmatians/">LEGO One Hundred and One Dalmatians Instructions</a><a class="btn-outline" href="/themes/disney/raya-and-the-last-dragon/">LEGO Raya and the Last Dragon Instructions</a><a class="btn-outline" href="/themes/disney/sleeping-beauty/">LEGO Sleeping Beauty Instructions</a><a class="btn-outline" href="/themes/disney/storybook-adventures/">LEGO Storybook Adventures Instructions</a><a class="btn-outline" href="/themes/disney/tangled/">LEGO Tangled Instructions</a><a class="btn-outline" href="/themes/disney/the-little-mermaid/">LEGO The Little Mermaid Instructions</a><a class="btn-outline" href="/themes/disney/toy-story/">LEGO Toy Story Instructions</a><a class="btn-outline" href="/themes/disney/wish/">LEGO Wish Instructions</a></nav></section><div class="grid"><a class="set-card" href="/lego-instructions/43294-disney-rapunzel-s-mini-tower/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/KC2hVZtGEzk/maxresdefault.jpg" alt="LEGO Disney 43294 Rapunzel&#x27;s Mini Tower building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/KC2hVZtGEzk/mqdefault.jpg" alt="LEGO Disney 43294 Rapunzel&#x27;s Mini Tower building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43294</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43294</div>
     <div class="set-name">Rapunzel&#x27;s Mini Tower</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43282-disney-village-house-boat/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/uTGOUmYe3bo/maxresdefault.jpg" alt="LEGO Disney 43282 Village House &amp; Boat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/uTGOUmYe3bo/mqdefault.jpg" alt="LEGO Disney 43282 Village House &amp; Boat building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43282</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43282</div>
     <div class="set-name">Village House &amp; Boat</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43297-disney-rapunzel-s-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/G0RHHPWEa98/maxresdefault.jpg" alt="LEGO Disney 43297 Rapunzel&#x27;s Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/G0RHHPWEa98/mqdefault.jpg" alt="LEGO Disney 43297 Rapunzel&#x27;s Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43297</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43297</div>
     <div class="set-name">Rapunzel&#x27;s Castle</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43299-disney-ariel-s-royal-wedding-boat/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AAX-N2Zs8ug/maxresdefault.jpg" alt="LEGO Disney 43299 Ariel&#x27;s Royal Wedding Boat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/AAX-N2Zs8ug/mqdefault.jpg" alt="LEGO Disney 43299 Ariel&#x27;s Royal Wedding Boat building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43299</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43299</div>
     <div class="set-name">Ariel&#x27;s Royal Wedding Boat</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43292-disney-pua/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nDrXI-7wVX8/maxresdefault.jpg" alt="LEGO Disney 43292 Pua building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/nDrXI-7wVX8/mqdefault.jpg" alt="LEGO Disney 43292 Pua building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43292</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43292</div>
     <div class="set-name">Pua</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43296-disney-stitch-scrump/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xtC1xRO4-A4/maxresdefault.jpg" alt="LEGO Disney 43296 Stitch &amp; Scrump building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/xtC1xRO4-A4/mqdefault.jpg" alt="LEGO Disney 43296 Stitch &amp; Scrump building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43296</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43296</div>
     <div class="set-name">Stitch &amp; Scrump</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43295-disney-jasmine-s-jewellery-box/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/g9isP55iUzk/maxresdefault.jpg" alt="LEGO Disney 43295 Jasmine&#x27;s Jewellery Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/g9isP55iUzk/mqdefault.jpg" alt="LEGO Disney 43295 Jasmine&#x27;s Jewellery Box building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43295</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43295</div>
     <div class="set-name">Jasmine&#x27;s Jewellery Box</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43283-disney-cinderella-animal-friends-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/aZgJhKELNAE/maxresdefault.jpg" alt="LEGO Disney 43283 Cinderella Animal Friends Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/aZgJhKELNAE/mqdefault.jpg" alt="LEGO Disney 43283 Cinderella Animal Friends Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43283</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43283</div>
     <div class="set-name">Cinderella Animal Friends Castle</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43289-disney-belle-the-beast-s-enchanted-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/RZi8exEKmEo/maxresdefault.jpg" alt="LEGO Disney 43289 Belle &amp; the Beast&#x27;s Enchanted Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/RZi8exEKmEo/mqdefault.jpg" alt="LEGO Disney 43289 Belle &amp; the Beast&#x27;s Enchanted Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43289</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43289</div>
     <div class="set-name">Belle &amp; the Beast&#x27;s Enchanted Castle</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43281-disney-elsa-s-ice-castle-snow-ride-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IP4K6VvkdWE/maxresdefault.jpg" alt="LEGO Disney 43281 Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/IP4K6VvkdWE/mqdefault.jpg" alt="LEGO Disney 43281 Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43281</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43281</div>
     <div class="set-name">Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43293-disney-kakamora/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8I4AGHqR-44/maxresdefault.jpg" alt="LEGO Disney 43293 Kakamora building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/8I4AGHqR-44/mqdefault.jpg" alt="LEGO Disney 43293 Kakamora building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43293</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43293</div>
     <div class="set-name">Kakamora</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43302-disney-main-street-u-s-a/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/lNzcyZLFSP8/maxresdefault.jpg" alt="LEGO Disney 43302 Main Street, U.S.A. building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/lNzcyZLFSP8/mqdefault.jpg" alt="LEGO Disney 43302 Main Street, U.S.A. building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43302</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43302</div>
     <div class="set-name">Main Street, U.S.A.</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43280-disney-beach-fun-with-lilo-stitch/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dA-aVNqtd2A/maxresdefault.jpg" alt="LEGO Disney 43280 Beach Fun with Lilo &amp; Stitch building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/dA-aVNqtd2A/mqdefault.jpg" alt="LEGO Disney 43280 Beach Fun with Lilo &amp; Stitch building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43280</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43280</div>
     <div class="set-name">Beach Fun with Lilo &amp; Stitch</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76831-disney-zurg-battle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/CL1J0LqgBvg/maxresdefault.jpg" alt="LEGO Disney 76831 Zurg Battle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/CL1J0LqgBvg/mqdefault.jpg" alt="LEGO Disney 76831 Zurg Battle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76831</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76831</div>
     <div class="set-name">Zurg Battle</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76830-disney-zyclops-chase/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/i2WQ-6pwvHg/maxresdefault.jpg" alt="LEGO Disney 76830 Zyclops Chase building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/i2WQ-6pwvHg/mqdefault.jpg" alt="LEGO Disney 76830 Zyclops Chase building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76830</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76830</div>
     <div class="set-name">Zyclops Chase</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43209-disney-elsa-and-the-nokk-s-ice-stable/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zEIgPmKsbSw/maxresdefault.jpg" alt="LEGO Disney 43209 Elsa and the Nokk&#x27;s Ice Stable building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/zEIgPmKsbSw/mqdefault.jpg" alt="LEGO Disney 43209 Elsa and the Nokk&#x27;s Ice Stable building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43209</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43209</div>
     <div class="set-name">Elsa and the Nokk&#x27;s Ice Stable</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43208-disney-jasmine-and-mulan-s-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/puDJa_AVzBA/maxresdefault.jpg" alt="LEGO Disney 43208 Jasmine and Mulan&#x27;s Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/puDJa_AVzBA/mqdefault.jpg" alt="LEGO Disney 43208 Jasmine and Mulan&#x27;s Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43208</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43208</div>
     <div class="set-name">Jasmine and Mulan&#x27;s Adventure</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43207-disney-ariel-s-underwater-palace/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zTKpM2Bu7RU/maxresdefault.jpg" alt="LEGO Disney 43207 Ariel&#x27;s Underwater Palace building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/zTKpM2Bu7RU/mqdefault.jpg" alt="LEGO Disney 43207 Ariel&#x27;s Underwater Palace building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43207</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43207</div>
     <div class="set-name">Ariel&#x27;s Underwater Palace</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43206-disney-cinderella-and-prince-charming-s-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/mz8YXVC_HwQ/maxresdefault.jpg" alt="LEGO Disney 43206 Cinderella and Prince Charming&#x27;s Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/mz8YXVC_HwQ/mqdefault.jpg" alt="LEGO Disney 43206 Cinderella and Prince Charming&#x27;s Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43206</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43206</div>
     <div class="set-name">Cinderella and Prince Charming&#x27;s Castle</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43205-disney-ultimate-adventure-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/z1znnlpsyd8/maxresdefault.jpg" alt="LEGO Disney 43205 Ultimate Adventure Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/z1znnlpsyd8/mqdefault.jpg" alt="LEGO Disney 43205 Ultimate Adventure Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43205</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43205</div>
     <div class="set-name">Ultimate Adventure Castle</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43204-disney-anna-and-olaf-s-castle-fun/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/GivmIsOXGqA/maxresdefault.jpg" alt="LEGO Disney 43204 Anna and Olaf&#x27;s Castle Fun building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/GivmIsOXGqA/mqdefault.jpg" alt="LEGO Disney 43204 Anna and Olaf&#x27;s Castle Fun building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43204</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43204</div>
     <div class="set-name">Anna and Olaf&#x27;s Castle Fun</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43203-disney-aurora-merida-and-tiana-s-enchanted-creations/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/SKc0IHMPRQo/maxresdefault.jpg" alt="LEGO Disney 43203 Aurora, Merida and Tiana&#x27;s Enchanted Creations building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/SKc0IHMPRQo/mqdefault.jpg" alt="LEGO Disney 43203 Aurora, Merida and Tiana&#x27;s Enchanted Creations building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43203</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43203</div>
     <div class="set-name">Aurora, Merida and Tiana&#x27;s Enchanted Creations</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43198-disney-anna-s-castle-courtyard/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AWB8zkscaWY/maxresdefault.jpg" alt="LEGO Disney 43198 Anna&#x27;s Castle Courtyard building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/AWB8zkscaWY/mqdefault.jpg" alt="LEGO Disney 43198 Anna&#x27;s Castle Courtyard building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43198</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43198</div>
     <div class="set-name">Anna&#x27;s Castle Courtyard</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40521-disney-mini-disney-the-haunted-mansion/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/aHlEfXq-yAc/maxresdefault.jpg" alt="LEGO 40521 Mini Disney The Haunted Mansion building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/aHlEfXq-yAc/mqdefault.jpg" alt="LEGO 40521 Mini Disney The Haunted Mansion building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40521</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40521</div>
     <div class="set-name">Mini Disney The Haunted Mansion</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30559-disney-elsa-and-bruni-s-forest-camp/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/o2BziCALkXA/maxresdefault.jpg" alt="LEGO Disney 30559 Elsa and Bruni&#x27;s Forest Camp building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/o2BziCALkXA/mqdefault.jpg" alt="LEGO Disney 30559 Elsa and Bruni&#x27;s Forest Camp building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30559</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30559</div>
     <div class="set-name">Elsa and Bruni&#x27;s Forest Camp</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10780-disney-mickey-and-friends-castle-defenders/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OHcnGvIY4yQ/maxresdefault.jpg" alt="LEGO Disney 10780 Mickey and Friends Castle Defenders building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/OHcnGvIY4yQ/mqdefault.jpg" alt="LEGO Disney 10780 Mickey and Friends Castle Defenders building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">10780</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">10780</div>
     <div class="set-name">Mickey and Friends Castle Defenders</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10778-disney-mickey-minnie-and-goofy-s-fairground-fun/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ZzK9KUAEAp4/maxresdefault.jpg" alt="LEGO Disney 10778 Mickey, Minnie and Goofy&#x27;s Fairground Fun building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ZzK9KUAEAp4/mqdefault.jpg" alt="LEGO Disney 10778 Mickey, Minnie and Goofy&#x27;s Fairground Fun building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">10778</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">10778</div>
     <div class="set-name">Mickey, Minnie and Goofy&#x27;s Fairground Fun</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10777-disney-mickey-and-minnie-s-camping-trip/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/XnPYrvNJenc/maxresdefault.jpg" alt="LEGO Disney 10777 Mickey and Minnie&#x27;s Camping Trip building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/XnPYrvNJenc/mqdefault.jpg" alt="LEGO Disney 10777 Mickey and Minnie&#x27;s Camping Trip building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">10777</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">10777</div>
     <div class="set-name">Mickey and Minnie&#x27;s Camping Trip</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43231-disney-asha-s-cottage/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9NmK7fmxoSc/maxresdefault.jpg" alt="LEGO Disney 43231 Asha&#x27;s Cottage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/9NmK7fmxoSc/mqdefault.jpg" alt="LEGO Disney 43231 Asha&#x27;s Cottage building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43231</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43231</div>
     <div class="set-name">Asha&#x27;s Cottage</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43218-disney-anna-and-elsa-s-magical-carousel/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/EtgyF7OBaeA/maxresdefault.jpg" alt="LEGO Disney 43218 Anna and Elsa&#x27;s Magical Carousel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/EtgyF7OBaeA/mqdefault.jpg" alt="LEGO Disney 43218 Anna and Elsa&#x27;s Magical Carousel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43218</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43218</div>
     <div class="set-name">Anna and Elsa&#x27;s Magical Carousel</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43307-disney-alien-with-pizza-planet-rocket-ride/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/YDQGNzrYQ-U/maxresdefault.jpg" alt="LEGO Disney 43307 Alien with Pizza Planet Rocket Ride building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/YDQGNzrYQ-U/mqdefault.jpg" alt="LEGO Disney 43307 Alien with Pizza Planet Rocket Ride building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43307</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43307</div>
     <div class="set-name">Alien with Pizza Planet Rocket Ride</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43306-disney-lotso/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/XgBDcufBnX4/maxresdefault.jpg" alt="LEGO Disney 43306 Lotso building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/XgBDcufBnX4/mqdefault.jpg" alt="LEGO Disney 43306 Lotso building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43306</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43306</div>
     <div class="set-name">Lotso</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43304-disney-blaze-s-horse-ranch/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xAFqfvSxhdw/maxresdefault.jpg" alt="LEGO Disney 43304 Blaze&#x27;s Horse Ranch building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/xAFqfvSxhdw/mqdefault.jpg" alt="LEGO Disney 43304 Blaze&#x27;s Horse Ranch building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43304</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43304</div>
     <div class="set-name">Blaze&#x27;s Horse Ranch</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43301-disney-toy-story-slinky-dog-bookends/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/is4RBJir68k/maxresdefault.jpg" alt="LEGO Disney 43301 Toy Story Slinky Dog Bookends building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/is4RBJir68k/mqdefault.jpg" alt="LEGO Disney 43301 Toy Story Slinky Dog Bookends building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43301</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43301</div>
     <div class="set-name">Toy Story Slinky Dog Bookends</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43305-disney-piglet-s-birthday-fun/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/SB2B6n4y6oQ/maxresdefault.jpg" alt="LEGO Disney 43305 Piglet&#x27;s Birthday Fun building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/SB2B6n4y6oQ/mqdefault.jpg" alt="LEGO Disney 43305 Piglet&#x27;s Birthday Fun building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43305</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43305</div>
     <div class="set-name">Piglet&#x27;s Birthday Fun</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43285-disney-ariel-s-magical-mini-palace/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0ul7RnaepQM/maxresdefault.jpg" alt="LEGO Disney 43285 Ariel&#x27;s Magical Mini Palace building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/0ul7RnaepQM/mqdefault.jpg" alt="LEGO Disney 43285 Ariel&#x27;s Magical Mini Palace building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43285</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43285</div>
     <div class="set-name">Ariel&#x27;s Magical Mini Palace</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43300-disney-winnie-the-pooh/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/hDrvI52SaVk/maxresdefault.jpg" alt="LEGO Disney 43300 Winnie the Pooh building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/hDrvI52SaVk/mqdefault.jpg" alt="LEGO Disney 43300 Winnie the Pooh building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43300</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43300</div>
     <div class="set-name">Winnie the Pooh</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43288-disney-sally-s-flowerpot/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/gWa2UtqTxag/maxresdefault.jpg" alt="LEGO Disney 43288 Sally&#x27;s Flowerpot building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/gWa2UtqTxag/mqdefault.jpg" alt="LEGO Disney 43288 Sally&#x27;s Flowerpot building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43288</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43288</div>
     <div class="set-name">Sally&#x27;s Flowerpot</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43290-disney-kevin-dug/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vOT2gd_yI_k/maxresdefault.jpg" alt="LEGO Disney 43290 Kevin &amp; Dug building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/vOT2gd_yI_k/mqdefault.jpg" alt="LEGO Disney 43290 Kevin &amp; Dug building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43290</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43290</div>
     <div class="set-name">Kevin &amp; Dug</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43286-disney-the-aristocats-adorable-marie/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/rMXhPwY9T1c/maxresdefault.jpg" alt="LEGO Disney 43286 The Aristocats Adorable Marie building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/rMXhPwY9T1c/mqdefault.jpg" alt="LEGO Disney 43286 The Aristocats Adorable Marie building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43286</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43286</div>
     <div class="set-name">The Aristocats Adorable Marie</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/6614223-disney-little-heihei/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Bv6DPMExbfY/maxresdefault.jpg" alt="LEGO Disney 6614223 Little HeiHei building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Bv6DPMExbfY/mqdefault.jpg" alt="LEGO Disney 6614223 Little HeiHei building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">6614223</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">6614223</div>
     <div class="set-name">Little HeiHei</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43303-disney-mini-jasmine-rapunzel/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/o5MSzxr0to4/maxresdefault.jpg" alt="LEGO Disney 43303 Mini Jasmine &amp; Rapunzel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/o5MSzxr0to4/mqdefault.jpg" alt="LEGO Disney 43303 Mini Jasmine &amp; Rapunzel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43303</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43303</div>
     <div class="set-name">Mini Jasmine &amp; Rapunzel</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43287-disney-olaf-and-bruni-s-picnic-fun/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8ks3WLWDKTU/maxresdefault.jpg" alt="LEGO Disney 43287 Olaf and Bruni&#x27;s Picnic Fun building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/8ks3WLWDKTU/mqdefault.jpg" alt="LEGO Disney 43287 Olaf and Bruni&#x27;s Picnic Fun building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43287</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43287</div>
     <div class="set-name">Olaf and Bruni&#x27;s Picnic Fun</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43291-disney-mini-belle-tiana-with-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ZgvmbQwt4jM/maxresdefault.jpg" alt="LEGO Disney 43291 Mini Belle &amp; Tiana with Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ZgvmbQwt4jM/mqdefault.jpg" alt="LEGO Disney 43291 Mini Belle &amp; Tiana with Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43291</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43291</div>
     <div class="set-name">Mini Belle &amp; Tiana with Castle</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43284-disney-mini-anna-elsa/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Yf7jZjr0w5I/maxresdefault.jpg" alt="LEGO Disney 43284 Mini Anna &amp; Elsa building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Yf7jZjr0w5I/mqdefault.jpg" alt="LEGO Disney 43284 Mini Anna &amp; Elsa building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43284</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43284</div>
     <div class="set-name">Mini Anna &amp; Elsa</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30720-disney-ariel-flounder-s-birthday-music-fun/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8OVV - MdLac/maxresdefault.jpg" alt="LEGO Disney 30720 Ariel &amp; Flounder&#x27;s Birthday Music Fun building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/8OVV - MdLac/mqdefault.jpg" alt="LEGO Disney 30720 Ariel &amp; Flounder&#x27;s Birthday Music Fun building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30720</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30720</div>
     <div class="set-name">Ariel &amp; Flounder&#x27;s Birthday Music Fun</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43273-disney-advent-calendar-2025/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kCBNo94gYws/maxresdefault.jpg" alt="LEGO 43273 LEGO Disney Advent Calendar 2025 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/kCBNo94gYws/mqdefault.jpg" alt="LEGO 43273 LEGO Disney Advent Calendar 2025 building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43273</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43273</div>
     <div class="set-name">LEGO Disney Advent Calendar 2025</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40774-disney-classic-animation-scenes/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/qDbj438dGkY/maxresdefault.jpg" alt="LEGO Disney 40774 Classic Animation Scenes building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/qDbj438dGkY/mqdefault.jpg" alt="LEGO Disney 40774 Classic Animation Scenes building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40774</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40774</div>
     <div class="set-name">Classic Animation Scenes</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43277-disney-cruella-de-vil-s-car/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/JLtMGtneAqM/maxresdefault.jpg" alt="LEGO Disney 43277 Cruella De Vil&#x27;s Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/JLtMGtneAqM/mqdefault.jpg" alt="LEGO Disney 43277 Cruella De Vil&#x27;s Car building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43277</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43277</div>
     <div class="set-name">Cruella De Vil&#x27;s Car</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43279-disney-wall-e-and-eve/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yqHIF8ceOf0/maxresdefault.jpg" alt="LEGO Disney 43279 WALL-E and EVE building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/yqHIF8ceOf0/mqdefault.jpg" alt="LEGO Disney 43279 WALL-E and EVE building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43279</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43279</div>
     <div class="set-name">WALL-E and EVE</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43257-disney-angel/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/lihJxgxXJwk/maxresdefault.jpg" alt="LEGO Disney 43257 Angel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/lihJxgxXJwk/mqdefault.jpg" alt="LEGO Disney 43257 Angel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43257</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43257</div>
     <div class="set-name">Angel</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43271-disney-lucky-penny-101-dalmatians-puppies/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/6kd72ER9Stk/maxresdefault.jpg" alt="LEGO Disney 43271 Lucky &amp; Penny 101 Dalmatians Puppies building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/6kd72ER9Stk/mqdefault.jpg" alt="LEGO Disney 43271 Lucky &amp; Penny 101 Dalmatians Puppies building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43271</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43271</div>
     <div class="set-name">Lucky &amp; Penny 101 Dalmatians Puppies</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43274-disney-minnie-s-pet-hotel/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8WJDTauCx38/maxresdefault.jpg" alt="LEGO Disney 43274 Minnie&#x27;s Pet Hotel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/8WJDTauCx38/mqdefault.jpg" alt="LEGO Disney 43274 Minnie&#x27;s Pet Hotel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43274</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43274</div>
     <div class="set-name">Minnie&#x27;s Pet Hotel</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43258-disney-kakamora-barge/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ORfSskFbmuY/maxresdefault.jpg" alt="LEGO Disney 43258 Kakamora Barge building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ORfSskFbmuY/mqdefault.jpg" alt="LEGO Disney 43258 Kakamora Barge building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43258</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43258</div>
     <div class="set-name">Kakamora Barge</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43267-disney-princess-castle-royal-pets/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/sSmG7WzrY_M/maxresdefault.jpg" alt="LEGO Disney 43267 Princess Castle &amp; Royal Pets building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/sSmG7WzrY_M/mqdefault.jpg" alt="LEGO Disney 43267 Princess Castle &amp; Royal Pets building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43267</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43267</div>
     <div class="set-name">Princess Castle &amp; Royal Pets</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43269-disney-101-dalmatians-puppy/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QKXjf0r4qPQ/maxresdefault.jpg" alt="LEGO Disney 43269 101 Dalmatians Puppy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/QKXjf0r4qPQ/mqdefault.jpg" alt="LEGO Disney 43269 101 Dalmatians Puppy building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43269</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43269</div>
     <div class="set-name">101 Dalmatians Puppy</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43264-disney-toy-story-celebration-train-rc-car/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/p89jPYXkx8U/maxresdefault.jpg" alt="LEGO Disney 43264 Toy Story Celebration Train &amp; RC Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/p89jPYXkx8U/mqdefault.jpg" alt="LEGO Disney 43264 Toy Story Celebration Train &amp; RC Car building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43264</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43264</div>
     <div class="set-name">Toy Story Celebration Train &amp; RC Car</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43278-disney-mini-arendelle-castle-elsa-s-ice-palace/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/wixyfwybaaE/maxresdefault.jpg" alt="LEGO Disney 43278 Mini Arendelle Castle &amp; Elsa&#x27;s Ice Palace building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/wixyfwybaaE/mqdefault.jpg" alt="LEGO Disney 43278 Mini Arendelle Castle &amp; Elsa&#x27;s Ice Palace building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43278</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43278</div>
     <div class="set-name">Mini Arendelle Castle &amp; Elsa&#x27;s Ice Palace</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43262-disney-maleficent-s-and-cruella-de-vil-s-dresses/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/hqoJOcQ7G7M/maxresdefault.jpg" alt="LEGO Disney 43262 Maleficent&#x27;s and Cruella De Vil&#x27;s Dresses building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/hqoJOcQ7G7M/mqdefault.jpg" alt="LEGO Disney 43262 Maleficent&#x27;s and Cruella De Vil&#x27;s Dresses building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43262</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43262</div>
     <div class="set-name">Maleficent&#x27;s and Cruella De Vil&#x27;s Dresses</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43266-disney-cinderella-s-dress/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vdQ_tOP7sxA/maxresdefault.jpg" alt="LEGO Disney 43266 Cinderella&#x27;s Dress building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/vdQ_tOP7sxA/mqdefault.jpg" alt="LEGO Disney 43266 Cinderella&#x27;s Dress building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43266</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43266</div>
     <div class="set-name">Cinderella&#x27;s Dress</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43272-disney-heihei/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/uT0ahZv1VNw/maxresdefault.jpg" alt="LEGO Disney 43272 Heihei building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/uT0ahZv1VNw/mqdefault.jpg" alt="LEGO Disney 43272 Heihei building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43272</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43272</div>
     <div class="set-name">Heihei</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43263-disney-beauty-and-the-beast-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/COrSUQ24a3E/maxresdefault.jpg" alt="LEGO Disney 43263 Beauty and the Beast Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/COrSUQ24a3E/mqdefault.jpg" alt="LEGO Disney 43263 Beauty and the Beast Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43263</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43263</div>
     <div class="set-name">Beauty and the Beast Castle</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43268-disney-lilo-and-stitch-beach-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dw_8HZ7_yJg/maxresdefault.jpg" alt="LEGO Disney 43268 Lilo and Stitch Beach House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/dw_8HZ7_yJg/mqdefault.jpg" alt="LEGO Disney 43268 Lilo and Stitch Beach House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43268</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43268</div>
     <div class="set-name">Lilo and Stitch Beach House</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43260-disney-moana-s-island-fun/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AtKRcvSSTdY/maxresdefault.jpg" alt="LEGO Disney 43260 Moana&#x27;s Island Fun building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/AtKRcvSSTdY/mqdefault.jpg" alt="LEGO Disney 43260 Moana&#x27;s Island Fun building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43260</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43260</div>
     <div class="set-name">Moana&#x27;s Island Fun</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43275-disney-cinderella-s-castle-horse-carriage/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/-jjzFikEPeE/maxresdefault.jpg" alt="LEGO Disney 43275 Cinderella&#x27;s Castle &amp; Horse Carriage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/-jjzFikEPeE/mqdefault.jpg" alt="LEGO Disney 43275 Cinderella&#x27;s Castle &amp; Horse Carriage building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43275</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43275</div>
     <div class="set-name">Cinderella&#x27;s Castle &amp; Horse Carriage</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43261-disney-encanto-mini-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vErWq8BF3Ok/maxresdefault.jpg" alt="LEGO Disney 43261 Encanto Mini House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/vErWq8BF3Ok/mqdefault.jpg" alt="LEGO Disney 43261 Encanto Mini House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43261</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43261</div>
     <div class="set-name">Encanto Mini House</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43265-disney-arendelle-frozen-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xiOCPwRfhls/maxresdefault.jpg" alt="LEGO Disney 43265 Arendelle Frozen Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/xiOCPwRfhls/mqdefault.jpg" alt="LEGO Disney 43265 Arendelle Frozen Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43265</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43265</div>
     <div class="set-name">Arendelle Frozen Castle</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43256-disney-anna-s-sleigh-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/MLiGCOu4qP8/maxresdefault.jpg" alt="LEGO Disney 43256 Anna&#x27;s Sleigh Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/MLiGCOu4qP8/mqdefault.jpg" alt="LEGO Disney 43256 Anna&#x27;s Sleigh Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43256</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43256</div>
     <div class="set-name">Anna&#x27;s Sleigh Adventure</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30695-disney-cinderella-s-mini-garden-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/RqgQJRHLDsI/maxresdefault.jpg" alt="LEGO Disney 30695 Cinderella&#x27;s Mini Garden Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/RqgQJRHLDsI/mqdefault.jpg" alt="LEGO Disney 30695 Cinderella&#x27;s Mini Garden Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30695</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30695</div>
     <div class="set-name">Cinderella&#x27;s Mini Garden Castle</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43259-disney-twirling-ariel/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/XNI0pJjGYXk/maxresdefault.jpg" alt="LEGO Disney 43259 Twirling Ariel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/XNI0pJjGYXk/mqdefault.jpg" alt="LEGO Disney 43259 Twirling Ariel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43259</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43259</div>
     <div class="set-name">Twirling Ariel</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43270-disney-moana-s-adventure-canoe/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HGj4s4KsBZA/maxresdefault.jpg" alt="LEGO Disney 43270 Moana&#x27;s Adventure Canoe building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/HGj4s4KsBZA/mqdefault.jpg" alt="LEGO Disney 43270 Moana&#x27;s Adventure Canoe building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43270</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43270</div>
     <div class="set-name">Moana&#x27;s Adventure Canoe</div>
     <div class="set-meta">Disney • 2025</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40708-disney-mini-disney-ariel-s-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ns0aeFjszwk/maxresdefault.jpg" alt="LEGO 40708 Mini Disney Ariel&#x27;s Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ns0aeFjszwk/mqdefault.jpg" alt="LEGO 40708 Mini Disney Ariel&#x27;s Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40708</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40708</div>
     <div class="set-name">Mini Disney Ariel&#x27;s Castle</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43253-disney-advent-calendar-2024/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/6ivj9doLn0Y/maxresdefault.jpg" alt="LEGO 43253 LEGO Disney Advent Calendar 2024 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/6ivj9doLn0Y/mqdefault.jpg" alt="LEGO 43253 LEGO Disney Advent Calendar 2024 building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43253</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43253</div>
     <div class="set-name">LEGO Disney Advent Calendar 2024</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43254-disney-ariel-s-crystal-cavern/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/nTjjWger5Pk/maxresdefault.jpg" alt="LEGO Disney 43254 Ariel&#x27;s Crystal Cavern building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/nTjjWger5Pk/mqdefault.jpg" alt="LEGO Disney 43254 Ariel&#x27;s Crystal Cavern building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43254</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43254</div>
     <div class="set-name">Ariel&#x27;s Crystal Cavern</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43235-disney-ariel-s-music-stage/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/VHqMwUvFtCk/maxresdefault.jpg" alt="LEGO Disney 43235 Ariel&#x27;s Music Stage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/VHqMwUvFtCk/mqdefault.jpg" alt="LEGO Disney 43235 Ariel&#x27;s Music Stage building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43235</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43235</div>
     <div class="set-name">Ariel&#x27;s Music Stage</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40720-disney-mini-disney-sleeping-beauty-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/vy02c8o5rIQ/maxresdefault.jpg" alt="LEGO 40720 Mini Disney Sleeping Beauty Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/vy02c8o5rIQ/mqdefault.jpg" alt="LEGO 40720 Mini Disney Sleeping Beauty Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40720</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40720</div>
     <div class="set-name">Mini Disney Sleeping Beauty Castle</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43243-disney-simba-the-lion-king-cub/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8scF5mHPSoI/maxresdefault.jpg" alt="LEGO Disney 43243 Simba the Lion King Cub building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/8scF5mHPSoI/mqdefault.jpg" alt="LEGO Disney 43243 Simba the Lion King Cub building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43243</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43243</div>
     <div class="set-name">Simba the Lion King Cub</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43240-disney-maleficent-s-dragon-form-and-aurora-s-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/DiQ-T3DDW70/maxresdefault.jpg" alt="LEGO Disney 43240 Maleficent&#x27;s Dragon Form and Aurora&#x27;s Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/DiQ-T3DDW70/mqdefault.jpg" alt="LEGO Disney 43240 Maleficent&#x27;s Dragon Form and Aurora&#x27;s Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43240</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43240</div>
     <div class="set-name">Maleficent&#x27;s Dragon Form and Aurora&#x27;s Castle</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43245-disney-the-magical-madrigal-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zBpZRW6CmYU/maxresdefault.jpg" alt="LEGO Disney 43245 The Magical Madrigal House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/zBpZRW6CmYU/mqdefault.jpg" alt="LEGO Disney 43245 The Magical Madrigal House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43245</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43245</div>
     <div class="set-name">The Magical Madrigal House</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43251-disney-antonio-s-animal-sanctuary/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/1_CqsBZYqv4/maxresdefault.jpg" alt="LEGO Disney 43251 Antonio&#x27;s Animal Sanctuary building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/1_CqsBZYqv4/mqdefault.jpg" alt="LEGO Disney 43251 Antonio&#x27;s Animal Sanctuary building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43251</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43251</div>
     <div class="set-name">Antonio&#x27;s Animal Sanctuary</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43244-disney-elsa-s-ice-palace/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/bbwmKk_IFjU/maxresdefault.jpg" alt="LEGO Disney 43244 Elsa&#x27;s Ice Palace building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/bbwmKk_IFjU/mqdefault.jpg" alt="LEGO Disney 43244 Elsa&#x27;s Ice Palace building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43244</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43244</div>
     <div class="set-name">Elsa&#x27;s Ice Palace</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43252-disney-moana-s-flowerpot/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/YSCRMrd3hNc/maxresdefault.jpg" alt="LEGO Disney 43252 Moana&#x27;s Flowerpot building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/YSCRMrd3hNc/mqdefault.jpg" alt="LEGO Disney 43252 Moana&#x27;s Flowerpot building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43252</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43252</div>
     <div class="set-name">Moana&#x27;s Flowerpot</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43276-disney-snow-white-s-jewellery-box/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/_QN060JG30A/maxresdefault.jpg" alt="LEGO Disney 43276 Snow White&#x27;s Jewellery Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/_QN060JG30A/mqdefault.jpg" alt="LEGO Disney 43276 Snow White&#x27;s Jewellery Box building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43276</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43276</div>
     <div class="set-name">Snow White&#x27;s Jewellery Box</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43247-disney-young-simba-the-lion-king/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ug4lUzY82QA/maxresdefault.jpg" alt="LEGO Disney 43247 Young Simba the Lion King building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ug4lUzY82QA/mqdefault.jpg" alt="LEGO Disney 43247 Young Simba the Lion King building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43247</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43247</div>
     <div class="set-name">Young Simba the Lion King</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43248-disney-inside-out-2-mood-cubes/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/alz4b9_IXWU/maxresdefault.jpg" alt="LEGO Disney 43248 Inside Out 2 Mood Cubes building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/alz4b9_IXWU/mqdefault.jpg" alt="LEGO Disney 43248 Inside Out 2 Mood Cubes building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43248</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43248</div>
     <div class="set-name">Inside Out 2 Mood Cubes</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43239-disney-mirabel-s-photo-frame-and-jewellery-box/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/rUIZYucK34M/maxresdefault.jpg" alt="LEGO Disney 43239 Mirabel&#x27;s Photo Frame and Jewellery Box building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/rUIZYucK34M/mqdefault.jpg" alt="LEGO Disney 43239 Mirabel&#x27;s Photo Frame and Jewellery Box building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43239</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43239</div>
     <div class="set-name">Mirabel&#x27;s Photo Frame and Jewellery Box</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43237-disney-isabela-s-flowerpot/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/x6w_b718M5w/maxresdefault.jpg" alt="LEGO Disney 43237 Isabela&#x27;s Flowerpot building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/x6w_b718M5w/mqdefault.jpg" alt="LEGO Disney 43237 Isabela&#x27;s Flowerpot building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43237</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43237</div>
     <div class="set-name">Isabela&#x27;s Flowerpot</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43242-disney-snow-white-and-the-seven-dwarfs-cottage/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/e_UnwTLl3cE/maxresdefault.jpg" alt="LEGO Disney 43242 Snow White and the Seven Dwarfs&#x27; Cottage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/e_UnwTLl3cE/mqdefault.jpg" alt="LEGO Disney 43242 Snow White and the Seven Dwarfs&#x27; Cottage building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43242</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43242</div>
     <div class="set-name">Snow White and the Seven Dwarfs&#x27; Cottage</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43249-disney-stitch/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/roMGsv_M59o/maxresdefault.jpg" alt="LEGO Disney 43249 Stitch building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/roMGsv_M59o/mqdefault.jpg" alt="LEGO Disney 43249 Stitch building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43249</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43249</div>
     <div class="set-name">Stitch</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43241-disney-rapunzel-s-tower-the-snuggly-duckling/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PZXacWmvZ58/maxresdefault.jpg" alt="LEGO Disney 43241 Rapunzel&#x27;s Tower &amp; The Snuggly Duckling building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/PZXacWmvZ58/mqdefault.jpg" alt="LEGO Disney 43241 Rapunzel&#x27;s Tower &amp; The Snuggly Duckling building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43241</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43241</div>
     <div class="set-name">Rapunzel&#x27;s Tower &amp; The Snuggly Duckling</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43238-disney-elsa-s-frozen-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HET1MzkA8hs/maxresdefault.jpg" alt="LEGO Disney 43238 Elsa&#x27;s Frozen Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/HET1MzkA8hs/mqdefault.jpg" alt="LEGO Disney 43238 Elsa&#x27;s Frozen Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43238</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43238</div>
     <div class="set-name">Elsa&#x27;s Frozen Castle</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30661-disney-asha-s-welcome-booth/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/E35KCdkKFaQ/maxresdefault.jpg" alt="LEGO Disney 30661 Asha&#x27;s Welcome Booth building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/E35KCdkKFaQ/mqdefault.jpg" alt="LEGO Disney 30661 Asha&#x27;s Welcome Booth building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30661</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30661</div>
     <div class="set-name">Asha&#x27;s Welcome Booth</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43246-disney-princess-market-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4s_i8oYmLcY/maxresdefault.jpg" alt="LEGO 43246 Disney Princess Market Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/4s_i8oYmLcY/mqdefault.jpg" alt="LEGO 43246 Disney Princess Market Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43246</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43246</div>
     <div class="set-name">Disney Princess Market Adventure</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30671-disney-aurora-s-forest-playground/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/KzfOKWshQPQ/maxresdefault.jpg" alt="LEGO Disney 30671 Aurora&#x27;s Forest Playground building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/KzfOKWshQPQ/mqdefault.jpg" alt="LEGO Disney 30671 Aurora&#x27;s Forest Playground building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30671</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30671</div>
     <div class="set-name">Aurora&#x27;s Forest Playground</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43233-disney-belle-s-storytime-horse-carriage/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/2c6N2MRtBt4/maxresdefault.jpg" alt="LEGO Disney 43233 Belle&#x27;s Storytime Horse Carriage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/2c6N2MRtBt4/mqdefault.jpg" alt="LEGO Disney 43233 Belle&#x27;s Storytime Horse Carriage building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43233</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43233</div>
     <div class="set-name">Belle&#x27;s Storytime Horse Carriage</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40659-disney-mini-steamboat-willie/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/zbmxji25krc/maxresdefault.jpg" alt="LEGO Disney 40659 Mini Steamboat Willie building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/zbmxji25krc/mqdefault.jpg" alt="LEGO Disney 40659 Mini Steamboat Willie building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40659</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40659</div>
     <div class="set-name">Mini Steamboat Willie</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43223-disney-asha-in-the-city-of-rosas/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/EAMQeIfKcbY/maxresdefault.jpg" alt="LEGO Disney 43223 Asha in the City of Rosas building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/EAMQeIfKcbY/mqdefault.jpg" alt="LEGO Disney 43223 Asha in the City of Rosas building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43223</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43223</div>
     <div class="set-name">Asha in the City of Rosas</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43224-disney-king-magnifico-s-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/eCt54ZY5xgo/maxresdefault.jpg" alt="LEGO Disney 43224 King Magnifico&#x27;s Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/eCt54ZY5xgo/mqdefault.jpg" alt="LEGO Disney 43224 King Magnifico&#x27;s Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43224</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43224</div>
     <div class="set-name">King Magnifico&#x27;s Castle</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40613-disney-mini-disney-palace-of-agrabah/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/6j9VN_5UnD4/maxresdefault.jpg" alt="LEGO 40613 Mini Disney Palace of Agrabah building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/6j9VN_5UnD4/mqdefault.jpg" alt="LEGO 40613 Mini Disney Palace of Agrabah building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40613</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40613</div>
     <div class="set-name">Mini Disney Palace of Agrabah</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43232-disney-peter-pan-wendy-s-flight-over-london/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/cPCfvptnhxY/maxresdefault.jpg" alt="LEGO Disney 43232 Peter Pan &amp; Wendy&#x27;s Flight over London building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/cPCfvptnhxY/mqdefault.jpg" alt="LEGO Disney 43232 Peter Pan &amp; Wendy&#x27;s Flight over London building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43232</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43232</div>
     <div class="set-name">Peter Pan &amp; Wendy&#x27;s Flight over London</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43230-disney-walt-disney-tribute-camera/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/eAoVfJBNoLA/maxresdefault.jpg" alt="LEGO 43230 Walt Disney Tribute Camera building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/eAoVfJBNoLA/mqdefault.jpg" alt="LEGO 43230 Walt Disney Tribute Camera building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43230</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43230</div>
     <div class="set-name">Walt Disney Tribute Camera</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43222-disney-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/fJyUJjjiABI/maxresdefault.jpg" alt="LEGO 43222 Disney Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/fJyUJjjiABI/mqdefault.jpg" alt="LEGO 43222 Disney Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43222</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43222</div>
     <div class="set-name">Disney Castle</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43227-disney-villain-icons/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/7Kxd44PyJLg/maxresdefault.jpg" alt="LEGO Disney 43227 Villain Icons building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/7Kxd44PyJLg/mqdefault.jpg" alt="LEGO Disney 43227 Villain Icons building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43227</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43227</div>
     <div class="set-name">Villain Icons</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43226-disney-duos/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/8EDZltYfLGk/maxresdefault.jpg" alt="LEGO 43226 Disney Duos building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/8EDZltYfLGk/mqdefault.jpg" alt="LEGO 43226 Disney Duos building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43226</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43226</div>
     <div class="set-name">Disney Duos</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43221-disney-100-years-of-disney-animation-icons/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Z4y9Imb4IkY/maxresdefault.jpg" alt="LEGO 43221 100 Years of Disney Animation Icons building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Z4y9Imb4IkY/mqdefault.jpg" alt="LEGO 43221 100 Years of Disney Animation Icons building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43221</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43221</div>
     <div class="set-name">100 Years of Disney Animation Icons</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43215-disney-the-enchanted-treehouse/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/5mg58iMaBUs/maxresdefault.jpg" alt="LEGO Disney 43215 The Enchanted Treehouse building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/5mg58iMaBUs/mqdefault.jpg" alt="LEGO Disney 43215 The Enchanted Treehouse building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43215</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43215</div>
     <div class="set-name">The Enchanted Treehouse</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43229-disney-ariel-s-treasure-chest/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/yyBZKUAyL-k/maxresdefault.jpg" alt="LEGO Disney 43229 Ariel&#x27;s Treasure Chest building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/yyBZKUAyL-k/mqdefault.jpg" alt="LEGO Disney 43229 Ariel&#x27;s Treasure Chest building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43229</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43229</div>
     <div class="set-name">Ariel&#x27;s Treasure Chest</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43225-disney-the-little-mermaid-royal-clamshell/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/y3nlUg26zV4/maxresdefault.jpg" alt="LEGO Disney 43225 The Little Mermaid Royal Clamshell building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/y3nlUg26zV4/mqdefault.jpg" alt="LEGO Disney 43225 The Little Mermaid Royal Clamshell building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43225</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43225</div>
     <div class="set-name">The Little Mermaid Royal Clamshell</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43212-disney-celebration-train/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/1mw9v20eKNQ/maxresdefault.jpg" alt="LEGO 43212 Disney Celebration Train building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/1mw9v20eKNQ/mqdefault.jpg" alt="LEGO 43212 Disney Celebration Train building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43212</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43212</div>
     <div class="set-name">Disney Celebration Train</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43217-disney-up-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ZhEumN9s5dg/maxresdefault.jpg" alt="LEGO Disney 43217 &#x27;Up&#x27; House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/ZhEumN9s5dg/mqdefault.jpg" alt="LEGO Disney 43217 &#x27;Up&#x27; House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43217</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43217</div>
     <div class="set-name">&#x27;Up&#x27; House</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43220-disney-peter-pan-wendy-s-storybook-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/SR1_NH1aVWc/maxresdefault.jpg" alt="LEGO Disney 43220 Peter Pan &amp; Wendy&#x27;s Storybook Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/SR1_NH1aVWc/mqdefault.jpg" alt="LEGO Disney 43220 Peter Pan &amp; Wendy&#x27;s Storybook Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43220</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43220</div>
     <div class="set-name">Peter Pan &amp; Wendy&#x27;s Storybook Adventure</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43219-disney-princess-creative-castles/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kz5HYHpjbjM/maxresdefault.jpg" alt="LEGO 43219 Disney Princess Creative Castles building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/kz5HYHpjbjM/mqdefault.jpg" alt="LEGO 43219 Disney Princess Creative Castles building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43219</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43219</div>
     <div class="set-name">Disney Princess Creative Castles</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30646-disney-moana-s-dolphin-cove/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/A_ZdUrJhkC8/maxresdefault.jpg" alt="LEGO Disney 30646 Moana&#x27;s Dolphin Cove building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/A_ZdUrJhkC8/mqdefault.jpg" alt="LEGO Disney 30646 Moana&#x27;s Dolphin Cove building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30646</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30646</div>
     <div class="set-name">Moana&#x27;s Dolphin Cove</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43211-disney-aurora-s-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/td9zbVYb_Zc/maxresdefault.jpg" alt="LEGO Disney 43211 Aurora&#x27;s Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/td9zbVYb_Zc/mqdefault.jpg" alt="LEGO Disney 43211 Aurora&#x27;s Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43211</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43211</div>
     <div class="set-name">Aurora&#x27;s Castle</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43216-disney-princess-enchanted-journey/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/s-DNQYnRJzs/maxresdefault.jpg" alt="LEGO Disney 43216 Princess Enchanted Journey building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/s-DNQYnRJzs/mqdefault.jpg" alt="LEGO Disney 43216 Princess Enchanted Journey building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43216</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43216</div>
     <div class="set-name">Princess Enchanted Journey</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43210-disney-moana-s-wayfinding-boat/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Yc2qJl1lzJg/maxresdefault.jpg" alt="LEGO Disney 43210 Moana&#x27;s Wayfinding Boat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Yc2qJl1lzJg/mqdefault.jpg" alt="LEGO Disney 43210 Moana&#x27;s Wayfinding Boat building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43210</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43210</div>
     <div class="set-name">Moana&#x27;s Wayfinding Boat</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43214-disney-twirling-rapunzel/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/6BWNqg735b4/maxresdefault.jpg" alt="LEGO Disney 43214 Twirling Rapunzel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/6BWNqg735b4/mqdefault.jpg" alt="LEGO Disney 43214 Twirling Rapunzel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43214</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43214</div>
     <div class="set-name">Twirling Rapunzel</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/76832-disney-xl-15-spaceship/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Xhx397alswc/maxresdefault.jpg" alt="LEGO Disney 76832 XL-15 Spaceship building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Xhx397alswc/mqdefault.jpg" alt="LEGO Disney 76832 XL-15 Spaceship building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">76832</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">76832</div>
     <div class="set-name">XL-15 Spaceship</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43199-disney-elsa-s-castle-courtyard/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/2Qll7fhrA2M/maxresdefault.jpg" alt="LEGO Disney 43199 Elsa&#x27;s Castle Courtyard building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/2Qll7fhrA2M/mqdefault.jpg" alt="LEGO Disney 43199 Elsa&#x27;s Castle Courtyard building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43199</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43199</div>
     <div class="set-name">Elsa&#x27;s Castle Courtyard</div>
     <div class="set-meta">Disney • 2022</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43200-disney-antonio-s-magical-door/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dHQ54WW_T7Y/maxresdefault.jpg" alt="LEGO Disney 43200 Antonio&#x27;s Magical Door building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/dHQ54WW_T7Y/mqdefault.jpg" alt="LEGO Disney 43200 Antonio&#x27;s Magical Door building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43200</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43200</div>
     <div class="set-name">Antonio&#x27;s Magical Door</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43201-disney-isabela-s-magical-door/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/aDoMO0kSuJk/maxresdefault.jpg" alt="LEGO Disney 43201 Isabela&#x27;s Magical Door building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/aDoMO0kSuJk/mqdefault.jpg" alt="LEGO Disney 43201 Isabela&#x27;s Magical Door building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43201</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43201</div>
     <div class="set-name">Isabela&#x27;s Magical Door</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43202-disney-the-madrigal-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/KGWWbFAtlEU/maxresdefault.jpg" alt="LEGO Disney 43202 The Madrigal House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/KGWWbFAtlEU/mqdefault.jpg" alt="LEGO Disney 43202 The Madrigal House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43202</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43202</div>
     <div class="set-name">The Madrigal House</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40478-disney-mini-disney-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/aZ4PZ8HEIlU/maxresdefault.jpg" alt="LEGO 40478 Mini Disney Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/aZ4PZ8HEIlU/mqdefault.jpg" alt="LEGO 40478 Mini Disney Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40478</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">40478</div>
     <div class="set-name">Mini Disney Castle</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43193-disney-ariel-belle-cinderella-and-tiana-s-storybook-adventures/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/oEUjdOAu7WM/maxresdefault.jpg" alt="LEGO Disney 43193 Ariel, Belle, Cinderella and Tiana&#x27;s Storybook Adventures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/oEUjdOAu7WM/mqdefault.jpg" alt="LEGO Disney 43193 Ariel, Belle, Cinderella and Tiana&#x27;s Storybook Adventures building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43193</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43193</div>
     <div class="set-name">Ariel, Belle, Cinderella and Tiana&#x27;s Storybook Adventures</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43195-disney-belle-and-rapunzel-s-royal-stables/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/4rW3PlxFTCc/maxresdefault.jpg" alt="LEGO Disney 43195 Belle and Rapunzel&#x27;s Royal Stables building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/4rW3PlxFTCc/mqdefault.jpg" alt="LEGO Disney 43195 Belle and Rapunzel&#x27;s Royal Stables building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43195</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43195</div>
     <div class="set-name">Belle and Rapunzel&#x27;s Royal Stables</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43197-disney-the-ice-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/61kNjUvgSCk/maxresdefault.jpg" alt="LEGO Disney 43197 The Ice Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/61kNjUvgSCk/mqdefault.jpg" alt="LEGO Disney 43197 The Ice Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43197</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43197</div>
     <div class="set-name">The Ice Castle</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43196-disney-belle-and-the-beast-s-castle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/11SdEx1XaqM/maxresdefault.jpg" alt="LEGO Disney 43196 Belle and the Beast&#x27;s Castle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/11SdEx1XaqM/mqdefault.jpg" alt="LEGO Disney 43196 Belle and the Beast&#x27;s Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43196</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43196</div>
     <div class="set-name">Belle and the Beast&#x27;s Castle</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43194-disney-anna-and-elsa-s-frozen-wonderland/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Qb1Tef4Uz1s/maxresdefault.jpg" alt="LEGO Disney 43194 Anna and Elsa&#x27;s Frozen Wonderland building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/Qb1Tef4Uz1s/mqdefault.jpg" alt="LEGO Disney 43194 Anna and Elsa&#x27;s Frozen Wonderland building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43194</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43194</div>
     <div class="set-name">Anna and Elsa&#x27;s Frozen Wonderland</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10774-disney-mickey-mouse-minnie-mouse-s-space-rocket/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/RiFZFg7mLBg/maxresdefault.jpg" alt="LEGO Disney 10774 Mickey Mouse &amp; Minnie Mouse&#x27;s Space Rocket building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/RiFZFg7mLBg/mqdefault.jpg" alt="LEGO Disney 10774 Mickey Mouse &amp; Minnie Mouse&#x27;s Space Rocket building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">10774</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">10774</div>
     <div class="set-name">Mickey Mouse &amp; Minnie Mouse&#x27;s Space Rocket</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10775-disney-mickey-mouse-donald-duck-s-farm/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/YcL33vD7rWI/maxresdefault.jpg" alt="LEGO Disney 10775 Mickey Mouse &amp; Donald Duck&#x27;s Farm building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/YcL33vD7rWI/mqdefault.jpg" alt="LEGO Disney 10775 Mickey Mouse &amp; Donald Duck&#x27;s Farm building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">10775</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">10775</div>
     <div class="set-name">Mickey Mouse &amp; Donald Duck&#x27;s Farm</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10776-disney-mickey-friends-fire-truck-station/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/daKgfUDCRec/maxresdefault.jpg" alt="LEGO Disney 10776 Mickey &amp; Friends Fire Truck &amp; Station building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/daKgfUDCRec/mqdefault.jpg" alt="LEGO Disney 10776 Mickey &amp; Friends Fire Truck &amp; Station building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">10776</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">10776</div>
     <div class="set-name">Mickey &amp; Friends Fire Truck &amp; Station</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10772-disney-mickey-mouse-s-propeller-plane/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/tjKkFCmO8GM/maxresdefault.jpg" alt="LEGO Disney 10772 Mickey Mouse&#x27;s Propeller Plane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/tjKkFCmO8GM/mqdefault.jpg" alt="LEGO Disney 10772 Mickey Mouse&#x27;s Propeller Plane building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">10772</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">10772</div>
     <div class="set-name">Mickey Mouse&#x27;s Propeller Plane</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/10773-disney-minnie-mouse-s-ice-cream-shop/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/aJMAFdVzmow/maxresdefault.jpg" alt="LEGO Disney 10773 Minnie Mouse&#x27;s Ice Cream Shop building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/aJMAFdVzmow/mqdefault.jpg" alt="LEGO Disney 10773 Minnie Mouse&#x27;s Ice Cream Shop building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">10773</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">10773</div>
     <div class="set-name">Minnie Mouse&#x27;s Ice Cream Shop</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30558-disney-raya-and-the-ongi-s-heart-lands-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/gbmanx3DWCM/maxresdefault.jpg" alt="LEGO Disney 30558 Raya and the Ongi&#x27;s Heart Lands Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/gbmanx3DWCM/mqdefault.jpg" alt="LEGO Disney 30558 Raya and the Ongi&#x27;s Heart Lands Adventure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30558</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30558</div>
     <div class="set-name">Raya and the Ongi&#x27;s Heart Lands Adventure</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43184-disney-raya-and-sisu-dragon/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xFyBRtdHMNU/maxresdefault.jpg" alt="LEGO Disney 43184 Raya and Sisu Dragon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/xFyBRtdHMNU/mqdefault.jpg" alt="LEGO Disney 43184 Raya and Sisu Dragon building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43184</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43184</div>
     <div class="set-name">Raya and Sisu Dragon</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43181-disney-raya-and-the-heart-palace/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/88qP6TvR7ws/maxresdefault.jpg" alt="LEGO Disney 43181 Raya and the Heart Palace building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/88qP6TvR7ws/mqdefault.jpg" alt="LEGO Disney 43181 Raya and the Heart Palace building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43181</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43181</div>
     <div class="set-name">Raya and the Heart Palace</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43185-disney-boun-s-boat/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/TwlHGMf59bs/maxresdefault.jpg" alt="LEGO Disney 43185 Boun&#x27;s Boat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/TwlHGMf59bs/mqdefault.jpg" alt="LEGO Disney 43185 Boun&#x27;s Boat building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43185</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43185</div>
     <div class="set-name">Boun&#x27;s Boat</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/30391-disney-rapunzel-s-boat/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/rFdbKXA4x6w/maxresdefault.jpg" alt="LEGO Disney 30391 Rapunzel&#x27;s Boat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/rFdbKXA4x6w/mqdefault.jpg" alt="LEGO Disney 30391 Rapunzel&#x27;s Boat building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">30391</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">30391</div>
     <div class="set-name">Rapunzel&#x27;s Boat</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43192-disney-cinderella-s-royal-carriage/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/NjzX1LzZT3A/maxresdefault.jpg" alt="LEGO Disney 43192 Cinderella&#x27;s Royal Carriage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/NjzX1LzZT3A/mqdefault.jpg" alt="LEGO Disney 43192 Cinderella&#x27;s Royal Carriage building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43192</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43192</div>
     <div class="set-name">Cinderella&#x27;s Royal Carriage</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43189-disney-elsa-and-the-nokk-storybook-adventures/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/fimqiJq9rTk/maxresdefault.jpg" alt="LEGO Disney 43189 Elsa and the Nokk Storybook Adventures building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/fimqiJq9rTk/mqdefault.jpg" alt="LEGO Disney 43189 Elsa and the Nokk Storybook Adventures building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43189</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43189</div>
     <div class="set-name">Elsa and the Nokk Storybook Adventures</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43191-disney-ariel-s-celebration-boat/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/GJwD3JIoMCc/maxresdefault.jpg" alt="LEGO Disney 43191 Ariel&#x27;s Celebration Boat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/GJwD3JIoMCc/mqdefault.jpg" alt="LEGO Disney 43191 Ariel&#x27;s Celebration Boat building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43191</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43191</div>
     <div class="set-name">Ariel&#x27;s Celebration Boat</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43186-disney-bruni-the-salamander-buildable-character/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/5wq7JMH0zUM/maxresdefault.jpg" alt="LEGO Disney 43186 Bruni the Salamander Buildable Character building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new">NEW</span>
+  <img src="https://i.ytimg.com/vi/5wq7JMH0zUM/mqdefault.jpg" alt="LEGO Disney 43186 Bruni the Salamander Buildable Character building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43186</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">43186</div>
     <div class="set-name">Bruni the Salamander Buildable Character</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO Disney Instructions</h2><p>13 instruction pages waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/43298-disney-advent-calendar-2026/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 43298 LEGO Disney Advent Calendar 2026 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO 43298 LEGO Disney Advent Calendar 2026 building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43298</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">43298</div>
     <div class="set-name">LEGO Disney Advent Calendar 2026</div>
     <div class="set-meta">Disney • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43234-disney-elsa-s-frozen-treats/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 43234 Elsa&#x27;s Frozen Treats building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 43234 Elsa&#x27;s Frozen Treats building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43234</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">43234</div>
     <div class="set-name">Elsa&#x27;s Frozen Treats</div>
     <div class="set-meta">Disney • 2024</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/40600-disney-100-years-celebration/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 40600 Disney 100 Years Celebration building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO 40600 Disney 100 Years Celebration building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">40600</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">40600</div>
     <div class="set-name">Disney 100 Years Celebration</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/43213-disney-the-little-mermaid-story-book/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 43213 The Little Mermaid Story Book building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 43213 The Little Mermaid Story Book building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43213</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">43213</div>
     <div class="set-name">The Little Mermaid Story Book</div>
     <div class="set-meta">Disney • 2023</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/302101-disney-rapunzel-s-dressing-table/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302101 Rapunzel&#x27;s Dressing Table building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302101 Rapunzel&#x27;s Dressing Table building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">302101</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">302101</div>
     <div class="set-name">Rapunzel&#x27;s Dressing Table</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/302102-disney-rapunzel-hairbrush/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302102 Rapunzel &amp; Hairbrush building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302102 Rapunzel &amp; Hairbrush building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">302102</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">302102</div>
     <div class="set-name">Rapunzel &amp; Hairbrush</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/302103-disney-cinderella-s-kitchen/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302103 Cinderella&#x27;s Kitchen building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302103 Cinderella&#x27;s Kitchen building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">302103</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">302103</div>
     <div class="set-name">Cinderella&#x27;s Kitchen</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/302104-disney-cinderella/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302104 Cinderella building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302104 Cinderella building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">302104</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">302104</div>
     <div class="set-name">Cinderella</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/302105-disney-lumiere-cogsworth-and-sultan/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302105 Lumiere, Cogsworth and Sultan building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302105 Lumiere, Cogsworth and Sultan building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">302105</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">302105</div>
     <div class="set-name">Lumiere, Cogsworth and Sultan</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/302106-disney-princess-ariel/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302106 Princess Ariel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302106 Princess Ariel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">302106</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">302106</div>
     <div class="set-name">Princess Ariel</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/302107-disney-cinderella-s-carriage/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302107 Cinderella&#x27;s Carriage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302107 Cinderella&#x27;s Carriage building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">302107</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">302107</div>
     <div class="set-name">Cinderella&#x27;s Carriage</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/302108-disney-belle/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302108 Belle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302108 Belle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">302108</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">302108</div>
     <div class="set-name">Belle</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/302109-disney-fairy-godmother/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302109 Fairy Godmother building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  <span class="badge-new badge-soon">COMING SOON</span>
+  <img src="/assets/coming-soon-option3.svg" alt="LEGO Disney 302109 Fairy Godmother building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">302109</div><span class="badge-new badge-soon">COMING SOON</span></div>
+    <div class="set-number">302109</div>
     <div class="set-name">Fairy Godmother</div>
     <div class="set-meta">Disney • 2021</div>
   </div>
 </a></div></main>
 <footer>
   <div class="footer-links"><a href="/about/">About</a><a href="https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/LEGOInstructionsForLEGOFans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/legoinstructionsforyou/" target="_blank" rel="noopener">Instagram</a></div>
-  <div>Brick Instructions For You is independently run by Paul.</div>
+  <div>Brick Instructions For You is independently run by Paul Critchlow.</div>
   <div style="margin-top:8px;opacity:.86;">LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorise or endorse this site.</div>
 </footer>
 <script>
 window.LEGO_SETS = [];
 let LEGO_SETS_LOADED = false;
-const LEGO_SETS_READY = fetch("/data/search-index.json", {cache:"no-store"})
- .then(response => response.ok ? response.json() : [])
- .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
- .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+let legoSetsPromise = null;
+function ensureSearchIndex() {
+ if (legoSetsPromise) return legoSetsPromise;
+ legoSetsPromise = fetch("/data/search-index.json", {cache:"default"})
+  .then(response => response.ok ? response.json() : [])
+  .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
+  .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+ return legoSetsPromise;
+}
 const input=document.getElementById("mainSearchInput");
 const typeSelect=document.getElementById("mainSearchType");
 const form=document.getElementById("mainSearchForm");
@@ -1451,7 +1610,7 @@ function setImageAlt(set){
  if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
  return parts.join(" ").replace(/\s+/g," ").trim();
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;
@@ -1464,18 +1623,18 @@ function renderResults(query,type,pushState=true){
 function showSuggestions(){
  const q=input.value.trim();const t=typeSelect.value||"all"; if(q.length<1){hideSuggestions();return;}
  const matches=searchSets(q,t).slice(0,8); if(!matches.length){hideSuggestions();return;}
- suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
+ suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",showSuggestions);typeSelect.addEventListener("change",showSuggestions);
+input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
 suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
 document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();LEGO_SETS_READY.then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();renderResults(chip.dataset.search,chip.dataset.type||"all",true);}));
+form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
 window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))LEGO_SETS_READY.then(()=>renderResults(q,t,false));})();
+(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
 </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "99db6ec5719548b582f077bfc6bb2c7f"}'></script><!-- End Cloudflare Web Analytics -->
+
 </body>
 </html>
