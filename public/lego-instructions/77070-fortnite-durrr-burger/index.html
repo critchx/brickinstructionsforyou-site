@@ -148,7 +148,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
         <section id="video" class="video-hero" style="margin:0 auto 24px;max-width:1050px;scroll-margin-top:18px;">
           <h3 style="font-size:24px;margin:0 0 14px;text-align:left;">Instruction videos</h3>
           <div style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.14);background:#000;">
-            <iframe id="instruction-video-player" src="https://www.youtube.com/embed/c7zYCxJJytk" title="Durrr Burger video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
+            <iframe id="instruction-video-player" src="https://www.youtube.com/embed/c7zYCxJJytk?enablejsapi=1&amp;origin=https%3A%2F%2Fwww.brickinstructionsforyou.com&amp;rel=0" title="Durrr Burger video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
           </div>
         </section>
         
@@ -163,49 +163,104 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
   
   <section class="instruction-intro">
     <h2 style="font-size:22px;margin:0 0 8px;">Set overview</h2>
-    <p style="font-size:17px;line-height:1.6;margin:0;color:#475467;">LEGO 77070 Durrr Burger is a 193-piece LEGO Fortnite set released in 2024.</p><p style="font-size:17px;line-height:1.6;margin:14px 0 0;color:#475467;">This page includes one step-by-step instruction video for building Durrr Burger.</p>
+    <p style="font-size:17px;line-height:1.6;margin:0;color:#475467;">LEGO 77070 Durrr Burger is a 193-piece LEGO Fortnite set released in 2024.</p>
   </section>
 
   <section class="instruction-guide-summary" style="margin-top:24px;"><h2 style="font-size:22px;margin:0 0 8px;">About our instruction guide</h2><p style="font-size:17px;line-height:1.6;margin:0;color:#475467;">The featured guide is split into 4 timestamped sections, including 2 detected bag stages and a direct jump to the parts list. Use the chapter links below to return to a specific stage without searching through the full video.</p></section>
   <section class="video-chapters" style="margin-top:24px;"><h2 style="font-size:22px;margin:0 0 8px;">Video chapters</h2><p style="font-size:16px;line-height:1.6;margin:0 0 10px;color:#475467;">Jump directly to a section of this instruction video without leaving this page.</p><ol style="margin:0;padding-left:22px;color:#475467;line-height:1.8;"><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/77070-fortnite-durrr-burger/?t=0#video" data-start="0" data-video-id="c7zYCxJJytk"><strong>0:00</strong> – LEGO Durr Burger Instructions</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/77070-fortnite-durrr-burger/?t=5#video" data-start="5" data-video-id="c7zYCxJJytk"><strong>0:05</strong> – Bag 1</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/77070-fortnite-durrr-burger/?t=85#video" data-start="85" data-video-id="c7zYCxJJytk"><strong>1:25</strong> – Bag 2</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/77070-fortnite-durrr-burger/?t=170#video" data-start="170" data-video-id="c7zYCxJJytk"><strong>2:50</strong> – LEGO 77070 Parts List</a></li></ol><script>
 (function() {
-  const player = document.getElementById("instruction-video-player");
+  const iframe = document.getElementById("instruction-video-player");
   const videoSection = document.getElementById("video");
   const featuredVideoId = "c7zYCxJJytk";
-  if (!player || !featuredVideoId) return;
+  if (!iframe || !featuredVideoId) return;
 
-  function startPlayer(seconds, autoplay) {
-    const start = Math.max(0, parseInt(seconds || "0", 10) || 0);
-    const params = new URLSearchParams();
-    if (start > 0) params.set("start", String(start));
-    if (autoplay) params.set("autoplay", "1");
-    params.set("rel", "0");
-    player.src = "https://www.youtube.com/embed/" + encodeURIComponent(featuredVideoId) + "?" + params.toString();
+  let ytPlayer = null;
+  let playerReady = false;
+  let pendingSeek = null;
+  let pendingPlay = false;
+
+  function normaliseSeconds(value) {
+    return Math.max(0, parseInt(value || "0", 10) || 0);
   }
 
-  function applyUrlTimestamp(autoplay) {
+  function seekPlayer(seconds, shouldPlay) {
+    const start = normaliseSeconds(seconds);
+    pendingSeek = start;
+    pendingPlay = Boolean(shouldPlay);
+
+    if (!playerReady || !ytPlayer || typeof ytPlayer.seekTo !== "function") return;
+    ytPlayer.seekTo(start, true);
+    if (pendingPlay && typeof ytPlayer.playVideo === "function") {
+      ytPlayer.playVideo();
+    }
+    pendingSeek = null;
+    pendingPlay = false;
+  }
+
+  function timestampFromUrl() {
     const params = new URLSearchParams(window.location.search);
-    if (!params.has("t")) return;
-    startPlayer(params.get("t"), autoplay);
+    return params.has("t") ? normaliseSeconds(params.get("t")) : null;
+  }
+
+  function onPlayerReady() {
+    playerReady = true;
+    if (pendingSeek !== null) {
+      const start = pendingSeek;
+      const shouldPlay = pendingPlay;
+      pendingSeek = null;
+      pendingPlay = false;
+      ytPlayer.seekTo(start, true);
+      if (shouldPlay && typeof ytPlayer.playVideo === "function") ytPlayer.playVideo();
+      return;
+    }
+    const start = timestampFromUrl();
+    if (start !== null) ytPlayer.seekTo(start, true);
+  }
+
+  function createPlayer() {
+    if (ytPlayer || !window.YT || typeof window.YT.Player !== "function") return;
+    ytPlayer = new window.YT.Player("instruction-video-player", {
+      events: {onReady: onPlayerReady}
+    });
+  }
+
+  // Load the official YouTube IFrame Player API once for all set pages.
+  if (window.YT && typeof window.YT.Player === "function") {
+    createPlayer();
+  } else {
+    const previousReady = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function() {
+      if (typeof previousReady === "function") previousReady();
+      createPlayer();
+    };
+    if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
+      const apiScript = document.createElement("script");
+      apiScript.src = "https://www.youtube.com/iframe_api";
+      apiScript.async = true;
+      document.head.appendChild(apiScript);
+    }
   }
 
   document.querySelectorAll(".video-chapter-link").forEach(function(link) {
     link.addEventListener("click", function(event) {
       event.preventDefault();
-      const start = Math.max(0, parseInt(link.dataset.start || "0", 10) || 0);
+      const start = normaliseSeconds(link.dataset.start);
       const url = new URL(window.location.href);
       url.searchParams.set("t", String(start));
       url.hash = "video";
       history.pushState({t:start}, "", url);
-      startPlayer(start, true);
+      seekPlayer(start, true);
       if (videoSection) videoSection.scrollIntoView({behavior:"smooth", block:"start"});
     });
   });
 
-  window.addEventListener("popstate", function() { applyUrlTimestamp(false); });
-  if (new URLSearchParams(window.location.search).has("t")) {
-    applyUrlTimestamp(true);
-  }
+  window.addEventListener("popstate", function() {
+    const start = timestampFromUrl();
+    if (start !== null) seekPlayer(start, false);
+  });
+
+  const initialStart = timestampFromUrl();
+  if (initialStart !== null) pendingSeek = initialStart;
 })();
 </script></section>
   

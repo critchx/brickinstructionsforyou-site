@@ -148,7 +148,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
         <section id="video" class="video-hero" style="margin:0 auto 24px;max-width:1050px;scroll-margin-top:18px;">
           <h3 style="font-size:24px;margin:0 0 14px;text-align:left;">Instruction videos</h3>
           <div style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.14);background:#000;">
-            <iframe id="instruction-video-player" src="https://www.youtube.com/embed/8IvlINFG2Ik" title="Iconic Pirate Ship video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
+            <iframe id="instruction-video-player" src="https://www.youtube.com/embed/8IvlINFG2Ik?enablejsapi=1&amp;origin=https%3A%2F%2Fwww.brickinstructionsforyou.com&amp;rel=0" title="Iconic Pirate Ship video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
           </div>
         </section>
         
@@ -169,43 +169,98 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
   <section class="instruction-guide-summary" style="margin-top:24px;"><h2 style="font-size:22px;margin:0 0 8px;">About our instruction guide</h2><p style="font-size:17px;line-height:1.6;margin:0;color:#475467;">This page groups 4 instruction videos for this set, including Book 1, Book 2 and Book 3. The featured guide has 4 timestamped sections, including a direct jump to the parts list. The combined All Books video is used as the main player, with the separate book videos kept below for reference. Use the chapter links below to return to a specific stage without searching through the full video.</p></section>
   <section class="video-chapters" style="margin-top:24px;"><h2 style="font-size:22px;margin:0 0 8px;">Video chapters</h2><p style="font-size:16px;line-height:1.6;margin:0 0 10px;color:#475467;">Jump directly to a section of this instruction video without leaving this page.</p><ol style="margin:0;padding-left:22px;color:#475467;line-height:1.8;"><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/31387-creator-iconic-pirate-ship/?t=0#video" data-start="0" data-video-id="8IvlINFG2Ik"><strong>0:00</strong> – Book 1</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/31387-creator-iconic-pirate-ship/?t=795#video" data-start="795" data-video-id="8IvlINFG2Ik"><strong>13:15</strong> – LEGO 31387 Parts List</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/31387-creator-iconic-pirate-ship/?t=820#video" data-start="820" data-video-id="8IvlINFG2Ik"><strong>13:40</strong> – Book 2</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/31387-creator-iconic-pirate-ship/?t=1520#video" data-start="1520" data-video-id="8IvlINFG2Ik"><strong>25:20</strong> – Book 3</a></li></ol><script>
 (function() {
-  const player = document.getElementById("instruction-video-player");
+  const iframe = document.getElementById("instruction-video-player");
   const videoSection = document.getElementById("video");
   const featuredVideoId = "8IvlINFG2Ik";
-  if (!player || !featuredVideoId) return;
+  if (!iframe || !featuredVideoId) return;
 
-  function startPlayer(seconds, autoplay) {
-    const start = Math.max(0, parseInt(seconds || "0", 10) || 0);
-    const params = new URLSearchParams();
-    if (start > 0) params.set("start", String(start));
-    if (autoplay) params.set("autoplay", "1");
-    params.set("rel", "0");
-    player.src = "https://www.youtube.com/embed/" + encodeURIComponent(featuredVideoId) + "?" + params.toString();
+  let ytPlayer = null;
+  let playerReady = false;
+  let pendingSeek = null;
+  let pendingPlay = false;
+
+  function normaliseSeconds(value) {
+    return Math.max(0, parseInt(value || "0", 10) || 0);
   }
 
-  function applyUrlTimestamp(autoplay) {
+  function seekPlayer(seconds, shouldPlay) {
+    const start = normaliseSeconds(seconds);
+    pendingSeek = start;
+    pendingPlay = Boolean(shouldPlay);
+
+    if (!playerReady || !ytPlayer || typeof ytPlayer.seekTo !== "function") return;
+    ytPlayer.seekTo(start, true);
+    if (pendingPlay && typeof ytPlayer.playVideo === "function") {
+      ytPlayer.playVideo();
+    }
+    pendingSeek = null;
+    pendingPlay = false;
+  }
+
+  function timestampFromUrl() {
     const params = new URLSearchParams(window.location.search);
-    if (!params.has("t")) return;
-    startPlayer(params.get("t"), autoplay);
+    return params.has("t") ? normaliseSeconds(params.get("t")) : null;
+  }
+
+  function onPlayerReady() {
+    playerReady = true;
+    if (pendingSeek !== null) {
+      const start = pendingSeek;
+      const shouldPlay = pendingPlay;
+      pendingSeek = null;
+      pendingPlay = false;
+      ytPlayer.seekTo(start, true);
+      if (shouldPlay && typeof ytPlayer.playVideo === "function") ytPlayer.playVideo();
+      return;
+    }
+    const start = timestampFromUrl();
+    if (start !== null) ytPlayer.seekTo(start, true);
+  }
+
+  function createPlayer() {
+    if (ytPlayer || !window.YT || typeof window.YT.Player !== "function") return;
+    ytPlayer = new window.YT.Player("instruction-video-player", {
+      events: {onReady: onPlayerReady}
+    });
+  }
+
+  // Load the official YouTube IFrame Player API once for all set pages.
+  if (window.YT && typeof window.YT.Player === "function") {
+    createPlayer();
+  } else {
+    const previousReady = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function() {
+      if (typeof previousReady === "function") previousReady();
+      createPlayer();
+    };
+    if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
+      const apiScript = document.createElement("script");
+      apiScript.src = "https://www.youtube.com/iframe_api";
+      apiScript.async = true;
+      document.head.appendChild(apiScript);
+    }
   }
 
   document.querySelectorAll(".video-chapter-link").forEach(function(link) {
     link.addEventListener("click", function(event) {
       event.preventDefault();
-      const start = Math.max(0, parseInt(link.dataset.start || "0", 10) || 0);
+      const start = normaliseSeconds(link.dataset.start);
       const url = new URL(window.location.href);
       url.searchParams.set("t", String(start));
       url.hash = "video";
       history.pushState({t:start}, "", url);
-      startPlayer(start, true);
+      seekPlayer(start, true);
       if (videoSection) videoSection.scrollIntoView({behavior:"smooth", block:"start"});
     });
   });
 
-  window.addEventListener("popstate", function() { applyUrlTimestamp(false); });
-  if (new URLSearchParams(window.location.search).has("t")) {
-    applyUrlTimestamp(true);
-  }
+  window.addEventListener("popstate", function() {
+    const start = timestampFromUrl();
+    if (start !== null) seekPlayer(start, false);
+  });
+
+  const initialStart = timestampFromUrl();
+  if (initialStart !== null) pendingSeek = initialStart;
 })();
 </script></section>
   
