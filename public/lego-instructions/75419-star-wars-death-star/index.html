@@ -170,6 +170,14 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .homepage-faq-item:first-of-type{border-top:0;padding-top:6px}
 .homepage-faq-item h3{font-size:20px;margin:0 0 8px;color:#061b35}
 .homepage-faq-item p{margin:0;color:#475467;line-height:1.65}
+.listing-guide{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:24px 26px;margin:0 0 32px;box-shadow:0 8px 18px rgba(0,0,0,.04)}
+.listing-guide h2{font-size:27px;line-height:1.25;margin:0 0 12px;color:#061b35}
+.listing-guide p{font-size:16px;line-height:1.7;color:#475467;margin:14px 0 0}
+.listing-guide a{color:#075eb5;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.listing-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0 4px}
+.listing-facts>div{background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px}
+.listing-facts dt{color:#667085;font-size:13px;font-weight:800;margin:0 0 5px}
+.listing-facts dd{color:#061b35;font-size:22px;font-weight:900;margin:0}
 .results-header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:28px}
 .results-header h1,.results-header h2{font-size:32px;margin:0 0 14px;text-transform:uppercase}
 .results-header p{margin:0;color:var(--muted)}
@@ -230,7 +238,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-card img{height:150px}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.listing-guide{padding:20px 18px}.listing-guide h2{font-size:23px}.listing-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.set-card img{height:150px}}
 
 .cookie-consent{position:fixed;left:0;right:0;bottom:0;z-index:20000;padding:16px;background:rgba(6,27,53,.98);color:#fff;box-shadow:0 -10px 28px rgba(0,0,0,.28)}
 .cookie-consent[hidden]{display:none!important}
@@ -280,10 +288,59 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
   
         <section id="video" class="video-hero" style="margin:0 auto 24px;max-width:1050px;scroll-margin-top:18px;">
           <h2 style="font-size:24px;margin:0 0 14px;text-align:left;">Instruction videos</h2>
-          <div style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.14);background:#000;">
-            <iframe id="instruction-video-player" src="https://www.youtube.com/embed/nGSP-CyD_Lc?enablejsapi=1&amp;origin=https%3A%2F%2Fwww.brickinstructionsforyou.com&amp;rel=0" title="Death Star video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-          </div>
+          <div id="instruction-video-player" class="youtube-lite-player" data-video-id="nGSP-CyD_Lc" data-title="Death Star instruction video" data-main-player="1" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/nGSP-CyD_Lc/maxresdefault.jpg" alt="" width="640" height="360" loading="eager" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Death Star instruction video" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
         </section>
+        <script>
+(function() {
+  if (window.bifyLiteYouTubeInstalled) return;
+  window.bifyLiteYouTubeInstalled = true;
+
+  function normaliseSeconds(value) {
+    return Math.max(0, parseInt(value || "0", 10) || 0);
+  }
+
+  function requestedStartFor(container) {
+    if (!container || container.dataset.mainPlayer !== "1") {
+      return normaliseSeconds(container && container.dataset.start);
+    }
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("t")) return normaliseSeconds(params.get("t"));
+    return normaliseSeconds(container.dataset.start);
+  }
+
+  window.bifyLoadYouTubePlayer = function(container, start, autoplay) {
+    if (!container) return;
+    const videoId = String(container.dataset.videoId || "").trim();
+    if (!videoId) return;
+
+    const seconds = normaliseSeconds(start);
+    const params = new URLSearchParams();
+    params.set("rel", "0");
+    if (autoplay) params.set("autoplay", "1");
+    if (seconds > 0) params.set("start", String(seconds));
+
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(videoId) + "?" + params.toString();
+    iframe.title = container.dataset.title || "YouTube instruction video";
+    iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+    iframe.allowFullscreen = true;
+    iframe.loading = "lazy";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.style.cssText = "position:absolute;inset:0;width:100%;height:100%;border:0;";
+    container.replaceChildren(iframe);
+    container.dataset.loaded = "1";
+    container.dataset.start = String(seconds);
+  };
+
+  document.addEventListener("click", function(event) {
+    const playButton = event.target.closest("[data-youtube-lite-play]");
+    if (!playButton) return;
+    const container = playButton.closest(".youtube-lite-player");
+    if (!container) return;
+    window.bifyLoadYouTubePlayer(container, requestedStartFor(container), true);
+  });
+})();
+</script>
         
   
   <section class="set-details-block" style="margin:24px 0 0;">
@@ -302,32 +359,12 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
   <section class="instruction-guide-summary" style="margin-top:24px;"><h2 style="font-size:22px;margin:0 0 8px;">What does this instruction guide include?</h2><p style="font-size:17px;line-height:1.6;margin:0;color:#475467;">This page groups 7 instruction videos for this set, including Book 1, Book 2, Book 3, Book 4, Book 5 and Book 6. The featured guide is split into 83 timestamped sections, including 81 detected bag stages and a direct jump to the parts list. Among the detected bag chapters, Bag 14 is the longest section at 2 minutes and 55 seconds. The combined All Books video is used as the main player, with the separate book videos kept below for reference. Use the chapter links below to return to a specific stage without searching through the full video.</p></section>
   <section class="video-chapters" style="margin-top:24px;"><h2 style="font-size:22px;margin:0 0 8px;">Video chapters</h2><p style="font-size:16px;line-height:1.6;margin:0 0 10px;color:#475467;">Jump directly to a section of this instruction video without leaving this page.</p><ol style="margin:0;padding-left:22px;color:#475467;line-height:1.8;"><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=0#video" data-start="0" data-video-id="nGSP-CyD_Lc"><strong>0:00</strong> – LEGO UCS Death Star Instructions</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=90#video" data-start="90" data-video-id="nGSP-CyD_Lc"><strong>1:30</strong> – Bag 1</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=140#video" data-start="140" data-video-id="nGSP-CyD_Lc"><strong>2:20</strong> – Bag 2</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=190#video" data-start="190" data-video-id="nGSP-CyD_Lc"><strong>3:10</strong> – Bag 3</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=310#video" data-start="310" data-video-id="nGSP-CyD_Lc"><strong>5:10</strong> – Bag 4</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=375#video" data-start="375" data-video-id="nGSP-CyD_Lc"><strong>6:15</strong> – Bag 5</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=450#video" data-start="450" data-video-id="nGSP-CyD_Lc"><strong>7:30</strong> – Bag 6</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=515#video" data-start="515" data-video-id="nGSP-CyD_Lc"><strong>8:35</strong> – Bag 7</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=565#video" data-start="565" data-video-id="nGSP-CyD_Lc"><strong>9:25</strong> – Bag 8</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=645#video" data-start="645" data-video-id="nGSP-CyD_Lc"><strong>10:45</strong> – Bag 9</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=730#video" data-start="730" data-video-id="nGSP-CyD_Lc"><strong>12:10</strong> – Bag 10</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=810#video" data-start="810" data-video-id="nGSP-CyD_Lc"><strong>13:30</strong> – Bag 11</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=900#video" data-start="900" data-video-id="nGSP-CyD_Lc"><strong>15:00</strong> – Bag 12</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=955#video" data-start="955" data-video-id="nGSP-CyD_Lc"><strong>15:55</strong> – Bag 13</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=1060#video" data-start="1060" data-video-id="nGSP-CyD_Lc"><strong>17:40</strong> – Bag 14</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=1235#video" data-start="1235" data-video-id="nGSP-CyD_Lc"><strong>20:35</strong> – Bag 15</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=1285#video" data-start="1285" data-video-id="nGSP-CyD_Lc"><strong>21:25</strong> – Bag 16</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=1335#video" data-start="1335" data-video-id="nGSP-CyD_Lc"><strong>22:15</strong> – Bag 17</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=1395#video" data-start="1395" data-video-id="nGSP-CyD_Lc"><strong>23:15</strong> – Bag 18</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=1475#video" data-start="1475" data-video-id="nGSP-CyD_Lc"><strong>24:35</strong> – Bag 19</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=1535#video" data-start="1535" data-video-id="nGSP-CyD_Lc"><strong>25:35</strong> – Bag 20</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=1635#video" data-start="1635" data-video-id="nGSP-CyD_Lc"><strong>27:15</strong> – Bag 21</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=1740#video" data-start="1740" data-video-id="nGSP-CyD_Lc"><strong>29:00</strong> – Bag 22</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=1825#video" data-start="1825" data-video-id="nGSP-CyD_Lc"><strong>30:25</strong> – Bag 23</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=1905#video" data-start="1905" data-video-id="nGSP-CyD_Lc"><strong>31:45</strong> – Bag 24</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=2045#video" data-start="2045" data-video-id="nGSP-CyD_Lc"><strong>34:05</strong> – Bag 25</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=2215#video" data-start="2215" data-video-id="nGSP-CyD_Lc"><strong>36:55</strong> – Bag 26</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=2340#video" data-start="2340" data-video-id="nGSP-CyD_Lc"><strong>39:00</strong> – Bag 27</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=2415#video" data-start="2415" data-video-id="nGSP-CyD_Lc"><strong>40:15</strong> – Bag 28</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=2480#video" data-start="2480" data-video-id="nGSP-CyD_Lc"><strong>41:20</strong> – Bag 29</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=2555#video" data-start="2555" data-video-id="nGSP-CyD_Lc"><strong>42:35</strong> – Bag 30</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=2630#video" data-start="2630" data-video-id="nGSP-CyD_Lc"><strong>43:50</strong> – Bag 31</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=2705#video" data-start="2705" data-video-id="nGSP-CyD_Lc"><strong>45:05</strong> – Bag 32</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=2815#video" data-start="2815" data-video-id="nGSP-CyD_Lc"><strong>46:55</strong> – Bag 33</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=2865#video" data-start="2865" data-video-id="nGSP-CyD_Lc"><strong>47:45</strong> – Bag 34</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=2990#video" data-start="2990" data-video-id="nGSP-CyD_Lc"><strong>49:50</strong> – Bag 35</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=3065#video" data-start="3065" data-video-id="nGSP-CyD_Lc"><strong>51:05</strong> – Bag 36</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=3140#video" data-start="3140" data-video-id="nGSP-CyD_Lc"><strong>52:20</strong> – Bag 37</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=3255#video" data-start="3255" data-video-id="nGSP-CyD_Lc"><strong>54:15</strong> – Bag 38</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=3365#video" data-start="3365" data-video-id="nGSP-CyD_Lc"><strong>56:05</strong> – Bag 39</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=3440#video" data-start="3440" data-video-id="nGSP-CyD_Lc"><strong>57:20</strong> – Bag 40</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=3585#video" data-start="3585" data-video-id="nGSP-CyD_Lc"><strong>59:45</strong> – Bag 41</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=3735#video" data-start="3735" data-video-id="nGSP-CyD_Lc"><strong>1:02:15</strong> – Bag 42</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=3790#video" data-start="3790" data-video-id="nGSP-CyD_Lc"><strong>1:03:10</strong> – Bag 43</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=3830#video" data-start="3830" data-video-id="nGSP-CyD_Lc"><strong>1:03:50</strong> – Bag 44</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=3935#video" data-start="3935" data-video-id="nGSP-CyD_Lc"><strong>1:05:35</strong> – Bag 45</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=4005#video" data-start="4005" data-video-id="nGSP-CyD_Lc"><strong>1:06:45</strong> – Bag 46</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=4065#video" data-start="4065" data-video-id="nGSP-CyD_Lc"><strong>1:07:45</strong> – Bag 47</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=4145#video" data-start="4145" data-video-id="nGSP-CyD_Lc"><strong>1:09:05</strong> – Bag 48</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=4250#video" data-start="4250" data-video-id="nGSP-CyD_Lc"><strong>1:10:50</strong> – Bag 49</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=4335#video" data-start="4335" data-video-id="nGSP-CyD_Lc"><strong>1:12:15</strong> – Bag 50</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=4420#video" data-start="4420" data-video-id="nGSP-CyD_Lc"><strong>1:13:40</strong> – Bag 51</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=4570#video" data-start="4570" data-video-id="nGSP-CyD_Lc"><strong>1:16:10</strong> – Bag 52</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=4645#video" data-start="4645" data-video-id="nGSP-CyD_Lc"><strong>1:17:25</strong> – Bag 53</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=4750#video" data-start="4750" data-video-id="nGSP-CyD_Lc"><strong>1:19:10</strong> – Bag 54</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=4855#video" data-start="4855" data-video-id="nGSP-CyD_Lc"><strong>1:20:55</strong> – Bag 55</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=4900#video" data-start="4900" data-video-id="nGSP-CyD_Lc"><strong>1:21:40</strong> – Bag 56</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=4945#video" data-start="4945" data-video-id="nGSP-CyD_Lc"><strong>1:22:25</strong> – Bag 57</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=4995#video" data-start="4995" data-video-id="nGSP-CyD_Lc"><strong>1:23:15</strong> – Bag 58</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5050#video" data-start="5050" data-video-id="nGSP-CyD_Lc"><strong>1:24:10</strong> – Bag 59</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5110#video" data-start="5110" data-video-id="nGSP-CyD_Lc"><strong>1:25:10</strong> – Bag 60</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5180#video" data-start="5180" data-video-id="nGSP-CyD_Lc"><strong>1:26:20</strong> – Bag 61</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5235#video" data-start="5235" data-video-id="nGSP-CyD_Lc"><strong>1:27:15</strong> – Bag 62</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5280#video" data-start="5280" data-video-id="nGSP-CyD_Lc"><strong>1:28:00</strong> – Bag 63</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5390#video" data-start="5390" data-video-id="nGSP-CyD_Lc"><strong>1:29:50</strong> – Bag 64</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5470#video" data-start="5470" data-video-id="nGSP-CyD_Lc"><strong>1:31:10</strong> – Bag 65</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5520#video" data-start="5520" data-video-id="nGSP-CyD_Lc"><strong>1:32:00</strong> – Bag 66</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5570#video" data-start="5570" data-video-id="nGSP-CyD_Lc"><strong>1:32:50</strong> – Bag 67</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5670#video" data-start="5670" data-video-id="nGSP-CyD_Lc"><strong>1:34:30</strong> – Bag 68</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5745#video" data-start="5745" data-video-id="nGSP-CyD_Lc"><strong>1:35:45</strong> – Bag 69</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5840#video" data-start="5840" data-video-id="nGSP-CyD_Lc"><strong>1:37:20</strong> – Bag 70</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5930#video" data-start="5930" data-video-id="nGSP-CyD_Lc"><strong>1:38:50</strong> – Bag 71</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=5995#video" data-start="5995" data-video-id="nGSP-CyD_Lc"><strong>1:39:55</strong> – Bag 72</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=6060#video" data-start="6060" data-video-id="nGSP-CyD_Lc"><strong>1:41:00</strong> – Bag 73</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=6135#video" data-start="6135" data-video-id="nGSP-CyD_Lc"><strong>1:42:15</strong> – Bag 74</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=6255#video" data-start="6255" data-video-id="nGSP-CyD_Lc"><strong>1:44:15</strong> – Bag 75</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=6305#video" data-start="6305" data-video-id="nGSP-CyD_Lc"><strong>1:45:05</strong> – Bag 76</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=6425#video" data-start="6425" data-video-id="nGSP-CyD_Lc"><strong>1:47:05</strong> – Bag 77</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=6540#video" data-start="6540" data-video-id="nGSP-CyD_Lc"><strong>1:49:00</strong> – Bag 78</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=6580#video" data-start="6580" data-video-id="nGSP-CyD_Lc"><strong>1:49:40</strong> – Bag 79</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=6645#video" data-start="6645" data-video-id="nGSP-CyD_Lc"><strong>1:50:45</strong> – Bag 80</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=6705#video" data-start="6705" data-video-id="nGSP-CyD_Lc"><strong>1:51:45</strong> – Bag 81</a></li><li><a class="video-chapter-link" href="https://www.brickinstructionsforyou.com/lego-instructions/75419-star-wars-death-star/?t=6825#video" data-start="6825" data-video-id="nGSP-CyD_Lc"><strong>1:53:45</strong> – LEGO 75419 Part List</a></li></ol><script>
 (function() {
-  const iframe = document.getElementById("instruction-video-player");
+  const playerShell = document.getElementById("instruction-video-player");
   const videoSection = document.getElementById("video");
-  const featuredVideoId = "nGSP-CyD_Lc";
-  if (!iframe || !featuredVideoId) return;
-
-  let ytPlayer = null;
-  let playerReady = false;
-  let pendingSeek = null;
-  let pendingPlay = false;
+  if (!playerShell) return;
 
   function normaliseSeconds(value) {
     return Math.max(0, parseInt(value || "0", 10) || 0);
-  }
-
-  function seekPlayer(seconds, shouldPlay) {
-    const start = normaliseSeconds(seconds);
-    pendingSeek = start;
-    pendingPlay = Boolean(shouldPlay);
-
-    if (!playerReady || !ytPlayer || typeof ytPlayer.seekTo !== "function") return;
-    ytPlayer.seekTo(start, true);
-    if (pendingPlay && typeof ytPlayer.playVideo === "function") {
-      ytPlayer.playVideo();
-    }
-    pendingSeek = null;
-    pendingPlay = false;
   }
 
   function timestampFromUrl() {
@@ -335,42 +372,11 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
     return params.has("t") ? normaliseSeconds(params.get("t")) : null;
   }
 
-  function onPlayerReady() {
-    playerReady = true;
-    if (pendingSeek !== null) {
-      const start = pendingSeek;
-      const shouldPlay = pendingPlay;
-      pendingSeek = null;
-      pendingPlay = false;
-      ytPlayer.seekTo(start, true);
-      if (shouldPlay && typeof ytPlayer.playVideo === "function") ytPlayer.playVideo();
-      return;
-    }
-    const start = timestampFromUrl();
-    if (start !== null) ytPlayer.seekTo(start, true);
-  }
-
-  function createPlayer() {
-    if (ytPlayer || !window.YT || typeof window.YT.Player !== "function") return;
-    ytPlayer = new window.YT.Player("instruction-video-player", {
-      events: {onReady: onPlayerReady}
-    });
-  }
-
-  // Load the official YouTube IFrame Player API once for all set pages.
-  if (window.YT && typeof window.YT.Player === "function") {
-    createPlayer();
-  } else {
-    const previousReady = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = function() {
-      if (typeof previousReady === "function") previousReady();
-      createPlayer();
-    };
-    if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
-      const apiScript = document.createElement("script");
-      apiScript.src = "https://www.youtube.com/iframe_api";
-      apiScript.async = true;
-      document.head.appendChild(apiScript);
+  function playFrom(seconds, autoplay) {
+    const start = normaliseSeconds(seconds);
+    playerShell.dataset.start = String(start);
+    if (typeof window.bifyLoadYouTubePlayer === "function") {
+      window.bifyLoadYouTubePlayer(playerShell, start, autoplay);
     }
   }
 
@@ -382,62 +388,52 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
       url.searchParams.set("t", String(start));
       url.hash = "video";
       history.pushState({t:start}, "", url);
-      seekPlayer(start, true);
+      playFrom(start, true);
       if (videoSection) videoSection.scrollIntoView({behavior:"smooth", block:"start"});
     });
   });
 
   window.addEventListener("popstate", function() {
     const start = timestampFromUrl();
-    if (start !== null) seekPlayer(start, false);
+    if (start === null) return;
+    playerShell.dataset.start = String(start);
+    if (playerShell.dataset.loaded === "1") playFrom(start, false);
   });
 
   const initialStart = timestampFromUrl();
-  if (initialStart !== null) pendingSeek = initialStart;
+  if (initialStart !== null) playerShell.dataset.start = String(initialStart);
 })();
 </script></section>
   <section class="reviewed-notable-features" style="margin-top:24px;"><h2 style="font-size:22px;margin:0 0 10px;">Notable features</h2><ul style="margin:0;padding-left:22px;color:#475467;line-height:1.65;"><li>a display stand</li><li>included minifigure content</li></ul></section>
   <section class="official-instructions" style="margin-top:24px;"><h2 style="font-size:22px;margin:0 0 8px;">Official LEGO building instructions</h2><p style="font-size:16px;line-height:1.6;margin:0 0 12px;color:#475467;">Open the official LEGO instruction page to select and download the available PDF manual books.</p><a class="btn-outline" href="https://www.lego.com/en-gb/service/building-instructions/75419" target="_blank" rel="noopener noreferrer">VIEW OFFICIAL LEGO MANUALS</a></section>
   <section style="margin-top:24px"><h3 style="font-size:24px;margin:0 0 14px;text-align:left;">Continue building this set</h3><div class="related-video-grid">
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/zuYFXxtS5mA" title="Star Wars - Death Star - Ultimate Collector Series (Book 1)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="zuYFXxtS5mA" data-title="Star Wars - Death Star - Ultimate Collector Series (Book 1)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/zuYFXxtS5mA/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Star Wars - Death Star - Ultimate Collector Series (Book 1)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Star Wars - Death Star - Ultimate Collector Series (Book 1)</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/4udKA6vc0Nc" title="Star Wars - Death Star - Ultimate Collector Series (Book 2)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="4udKA6vc0Nc" data-title="Star Wars - Death Star - Ultimate Collector Series (Book 2)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/4udKA6vc0Nc/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Star Wars - Death Star - Ultimate Collector Series (Book 2)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Star Wars - Death Star - Ultimate Collector Series (Book 2)</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/7XrwWwMEFbU" title="Star Wars - Death Star - Ultimate Collector Series (Book 3)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="7XrwWwMEFbU" data-title="Star Wars - Death Star - Ultimate Collector Series (Book 3)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/7XrwWwMEFbU/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Star Wars - Death Star - Ultimate Collector Series (Book 3)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Star Wars - Death Star - Ultimate Collector Series (Book 3)</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/Vgr0p9UWZnA" title="Star Wars - Death Star - Ultimate Collector Series (Book 4)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="Vgr0p9UWZnA" data-title="Star Wars - Death Star - Ultimate Collector Series (Book 4)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/Vgr0p9UWZnA/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Star Wars - Death Star - Ultimate Collector Series (Book 4)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Star Wars - Death Star - Ultimate Collector Series (Book 4)</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/-_minCpZUSk" title="Star Wars - Death Star - Ultimate Collector Series (Book 5)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="_minCpZUSk" data-title="Star Wars - Death Star - Ultimate Collector Series (Book 5)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/-_minCpZUSk/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Star Wars - Death Star - Ultimate Collector Series (Book 5)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Star Wars - Death Star - Ultimate Collector Series (Book 5)</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/b4Ahtk3wZzE" title="Star Wars - Death Star - Ultimate Collector Series (Book 6)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="b4Ahtk3wZzE" data-title="Star Wars - Death Star - Ultimate Collector Series (Book 6)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/b4Ahtk3wZzE/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Star Wars - Death Star - Ultimate Collector Series (Book 6)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Star Wars - Death Star - Ultimate Collector Series (Book 6)</div>
             </div>
             </div></section>
@@ -535,13 +531,17 @@ function showSuggestions(){
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
-suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
-document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
-window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
+const searchWrap=document.getElementById("mainSearchWrap");
+if(input&&typeSelect&&form&&suggestions&&pageContent&&searchWrap){
+ input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));
+ typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
+ suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
+ document.addEventListener("click",function(e){if(!searchWrap.contains(e.target))hideSuggestions();});
+ form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+ document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
+ window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
+ (function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
+}
 </script>
 
 </body>

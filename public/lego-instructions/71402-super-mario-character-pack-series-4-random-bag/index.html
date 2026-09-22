@@ -288,10 +288,59 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
   
         <section id="video" class="video-hero" style="margin:0 auto 24px;max-width:1050px;scroll-margin-top:18px;">
           <h2 style="font-size:24px;margin:0 0 14px;text-align:left;">Instruction videos</h2>
-          <div style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.14);background:#000;">
-            <iframe id="instruction-video-player" src="https://www.youtube.com/embed/bk5ehC9I2ug?enablejsapi=1&amp;origin=https%3A%2F%2Fwww.brickinstructionsforyou.com&amp;rel=0" title="Character Pack Series 4 Random bag video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-          </div>
+          <div id="instruction-video-player" class="youtube-lite-player" data-video-id="bk5ehC9I2ug" data-title="Character Pack Series 4 Random bag instruction video" data-main-player="1" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/bk5ehC9I2ug/maxresdefault.jpg" alt="" width="640" height="360" loading="eager" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Character Pack Series 4 Random bag instruction video" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
         </section>
+        <script>
+(function() {
+  if (window.bifyLiteYouTubeInstalled) return;
+  window.bifyLiteYouTubeInstalled = true;
+
+  function normaliseSeconds(value) {
+    return Math.max(0, parseInt(value || "0", 10) || 0);
+  }
+
+  function requestedStartFor(container) {
+    if (!container || container.dataset.mainPlayer !== "1") {
+      return normaliseSeconds(container && container.dataset.start);
+    }
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("t")) return normaliseSeconds(params.get("t"));
+    return normaliseSeconds(container.dataset.start);
+  }
+
+  window.bifyLoadYouTubePlayer = function(container, start, autoplay) {
+    if (!container) return;
+    const videoId = String(container.dataset.videoId || "").trim();
+    if (!videoId) return;
+
+    const seconds = normaliseSeconds(start);
+    const params = new URLSearchParams();
+    params.set("rel", "0");
+    if (autoplay) params.set("autoplay", "1");
+    if (seconds > 0) params.set("start", String(seconds));
+
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(videoId) + "?" + params.toString();
+    iframe.title = container.dataset.title || "YouTube instruction video";
+    iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+    iframe.allowFullscreen = true;
+    iframe.loading = "lazy";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.style.cssText = "position:absolute;inset:0;width:100%;height:100%;border:0;";
+    container.replaceChildren(iframe);
+    container.dataset.loaded = "1";
+    container.dataset.start = String(seconds);
+  };
+
+  document.addEventListener("click", function(event) {
+    const playButton = event.target.closest("[data-youtube-lite-play]");
+    if (!playButton) return;
+    const container = playButton.closest(".youtube-lite-player");
+    if (!container) return;
+    window.bifyLoadYouTubePlayer(container, requestedStartFor(container), true);
+  });
+})();
+</script>
         
   
   <section class="set-details-block" style="margin:24px 0 0;">
@@ -313,135 +362,97 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
   <section class="official-instructions" style="margin-top:24px;"><h2 style="font-size:22px;margin:0 0 8px;">Official LEGO building instructions</h2><p style="font-size:16px;line-height:1.6;margin:0 0 12px;color:#475467;">Open the official LEGO instruction page to select and download the available PDF manual books.</p><a class="btn-outline" href="https://www.lego.com/en-gb/service/building-instructions/71402" target="_blank" rel="noopener noreferrer">VIEW OFFICIAL LEGO MANUALS</a></section>
   <section style="margin-top:24px"><h3 style="font-size:24px;margin:0 0 14px;text-align:left;">Continue building this set</h3><div class="related-video-grid">
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/uV3b9xIN7o8" title="Super Mario - Coin Coffer" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="uV3b9xIN7o8" data-title="Super Mario - Coin Coffer" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/uV3b9xIN7o8/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario - Coin Coffer" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario - Coin Coffer</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/tBaTDjDZoDA" title="Super Mario - Ant Trooper" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="tBaTDjDZoDA" data-title="Super Mario - Ant Trooper" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/tBaTDjDZoDA/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario - Ant Trooper" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario - Ant Trooper</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/WuizBUTHBxw" title="Super Mario - Scaredy Rat" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="WuizBUTHBxw" data-title="Super Mario - Scaredy Rat" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/WuizBUTHBxw/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario - Scaredy Rat" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario - Scaredy Rat</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/UBQ39IbtWfY" title="Super Mario - Baby Penguin" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="UBQ39IbtWfY" data-title="Super Mario - Baby Penguin" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/UBQ39IbtWfY/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario - Baby Penguin" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario - Baby Penguin</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/7lPEwq5VXt8" title="Super Mario - Goombrat" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="7lPEwq5VXt8" data-title="Super Mario - Goombrat" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/7lPEwq5VXt8/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario - Goombrat" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario - Goombrat</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/bksuRTz2i0U" title="Super Mario - Stingby" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="bksuRTz2i0U" data-title="Super Mario - Stingby" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/bksuRTz2i0U/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario - Stingby" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario - Stingby</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/bRdjGiQVGV4" title="Super Mario - Freezie" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="bRdjGiQVGV4" data-title="Super Mario - Freezie" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/bRdjGiQVGV4/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario - Freezie" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario - Freezie</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/a87bhT9AvaI" title="Super Mario - Bully" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="a87bhT9AvaI" data-title="Super Mario - Bully" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/a87bhT9AvaI/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario - Bully" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario - Bully</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/uu6pw6lAz3Y" title="Super Mario - Para-Biddybud" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="uu6pw6lAz3Y" data-title="Super Mario - Para-Biddybud" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/uu6pw6lAz3Y/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario - Para-Biddybud" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario - Para-Biddybud</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/S3n9Pwvy2Ks" title="Super Mario | Mechakoopa" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="S3n9Pwvy2Ks" data-title="Super Mario | Mechakoopa" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/S3n9Pwvy2Ks/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario | Mechakoopa" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario | Mechakoopa</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/JUqKoT859eg" title="Super Mario | Ant Trooper" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="JUqKoT859eg" data-title="Super Mario | Ant Trooper" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/JUqKoT859eg/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario | Ant Trooper" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario | Ant Trooper</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/jNr-X855Kq0" title="Super Mario | Baby Penguin" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="jNr-X855Kq0" data-title="Super Mario | Baby Penguin" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/jNr-X855Kq0/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario | Baby Penguin" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario | Baby Penguin</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/UGHX8coR5OM" title="Super Mario | Stingby" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="UGHX8coR5OM" data-title="Super Mario | Stingby" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/UGHX8coR5OM/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario | Stingby" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario | Stingby</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/TOUy_QzNAeA" title="Super Mario | Bully" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="TOUy_QzNAeA" data-title="Super Mario | Bully" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/TOUy_QzNAeA/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario | Bully" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario | Bully</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/5iczchCtWlE" title="Super Mario | Coin Coffer" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="5iczchCtWlE" data-title="Super Mario | Coin Coffer" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/5iczchCtWlE/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario | Coin Coffer" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario | Coin Coffer</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/9ckloqBLfV8" title="Super Mario Scaredy Rat" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="9ckloqBLfV8" data-title="Super Mario Scaredy Rat" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/9ckloqBLfV8/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario Scaredy Rat" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario Scaredy Rat</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/UWRCJS3tNV4" title="Super Mario | Goombrat" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="UWRCJS3tNV4" data-title="Super Mario | Goombrat" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/UWRCJS3tNV4/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario | Goombrat" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario | Goombrat</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/5pE1uDmYfaY" title="Super Mario | Freezie" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="5pE1uDmYfaY" data-title="Super Mario | Freezie" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/5pE1uDmYfaY/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario | Freezie" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario | Freezie</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/0fuZ9sSLQSk" title="Super Mario | Para-Biddybud" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="0fuZ9sSLQSk" data-title="Super Mario | Para-Biddybud" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/0fuZ9sSLQSk/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Super Mario | Para-Biddybud" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Super Mario | Para-Biddybud</div>
             </div>
             </div></section>
@@ -539,13 +550,17 @@ function showSuggestions(){
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
-suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
-document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
-window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
+const searchWrap=document.getElementById("mainSearchWrap");
+if(input&&typeSelect&&form&&suggestions&&pageContent&&searchWrap){
+ input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));
+ typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
+ suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
+ document.addEventListener("click",function(e){if(!searchWrap.contains(e.target))hideSuggestions();});
+ form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+ document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
+ window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
+ (function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
+}
 </script>
 
 </body>

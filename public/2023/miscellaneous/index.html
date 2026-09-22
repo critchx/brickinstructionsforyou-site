@@ -303,7 +303,7 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
   <h2 id="listing-guide-heading">Which LEGO Miscellaneous sets from 2023 have instructions?</h2>
   <p>This combined year-and-theme hub lists 36 public LEGO Miscellaneous set pages assigned to 2023. 10 pages have a published step-by-step video guide, while 26 named sets are clearly labelled coming soon.</p>
   <dl class="listing-facts"><div><dt>Set pages</dt><dd>36</dd></div><div><dt>Video guides</dt><dd>10</dd></div><div><dt>Coming soon</dt><dd>26</dd></div><div><dt>Release year</dt><dd>2023</dd></div></dl>
-  <p>The recorded release year for this collection is 2023. Catalogue subtheme labels represented here include Book Parts, Braille Bricks, Employee gift, LEGO Inside Tour Exclusive and LEGO internal, plus 7 more. These figures come from the same current catalogue records used to generate the individual set pages.</p>
+  <p>The recorded release year for this collection is 2023. Catalogue subtheme labels represented here include Book Parts, Braille Bricks, Employee gift, LEGO Inside Tour Exclusive and LEGO Internal, plus 7 more. These figures come from the same current catalogue records used to generate the individual set pages.</p>
   <p>To find a particular LEGO Miscellaneous model, match the set number shown on its card or use the site search above. A published-guide page provides the embedded instruction video and any available chapter links and verified set facts; a coming-soon page identifies the model without implying that its video is already published.</p>
   <p><strong>Sets represented on this page include:</strong> <a href="/lego-instructions/4000041-miscellaneous-mri-scanner/">LEGO 4000041 MRI Scanner</a>, <a href="/lego-instructions/66777-miscellaneous-vehicle-pack/">LEGO 66777 Vehicle Pack</a>, <a href="/lego-instructions/4002023-miscellaneous-gingerbread-house/">LEGO 4002023 Gingerbread House</a> and <a href="/lego-instructions/ideaspab6-miscellaneous-garden-dreams/">LEGO IDEASPAB6 Garden Dreams</a>. Each link opens the matching set page, where the set number, full model name, release information and instruction-video status are kept together.</p>
   <p>Use the related links above to move back to every LEGO 2023 set or to the complete LEGO Miscellaneous collection. The cards below show which 2023 guides can be watched now and which named pages are waiting for a video.</p>
@@ -721,13 +721,17 @@ function showSuggestions(){
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
-suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
-document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
-window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
+const searchWrap=document.getElementById("mainSearchWrap");
+if(input&&typeSelect&&form&&suggestions&&pageContent&&searchWrap){
+ input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));
+ typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
+ suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
+ document.addEventListener("click",function(e){if(!searchWrap.contains(e.target))hideSuggestions();});
+ form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+ document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
+ window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
+ (function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
+}
 </script>
 
 </body>

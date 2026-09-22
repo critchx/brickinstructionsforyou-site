@@ -288,10 +288,59 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
   
         <section id="video" class="video-hero" style="margin:0 auto 24px;max-width:1050px;scroll-margin-top:18px;">
           <h2 style="font-size:24px;margin:0 0 14px;text-align:left;">Instruction videos</h2>
-          <div style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.14);background:#000;">
-            <iframe id="instruction-video-player" src="https://www.youtube.com/embed/oqj5dlMptVM?enablejsapi=1&amp;origin=https%3A%2F%2Fwww.brickinstructionsforyou.com&amp;rel=0" title="Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-          </div>
+          <div id="instruction-video-player" class="youtube-lite-player" data-video-id="oqj5dlMptVM" data-title="Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure instruction video" data-main-player="1" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/oqj5dlMptVM/maxresdefault.jpg" alt="" width="640" height="360" loading="eager" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure instruction video" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
         </section>
+        <script>
+(function() {
+  if (window.bifyLiteYouTubeInstalled) return;
+  window.bifyLiteYouTubeInstalled = true;
+
+  function normaliseSeconds(value) {
+    return Math.max(0, parseInt(value || "0", 10) || 0);
+  }
+
+  function requestedStartFor(container) {
+    if (!container || container.dataset.mainPlayer !== "1") {
+      return normaliseSeconds(container && container.dataset.start);
+    }
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("t")) return normaliseSeconds(params.get("t"));
+    return normaliseSeconds(container.dataset.start);
+  }
+
+  window.bifyLoadYouTubePlayer = function(container, start, autoplay) {
+    if (!container) return;
+    const videoId = String(container.dataset.videoId || "").trim();
+    if (!videoId) return;
+
+    const seconds = normaliseSeconds(start);
+    const params = new URLSearchParams();
+    params.set("rel", "0");
+    if (autoplay) params.set("autoplay", "1");
+    if (seconds > 0) params.set("start", String(seconds));
+
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(videoId) + "?" + params.toString();
+    iframe.title = container.dataset.title || "YouTube instruction video";
+    iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+    iframe.allowFullscreen = true;
+    iframe.loading = "lazy";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.style.cssText = "position:absolute;inset:0;width:100%;height:100%;border:0;";
+    container.replaceChildren(iframe);
+    container.dataset.loaded = "1";
+    container.dataset.start = String(seconds);
+  };
+
+  document.addEventListener("click", function(event) {
+    const playButton = event.target.closest("[data-youtube-lite-play]");
+    if (!playButton) return;
+    const container = playButton.closest(".youtube-lite-player");
+    if (!container) return;
+    window.bifyLoadYouTubePlayer(container, requestedStartFor(container), true);
+  });
+})();
+</script>
         
   
   <section class="set-details-block" style="margin:24px 0 0;">
@@ -313,65 +362,47 @@ footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-s
   <section class="official-instructions" style="margin-top:24px;"><h2 style="font-size:22px;margin:0 0 8px;">Official LEGO building instructions</h2><p style="font-size:16px;line-height:1.6;margin:0 0 12px;color:#475467;">Open the official LEGO instruction page to select and download the available PDF manual books.</p><a class="btn-outline" href="https://www.lego.com/en-gb/service/building-instructions/43281" target="_blank" rel="noopener noreferrer">VIEW OFFICIAL LEGO MANUALS</a></section>
   <section style="margin-top:24px"><h3 style="font-size:24px;margin:0 0 14px;text-align:left;">Continue building this set</h3><div class="related-video-grid">
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/EDyOXxzrDhM" title="Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (All Books)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="EDyOXxzrDhM" data-title="Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (All Books)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/EDyOXxzrDhM/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (All Books)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (All Books)</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/lOwpLGAN9no" title="Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 1)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="lOwpLGAN9no" data-title="Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 1)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/lOwpLGAN9no/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 1)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 1)</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/IP4K6VvkdWE" title="Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 1)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="IP4K6VvkdWE" data-title="Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 1)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/IP4K6VvkdWE/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 1)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 1)</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/gIXchhRzXJ0" title="Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 2)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="gIXchhRzXJ0" data-title="Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 2)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/gIXchhRzXJ0/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 2)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 2)</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/8lhlbJPr4_A" title="Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 2)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="8lhlbJPr4_A" data-title="Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 2)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/8lhlbJPr4_A/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 2)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 2)</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/oXjH0PbNoG4" title="Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 3)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="oXjH0PbNoG4" data-title="Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 3)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/oXjH0PbNoG4/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 3)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 3)</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/lD8sjyqB2Oc" title="Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 3)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="lD8sjyqB2Oc" data-title="Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 3)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/lD8sjyqB2Oc/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 3)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 3)</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/0Ffty7dZu_o" title="Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 4)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="0Ffty7dZu_o" data-title="Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 4)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/0Ffty7dZu_o/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 4)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Disney - Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure - Frozen (Book 4)</div>
             </div>
             
             <div style="background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;text-align:left;">
-              <div style="position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#f5f5f5;">
-                <iframe src="https://www.youtube.com/embed/y-R3JpU-pq8" title="Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 4)" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-              </div>
+              <div class="youtube-lite-player" data-video-id="y-R3JpU-pq8" data-title="Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 4)" style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 26px rgba(0,0,0,.14);"><img src="https://i.ytimg.com/vi/y-R3JpU-pq8/maxresdefault.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><button type="button" data-youtube-lite-play aria-label="Play Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 4)" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:82px;height:58px;border-radius:16px;background:#ff0000;box-shadow:0 4px 18px rgba(0,0,0,.32);"><span style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:22px solid #fff;margin-left:5px;"></span></span></button></div>
               <div style="font-weight:900;margin-top:10px;font-size:14px;">Disney - Elsa&#x27;s Ice Castle and Snow Ride Adventure - Frozen (Book 4)</div>
             </div>
             </div></section>
@@ -469,13 +500,17 @@ function showSuggestions(){
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
-suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
-document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
-window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
+const searchWrap=document.getElementById("mainSearchWrap");
+if(input&&typeSelect&&form&&suggestions&&pageContent&&searchWrap){
+ input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));
+ typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
+ suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
+ document.addEventListener("click",function(e){if(!searchWrap.contains(e.target))hideSuggestions();});
+ form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+ document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
+ window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
+ (function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
+}
 </script>
 
 </body>
