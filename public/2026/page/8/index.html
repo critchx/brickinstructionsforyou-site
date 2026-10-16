@@ -3,20 +3,119 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-37MCSDDYEW"></script>
+<!-- Google Analytics 4: loaded only after analytics consent -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-37MCSDDYEW');
+(function() {
+  const CONSENT_KEY = 'bify_cookie_consent_v1';
+  const GA_ID = 'G-37MCSDDYEW';
+  let analyticsLoaded = false;
+
+  function readConsent() {
+    try { return localStorage.getItem(CONSENT_KEY) || ''; }
+    catch (e) { return ''; }
+  }
+
+  function saveConsent(value) {
+    try { localStorage.setItem(CONSENT_KEY, value); }
+    catch (e) { /* The banner still works for the current page if storage is blocked. */ }
+  }
+
+  function deleteAnalyticsCookies() {
+    // Remove common first-party GA cookies if the visitor changes from Accept to Reject.
+    const names = document.cookie.split(';').map(v => v.split('=')[0].trim()).filter(Boolean);
+    names.forEach(name => {
+      if (name === '_ga' || name.startsWith('_ga_') || name === '_gid' || name === '_gat') {
+        document.cookie = name + '=; Max-Age=0; path=/; SameSite=Lax';
+        document.cookie = name + '=; Max-Age=0; path=/; domain=.' + location.hostname.replace(/^www\./, '') + '; SameSite=Lax';
+      }
+    });
+  }
+
+  function loadAnalytics() {
+    if (analyticsLoaded || readConsent() !== 'accepted') return;
+    analyticsLoaded = true;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function() { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, {'anonymize_ip': true});
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+    document.head.appendChild(script);
+  }
+
+  function banner() { return document.getElementById('cookieConsentBanner'); }
+
+  function showBanner() {
+    const el = banner();
+    if (!el) return;
+    el.hidden = false;
+    document.body.classList.add('cookie-banner-open');
+    const accept = document.getElementById('cookieAcceptAnalytics');
+    if (accept) setTimeout(() => accept.focus({preventScroll:true}), 0);
+  }
+
+  function hideBanner() {
+    const el = banner();
+    if (!el) return;
+    el.hidden = true;
+    document.body.classList.remove('cookie-banner-open');
+  }
+
+  function acceptAnalytics() {
+    saveConsent('accepted');
+    hideBanner();
+    loadAnalytics();
+  }
+
+  function rejectAnalytics() {
+    const wasAccepted = readConsent() === 'accepted';
+    saveConsent('rejected');
+    deleteAnalyticsCookies();
+    hideBanner();
+    // If GA was already loaded during this page view, reload once so it is no longer active.
+    if (wasAccepted && analyticsLoaded) location.reload();
+  }
+
+  window.openCookieSettings = showBanner;
+  window.acceptAnalyticsCookies = acceptAnalytics;
+  window.rejectAnalyticsCookies = rejectAnalytics;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const choice = readConsent();
+    if (choice === 'accepted') loadAnalytics();
+    else if (choice !== 'rejected') showBanner();
+
+    const accept = document.getElementById('cookieAcceptAnalytics');
+    const reject = document.getElementById('cookieRejectAnalytics');
+    if (accept) accept.addEventListener('click', acceptAnalytics);
+    if (reject) reject.addEventListener('click', rejectAnalytics);
+  });
+})();
 </script>
-<title>LEGO 2026 Instructions Page 8 | Brick Instructions For You</title>
-<meta name="description" content="Page 8 of LEGO 2026 building instructions, set pages and video guides on Brick Instructions For You.">
+<title>LEGO 2026 Instructions – Page 8</title>
+<meta name="description" content="LEGO 2026 building instruction videos, page 8 of 12. Browse 60 sets with video guides.">
 <link rel="canonical" href="https://www.brickinstructionsforyou.com/2026/page/8/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Brick Instructions For You">
+<meta property="og:title" content="LEGO 2026 Instructions – Page 8">
+<meta property="og:description" content="LEGO 2026 building instruction videos, page 8 of 12. Browse 60 sets with video guides.">
+<meta property="og:url" content="https://www.brickinstructionsforyou.com/2026/page/8/">
+<meta property="og:image" content="https://www.brickinstructionsforyou.com/assets/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Brick Instructions For You - LEGO building instructions">
+<meta name="twitter:image" content="https://www.brickinstructionsforyou.com/assets/social-preview.png">
+<meta name="twitter:image:alt" content="Brick Instructions For You - LEGO building instructions">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LEGO 2026 Instructions – Page 8">
+<meta name="twitter:description" content="LEGO 2026 building instruction videos, page 8 of 12. Browse 60 sets with video guides.">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.brickinstructionsforyou.com/#organization","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","logo":"https://www.brickinstructionsforyou.com/assets/brick-instructions-logo.svg","founder":{"@type":"Person","name":"Paul"},"sameAs":["https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU","https://www.facebook.com/LEGOInstructionsForLEGOFans/","https://www.instagram.com/legoinstructionsforyou/","https://uk.pinterest.com/brickinstructionsforyou/_profile/","https://x.com/HowToBuildLEGO"]},{"@type":"WebSite","@id":"https://www.brickinstructionsforyou.com/#website","name":"Brick Instructions For You","url":"https://www.brickinstructionsforyou.com/","publisher":{"@id":"https://www.brickinstructionsforyou.com/#organization"},"inLanguage":"en-GB"}]}</script>
-
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","@id":"https://www.brickinstructionsforyou.com/2026/page/8/#webpage","url":"https://www.brickinstructionsforyou.com/2026/page/8/","name":"LEGO 2026 Instructions – Page 8","inLanguage":"en-GB","isPartOf":{"@id":"https://www.brickinstructionsforyou.com/#website"},"breadcrumb":{"@id":"https://www.brickinstructionsforyou.com/2026/page/8/#breadcrumb"},"mainEntity":{"@id":"https://www.brickinstructionsforyou.com/2026/page/8/#list"}},{"@type":"ItemList","@id":"https://www.brickinstructionsforyou.com/2026/page/8/#list","numberOfItems":60,"itemListElement":[{"@type":"ListItem","position":1,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42689-friends-heartlake-city-friends-club-house/"},{"@type":"ListItem","position":2,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42688-friends-horse-stable-and-riding-academy/"},{"@type":"ListItem","position":3,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42687-friends-liann-s-family-house/"},{"@type":"ListItem","position":4,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42686-friends-fun-indoor-playground/"},{"@type":"ListItem","position":5,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42685-friends-heartlake-city-fashion-show/"},{"@type":"ListItem","position":6,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42684-friends-unicorn-dream-caf/"},{"@type":"ListItem","position":7,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42682-friends-nature-glamping-cabin/"},{"@type":"ListItem","position":8,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42681-friends-axolotl-adventure-boat/"},{"@type":"ListItem","position":9,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42680-friends-heartlake-city-mini-supermarket/"},{"@type":"ListItem","position":10,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42679-friends-heartlake-city-bunny-hotel/"},{"@type":"ListItem","position":11,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42678-friends-pet-accessories-van/"},{"@type":"ListItem","position":12,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42677-friends-dog-treats-bakery/"},{"@type":"ListItem","position":13,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42676-friends-fun-water-park-day/"},{"@type":"ListItem","position":14,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42675-friends-unicorn-cake-delivery-car/"},{"@type":"ListItem","position":15,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42242-technic-mercedes-benz-unimog-u-5023-with-crane/"},{"@type":"ListItem","position":16,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42241-technic-bugatti-chiron-pur-sport/"},{"@type":"ListItem","position":17,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42240-technic-aston-martin-aramco-amr25-f1-car/"},{"@type":"ListItem","position":18,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42239-technic-batmobile-tumbler/"},{"@type":"ListItem","position":19,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42238-technic-ducati-desmo450-mx-factory-motorcycle/"},{"@type":"ListItem","position":20,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42236-technic-custom-garage-ford-gt-mustang/"},{"@type":"ListItem","position":21,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42235-technic-ferrari-488-pista/"},{"@type":"ListItem","position":22,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42234-technic-dodge-viper-gts-r/"},{"@type":"ListItem","position":23,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42233-technic-mighty-machines-series-1-random-pack/"},{"@type":"ListItem","position":24,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42232-technic-koenigsegg-sadair-s-spear-megacar/"},{"@type":"ListItem","position":25,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42231-technic-dodge-charger-r-t/"},{"@type":"ListItem","position":26,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42229-technic-mitsubishi-eclipse/"},{"@type":"ListItem","position":27,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42228-technic-mclaren-f1-team-mcl39/"},{"@type":"ListItem","position":28,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42227-technic-jeep-wrangler-rubicon/"},{"@type":"ListItem","position":29,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42226-technic-bmw-m4-gt3-evo/"},{"@type":"ListItem","position":30,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42225-technic-yellow-motorcycle/"},{"@type":"ListItem","position":31,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42224-technic-porsche-911-gt3-r-rexy-ao-racing/"},{"@type":"ListItem","position":32,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42223-technic-1966-ford-gt40-mkii/"},{"@type":"ListItem","position":33,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42222-technic-bugatti-chiron-pur-sport/"},{"@type":"ListItem","position":34,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42221-technic-nasa-artemis-space-launch-system-rocket/"},{"@type":"ListItem","position":35,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42220-technic-monster-jam-sparkle-smash/"},{"@type":"ListItem","position":36,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42219-technic-monster-jam-grave-digger/"},{"@type":"ListItem","position":37,"url":"https://www.brickinstructionsforyou.com/lego-instructions/42218-technic-john-deere-1470h-wheeled-harvester/"},{"@type":"ListItem","position":38,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40975-harry-potter-mini-hogwarts-castle/"},{"@type":"ListItem","position":39,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40958-seasonal-christmas-stocking/"},{"@type":"ListItem","position":40,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40957-seasonal-spring-wreath/"},{"@type":"ListItem","position":41,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40955-miscellaneous-maersk-dual-fuel-container-vessel/"},{"@type":"ListItem","position":42,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40954-creator-germany-postcard/"},{"@type":"ListItem","position":43,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40953-creator-london-bus/"},{"@type":"ListItem","position":44,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40926-sonic-sega-genesis-console/"},{"@type":"ListItem","position":45,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40925-brickheadz-alice-in-wonderland/"},{"@type":"ListItem","position":46,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40924-brickheadz-megatron-robot-vehicle/"},{"@type":"ListItem","position":47,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40923-brickheadz-shrek-donkey-gingy-figures/"},{"@type":"ListItem","position":48,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40922-brickheadz-angel/"},{"@type":"ListItem","position":49,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40921-miscellaneous-up-scaled-blue-astronaut-minifigure/"},{"@type":"ListItem","position":50,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40920-seasonal-bugs-bunny/"},{"@type":"ListItem","position":51,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40919-brickheadz-gremlins-gizmo-and-stripe-figures/"},{"@type":"ListItem","position":52,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40917-star-wars-the-darksaber/"},{"@type":"ListItem","position":53,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40916-botanicals-floral-picture-frame/"},{"@type":"ListItem","position":54,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40915-seasonal-lion-dance/"},{"@type":"ListItem","position":55,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40913-icons-vintage-parade-car/"},{"@type":"ListItem","position":56,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40912-ideas-sea-serpent/"},{"@type":"ListItem","position":57,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40911-pokemon-mini-pokemon-centre/"},{"@type":"ListItem","position":58,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40910-brickheadz-beef-boss-skye/"},{"@type":"ListItem","position":59,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40909-promotional-restaurants-of-the-world-italy/"},{"@type":"ListItem","position":60,"url":"https://www.brickinstructionsforyou.com/lego-instructions/40908-promotional-restaurants-of-the-world-greece/"}]},{"@type":"BreadcrumbList","@id":"https://www.brickinstructionsforyou.com/2026/page/8/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.brickinstructionsforyou.com/"},{"@type":"ListItem","position":2,"name":"Years","item":"https://www.brickinstructionsforyou.com/years/"},{"@type":"ListItem","position":3,"name":"LEGO 2026 Instructions","item":"https://www.brickinstructionsforyou.com/2026/"},{"@type":"ListItem","position":4,"name":"Page 8","item":"https://www.brickinstructionsforyou.com/2026/page/8/"}]}]}</script>
 <style>
 :root{--navy:#061b35;--yellow:#ffcc00;--text:#1d1d1f;--muted:#667085;--line:#e5e7eb;--bg:#f5f5f5}
 *{box-sizing:border-box}
@@ -34,9 +133,9 @@ a{color:inherit;text-decoration:none}
 .breadcrumbs a{color:#061b35;text-decoration:underline;text-underline-offset:3px}
 .breadcrumbs span{color:#98a2b3;margin:0 6px}
 .hero{background:linear-gradient(135deg,var(--navy),#0a2344 55%,#2a203e);color:white;padding:28px 22px;text-align:center}
-.hero h1{margin:0 0 8px;font-size:clamp(34px,5vw,56px);line-height:1.05;font-weight:900}
-.hero h1 span{color:var(--yellow)}
-.hero p{margin:0 0 22px;opacity:.9;font-size:16px}
+.hero h1,.hero-search-title{margin:0 0 8px;font-size:clamp(34px,5vw,56px);line-height:1.05;font-weight:900}
+.hero h1 span,.hero-search-title span{color:var(--yellow)}
+.hero p{max-width:900px;margin:0 auto 22px;opacity:.94;font-size:16px;line-height:1.65}
 .search-wrap{max-width:730px;margin:0 auto;position:relative}
 .search-box{display:grid;grid-template-columns:1fr 112px 58px;background:#fff;border-radius:9px;overflow:visible;box-shadow:0 18px 38px rgba(0,0,0,.24);position:relative;z-index:20}
 #mainSearchInput{width:100%;border:0;font-size:17px;padding:18px;outline:none;border-radius:9px 0 0 9px}
@@ -54,7 +153,7 @@ a{color:inherit;text-decoration:none}
 .chip-new{background:var(--yellow);border-color:var(--yellow);color:var(--navy)}
 .quick-cards{max-width:1240px;margin:34px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:center}
 .quick-card{border-radius:16px;padding:28px 18px 22px;color:#fff;min-height:165px}
-.quick-card h2{margin:0 0 10px;font-size:22px}
+.quick-card .quick-card-title{display:block;margin:0 0 10px;font-size:22px;font-weight:800;text-transform:uppercase}
 .quick-card p{margin:0 0 24px;font-weight:700;line-height:1.5}
 .red-card p{font-weight:800}
 .quick-card .btn{display:inline-block;background:#fff;color:var(--text);padding:14px 20px;border-radius:9px;font-weight:900;border:1px solid rgba(0,0,0,.15)}
@@ -62,27 +161,36 @@ a{color:inherit;text-decoration:none}
 .orange-card{background:linear-gradient(135deg,#ffd64a,#ff8a00)}
 .red-card{background:linear-gradient(135deg,#ff4b61,#e60012)}
 main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
+.homepage-answer{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:24px 26px;margin:0 0 38px;box-shadow:0 8px 18px rgba(0,0,0,.04)}
+.homepage-answer h2,.homepage-faq h2{font-size:28px;margin:0 0 12px;color:#061b35}
+.homepage-answer p{font-size:17px;line-height:1.7;color:#475467;margin:0}
+.homepage-answer ul{margin:18px 0 0;padding-left:22px;color:#344054;line-height:1.65}
+.homepage-answer li+li{margin-top:7px}
+.homepage-faq{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:24px 26px;margin-top:42px}
+.homepage-faq-item{padding:18px 0;border-top:1px solid #eef1f5}
+.homepage-faq-item:first-of-type{border-top:0;padding-top:6px}
+.homepage-faq-item h3{font-size:20px;margin:0 0 8px;color:#061b35}
+.homepage-faq-item p{margin:0;color:#475467;line-height:1.65}
+.listing-guide{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:24px 26px;margin:0 0 32px;box-shadow:0 8px 18px rgba(0,0,0,.04)}
+.listing-guide h2{font-size:27px;line-height:1.25;margin:0 0 12px;color:#061b35}
+.listing-guide p{font-size:16px;line-height:1.7;color:#475467;margin:14px 0 0}
+.listing-guide a{color:#075eb5;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.listing-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0 4px}
+.listing-facts>div{background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px}
+.listing-facts dt{color:#667085;font-size:13px;font-weight:800;margin:0 0 5px}
+.listing-facts dd{color:#061b35;font-size:22px;font-weight:900;margin:0}
 .results-header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:28px}
 .results-header h1,.results-header h2{font-size:32px;margin:0 0 14px;text-transform:uppercase}
 .results-header p{margin:0;color:var(--muted)}
 .btn-outline{display:inline-block;border:1px solid #cfd5df;background:#fff;border-radius:9px;padding:14px 18px;font-weight:900;white-space:nowrap}
-.about-page-card{margin-top:10px!important}
-.about-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 6px}
-.about-action{display:inline-flex;align-items:center;justify-content:center;border-radius:9px;padding:13px 18px;color:#fff;font-weight:900;box-shadow:0 4px 10px rgba(6,27,53,.14);transition:transform .16s ease,box-shadow .16s ease}
-.about-action:hover{color:#fff;transform:translateY(-2px);box-shadow:0 8px 16px rgba(6,27,53,.2)}
-.about-youtube{background:#e60012}
-.about-facebook{background:#1877f2}
-.about-instagram{background:linear-gradient(135deg,#833ab4,#e1306c 55%,#f77737)}
 .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .set-card,.theme-card{background:#fff;border:1px solid #ddd;border-radius:13px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.06);position:relative;transition:transform .16s ease,box-shadow .16s ease}
 .set-card:hover,.theme-card:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.12)}
-.badge-new{display:inline-flex;align-items:center;background:#ff1d25;color:white;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1;font-weight:900;white-space:nowrap}.badge-soon{background:#061b35;color:#ffcc00}
-.set-image-wrap{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;border-bottom:1px solid #f0f0f0;overflow:hidden}
-.set-card img{width:100%;height:100%;object-fit:contain;background:#fff;padding:18px 14px;display:block;box-sizing:border-box}
+.badge-new{position:absolute;top:16px;left:16px;background:#c7000b;color:#fff;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:900;z-index:2}.badge-soon{background:#061b35;color:#ffcc00}
+.set-card img{width:100%;height:178px;object-fit:contain;background:#fff;padding:30px 14px 12px;display:block}
 .set-info{padding:13px 14px 16px;border-top:1px solid #f0f0f0}
-.set-number-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;min-height:22px}
-.set-number{color:#e60012;font-weight:900;font-size:13px}
-.set-name{font-weight:900;line-height:1.25;min-height:56px;font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.set-number{color:#e60012;font-weight:900;font-size:13px;margin-bottom:5px}
+.set-name{font-weight:900;line-height:1.25;min-height:40px;font-size:15px}
 .set-meta{color:var(--muted);font-size:13px;margin-top:8px}
 .theme-card{padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
 .theme-logo-wrap{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
@@ -98,557 +206,647 @@ main{max-width:1240px;margin:0 auto;padding:34px 22px 60px}
 .set-details-table tr:last-child th,.set-details-table tr:last-child td{border-bottom:0}
 .instruction-intro{max-width:1050px;margin:22px auto 0;text-align:left;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px}
 .related-set-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1050px;margin:0 auto}
-.related-set-grid .set-image-wrap{height:170px;aspect-ratio:auto}
-.related-set-grid .set-card img{height:100%;padding:24px 14px 10px}
+.related-set-grid .set-card img{height:170px;padding:24px 14px 10px}
 .related-set-grid .set-name{font-size:15px;min-height:auto}
 .related-video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:1050px;margin:0 auto}
 @media(max-width:900px){.related-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.set-page-card{padding:22px}}
 @media(max-width:520px){.related-set-grid{grid-template-columns:1fr}}
 .section-title{font-size:30px;margin:0 0 22px}
+.rumour-page{max-width:1180px;margin:0 auto}
+.rumour-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:22px 0}
+.rumour-summary>div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:0 6px 16px rgba(6,27,53,.05)}
+.rumour-summary strong{display:block;color:#0a61c9;font-size:27px;line-height:1.15;margin-bottom:7px}
+.rumour-summary span{display:block;color:var(--muted);font-size:14px}
+.rumour-filters{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:16px}
+.rumour-filters input,.rumour-filters select{width:100%;min-height:50px;border:1px solid #cfd5df;border-radius:9px;background:#fff;padding:0 15px;font:inherit;color:#061b35}
+.rumour-changes{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#edf6ff;border-radius:10px;padding:14px 18px;margin-bottom:16px;color:#0a3971}
+.rumour-changes span{background:#d7eaff;border-radius:999px;padding:6px 11px;font-size:13px;font-weight:800}
+.rumour-table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:11px;background:#fff}
+.rumour-table{width:100%;border-collapse:collapse;min-width:820px}
+.rumour-table th{background:#f3f6f9;text-align:left;padding:13px 14px;color:#061b35;font-size:14px}
+.rumour-table td{padding:12px 14px;border-top:1px solid #e5e7eb;color:#243b5a;font-size:14px}
+.rumour-theme{display:inline-block;background:#e8eef6;border-radius:7px;padding:5px 9px;font-weight:800}
+.rumour-status{display:inline-block;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:900;text-transform:uppercase;white-space:nowrap}
+.rumour-status-rumoured{background:#ffe7a3;color:#704600}
+.rumour-status-confirmed{background:#ccefd7;color:#12612d}
+.rumour-status-instructions{background:#d7eaff;color:#075eb5;text-decoration:underline;text-underline-offset:2px}
+.rumour-source-note{color:var(--muted);font-size:13px;margin:14px 0 0}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+@media(max-width:850px){.rumour-summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.rumour-summary,.rumour-filters{grid-template-columns:1fr}.rumour-summary>div{padding:16px}}
 footer{padding:28px 22px;background:#061b35;color:white;text-align:center;font-size:13px}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
 .footer-links a{color:#ffcc00;font-weight:900;text-decoration:underline;text-underline-offset:3px}
-.pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:34px 0 6px}
-.pagination a,.pagination strong{display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:9px 13px;border:1px solid #cfd5df;border-radius:9px;background:#fff;font-weight:900}
-.pagination strong{background:#061b35;border-color:#061b35;color:#fff}
-.pagination a:hover{background:#f3f7ff;border-color:#98a2b3}
 @media(min-width:1180px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-cards{grid-template-columns:1fr}}
-@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.set-image-wrap{height:150px;aspect-ratio:auto}}
+@media(max-width:680px){.site-nav-inner{align-items:flex-start;flex-direction:column;padding:10px 14px}.brand-logo{width:190px;max-width:82vw}.nav-links{width:100%;justify-content:space-between}.nav-links a{font-size:13px;padding:9px 8px}.hero{padding:24px 14px}.search-box{grid-template-columns:1fr 86px 50px}#mainSearchInput{font-size:16px;padding:16px 12px}#mainSearchType{font-size:14px;padding:0 8px}.search-suggestions{right:136px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.results-header{flex-direction:column}.listing-guide{padding:20px 18px}.listing-guide h2{font-size:23px}.listing-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.set-card img{height:150px}}
+
+.cookie-consent{position:fixed;left:0;right:0;bottom:0;z-index:20000;padding:16px;background:rgba(6,27,53,.98);color:#fff;box-shadow:0 -10px 28px rgba(0,0,0,.28)}
+.cookie-consent[hidden]{display:none!important}
+.cookie-consent-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.cookie-consent-copy{max-width:760px}
+.cookie-consent-copy strong{display:block;font-size:19px;margin-bottom:5px;color:#ffcc00}
+.cookie-consent-copy p{margin:0 0 6px;line-height:1.5;font-size:14px;color:#fff}
+.cookie-consent-copy a{color:#ffcc00;text-decoration:underline;text-underline-offset:3px;font-weight:800}
+.cookie-consent-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;flex:0 0 auto}
+.cookie-btn{appearance:none;border-radius:9px;padding:11px 16px;font-weight:900;font-size:14px;cursor:pointer;border:2px solid transparent}
+.cookie-btn:focus-visible,.footer-cookie-link:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.cookie-btn-primary{background:#ffcc00;color:#061b35;border-color:#ffcc00}
+.cookie-btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,.72)}
+.footer-cookie-link{border:0;background:none;color:#ffcc00;font:inherit;font-weight:900;text-decoration:underline;text-underline-offset:3px;padding:0;cursor:pointer}
+@media(max-width:720px){.cookie-consent{padding:14px}.cookie-consent-inner{display:block}.cookie-consent-actions{margin-top:12px;justify-content:stretch}.cookie-btn{flex:1 1 190px}.cookie-consent-copy p{font-size:13px}}
 </style>
 </head>
 <body>
 <div class="topline"></div>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="site-nav-inner">
-    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo"></a>
+    <a class="brand-link" href="/" aria-label="Brick Instructions For You home"><img class="brand-logo" src="/assets/brick-instructions-logo.svg" alt="Brick Instructions For You logo" width="900" height="260" decoding="async"></a>
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/themes/">Themes</a>
       <a href="/years/">Years</a>
       <a href="/latest/">Latest</a>
       <a href="/coming-soon/">Upcoming</a>
+      <a href="/2027-rumoured-lego-sets/">2027 Rumours</a>
       <a href="/about/">About</a>
       <a href="/search/">Search</a>
     </div>
   </div>
 </nav>
 
-<header class="hero">
-<h1>Find <span>LEGO®</span> Instructions</h1>
-<p>Search and browse LEGO instruction videos by set number, set name, theme or year.</p>
-<div class="search-wrap" id="mainSearchWrap">
-<form class="search-box" id="mainSearchForm" action="/search/" method="get" autocomplete="off">
-<input id="mainSearchInput" name="q" type="search" placeholder="Search set number, name, theme or year..." aria-label="Search LEGO instructions">
-<select id="mainSearchType" name="type" aria-label="Search type">
-<option value="all">All</option><option value="set">Set No.</option><option value="name">Name</option><option value="theme">Theme</option><option value="year">Year</option>
-</select>
-<button id="mainSearchBtn" type="submit" aria-label="Search"><span class="lego-brick-icon"></span></button>
-</form>
-<div class="search-suggestions" id="searchSuggestions"></div>
-</div>
-<div class="popular" aria-label="Popular LEGO instruction searches">
-<strong>Popular searches:</strong>
-<a class="chip chip-new" href="/2026/">New 2026 Releases</a><a class="chip" href="/search/?q=75313&type=set" data-search="75313" data-type="set">75313</a><a class="chip" href="/search/?q=42115&type=set" data-search="42115" data-type="set">42115</a><a class="chip" href="/search/?q=10300&type=set" data-search="10300" data-type="set">10300</a><a class="chip" href="/search/?q=Harry%20Potter&type=theme" data-search="Harry Potter" data-type="theme">Harry Potter</a><a class="chip" href="/search/?q=Technic&type=theme" data-search="Technic" data-type="theme">Technic</a><a class="chip" href="/search/?q=Star%20Wars&type=theme" data-search="Star Wars" data-type="theme">Star Wars</a>
-</div>
-<div class="quick-cards">
-<a class="quick-card blue-card" href="/years/"><h2>🗓️ BROWSE BY YEAR</h2><p>View LEGO sets by year of release.</p><span class="btn">BROWSE YEARS</span></a>
-<a class="quick-card orange-card" href="/themes/"><h2>🧱 BROWSE BY THEME</h2><p>Explore sets by your favourite LEGO themes.</p><span class="btn">BROWSE THEMES</span></a>
-<a class="quick-card red-card" href="/latest/"><h2>★ LATEST 2026 VIDEOS</h2><span class="btn">VIEW LATEST</span></a>
-</div>
-</header>
-
-<main id="pageContent"><div class="results-header"><div><h2>LEGO 2026 InstructionsPage 8</h2><p>Showing 421-480 of 713 public LEGO instruction pages.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/43281-disney-elsa-s-ice-castle-snow-ride-adventure/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IP4K6VvkdWE/maxresdefault.jpg" alt="LEGO Disney 43281 Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+<main id="pageContent"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/years/">Years</a><span>›</span><a href="/2026/">LEGO 2026 Instructions</a><span>›</span><a href="/2026/page/8/">Page 8</a></nav><div class="results-header"><div><h1>LEGO 2026 Instructions – Page 8</h1><p>668 published instruction pages across 12 page(s). Viewing 60 on page 8.</p></div></div><nav class="year-pagination" aria-label="Year results pages" style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:24px 0;"><a href="/2026/page/7/" rel="prev">Previous</a> <a href="/2026/">1</a> <a href="/2026/page/2/">2</a> <a href="/2026/page/3/">3</a> <a href="/2026/page/4/">4</a> <a href="/2026/page/5/">5</a> <a href="/2026/page/6/">6</a> <a href="/2026/page/7/">7</a> <strong aria-current="page">8</strong> <a href="/2026/page/9/">9</a> <a href="/2026/page/10/">10</a> <a href="/2026/page/11/">11</a> <a href="/2026/page/12/">12</a> <a href="/2026/page/9/" rel="next">Next</a></nav><div class="grid"><a class="set-card" href="/lego-instructions/42689-friends-heartlake-city-friends-club-house/">
+  
+  <img src="/images/cards/lego-instructions-42689-friends-heartlake-city-friends-club-house-320.webp?v=3b6283776cce" srcset="/images/cards/lego-instructions-42689-friends-heartlake-city-friends-club-house-320.webp?v=3b6283776cce 320w, /images/cards/lego-instructions-42689-friends-heartlake-city-friends-club-house-480.webp?v=3b6283776cce 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO 42689 Heartlake City Friends Club House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43281</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Elsa&#x27;s Ice Castle &amp; Snow Ride Adventure</div>
-    <div class="set-meta">Disney • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43280-disney-beach-fun-with-lilo-stitch/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/dA-aVNqtd2A/maxresdefault.jpg" alt="LEGO Disney 43280 Beach Fun with Lilo &amp; Stitch building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43280</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Beach Fun with Lilo &amp; Stitch</div>
-    <div class="set-meta">Disney • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43033-editions-2026-u-s-soccer-national-team-jersey/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IJ-Yhwhyjmk/maxresdefault.jpg" alt="LEGO Editions 43033 2026 U.S. Soccer National Team Jersey building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43033</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">2026 U.S. Soccer National Team Jersey</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43032-editions-fifa-world-cup-2026-official-emblem/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/v6OpNSNhp-U/maxresdefault.jpg" alt="LEGO Editions 43032 FIFA World Cup 2026 Official Emblem building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43032</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">FIFA World Cup 2026 Official Emblem</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43031-editions-olivia-rodrigo-s-dual-guitar/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/cxumtNxk04s/maxresdefault.jpg" alt="LEGO Editions 43031 Olivia Rodrigo&#x27;s Dual Guitar building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43031</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Olivia Rodrigo&#x27;s Dual Guitar</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43030-editions-olivia-rodrigo-s-secret-storage/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/wtkghAjsrHE/maxresdefault.jpg" alt="LEGO Editions 43030 Olivia Rodrigo&#x27;s Secret Storage building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43030</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Olivia Rodrigo&#x27;s Secret Storage</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43029-editions-olivia-rodrigo-s-concert-moon/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AYbJuPrEyD8/maxresdefault.jpg" alt="LEGO Editions 43029 Olivia Rodrigo&#x27;s Concert Moon building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43029</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Olivia Rodrigo&#x27;s Concert Moon</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43028-editions-olivia-rodrigo-s-vinyl/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/95QQIjDO6us/maxresdefault.jpg" alt="LEGO Editions 43028 Olivia Rodrigo&#x27;s Vinyl building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43028</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Olivia Rodrigo&#x27;s Vinyl</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43027-editions-vini-jr-football-highlights/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3VZExrlU9JQ/maxresdefault.jpg" alt="LEGO Editions 43027 Vini Jr. - Football Highlights building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43027</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Vini Jr. - Football Highlights</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43025-nike-air-max-95/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OVX9zrZ6dXw/maxresdefault.jpg" alt="LEGO 43025 Nike Air Max 95 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43025</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Nike Air Max 95</div>
-    <div class="set-meta">Nike • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43023-editions-mclaren-mastercard-f1-team-lando-norris-helmet/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/wD20VBkTybY/maxresdefault.jpg" alt="LEGO Editions 43023 McLaren Mastercard F1 Team Lando Norris Helmet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43023</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">McLaren Mastercard F1 Team Lando Norris Helmet</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43022-editions-scuderia-ferrari-hp-lewis-hamilton-helmet/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/iWKpwimTA3A/maxresdefault.jpg" alt="LEGO Editions 43022 Scuderia Ferrari HP Lewis Hamilton Helmet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43022</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Scuderia Ferrari HP Lewis Hamilton Helmet</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43020-editions-fifa-world-cup-official-trophy/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/hg36DIM4Vwc/maxresdefault.jpg" alt="LEGO Editions 43020 FIFA World Cup Official Trophy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43020</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">FIFA World Cup Official Trophy</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43019-editions-football/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/3Yv831H_KQg/maxresdefault.jpg" alt="LEGO Editions 43019 Football building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43019</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Football</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43018-editions-lionel-messi-celebration/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IYfflXFIHFs/maxresdefault.jpg" alt="LEGO Editions 43018 Lionel Messi - Celebration building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43018</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Lionel Messi - Celebration</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43017-editions-mclaren-mastercard-f1-team-oscar-piastri-helmet/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/e3KV4vaGCIc/maxresdefault.jpg" alt="LEGO Editions 43017 McLaren Mastercard F1 Team Oscar Piastri Helmet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43017</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">McLaren Mastercard F1 Team Oscar Piastri Helmet</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43016-editions-cristiano-ronaldo-football-legend/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ILcxwehRXAc/maxresdefault.jpg" alt="LEGO Editions 43016 Cristiano Ronaldo - Football Legend building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43016</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Cristiano Ronaldo - Football Legend</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43015-editions-lionel-messi-football-legend/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AUDy5EnsBk0/maxresdefault.jpg" alt="LEGO Editions 43015 Lionel Messi - Football Legend building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43015</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Lionel Messi - Football Legend</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43014-editions-scuderia-ferrari-hp-charles-leclerc-helmet/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/hkk6UDOyy14/maxresdefault.jpg" alt="LEGO Editions 43014 Scuderia Ferrari HP Charles Leclerc Helmet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43014</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Scuderia Ferrari HP Charles Leclerc Helmet</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43013-editions-kylian-mbapp-football-highlights/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/LwyhwBk_GOs/maxresdefault.jpg" alt="LEGO Editions 43013 Kylian Mbappé - Football Highlights building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43013</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Kylian Mbappé - Football Highlights</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43012-editions-cristiano-ronaldo-football-highlights/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/lWQqHt3izbo/maxresdefault.jpg" alt="LEGO Editions 43012 Cristiano Ronaldo - Football Highlights building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43012</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Cristiano Ronaldo - Football Highlights</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/43011-editions-lionel-messi-football-highlights/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/7RBysLCz5s0/maxresdefault.jpg" alt="LEGO Editions 43011 Lionel Messi - Football Highlights building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43011</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Lionel Messi - Football Highlights</div>
-    <div class="set-meta">Editions • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42705-friends-cosy-fall-forest-cabin/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PAIjVX8tvYA/maxresdefault.jpg" alt="LEGO Friends 42705 Cosy Fall Forest Cabin building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42705</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Cosy Fall Forest Cabin</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42704-friends-heartlake-city-grand-hotel/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/T7eF9ACZ8bQ/maxresdefault.jpg" alt="LEGO Friends 42704 Heartlake City Grand Hotel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42704</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Heartlake City Grand Hotel</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42703-friends-mermaid-roller-coaster-ride/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/875MEbvvT6g/maxresdefault.jpg" alt="LEGO Friends 42703 Mermaid Roller Coaster Ride building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42703</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Mermaid Roller Coaster Ride</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42702-friends-spinning-flower-fairy-teacup-ride/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/NMsmEue5xas/maxresdefault.jpg" alt="LEGO Friends 42702 Spinning Flower &amp; Fairy Teacup Ride building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42702</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Spinning Flower &amp; Fairy Teacup Ride</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42701-friends-koala-habitat-care-centre/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/KFFjFKpsMyA/maxresdefault.jpg" alt="LEGO Friends 42701 Koala Habitat &amp; Care Centre building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42701</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Koala Habitat &amp; Care Centre</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42700-friends-candy-cupcake-ferris-wheel/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/xx3g07E-7po/maxresdefault.jpg" alt="LEGO Friends 42700 Candy &amp; Cupcake Ferris Wheel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42700</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Candy &amp; Cupcake Ferris Wheel</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42699-friends-beach-house-with-seals/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Xc_gS2TIcmQ/maxresdefault.jpg" alt="LEGO Friends 42699 Beach House with Seals building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42699</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Beach House with Seals</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42697-friends-creative-dollhouse-suitcase/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OxOwrH7KjBg/maxresdefault.jpg" alt="LEGO Friends 42697 Creative Dollhouse Suitcase building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42697</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Creative Dollhouse Suitcase</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42696-friends-animal-vet-clinic/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kCZjOo1pLrU/maxresdefault.jpg" alt="LEGO Friends 42696 Animal Vet Clinic building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42696</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Animal Vet Clinic</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42695-friends-horse-baby-foal-trailer/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/tnVulHoibuI/maxresdefault.jpg" alt="LEGO Friends 42695 Horse &amp; Baby Foal Trailer building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42695</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Horse &amp; Baby Foal Trailer</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42694-friends-pizza-truck/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kQ10qCdBkpU/maxresdefault.jpg" alt="LEGO Friends 42694 Pizza Truck building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42694</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Pizza Truck</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42693-friends-creative-flower-shop/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Sem114hFQ6Q/maxresdefault.jpg" alt="LEGO Friends 42693 Creative Flower Shop building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42693</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Creative Flower Shop</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42692-friends-ice-cream-balloon-stand/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/J7ZtE05m37w/maxresdefault.jpg" alt="LEGO Friends 42692 Ice Cream &amp; Balloon Stand building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42692</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Ice Cream &amp; Balloon Stand</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42691-friends-garden-restaurant/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/AX4CGs3Me64/maxresdefault.jpg" alt="LEGO Friends 42691 Garden Restaurant building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42691</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Garden Restaurant</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42690-friends-forest-tea-party/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/is_O0qKcktI/maxresdefault.jpg" alt="LEGO Friends 42690 Forest Tea Party building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42690</div><span class="badge-new">NEW</span></div>
-    <div class="set-name">Forest Tea Party</div>
-    <div class="set-meta">Friends • 2026</div>
-  </div>
-</a>
-<a class="set-card" href="/lego-instructions/42689-friends-heartlake-city-friends-club-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/9mFqyWe9sf4/maxresdefault.jpg" alt="LEGO 42689 Heartlake City Friends Club House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
-  <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42689</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42689</div>
     <div class="set-name">Heartlake City Friends Club House</div>
     <div class="set-meta">Friends • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42688-friends-horse-stable-and-riding-academy/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/OQ4RUBqGKtk/maxresdefault.jpg" alt="LEGO Friends 42688 Horse Stable and Riding Academy building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42688-friends-horse-stable-and-riding-academy-320.webp?v=46e46b8cb2f1" srcset="/images/cards/lego-instructions-42688-friends-horse-stable-and-riding-academy-320.webp?v=46e46b8cb2f1 320w, /images/cards/lego-instructions-42688-friends-horse-stable-and-riding-academy-480.webp?v=46e46b8cb2f1 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Friends 42688 Horse Stable and Riding Academy building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42688</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42688</div>
     <div class="set-name">Horse Stable and Riding Academy</div>
     <div class="set-meta">Friends • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42687-friends-liann-s-family-house/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ZEboDZEvU04/maxresdefault.jpg" alt="LEGO Friends 42687 Liann&#x27;s Family House building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42687-friends-liann-s-family-house-320.webp?v=96478d582273" srcset="/images/cards/lego-instructions-42687-friends-liann-s-family-house-320.webp?v=96478d582273 320w, /images/cards/lego-instructions-42687-friends-liann-s-family-house-480.webp?v=96478d582273 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Friends 42687 Liann&#x27;s Family House building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42687</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42687</div>
     <div class="set-name">Liann&#x27;s Family House</div>
     <div class="set-meta">Friends • 2026</div>
   </div>
 </a>
-<a class="set-card" href="/lego-instructions/42685-friends-heartlake-city-fashion-show/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/IOnFd2sR_RA/maxresdefault.jpg" alt="LEGO Friends 42685 Heartlake City Fashion Show building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+<a class="set-card" href="/lego-instructions/42686-friends-fun-indoor-playground/">
+  
+  <img src="/images/cards/lego-instructions-42686-friends-fun-indoor-playground-320.webp?v=defef15de4b5" srcset="/images/cards/lego-instructions-42686-friends-fun-indoor-playground-320.webp?v=defef15de4b5 320w, /images/cards/lego-instructions-42686-friends-fun-indoor-playground-480.webp?v=defef15de4b5 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Friends 42686 Fun Indoor Playground building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42685</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42686</div>
+    <div class="set-name">Fun Indoor Playground</div>
+    <div class="set-meta">Friends • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/42685-friends-heartlake-city-fashion-show/">
+  
+  <img src="/images/cards/lego-instructions-42685-friends-heartlake-city-fashion-show-320.webp?v=f9d1ee833148" srcset="/images/cards/lego-instructions-42685-friends-heartlake-city-fashion-show-320.webp?v=f9d1ee833148 320w, /images/cards/lego-instructions-42685-friends-heartlake-city-fashion-show-480.webp?v=f9d1ee833148 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Friends 42685 Heartlake City Fashion Show building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42685</div>
     <div class="set-name">Heartlake City Fashion Show</div>
     <div class="set-meta">Friends • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42684-friends-unicorn-dream-caf/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/e2UbOG1rb_s/maxresdefault.jpg" alt="LEGO Friends 42684 Unicorn Dream Café building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42684-friends-unicorn-dream-caf-320.webp?v=0bdef7bfd9a6" srcset="/images/cards/lego-instructions-42684-friends-unicorn-dream-caf-320.webp?v=0bdef7bfd9a6 320w, /images/cards/lego-instructions-42684-friends-unicorn-dream-caf-480.webp?v=0bdef7bfd9a6 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Friends 42684 Unicorn Dream Café building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42684</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42684</div>
     <div class="set-name">Unicorn Dream Café</div>
     <div class="set-meta">Friends • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42682-friends-nature-glamping-cabin/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/54gqFRJzhWo/maxresdefault.jpg" alt="LEGO Friends 42682 Nature Glamping Cabin building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42682-friends-nature-glamping-cabin-320.webp?v=2d0e08307b57" srcset="/images/cards/lego-instructions-42682-friends-nature-glamping-cabin-320.webp?v=2d0e08307b57 320w, /images/cards/lego-instructions-42682-friends-nature-glamping-cabin-480.webp?v=2d0e08307b57 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Friends 42682 Nature Glamping Cabin building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42682</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42682</div>
     <div class="set-name">Nature Glamping Cabin</div>
     <div class="set-meta">Friends • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42681-friends-axolotl-adventure-boat/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/Ae6dk2HqvlA/maxresdefault.jpg" alt="LEGO Friends 42681 Axolotl Adventure Boat building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42681-friends-axolotl-adventure-boat-320.webp?v=a885359cbdcf" srcset="/images/cards/lego-instructions-42681-friends-axolotl-adventure-boat-320.webp?v=a885359cbdcf 320w, /images/cards/lego-instructions-42681-friends-axolotl-adventure-boat-480.webp?v=a885359cbdcf 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Friends 42681 Axolotl Adventure Boat building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42681</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42681</div>
     <div class="set-name">Axolotl Adventure Boat</div>
     <div class="set-meta">Friends • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42680-friends-heartlake-city-mini-supermarket/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0OLmF2nwO6g/maxresdefault.jpg" alt="LEGO Friends 42680 Heartlake City Mini Supermarket building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42680-friends-heartlake-city-mini-supermarket-320.webp?v=b4cc3af5913f" srcset="/images/cards/lego-instructions-42680-friends-heartlake-city-mini-supermarket-320.webp?v=b4cc3af5913f 320w, /images/cards/lego-instructions-42680-friends-heartlake-city-mini-supermarket-480.webp?v=b4cc3af5913f 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Friends 42680 Heartlake City Mini Supermarket building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42680</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42680</div>
     <div class="set-name">Heartlake City Mini Supermarket</div>
     <div class="set-meta">Friends • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42679-friends-heartlake-city-bunny-hotel/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/kdjmnvqVTmk/maxresdefault.jpg" alt="LEGO Friends 42679 Heartlake City Bunny Hotel building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42679-friends-heartlake-city-bunny-hotel-320.webp?v=336e55103800" srcset="/images/cards/lego-instructions-42679-friends-heartlake-city-bunny-hotel-320.webp?v=336e55103800 320w, /images/cards/lego-instructions-42679-friends-heartlake-city-bunny-hotel-480.webp?v=336e55103800 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Friends 42679 Heartlake City Bunny Hotel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42679</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42679</div>
     <div class="set-name">Heartlake City Bunny Hotel</div>
     <div class="set-meta">Friends • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42678-friends-pet-accessories-van/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/HZcaJBfTg9Q/maxresdefault.jpg" alt="LEGO Friends 42678 Pet Accessories Van building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42678-friends-pet-accessories-van-320.webp?v=de691f043579" srcset="/images/cards/lego-instructions-42678-friends-pet-accessories-van-320.webp?v=de691f043579 320w, /images/cards/lego-instructions-42678-friends-pet-accessories-van-480.webp?v=de691f043579 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Friends 42678 Pet Accessories Van building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42678</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42678</div>
     <div class="set-name">Pet Accessories Van</div>
     <div class="set-meta">Friends • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42677-friends-dog-treats-bakery/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/GyIxFSFKSOI/maxresdefault.jpg" alt="LEGO Friends 42677 Dog Treats Bakery building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42677-friends-dog-treats-bakery-320.webp?v=9a29af6c8f19" srcset="/images/cards/lego-instructions-42677-friends-dog-treats-bakery-320.webp?v=9a29af6c8f19 320w, /images/cards/lego-instructions-42677-friends-dog-treats-bakery-480.webp?v=9a29af6c8f19 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Friends 42677 Dog Treats Bakery building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42677</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42677</div>
     <div class="set-name">Dog Treats Bakery</div>
     <div class="set-meta">Friends • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42676-friends-fun-water-park-day/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/0_uf_S8al9c/maxresdefault.jpg" alt="LEGO Friends 42676 Fun Water Park Day building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42676-friends-fun-water-park-day-320.webp?v=91560f6e850f" srcset="/images/cards/lego-instructions-42676-friends-fun-water-park-day-320.webp?v=91560f6e850f 320w, /images/cards/lego-instructions-42676-friends-fun-water-park-day-480.webp?v=91560f6e850f 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Friends 42676 Fun Water Park Day building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42676</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42676</div>
     <div class="set-name">Fun Water Park Day</div>
     <div class="set-meta">Friends • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42675-friends-unicorn-cake-delivery-car/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/QykJiTNcotI/maxresdefault.jpg" alt="LEGO Friends 42675 Unicorn Cake Delivery Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42675-friends-unicorn-cake-delivery-car-320.webp?v=2366623696d4" srcset="/images/cards/lego-instructions-42675-friends-unicorn-cake-delivery-car-320.webp?v=2366623696d4 320w, /images/cards/lego-instructions-42675-friends-unicorn-cake-delivery-car-480.webp?v=2366623696d4 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Friends 42675 Unicorn Cake Delivery Car building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42675</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42675</div>
     <div class="set-name">Unicorn Cake Delivery Car</div>
     <div class="set-meta">Friends • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42242-technic-mercedes-benz-unimog-u-5023-with-crane/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/PQCrF58XHac/maxresdefault.jpg" alt="LEGO Technic 42242 Mercedes-Benz Unimog U 5023 with Crane building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42242-technic-mercedes-benz-unimog-u-5023-with-crane-320.webp?v=fbeb407e02eb" srcset="/images/cards/lego-instructions-42242-technic-mercedes-benz-unimog-u-5023-with-crane-320.webp?v=fbeb407e02eb 320w, /images/cards/lego-instructions-42242-technic-mercedes-benz-unimog-u-5023-with-crane-480.webp?v=fbeb407e02eb 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42242 Mercedes-Benz Unimog U 5023 with Crane building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42242</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42242</div>
     <div class="set-name">Mercedes-Benz Unimog U 5023 with Crane</div>
     <div class="set-meta">Technic • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42241-technic-bugatti-chiron-pur-sport/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/1CEFSIgapQ4/maxresdefault.jpg" alt="LEGO Technic 42241 Bugatti Chiron Pur Sport building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42241-technic-bugatti-chiron-pur-sport-320.webp?v=40b0398144ca" srcset="/images/cards/lego-instructions-42241-technic-bugatti-chiron-pur-sport-320.webp?v=40b0398144ca 320w, /images/cards/lego-instructions-42241-technic-bugatti-chiron-pur-sport-480.webp?v=40b0398144ca 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42241 Bugatti Chiron Pur Sport building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42241</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42241</div>
     <div class="set-name">Bugatti Chiron Pur Sport</div>
     <div class="set-meta">Technic • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42240-technic-aston-martin-aramco-amr25-f1-car/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/gPt0zI2GU98/maxresdefault.jpg" alt="LEGO Technic 42240 Aston Martin Aramco AMR25 F1 Car building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42240-technic-aston-martin-aramco-amr25-f1-car-320.webp?v=c90a849605e7" srcset="/images/cards/lego-instructions-42240-technic-aston-martin-aramco-amr25-f1-car-320.webp?v=c90a849605e7 320w, /images/cards/lego-instructions-42240-technic-aston-martin-aramco-amr25-f1-car-480.webp?v=c90a849605e7 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42240 Aston Martin Aramco AMR25 F1 Car building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42240</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42240</div>
     <div class="set-name">Aston Martin Aramco AMR25 F1 Car</div>
     <div class="set-meta">Technic • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42239-technic-batmobile-tumbler/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/ZeeQx5dXb1s/maxresdefault.jpg" alt="LEGO Technic 42239 Batmobile Tumbler building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42239-technic-batmobile-tumbler-320.webp?v=c180596814f5" srcset="/images/cards/lego-instructions-42239-technic-batmobile-tumbler-320.webp?v=c180596814f5 320w, /images/cards/lego-instructions-42239-technic-batmobile-tumbler-480.webp?v=c180596814f5 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42239 Batmobile Tumbler building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42239</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42239</div>
     <div class="set-name">Batmobile Tumbler</div>
     <div class="set-meta">Technic • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42238-technic-ducati-desmo450-mx-factory-motorcycle/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/k3c_V6u1sb0/maxresdefault.jpg" alt="LEGO Technic 42238 Ducati Desmo450 MX Factory Motorcycle building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42238-technic-ducati-desmo450-mx-factory-motorcycle-320.webp?v=e9be3f2a0850" srcset="/images/cards/lego-instructions-42238-technic-ducati-desmo450-mx-factory-motorcycle-320.webp?v=e9be3f2a0850 320w, /images/cards/lego-instructions-42238-technic-ducati-desmo450-mx-factory-motorcycle-480.webp?v=e9be3f2a0850 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42238 Ducati Desmo450 MX Factory Motorcycle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42238</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42238</div>
     <div class="set-name">Ducati Desmo450 MX Factory Motorcycle</div>
     <div class="set-meta">Technic • 2026</div>
   </div>
 </a>
 <a class="set-card" href="/lego-instructions/42236-technic-custom-garage-ford-gt-mustang/">
-  <div class="set-image-wrap"><img src="https://i.ytimg.com/vi/m6vM4gLnQh4/maxresdefault.jpg" alt="LEGO Technic 42236 Custom Garage Ford GT Mustang building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+  
+  <img src="/images/cards/lego-instructions-42236-technic-custom-garage-ford-gt-mustang-320.webp?v=8947d847006f" srcset="/images/cards/lego-instructions-42236-technic-custom-garage-ford-gt-mustang-320.webp?v=8947d847006f 320w, /images/cards/lego-instructions-42236-technic-custom-garage-ford-gt-mustang-480.webp?v=8947d847006f 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42236 Custom Garage Ford GT Mustang building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42236</div><span class="badge-new">NEW</span></div>
+    <div class="set-number">42236</div>
     <div class="set-name">Custom Garage Ford GT Mustang</div>
     <div class="set-meta">Technic • 2026</div>
   </div>
-</a></div><div class="results-header" style="margin-top:38px;"><div><h2>Coming Soon LEGO 2026 Instructions</h2><p>4 named instruction pages on this page are waiting for videos.</p></div></div><div class="grid"><a class="set-card" href="/lego-instructions/43026-nike-air-force-1/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 43026 Nike Air Force 1 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+</a>
+<a class="set-card" href="/lego-instructions/42235-technic-ferrari-488-pista/">
+  
+  <img src="/images/cards/lego-instructions-42235-technic-ferrari-488-pista-320.webp?v=3ecc58788393" srcset="/images/cards/lego-instructions-42235-technic-ferrari-488-pista-320.webp?v=3ecc58788393 320w, /images/cards/lego-instructions-42235-technic-ferrari-488-pista-480.webp?v=3ecc58788393 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42235 Ferrari 488 Pista building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43026</div><span class="badge-new badge-soon">COMING SOON</span></div>
-    <div class="set-name">Nike Air Force 1</div>
-    <div class="set-meta">Nike • 2026</div>
+    <div class="set-number">42235</div>
+    <div class="set-name">Ferrari 488 Pista</div>
+    <div class="set-meta">Technic • 2026</div>
   </div>
 </a>
-<a class="set-card" href="/lego-instructions/43024-editions-ayrton-senna-helmet/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Editions 43024 Ayrton Senna Helmet building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+<a class="set-card" href="/lego-instructions/42234-technic-dodge-viper-gts-r/">
+  
+  <img src="/images/cards/lego-instructions-42234-technic-dodge-viper-gts-r-320.webp?v=8c270e05040c" srcset="/images/cards/lego-instructions-42234-technic-dodge-viper-gts-r-320.webp?v=8c270e05040c 320w, /images/cards/lego-instructions-42234-technic-dodge-viper-gts-r-480.webp?v=8c270e05040c 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42234 Dodge Viper GTS-R building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">43024</div><span class="badge-new badge-soon">COMING SOON</span></div>
-    <div class="set-name">Ayrton Senna Helmet</div>
-    <div class="set-meta">Editions • 2026</div>
+    <div class="set-number">42234</div>
+    <div class="set-name">Dodge Viper GTS-R</div>
+    <div class="set-meta">Technic • 2026</div>
   </div>
 </a>
-<a class="set-card" href="/lego-instructions/42698-friends-advent-calendar-2026/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO 42698 LEGO Friends Advent Calendar 2026 building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+<a class="set-card" href="/lego-instructions/42233-technic-mighty-machines-series-1-random-pack/">
+  
+  <img src="/images/cards/lego-instructions-42233-technic-mighty-machines-series-1-random-pack-320.webp?v=4f4e27be31ad" srcset="/images/cards/lego-instructions-42233-technic-mighty-machines-series-1-random-pack-320.webp?v=4f4e27be31ad 320w, /images/cards/lego-instructions-42233-technic-mighty-machines-series-1-random-pack-480.webp?v=4f4e27be31ad 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42233 Mighty Machines - Series 1 Random pack building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42698</div><span class="badge-new badge-soon">COMING SOON</span></div>
-    <div class="set-name">LEGO Friends Advent Calendar 2026</div>
-    <div class="set-meta">Friends • 2026</div>
+    <div class="set-number">42233</div>
+    <div class="set-name">Mighty Machines - Series 1 Random pack</div>
+    <div class="set-meta">Technic • 2026</div>
   </div>
 </a>
-<a class="set-card" href="/lego-instructions/42686-friends-fun-indoor-playground/">
-  <div class="set-image-wrap"><img src="/assets/coming-soon-option3.svg" alt="LEGO Friends 42686 Fun Indoor Playground building instructions" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"></div>
+<a class="set-card" href="/lego-instructions/42232-technic-koenigsegg-sadair-s-spear-megacar/">
+  
+  <img src="/images/cards/lego-instructions-42232-technic-koenigsegg-sadair-s-spear-megacar-320.webp?v=b3b7d54ecefb" srcset="/images/cards/lego-instructions-42232-technic-koenigsegg-sadair-s-spear-megacar-320.webp?v=b3b7d54ecefb 320w, /images/cards/lego-instructions-42232-technic-koenigsegg-sadair-s-spear-megacar-480.webp?v=b3b7d54ecefb 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42232 Koenigsegg Sadair&#x27;s Spear Megacar building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
   <div class="set-info">
-    <div class="set-number-row"><div class="set-number">42686</div><span class="badge-new badge-soon">COMING SOON</span></div>
-    <div class="set-name">Fun Indoor Playground</div>
-    <div class="set-meta">Friends • 2026</div>
+    <div class="set-number">42232</div>
+    <div class="set-name">Koenigsegg Sadair&#x27;s Spear Megacar</div>
+    <div class="set-meta">Technic • 2026</div>
   </div>
-</a></div><nav class="pagination" aria-label="Year results pages"><a rel="prev" href="/2026/page/7/">← Previous</a><a href="/2026/">1</a><span aria-hidden="true">…</span><a href="/2026/page/6/">6</a><a href="/2026/page/7/">7</a><strong aria-current="page">8</strong><a href="/2026/page/9/">9</a><a href="/2026/page/10/">10</a><span aria-hidden="true">…</span><a href="/2026/page/12/">12</a><a rel="next" href="/2026/page/9/">Next →</a></nav></main>
+</a>
+<a class="set-card" href="/lego-instructions/42231-technic-dodge-charger-r-t/">
+  
+  <img src="/images/cards/lego-instructions-42231-technic-dodge-charger-r-t-320.webp?v=7792bff98f78" srcset="/images/cards/lego-instructions-42231-technic-dodge-charger-r-t-320.webp?v=7792bff98f78 320w, /images/cards/lego-instructions-42231-technic-dodge-charger-r-t-480.webp?v=7792bff98f78 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42231 Dodge Charger R/T building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42231</div>
+    <div class="set-name">Dodge Charger R/T</div>
+    <div class="set-meta">Technic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/42229-technic-mitsubishi-eclipse/">
+  
+  <img src="/images/cards/lego-instructions-42229-technic-mitsubishi-eclipse-320.webp?v=54fbe142a6c6" srcset="/images/cards/lego-instructions-42229-technic-mitsubishi-eclipse-320.webp?v=54fbe142a6c6 320w, /images/cards/lego-instructions-42229-technic-mitsubishi-eclipse-480.webp?v=54fbe142a6c6 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42229 Mitsubishi Eclipse building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42229</div>
+    <div class="set-name">Mitsubishi Eclipse</div>
+    <div class="set-meta">Technic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/42228-technic-mclaren-f1-team-mcl39/">
+  
+  <img src="/images/cards/lego-instructions-42228-technic-mclaren-f1-team-mcl39-320.webp?v=c5df22ad2227" srcset="/images/cards/lego-instructions-42228-technic-mclaren-f1-team-mcl39-320.webp?v=c5df22ad2227 320w, /images/cards/lego-instructions-42228-technic-mclaren-f1-team-mcl39-480.webp?v=c5df22ad2227 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42228 McLaren F1 Team MCL39 building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42228</div>
+    <div class="set-name">McLaren F1 Team MCL39</div>
+    <div class="set-meta">Technic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/42227-technic-jeep-wrangler-rubicon/">
+  
+  <img src="/images/cards/lego-instructions-42227-technic-jeep-wrangler-rubicon-320.webp?v=6727fb8814a4" srcset="/images/cards/lego-instructions-42227-technic-jeep-wrangler-rubicon-320.webp?v=6727fb8814a4 320w, /images/cards/lego-instructions-42227-technic-jeep-wrangler-rubicon-480.webp?v=6727fb8814a4 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42227 Jeep Wrangler Rubicon building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42227</div>
+    <div class="set-name">Jeep Wrangler Rubicon</div>
+    <div class="set-meta">Technic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/42226-technic-bmw-m4-gt3-evo/">
+  
+  <img src="/images/cards/lego-instructions-42226-technic-bmw-m4-gt3-evo-320.webp?v=32fa59532bc7" srcset="/images/cards/lego-instructions-42226-technic-bmw-m4-gt3-evo-320.webp?v=32fa59532bc7 320w, /images/cards/lego-instructions-42226-technic-bmw-m4-gt3-evo-480.webp?v=32fa59532bc7 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42226 BMW M4 GT3 EVO building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42226</div>
+    <div class="set-name">BMW M4 GT3 EVO</div>
+    <div class="set-meta">Technic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/42225-technic-yellow-motorcycle/">
+  
+  <img src="/images/cards/lego-instructions-42225-technic-yellow-motorcycle-320.webp?v=9a992ec3f4b6" srcset="/images/cards/lego-instructions-42225-technic-yellow-motorcycle-320.webp?v=9a992ec3f4b6 320w, /images/cards/lego-instructions-42225-technic-yellow-motorcycle-480.webp?v=9a992ec3f4b6 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42225 Yellow Motorcycle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42225</div>
+    <div class="set-name">Yellow Motorcycle</div>
+    <div class="set-meta">Technic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/42224-technic-porsche-911-gt3-r-rexy-ao-racing/">
+  
+  <img src="/images/cards/lego-instructions-42224-technic-porsche-911-gt3-r-rexy-ao-racing-320.webp?v=93fc2ac5a4a2" srcset="/images/cards/lego-instructions-42224-technic-porsche-911-gt3-r-rexy-ao-racing-320.webp?v=93fc2ac5a4a2 320w, /images/cards/lego-instructions-42224-technic-porsche-911-gt3-r-rexy-ao-racing-480.webp?v=93fc2ac5a4a2 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42224 Porsche 911 GT3 R REXY AO Racing building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42224</div>
+    <div class="set-name">Porsche 911 GT3 R REXY AO Racing</div>
+    <div class="set-meta">Technic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/42223-technic-1966-ford-gt40-mkii/">
+  
+  <img src="/images/cards/lego-instructions-42223-technic-1966-ford-gt40-mkii-320.webp?v=e0eb94d22320" srcset="/images/cards/lego-instructions-42223-technic-1966-ford-gt40-mkii-320.webp?v=e0eb94d22320 320w, /images/cards/lego-instructions-42223-technic-1966-ford-gt40-mkii-480.webp?v=e0eb94d22320 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42223 1966 Ford GT40 MKII building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42223</div>
+    <div class="set-name">1966 Ford GT40 MKII</div>
+    <div class="set-meta">Technic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/42222-technic-bugatti-chiron-pur-sport/">
+  
+  <img src="/images/cards/lego-instructions-42222-technic-bugatti-chiron-pur-sport-320.webp?v=bad6e343c007" srcset="/images/cards/lego-instructions-42222-technic-bugatti-chiron-pur-sport-320.webp?v=bad6e343c007 320w, /images/cards/lego-instructions-42222-technic-bugatti-chiron-pur-sport-480.webp?v=bad6e343c007 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42222 Bugatti Chiron Pur Sport building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42222</div>
+    <div class="set-name">Bugatti Chiron Pur Sport</div>
+    <div class="set-meta">Technic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/42221-technic-nasa-artemis-space-launch-system-rocket/">
+  
+  <img src="/images/cards/lego-instructions-42221-technic-nasa-artemis-space-launch-system-rocket-320.webp?v=b2ad73b5f978" srcset="/images/cards/lego-instructions-42221-technic-nasa-artemis-space-launch-system-rocket-320.webp?v=b2ad73b5f978 320w, /images/cards/lego-instructions-42221-technic-nasa-artemis-space-launch-system-rocket-480.webp?v=b2ad73b5f978 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42221 NASA Artemis Space Launch System Rocket building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42221</div>
+    <div class="set-name">NASA Artemis Space Launch System Rocket</div>
+    <div class="set-meta">Technic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/42220-technic-monster-jam-sparkle-smash/">
+  
+  <img src="/images/cards/lego-instructions-42220-technic-monster-jam-sparkle-smash-320.webp?v=cbc15c4c0797" srcset="/images/cards/lego-instructions-42220-technic-monster-jam-sparkle-smash-320.webp?v=cbc15c4c0797 320w, /images/cards/lego-instructions-42220-technic-monster-jam-sparkle-smash-480.webp?v=cbc15c4c0797 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42220 Monster Jam Sparkle Smash building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42220</div>
+    <div class="set-name">Monster Jam Sparkle Smash</div>
+    <div class="set-meta">Technic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/42219-technic-monster-jam-grave-digger/">
+  
+  <img src="/images/cards/lego-instructions-42219-technic-monster-jam-grave-digger-320.webp?v=35979b9369fd" srcset="/images/cards/lego-instructions-42219-technic-monster-jam-grave-digger-320.webp?v=35979b9369fd 320w, /images/cards/lego-instructions-42219-technic-monster-jam-grave-digger-480.webp?v=35979b9369fd 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42219 Monster Jam Grave Digger building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42219</div>
+    <div class="set-name">Monster Jam Grave Digger</div>
+    <div class="set-meta">Technic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/42218-technic-john-deere-1470h-wheeled-harvester/">
+  
+  <img src="/images/cards/lego-instructions-42218-technic-john-deere-1470h-wheeled-harvester-320.webp?v=b4525dd7d08c" srcset="/images/cards/lego-instructions-42218-technic-john-deere-1470h-wheeled-harvester-320.webp?v=b4525dd7d08c 320w, /images/cards/lego-instructions-42218-technic-john-deere-1470h-wheeled-harvester-480.webp?v=b4525dd7d08c 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Technic 42218 John Deere 1470H Wheeled Harvester building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">42218</div>
+    <div class="set-name">John Deere 1470H Wheeled Harvester</div>
+    <div class="set-meta">Technic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40975-harry-potter-mini-hogwarts-castle/">
+  
+  <img src="/images/cards/lego-instructions-40975-harry-potter-mini-hogwarts-castle-320.webp?v=ef5ce4e88e17" srcset="/images/cards/lego-instructions-40975-harry-potter-mini-hogwarts-castle-320.webp?v=ef5ce4e88e17 320w, /images/cards/lego-instructions-40975-harry-potter-mini-hogwarts-castle-480.webp?v=ef5ce4e88e17 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Harry Potter 40975 Mini Hogwarts Castle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40975</div>
+    <div class="set-name">Mini Hogwarts Castle</div>
+    <div class="set-meta">Harry Potter • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40958-seasonal-christmas-stocking/">
+  
+  <img src="/images/cards/lego-instructions-40958-seasonal-christmas-stocking-320.webp?v=c5709d332ebc" srcset="/images/cards/lego-instructions-40958-seasonal-christmas-stocking-320.webp?v=c5709d332ebc 320w, /images/cards/lego-instructions-40958-seasonal-christmas-stocking-480.webp?v=c5709d332ebc 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Seasonal 40958 Christmas Stocking building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40958</div>
+    <div class="set-name">Christmas Stocking</div>
+    <div class="set-meta">Seasonal • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40957-seasonal-spring-wreath/">
+  
+  <img src="/images/cards/lego-instructions-40957-seasonal-spring-wreath-320.webp?v=27423f1a5b61" srcset="/images/cards/lego-instructions-40957-seasonal-spring-wreath-320.webp?v=27423f1a5b61 320w, /images/cards/lego-instructions-40957-seasonal-spring-wreath-480.webp?v=27423f1a5b61 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Seasonal 40957 Spring Wreath building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40957</div>
+    <div class="set-name">Spring Wreath</div>
+    <div class="set-meta">Seasonal • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40955-miscellaneous-maersk-dual-fuel-container-vessel/">
+  
+  <img src="/images/cards/lego-instructions-40955-miscellaneous-maersk-dual-fuel-container-vessel-320.webp?v=a7331f37b298" srcset="/images/cards/lego-instructions-40955-miscellaneous-maersk-dual-fuel-container-vessel-320.webp?v=a7331f37b298 320w, /images/cards/lego-instructions-40955-miscellaneous-maersk-dual-fuel-container-vessel-480.webp?v=a7331f37b298 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Miscellaneous 40955 Maersk Dual-Fuel Container Vessel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40955</div>
+    <div class="set-name">Maersk Dual-Fuel Container Vessel</div>
+    <div class="set-meta">Miscellaneous • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40954-creator-germany-postcard/">
+  
+  <img src="/images/cards/lego-instructions-40954-creator-germany-postcard-320.webp?v=6e8eb2c50b2b" srcset="/images/cards/lego-instructions-40954-creator-germany-postcard-320.webp?v=6e8eb2c50b2b 320w, /images/cards/lego-instructions-40954-creator-germany-postcard-480.webp?v=6e8eb2c50b2b 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Creator 40954 Germany Postcard building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40954</div>
+    <div class="set-name">Germany Postcard</div>
+    <div class="set-meta">Creator • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40953-creator-london-bus/">
+  
+  <img src="/images/cards/lego-instructions-40953-creator-london-bus-320.webp?v=bd331867fff9" srcset="/images/cards/lego-instructions-40953-creator-london-bus-320.webp?v=bd331867fff9 320w, /images/cards/lego-instructions-40953-creator-london-bus-480.webp?v=bd331867fff9 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Creator 40953 London Bus building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40953</div>
+    <div class="set-name">London Bus</div>
+    <div class="set-meta">Creator • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40926-sonic-sega-genesis-console/">
+  
+  <img src="/images/cards/lego-instructions-40926-sonic-sega-genesis-console-320.webp?v=e7afd70e0ef4" srcset="/images/cards/lego-instructions-40926-sonic-sega-genesis-console-320.webp?v=e7afd70e0ef4 320w, /images/cards/lego-instructions-40926-sonic-sega-genesis-console-480.webp?v=e7afd70e0ef4 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Sonic 40926 SEGA Genesis Console building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40926</div>
+    <div class="set-name">SEGA Genesis Console</div>
+    <div class="set-meta">Sonic • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40925-brickheadz-alice-in-wonderland/">
+  
+  <img src="/images/cards/lego-instructions-40925-brickheadz-alice-in-wonderland-320.webp?v=ad0274551ae2" srcset="/images/cards/lego-instructions-40925-brickheadz-alice-in-wonderland-320.webp?v=ad0274551ae2 320w, /images/cards/lego-instructions-40925-brickheadz-alice-in-wonderland-480.webp?v=ad0274551ae2 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO BrickHeadz 40925 Alice in Wonderland building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40925</div>
+    <div class="set-name">Alice in Wonderland</div>
+    <div class="set-meta">BrickHeadz • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40924-brickheadz-megatron-robot-vehicle/">
+  
+  <img src="/images/cards/lego-instructions-40924-brickheadz-megatron-robot-vehicle-320.webp?v=7ecf75ac521c" srcset="/images/cards/lego-instructions-40924-brickheadz-megatron-robot-vehicle-320.webp?v=7ecf75ac521c 320w, /images/cards/lego-instructions-40924-brickheadz-megatron-robot-vehicle-480.webp?v=7ecf75ac521c 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO BrickHeadz 40924 Megatron Robot &amp; Vehicle building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40924</div>
+    <div class="set-name">Megatron Robot &amp; Vehicle</div>
+    <div class="set-meta">BrickHeadz • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40923-brickheadz-shrek-donkey-gingy-figures/">
+  
+  <img src="/images/cards/lego-instructions-40923-brickheadz-shrek-donkey-gingy-figures-320.webp?v=ec2328b4c657" srcset="/images/cards/lego-instructions-40923-brickheadz-shrek-donkey-gingy-figures-320.webp?v=ec2328b4c657 320w, /images/cards/lego-instructions-40923-brickheadz-shrek-donkey-gingy-figures-480.webp?v=ec2328b4c657 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO BrickHeadz 40923 Shrek, Donkey &amp; Gingy Figures building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40923</div>
+    <div class="set-name">Shrek, Donkey &amp; Gingy Figures</div>
+    <div class="set-meta">BrickHeadz • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40922-brickheadz-angel/">
+  
+  <img src="/images/cards/lego-instructions-40922-brickheadz-angel-320.webp?v=c4fbb9f9ad48" srcset="/images/cards/lego-instructions-40922-brickheadz-angel-320.webp?v=c4fbb9f9ad48 320w, /images/cards/lego-instructions-40922-brickheadz-angel-480.webp?v=c4fbb9f9ad48 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO BrickHeadz 40922 Angel building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40922</div>
+    <div class="set-name">Angel</div>
+    <div class="set-meta">BrickHeadz • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40921-miscellaneous-up-scaled-blue-astronaut-minifigure/">
+  
+  <img src="/images/cards/lego-instructions-40921-miscellaneous-up-scaled-blue-astronaut-minifigure-320.webp?v=3a84e84e2579" srcset="/images/cards/lego-instructions-40921-miscellaneous-up-scaled-blue-astronaut-minifigure-320.webp?v=3a84e84e2579 320w, /images/cards/lego-instructions-40921-miscellaneous-up-scaled-blue-astronaut-minifigure-480.webp?v=3a84e84e2579 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Miscellaneous 40921 Up-Scaled Blue Astronaut Minifigure building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40921</div>
+    <div class="set-name">Up-Scaled Blue Astronaut Minifigure</div>
+    <div class="set-meta">Miscellaneous • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40920-seasonal-bugs-bunny/">
+  
+  <img src="/images/cards/lego-instructions-40920-seasonal-bugs-bunny-320.webp?v=2fd9635bf1d9" srcset="/images/cards/lego-instructions-40920-seasonal-bugs-bunny-320.webp?v=2fd9635bf1d9 320w, /images/cards/lego-instructions-40920-seasonal-bugs-bunny-480.webp?v=2fd9635bf1d9 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Seasonal 40920 Bugs Bunny building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40920</div>
+    <div class="set-name">Bugs Bunny</div>
+    <div class="set-meta">Seasonal • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40919-brickheadz-gremlins-gizmo-and-stripe-figures/">
+  
+  <img src="/images/cards/lego-instructions-40919-brickheadz-gremlins-gizmo-and-stripe-figures-320.webp?v=87012ac004e3" srcset="/images/cards/lego-instructions-40919-brickheadz-gremlins-gizmo-and-stripe-figures-320.webp?v=87012ac004e3 320w, /images/cards/lego-instructions-40919-brickheadz-gremlins-gizmo-and-stripe-figures-480.webp?v=87012ac004e3 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO BrickHeadz 40919 Gremlins: Gizmo and Stripe Figures building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40919</div>
+    <div class="set-name">Gremlins: Gizmo and Stripe Figures</div>
+    <div class="set-meta">BrickHeadz • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40917-star-wars-the-darksaber/">
+  
+  <img src="/images/cards/lego-instructions-40917-star-wars-the-darksaber-320.webp?v=10a4a56605eb" srcset="/images/cards/lego-instructions-40917-star-wars-the-darksaber-320.webp?v=10a4a56605eb 320w, /images/cards/lego-instructions-40917-star-wars-the-darksaber-480.webp?v=10a4a56605eb 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Star Wars 40917 The Darksaber building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40917</div>
+    <div class="set-name">The Darksaber</div>
+    <div class="set-meta">Star Wars • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40916-botanicals-floral-picture-frame/">
+  
+  <img src="/images/cards/lego-instructions-40916-botanicals-floral-picture-frame-320.webp?v=48a9689e6827" srcset="/images/cards/lego-instructions-40916-botanicals-floral-picture-frame-320.webp?v=48a9689e6827 320w, /images/cards/lego-instructions-40916-botanicals-floral-picture-frame-480.webp?v=48a9689e6827 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Botanicals 40916 Floral Picture Frame building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40916</div>
+    <div class="set-name">Floral Picture Frame</div>
+    <div class="set-meta">Botanicals • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40915-seasonal-lion-dance/">
+  
+  <img src="/images/cards/lego-instructions-40915-seasonal-lion-dance-320.webp?v=233caf53a573" srcset="/images/cards/lego-instructions-40915-seasonal-lion-dance-320.webp?v=233caf53a573 320w, /images/cards/lego-instructions-40915-seasonal-lion-dance-480.webp?v=233caf53a573 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Seasonal 40915 Lion Dance building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40915</div>
+    <div class="set-name">Lion Dance</div>
+    <div class="set-meta">Seasonal • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40913-icons-vintage-parade-car/">
+  
+  <img src="/images/cards/lego-instructions-40913-icons-vintage-parade-car-320.webp?v=fb506b23bafc" srcset="/images/cards/lego-instructions-40913-icons-vintage-parade-car-320.webp?v=fb506b23bafc 320w, /images/cards/lego-instructions-40913-icons-vintage-parade-car-480.webp?v=fb506b23bafc 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Icons 40913 Vintage Parade Car building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40913</div>
+    <div class="set-name">Vintage Parade Car</div>
+    <div class="set-meta">Icons • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40912-ideas-sea-serpent/">
+  
+  <img src="/images/cards/lego-instructions-40912-ideas-sea-serpent-320.webp?v=fc3550cb20f3" srcset="/images/cards/lego-instructions-40912-ideas-sea-serpent-320.webp?v=fc3550cb20f3 320w, /images/cards/lego-instructions-40912-ideas-sea-serpent-480.webp?v=fc3550cb20f3 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Ideas 40912 Sea Serpent building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40912</div>
+    <div class="set-name">Sea Serpent</div>
+    <div class="set-meta">Ideas • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40911-pokemon-mini-pokemon-centre/">
+  
+  <img src="/images/cards/lego-instructions-40911-pokemon-mini-pokemon-centre-320.webp?v=50c6b18de81c" srcset="/images/cards/lego-instructions-40911-pokemon-mini-pokemon-centre-320.webp?v=50c6b18de81c 320w, /images/cards/lego-instructions-40911-pokemon-mini-pokemon-centre-480.webp?v=50c6b18de81c 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO 40911 Mini Pokémon Centre building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40911</div>
+    <div class="set-name">Mini Pokémon Centre</div>
+    <div class="set-meta">Pokémon • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40910-brickheadz-beef-boss-skye/">
+  
+  <img src="/images/cards/lego-instructions-40910-brickheadz-beef-boss-skye-320.webp?v=fd137a2f987e" srcset="/images/cards/lego-instructions-40910-brickheadz-beef-boss-skye-320.webp?v=fd137a2f987e 320w, /images/cards/lego-instructions-40910-brickheadz-beef-boss-skye-480.webp?v=fd137a2f987e 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO BrickHeadz 40910 Beef Boss &amp; Skye building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40910</div>
+    <div class="set-name">Beef Boss &amp; Skye</div>
+    <div class="set-meta">BrickHeadz • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40909-promotional-restaurants-of-the-world-italy/">
+  <span class="badge-new">NEW</span>
+  <img src="/images/cards/lego-instructions-40909-promotional-restaurants-of-the-world-italy-320.webp?v=86de281d033c" srcset="/images/cards/lego-instructions-40909-promotional-restaurants-of-the-world-italy-320.webp?v=86de281d033c 320w, /images/cards/lego-instructions-40909-promotional-restaurants-of-the-world-italy-480.webp?v=86de281d033c 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Promotional 40909 Restaurants of the World: Italy building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40909</div>
+    <div class="set-name">Restaurants of the World: Italy</div>
+    <div class="set-meta">Promotional • 2026</div>
+  </div>
+</a>
+<a class="set-card" href="/lego-instructions/40908-promotional-restaurants-of-the-world-greece/">
+  
+  <img src="/images/cards/lego-instructions-40908-promotional-restaurants-of-the-world-greece-320.webp?v=3d0c78bd10c4" srcset="/images/cards/lego-instructions-40908-promotional-restaurants-of-the-world-greece-320.webp?v=3d0c78bd10c4 320w, /images/cards/lego-instructions-40908-promotional-restaurants-of-the-world-greece-480.webp?v=3d0c78bd10c4 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px" alt="LEGO Promotional 40908 Restaurants of the World: Greece building instructions" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='/assets/brick-instructions-logo.svg';">
+  <div class="set-info">
+    <div class="set-number">40908</div>
+    <div class="set-name">Restaurants of the World: Greece</div>
+    <div class="set-meta">Promotional • 2026</div>
+  </div>
+</a></div><nav class="year-pagination" aria-label="Year results pages" style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:24px 0;"><a href="/2026/page/7/" rel="prev">Previous</a> <a href="/2026/">1</a> <a href="/2026/page/2/">2</a> <a href="/2026/page/3/">3</a> <a href="/2026/page/4/">4</a> <a href="/2026/page/5/">5</a> <a href="/2026/page/6/">6</a> <a href="/2026/page/7/">7</a> <strong aria-current="page">8</strong> <a href="/2026/page/9/">9</a> <a href="/2026/page/10/">10</a> <a href="/2026/page/11/">11</a> <a href="/2026/page/12/">12</a> <a href="/2026/page/9/" rel="next">Next</a></nav></main>
 <footer>
-  <div class="footer-links"><a href="/about/">About</a><a href="https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/LEGOInstructionsForLEGOFans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/legoinstructionsforyou/" target="_blank" rel="noopener">Instagram</a></div>
+  <div class="footer-links"><a href="/about/">About</a><a href="/privacy-policy/">Privacy Policy</a><button type="button" class="footer-cookie-link" onclick="window.openCookieSettings && window.openCookieSettings()">Cookie settings</button><a href="https://www.youtube.com/@LEGOINSTRUCTIONSFORYOU" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/LEGOInstructionsForLEGOFans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/legoinstructionsforyou/" target="_blank" rel="noopener">Instagram</a></div>
   <div>Brick Instructions For You is independently run by Paul.</div>
   <div style="margin-top:8px;opacity:.86;">LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorise or endorse this site.</div>
 </footer>
+
+<div id="cookieConsentBanner" class="cookie-consent" role="dialog" aria-modal="true" aria-labelledby="cookieConsentTitle" aria-describedby="cookieConsentText" hidden>
+  <div class="cookie-consent-inner">
+    <div class="cookie-consent-copy">
+      <strong id="cookieConsentTitle">Cookie choices</strong>
+      <p id="cookieConsentText">We use necessary site storage and, with your permission, Google Analytics to understand how the instruction pages are used. You can accept analytics or continue without non-essential analytics.</p>
+      <a href="/privacy-policy/">Read our Privacy Policy</a>
+    </div>
+    <div class="cookie-consent-actions">
+      <button id="cookieRejectAnalytics" type="button" class="cookie-btn cookie-btn-secondary">Reject non-essential</button>
+      <button id="cookieAcceptAnalytics" type="button" class="cookie-btn cookie-btn-primary">Accept analytics</button>
+    </div>
+  </div>
+</div>
+
 <script>
 window.LEGO_SETS = [];
 let LEGO_SETS_LOADED = false;
-const LEGO_SETS_READY = fetch("/data/search-index.json", {cache:"no-store"})
- .then(response => response.ok ? response.json() : [])
- .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
- .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+let legoSetsPromise = null;
+function ensureSearchIndex() {
+ if (legoSetsPromise) return legoSetsPromise;
+ legoSetsPromise = fetch("/data/search-index.json", {cache:"default"})
+  .then(response => response.ok ? response.json() : [])
+  .then(data => { window.LEGO_SETS = Array.isArray(data) ? data : []; LEGO_SETS_LOADED = true; return window.LEGO_SETS; })
+  .catch(() => { LEGO_SETS_LOADED = true; window.LEGO_SETS = []; return []; });
+ return legoSetsPromise;
+}
 const input=document.getElementById("mainSearchInput");
 const typeSelect=document.getElementById("mainSearchType");
 const form=document.getElementById("mainSearchForm");
@@ -691,31 +889,41 @@ function setImageAlt(set){
  if(number)parts.push(number);if(name)parts.push(name);parts.push("building instructions");
  return parts.join(" ").replace(/\s+/g," ").trim();
 }
-function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?'<span class="badge-new">NEW</span>':'<span class="badge-new badge-soon">COMING SOON</span>';return `<a class="set-card" href="${set.page_url}">${showNew?badge:''}<img src="${set.image}" alt="${escapeHTML(setImageAlt(set))}" loading="lazy" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
+function cardHTML(set,showNew=true){const hasVideo=String(set.video_url||"").trim().length>0;const badge=hasVideo?(set.is_new?'<span class="badge-new">NEW</span>':''):'<span class="badge-new badge-soon">COMING SOON</span>';const responsive=set.image_480?` srcset="${escapeHTML(set.image)} 320w, ${escapeHTML(set.image_480)} 480w" sizes="(max-width: 680px) calc((100vw - 46px) / 2), (max-width: 1000px) calc((100vw - 64px) / 3), 235px"`:'';return `<a class="set-card" href="${escapeHTML(set.page_url)}">${showNew?badge:''}<img src="${escapeHTML(set.image)}"${responsive} alt="${escapeHTML(setImageAlt(set))}" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='${hasVideo?"/assets/brick-instructions-logo.svg":"/assets/coming-soon-option3.svg"}';"><div class="set-info"><div class="set-number">${escapeHTML(set.set_number||"LEGO")}</div><div class="set-name">${escapeHTML(set.name)}</div><div class="set-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></a>`;}
 function renderResults(query,type,pushState=true){
  const q=String(query||"").trim();const t=type||"all";const results=searchSets(q,t);
  input.value=q;typeSelect.value=t;
  const heading=q?`SEARCH RESULTS FOR "${escapeHTML(q)}"`:"LATEST LEGO INSTRUCTIONS";
  const countText=q?`${results.length} matching LEGO instruction pages found.`:`${results.length} latest LEGO instruction pages.`;
- pageContent.innerHTML=`<div class="results-header"><div><h2>${heading}</h2><p>${countText}</p></div><a class="btn-outline" href="/latest/">VIEW LATEST</a></div>${results.length?`<div class="grid">${results.slice(0,60).map(set=>cardHTML(set)).join("")}</div>`:`<div class="empty"><h2>No LEGO instructions found</h2><p>Try searching by set number, theme, year or set name.</p></div>`}`;
+ const header=document.createElement("div");header.className="results-header";
+ const headerText=document.createElement("div");const headingNode=document.createElement("h2");headingNode.textContent=heading;
+ const countNode=document.createElement("p");countNode.textContent=countText;headerText.append(headingNode,countNode);
+ const latestLink=document.createElement("a");latestLink.className="btn-outline";latestLink.href="/latest/";latestLink.textContent="VIEW LATEST";
+ header.append(headerText,latestLink);pageContent.replaceChildren(header);
+ if(results.length){const grid=document.createElement("div");grid.className="grid";grid.innerHTML=results.slice(0,60).map(set=>cardHTML(set)).join("");pageContent.append(grid);}
+ else{const empty=document.createElement("div");empty.className="empty";const emptyHeading=document.createElement("h2");emptyHeading.textContent="No LEGO instructions found";const emptyCopy=document.createElement("p");emptyCopy.textContent="Try searching by set number, theme, year or set name.";empty.append(emptyHeading,emptyCopy);pageContent.append(empty);}
  if(pushState){const url=q?`/search/?q=${encodeURIComponent(q)}&type=${encodeURIComponent(t)}`:`/search/`;history.pushState({q,type:t},"",url);}
  hideSuggestions();
 }
 function showSuggestions(){
  const q=input.value.trim();const t=typeSelect.value||"all"; if(q.length<1){hideSuggestions();return;}
  const matches=searchSets(q,t).slice(0,8); if(!matches.length){hideSuggestions();return;}
- suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${set.page_url}"><img src="${set.image}" alt="" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
+ suggestions.innerHTML=matches.map(set=>`<div class="suggestion-item" data-url="${escapeHTML(set.page_url)}"><img src="${escapeHTML(set.image)}" alt="" width="320" height="180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/coming-soon-option3.svg';"><div><div class="suggestion-title">${escapeHTML(set.set_number)} - ${escapeHTML(set.name)}</div><div class="suggestion-meta">${escapeHTML(set.theme)} ${set.year?"• "+escapeHTML(set.year):""}</div></div></div>`).join("");
  suggestions.style.display="block";
 }
 function hideSuggestions(){suggestions.style.display="none";suggestions.innerHTML="";}
-input.addEventListener("input",showSuggestions);typeSelect.addEventListener("change",showSuggestions);
-suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
-document.addEventListener("click",function(e){if(!document.getElementById("mainSearchWrap").contains(e.target))hideSuggestions();});
-form.addEventListener("submit",function(e){e.preventDefault();LEGO_SETS_READY.then(()=>renderResults(input.value,typeSelect.value,true));});
-document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();renderResults(chip.dataset.search,chip.dataset.type||"all",true);}));
-window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
-(function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))LEGO_SETS_READY.then(()=>renderResults(q,t,false));})();
+const searchWrap=document.getElementById("mainSearchWrap");
+if(input&&typeSelect&&form&&suggestions&&pageContent&&searchWrap){
+ input.addEventListener("input",()=>ensureSearchIndex().then(showSuggestions));
+ typeSelect.addEventListener("change",()=>ensureSearchIndex().then(showSuggestions));
+ suggestions.addEventListener("mousedown",function(e){const item=e.target.closest(".suggestion-item");if(item)window.location.href=item.dataset.url;});
+ document.addEventListener("click",function(e){if(!searchWrap.contains(e.target))hideSuggestions();});
+ form.addEventListener("submit",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(input.value,typeSelect.value,true));});
+ document.querySelectorAll(".chip[data-search]").forEach(chip=>chip.addEventListener("click",function(e){e.preventDefault();ensureSearchIndex().then(()=>renderResults(chip.dataset.search,chip.dataset.type||"all",true));}));
+ window.addEventListener("popstate",()=>{const p=params();renderResults(p.get("q")||"",p.get("type")||"all",false);});
+ (function initialiseSearchFromURL(){const p=params();const q=p.get("q")||"";const t=p.get("type")||"all";input.value=q;typeSelect.value=t;if(window.location.pathname.startsWith("/search/"))ensureSearchIndex().then(()=>renderResults(q,t,false));})();
+}
 </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "99db6ec5719548b582f077bfc6bb2c7f"}'></script><!-- End Cloudflare Web Analytics -->
+
 </body>
 </html>
