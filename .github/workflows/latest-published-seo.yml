@@ -1,0 +1,36 @@
+name: Keep latest LEGO video guides current
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/index.html'
+      - 'public/latest/index.html'
+      - 'public/lego-instructions/**/index.html'
+      - 'seo/latest_published.py'
+      - '.github/workflows/latest-published-seo.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: latest-published-seo
+  cancel-in-progress: false
+
+jobs:
+  refresh-latest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout maintenance script
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: seo
+          sparse-checkout-cone-mode: true
+          persist-credentials: false
+      - name: Check latest page update safely
+        run: python3 -m unittest discover -s seo -p 'test_latest_published.py' -v
+      - name: Repair latest published video guides landing page
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 seo/latest_published.py
