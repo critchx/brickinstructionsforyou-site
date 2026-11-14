@@ -1,0 +1,34 @@
+name: Search engine discovery after website publish
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/lego-instructions/**/index.html'
+      - 'public/sitemap-sets.xml'
+      - 'public/robots.txt'
+      - 'public/lego-updates.xml'
+      - 'seo/search_discovery.py'
+      - '.github/workflows/search-discovery.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: website-search-discovery
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: seo
+          sparse-checkout-cone-mode: true
+          persist-credentials: false
+      - name: Refresh RSS discovery feed and notify IndexNow
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 seo/search_discovery.py
